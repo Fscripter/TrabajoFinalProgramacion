@@ -3,6 +3,7 @@ window.onload = ()=>{
     mapaCanvas.cargarZona("Antioquia");
 
     let request;
+    let player1 = new Player(100, 0, 0, "#ffffff", "#000000");
 
     //Main Loop
     const performAnimation = () => {
@@ -10,23 +11,41 @@ window.onload = ()=>{
         //animate something
         mapaCanvas.limpiar();
         mapaCanvas.dibujarMapa();
+        player1.dibujar(mapaCanvas.context);
+        
     }
     requestAnimationFrame(performAnimation);
 
-    //move arrows
-    window.addEventListener("keydown", (Event)=>{
-        if(Event.key == "ArrowRight"){
-            mapaCanvas.columnaIndice++;
-            console.log("e");
-            console.log(mapaCanvas.columnaIndice);
-        }
-        if(Event.key == "ArrowLeft"){
-            if(mapaCanvas.columnaIndice > 0){
-                mapaCanvas.columnaIndice--;
-            }
-        }
-        else{
-            console.log(Event.key);
-        }
-    });
+    
+    
+    window.addEventListener("keydown", moverPlayer);
+
+    function moverPlayer(e)
+    {
+        switch(e.key)
+        {
+            case "w" :
+                player1.moverArriba();
+                break;
+
+            case "a" :
+                player1.moverIzquierda();
+                break;
+
+            case "d" :
+                player1.moverDerecha();
+                break;
+
+            case "s" :
+                player1.moverAbajo();
+                break;
+
+
+
+        }   
+    }
+
+
+    
+    
 }
