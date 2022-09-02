@@ -18,6 +18,10 @@ class Mapa {
         this.mapaArray = this.mapaData.Mapa.map((elemento) => {
           return elemento.join().split("");
         });
+
+        this.texturaImgUrl = this.mapaData.texturas.S;
+        this.ImagenSubsuelo = new Image();
+        this.ImagenSubsuelo.src = this.texturaImgUrl;
       });
   }
   viewPort() {
@@ -54,8 +58,10 @@ class Mapa {
         }
         if (this.mapaView[fila][columna] == "S") {
           this.context.beginPath();
-          this.context.fillStyle = "#000000";
-          this.context.fillRect(columna * 50, (fila + 1) * 50, 50, 50);
+
+          this.context.drawImage(this.ImagenSubsuelo, columna *50, (fila + 1)*50);
+          // this.context.fillStyle = "#000000";
+          // this.context.fillRect(columna * 50, (fila + 1) * 50, 50, 50);
         }
       }
     }

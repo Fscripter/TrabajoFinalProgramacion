@@ -11,7 +11,11 @@
         [""],
         [""],
         ["            TT "],
-        ["TTTTTT TTTTTSS TTTTTT"],
-        ["SSSSSSMSSSSSSSMSSSSSS"]
-    ]
+        ["TTTTTT TTTTTSS TTTTTT     TTTTTTTTTTTTTTTTTTTTT"],
+        ["SSSSSSMSSSSSSSMSSSSSS   SSSSSSSSSSSSSSSSSSSSSSS"]
+    ],
+    "texturas":
+        {
+            "S": "./Sprites/Terrain/Roca.png"
+        }
 }
