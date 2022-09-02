@@ -21,7 +21,9 @@ window.onload = ()=>{
             console.log(mapaCanvas.columnaIndice);
         }
         if(Event.key == "ArrowLeft"){
-            mapaCanvas.columnaIndice--;
+            if(mapaCanvas.columnaIndice > 0){
+                mapaCanvas.columnaIndice--;
+            }
         }
         else{
             console.log(Event.key);
