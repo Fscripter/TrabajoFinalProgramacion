@@ -3,7 +3,23 @@ class Mapa {
     this.zonas = ["Pacifico", "Antioquia", "Amazonia"];
     this.canvas= document.getElementById("Game-ViewPort");
     this.context =  this.canvas.getContext("2d");
-    this.columnaIndice = 0;
+    this.columnaIndice = 20;
+    this.texturas = {
+      S: new Image(),
+      T: new Image(),
+      A: new Image(),
+      L: new Image(),
+      D: new Image(),
+      Layout: new Image()
+    }
+  };
+  cargarTexuras(){
+    this.texturas.S.src = this.mapaData.texturas.S;
+    this.texturas.T.src = this.mapaData.texturas.T;
+    this.texturas.A.src = this.mapaData.texturas.A;
+    this.texturas.L.src = this.mapaData.texturas.L;
+    this.texturas.D.src = this.mapaData.texturas.D;
+    this.texturas.Layout.src = this.mapaData.texturas.Layout;
   }
   cargarZona(name) {
     fetch(`MapData/${name}.json`)
@@ -19,9 +35,7 @@ class Mapa {
           return elemento.join().split("");
         });
 
-        this.texturaImgUrl = this.mapaData.texturas.S;
-        this.ImagenSubsuelo = new Image();
-        this.ImagenSubsuelo.src = this.texturaImgUrl;
+        this.cargarTexuras();
       });
   }
   viewPort() {
@@ -48,20 +62,24 @@ class Mapa {
   }
   dibujarMapa() {
     this.viewPort();
+    this.context.drawImage(this.texturas.Layout,0,0,this.canvas.width, this.canvas.clientHeight);
     // Dibujar solo lo que este en el viewPort
     for (let fila = 0; fila < 11; fila++) {
       for (let columna = 0; columna < 20; columna += 1) {
         if (this.mapaView[fila][columna] == "T") {
-          this.context.beginPath();
-          this.context.fillStyle = "#ff0000";
-          this.context.fillRect(columna * 50, (fila + 1) * 50, 50, 50);
+          this.context.drawImage(this.texturas.T, columna *50, (fila + 1)*50,50,50);
         }
         if (this.mapaView[fila][columna] == "S") {
-          this.context.beginPath();
-
-          this.context.drawImage(this.ImagenSubsuelo, columna *50, (fila + 1)*50);
-          // this.context.fillStyle = "#000000";
-          // this.context.fillRect(columna * 50, (fila + 1) * 50, 50, 50);
+          this.context.drawImage(this.texturas.S, columna *50, (fila + 1)*50,50,50);
+        }
+        if(this.mapaView[fila][columna] == "A"){
+          this.context.drawImage(this.texturas.A, columna *50 -50, (fila + 1)*50 - 145,150,200);
+        }
+        if (this.mapaView[fila][columna] == "L") {
+          this.context.drawImage(this.texturas.L, columna *50, (fila + 1)*50,50,50);
+        }
+        if (this.mapaView[fila][columna] == "D") {
+          this.context.drawImage(this.texturas.D, columna *50, (fila + 1)*50,50,50);
         }
       }
     }
