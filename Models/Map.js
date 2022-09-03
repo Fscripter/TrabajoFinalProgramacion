@@ -3,7 +3,7 @@ class Mapa {
     this.zonas = ["Pacifico", "Antioquia", "Amazonia"];
     this.canvas= document.getElementById("Game-ViewPort");
     this.context =  this.canvas.getContext("2d");
-    this.columnaIndice = 20;
+    this.columnaIndice = 0;
     this.texturas = {
       S: new Image(),
       T: new Image(),

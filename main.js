@@ -30,10 +30,12 @@ window.onload = ()=>{
 
             case "a" :
                 player1.moverIzquierda();
+                mapaCanvas.columnaIndice--;
                 break;
 
             case "d" :
                 player1.moverDerecha();
+                mapaCanvas.columnaIndice++  ;
                 break;
 
             case "s" :
