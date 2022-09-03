@@ -1,26 +1,25 @@
 {
-    "Zona nombre": "Antioquia",
-    "Zona ID": 2,
-    "Mapa": [
-        [""],
-        [""],
-        [""],
-        [""],
-        [""],
-        [""],
-        [""],
-        [""],
-        ["         A      A            A          A    A"],
-        ["LTTTTD LTTTTTD LTTTTD     ITTTTTTTTTTTTTTTTTTTD"],
-        ["SSSSSSMSSSSSSSMSSSSSSMMMMMSSSSSSSSSSSSSSSSSSSSSSS"]
-    ],
-    "texturas":
-        {
-            "S": "./Sprites/Terrain/Roca.png",
-            "T": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
-            "A": "./Sprites/Terrain/Antioquia/Objetos/Arbol.png",
-            "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.png",
-            "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
-            "D": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
-        }
+  "Zona nombre": "Antioquia",
+  "Zona ID": 2,
+  "Mapa": [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    ["         A      A            A          A    A"],
+    ["LTTTTD  LTTTTTD LTTTTD     ITTTTTTTTTTTTTTTTTTTD"],
+    ["SSSSSS  SSSSSSSMSSSSSSMMMMMSSSSSSSSSSSSSSSSSSSSSSS"]
+  ],
+  "texturas": {
+    "S": "./Sprites/Terrain/Roca.png",
+    "T": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
+    "A": "./Sprites/Terrain/Antioquia/Objetos/Arbol.png",
+    "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.png",
+    "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
+    "D": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
+  }
 }
