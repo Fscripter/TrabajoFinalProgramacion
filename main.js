@@ -15,21 +15,21 @@ window.onload = () => {
   };
   requestAnimationFrame(performAnimation);
 
-  window.addEventListener("keydown", moverPlayer);
+  var map = []; // Or you could call it "key"
+  onkeydown = onkeyup = function (e) {
+    e = e || event;
+    map[e.keyCode] = e.type == "keydown";
 
-  function moverPlayer(e) {
-    switch (e.key) {
-      case "w":
-        player1.moverArriba();
-        break;
-
-      case "a":
-        player1.moverIzquierda();
-        break;
-
-      case "d":
-        player1.moverDerecha();
-        break;
+    console.log(e.keyCode);
+    if (map[38] || map[87]) {
+      // Flecha arriba o W
+      player1.salto();
     }
-  }
+    if (map[68] || map[39]) {
+      player1.moverDerecha();
+    }
+    if (map[37] || map[65]) {
+      player1.moverIzquierda();
+    }
+  };
 };

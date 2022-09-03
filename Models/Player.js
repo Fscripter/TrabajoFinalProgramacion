@@ -10,13 +10,20 @@ class Player {
     };
     this.imgBase = new Image();
     this.imgBase.src = "./Sprites/Player/base.jpg";
-    this.gravedadIntensidad = 10;
     this.deltaTime = 60 / 1000; // obtener el tiempo que pasa entre frame y frame
     this.isGround = false; //Variable para saber si esta tocando el suelo
     this.collision = {
       x: false,
       y: false,
     };
+
+    //Integracion gravedad + Salto
+    this.gravedadIntensidad = 10;
+    this.velocidad = {
+      x: 0,
+      y: 0,
+    };
+    this.fuerzaSalto = 10;
   }
 
   dibujar(ctx, mapArray) {
@@ -41,13 +48,23 @@ class Player {
   }
   aplicarGravedad(mapArray) {
     if (!this.isGround) {
-      this.posicion.y += this.gravedadIntensidad * this.deltaTime * 10;
+      this.velocidad.y +=
+        this.gravedadIntensidad * this.deltaTime * this.deltaTime * 10;
+    } else {
+      this.velocidad.y = 0;
     }
+    this.posicion.y += this.velocidad.y;
     if (this.posicion.y > 12 * 50) {
       this.posicion.y = 0;
       this.posicion.x = 0;
     }
     this.colisionTerreno(mapArray);
+  }
+  salto() {
+    if (this.isGround) {
+      this.velocidad.y = -this.fuerzaSalto;
+      this.isGround = false;
+    }
   }
   colisionTerreno(mapArray) {
     this.cuadrantePosicion = {
