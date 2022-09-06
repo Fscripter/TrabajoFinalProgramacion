@@ -26,10 +26,12 @@ window.onload = () => {
       player1.salto();
     }
     if (map[68] || map[39]) {
-      player1.moverDerecha();
+      player1.moverDerecha(); // Flecha derecha
+      // mapaCanvas.context.translate(player1.cuadrantePosicion.x);
+      mapaCanvas.columnaIndice = player1.cuadrantePosicion.x;
     }
     if (map[37] || map[65]) {
-      player1.moverIzquierda();
+      player1.moverIzquierda(); // Flecha Izquierda
     }
   };
 };
