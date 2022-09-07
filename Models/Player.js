@@ -1,7 +1,7 @@
 class Player {
   constructor() {
     this.posicion = {
-      x: 1,
+      x: 500,
       y: 0,
     };
     this.size = {
@@ -29,13 +29,7 @@ class Player {
   }
 
   dibujar(ctx, mapArray) {
-    ctx.drawImage(
-      this.imgBase,
-      this.posicion.x,
-      this.posicion.y,
-      this.size.w,
-      this.size.h
-    );
+    ctx.drawImage(this.imgBase, this.posicion.x, this.posicion.y, this.size.w, this.size.h);
     this.aplicarGravedad(mapArray);
   }
   mover(vel) {
@@ -43,15 +37,14 @@ class Player {
   }
   aplicarGravedad(mapArray) {
     if (!this.isGround) {
-      this.velocidad.y +=
-        this.gravedadIntensidad * this.deltaTime * this.deltaTime * 10;
+      this.velocidad.y += this.gravedadIntensidad * this.deltaTime * this.deltaTime * 10;
     } else {
       this.velocidad.y = 0;
     }
     this.posicion.y += this.velocidad.y;
     if (this.posicion.y > 12 * 50) {
       this.posicion.y = 0;
-      this.posicion.x = 0;
+      this.posicion.x = 500;
     }
     this.colisionTerreno(mapArray);
   }
@@ -78,12 +71,9 @@ class Player {
 
     this.collision.x = false;
     if (
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] ==
-        "T" ||
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] ==
-        "L" ||
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] ==
-        "D" ||
+      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] == "T" ||
+      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] == "L" ||
+      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] == "D" ||
       mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x] == "S"
     ) {
       this.collision.x = true;

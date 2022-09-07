@@ -1,5 +1,10 @@
 Each row equals 50px
 
+Char reserved in trees:
+    A: Arbol type A
+    B: Arbol type B
+    C: Arbol type C
+    E: Arbol type D
 
 Char reserved in Terrain:
     S: Subsuelo
@@ -7,5 +12,4 @@ Char reserved in Terrain:
     L: Extremo izquierdo
     D: Extremo Derecho
     M: MuerteTerreno
-    A: Arbol
     O: Objetos de adorno
