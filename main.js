@@ -9,7 +9,6 @@ window.onload = () => {
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     //animate something
-    mapaCanvas.canvasPosition.x = -player1.posicion.x;
     mapaCanvas.limpiar();
     mapaCanvas.draw();
     player1.dibujar(mapaCanvas.context, mapaCanvas.mapaArray);
@@ -26,11 +25,13 @@ window.onload = () => {
       player1.salto();
     }
     if (map[68] || map[39]) {
-      player1.mover(10); // Flecha derecha
+      player1.mover(10);
+      mapaCanvas.canvasPosition.x -= 10; // Flecha derecha
       // mapaCanvas.context.translate(player1.cuadrantePosicion.x);
     }
     if (map[37] || map[65]) {
-      player1.mover(-10); // Flecha Izquierda
+      player1.mover(-10);
+      mapaCanvas.canvasPosition.x += 10; // Flecha Izquierda
     }
   };
 };

@@ -9,19 +9,26 @@
     [""],
     [""],
     [""],
-    [""],
-    ["         A A    AA           A       A  A    A"],
+    ["                                                                          B B  BB "],
     [
-      "LTTTTD  LTTTTTD LTTTTD   LTTTTTTTTTTTTTTTTTTTTTTTTTTTTTD           LTTTTTD"
+      "         A A    AA           A       A  A    A                      LTTTTTTTTTTTTT                       CCC "
     ],
     [
-      "SSSSSS  SSSSSSSMSSSSSSMMMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTSSSSSSS"
+      "LTTTTD LTTTTTD LTTTTD   TTTTTTTTTTTTTTTTTTTTTTTTTTTTTD        LTTTTTSSSSSSSSSSSSSS                  TTTTTTTTTTTT"
+    ],
+    [
+      "SSSSSS SSSSSSSMSSSSSSMMMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTSSSSSSSSSSSSSSSSSSSS TTTTTTTTTTTTTTTT SSSSSSSSSSSS"
     ]
   ],
   "texturas": {
     "S": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
     "T": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
-    "A": "./Sprites/Terrain/Antioquia/Objetos/Arbol.png",
+    "Arbol": {
+      "A": "./Sprites/Terrain/Antioquia/Objetos/ArbolA.png",
+      "B": "./Sprites/Terrain/Antioquia/Objetos/ArbolB.png",
+      "C": "./Sprites/Terrain/Antioquia/Objetos/ArbolC.png",
+      "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
+    },
     "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.jpg",
     "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
     "D": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
