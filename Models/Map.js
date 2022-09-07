@@ -104,8 +104,6 @@ class Mapa {
           200,
           300
         );
-
-        //Objects
       }
     }
   }

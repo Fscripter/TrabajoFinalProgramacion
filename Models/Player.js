@@ -26,10 +26,30 @@ class Player {
     this.fuerzaSalto = 10;
 
     //Movimiento relativo con camara
+    this.bulletsArray = [];
+    this.canIshoot = true;
+  }
+  destroyBullet() {
+    this.bulletsArray.shift();
+  }
+  disparar() {
+    if (this.canIshoot) {
+      this.bulletsArray.push(
+        new Bala(this.posicion.x + this.size.w, this.posicion.y, true, this.bulletsArray)
+      );
+      this.canIshoot = false;
+      setTimeout(() => {
+        this.canIshoot = true;
+      }, 500);
+    }
   }
 
   dibujar(ctx, mapArray) {
     ctx.drawImage(this.imgBase, this.posicion.x, this.posicion.y, this.size.w, this.size.h);
+    this.bulletsArray.forEach((element) => {
+      element.dibujar(ctx);
+      element.move();
+    });
     this.aplicarGravedad(mapArray);
   }
   mover(vel) {

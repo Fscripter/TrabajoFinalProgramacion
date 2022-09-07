@@ -33,5 +33,8 @@ window.onload = () => {
       player1.mover(-10);
       mapaCanvas.canvasPosition.x += 10; // Flecha Izquierda
     }
+    if (map[32]) {
+      player1.disparar();
+    }
   };
 };
