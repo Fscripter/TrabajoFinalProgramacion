@@ -10,15 +10,19 @@
     [""],
     [""],
     [""],
-    ["         A      A            A          A    A"],
-    ["LTTTTD  LTTTTTD LTTTTD     ITTTTTTTTTTTTTTTTTTTD"],
-    ["SSSSSS  SSSSSSSMSSSSSSMMMMMSSSSSSSSSSSSSSSSSSSSSSS"]
+    ["         A A    AA           A       A  A    A"],
+    [
+      "LTTTTD  LTTTTTD LTTTTD   LTTTTTTTTTTTTTTTTTTTTTTTTTTTTTD           LTTTTTD"
+    ],
+    [
+      "SSSSSS  SSSSSSSMSSSSSSMMMSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTSSSSSSS"
+    ]
   ],
   "texturas": {
-    "S": "./Sprites/Terrain/Roca.png",
+    "S": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
     "T": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
     "A": "./Sprites/Terrain/Antioquia/Objetos/Arbol.png",
-    "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.png",
+    "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.jpg",
     "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
     "D": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
   }

@@ -1,7 +1,7 @@
 class Player {
   constructor() {
     this.posicion = {
-      x: 0,
+      x: 1,
       y: 0,
     };
     this.size = {
@@ -10,13 +10,13 @@ class Player {
     };
     this.imgBase = new Image();
     this.imgBase.src = "./Sprites/Player/base.jpg";
+
     this.deltaTime = 60 / 1000; // obtener el tiempo que pasa entre frame y frame
     this.isGround = false; //Variable para saber si esta tocando el suelo
     this.collision = {
       x: false,
       y: false,
     };
-
     //Integracion gravedad + Salto
     this.gravedadIntensidad = 10;
     this.velocidad = {
@@ -24,6 +24,8 @@ class Player {
       y: 0,
     };
     this.fuerzaSalto = 10;
+
+    //Movimiento relativo con camara
   }
 
   dibujar(ctx, mapArray) {
@@ -36,15 +38,8 @@ class Player {
     );
     this.aplicarGravedad(mapArray);
   }
-  moverIzquierda() {
-    if (this.posicion.x > 0 && this.collision.x == false) {
-      this.posicion.x += -10;
-    }
-  }
-  moverDerecha() {
-    if (this.collision.x == false) {
-      this.posicion.x += 10;
-    }
+  mover(vel) {
+    this.posicion.x += vel;
   }
   aplicarGravedad(mapArray) {
     if (!this.isGround) {
