@@ -1,7 +1,7 @@
 class Player {
   constructor() {
     this.posicion = {
-      x: 0,
+      x: 1,
       y: 0,
     };
     this.size = {
@@ -38,15 +38,8 @@ class Player {
     );
     this.aplicarGravedad(mapArray);
   }
-  moverIzquierda() {
-    if (this.posicion.x > 0 && this.collision.x == false) {
-      this.posicion.x += -10;
-    }
-  }
-  moverDerecha() {
-    if (this.collision.x == false) {
-      this.posicion.x += 10;
-    }
+  mover(vel) {
+    this.posicion.x += vel;
   }
   aplicarGravedad(mapArray) {
     if (!this.isGround) {

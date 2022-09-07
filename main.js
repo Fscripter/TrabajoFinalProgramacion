@@ -9,8 +9,9 @@ window.onload = () => {
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     //animate something
+    mapaCanvas.canvasPosition.x = -player1.posicion.x;
     mapaCanvas.limpiar();
-    mapaCanvas.dibujarMapa();
+    mapaCanvas.draw();
     player1.dibujar(mapaCanvas.context, mapaCanvas.mapaArray);
   };
   requestAnimationFrame(performAnimation);
@@ -19,19 +20,17 @@ window.onload = () => {
   onkeydown = onkeyup = function (e) {
     e = e || event;
     map[e.keyCode] = e.type == "keydown";
-
     console.log(e.keyCode);
     if (map[38] || map[87]) {
       // Flecha arriba o W
       player1.salto();
     }
     if (map[68] || map[39]) {
-      player1.moverDerecha(); // Flecha derecha
+      player1.mover(10); // Flecha derecha
       // mapaCanvas.context.translate(player1.cuadrantePosicion.x);
-      mapaCanvas.columnaIndice = player1.cuadrantePosicion.x;
     }
     if (map[37] || map[65]) {
-      player1.moverIzquierda(); // Flecha Izquierda
+      player1.mover(-10); // Flecha Izquierda
     }
   };
 };
