@@ -3,7 +3,11 @@ window.onload = () => {
   mapaCanvas.cargarZona("Antioquia");
 
   let request;
-  let player1 = new Player(100, 0, 0, "#ffffff", "#000000");
+  let player1 = new Player();
+  let alien = new Enemy();
+
+  //Añadir fisicas
+  var Fisicas = new Fisica([player1, alien]);
 
   //Main Loop
   const performAnimation = () => {
@@ -11,7 +15,9 @@ window.onload = () => {
     //animate something
     mapaCanvas.limpiar();
     mapaCanvas.draw();
-    player1.dibujar(mapaCanvas.context, mapaCanvas.mapaArray);
+    Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
+    player1.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
+    alien.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
   };
   requestAnimationFrame(performAnimation);
 
@@ -35,6 +41,9 @@ window.onload = () => {
     }
     if (map[32]) {
       player1.disparar();
+    }
+    if (map[189]) {
+      player1.recibirDano();
     }
   };
 };

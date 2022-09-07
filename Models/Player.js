@@ -1,31 +1,22 @@
-class Player {
-  constructor() {
+class gameObject {
+  constructor(tag, puntoAparicion, animacionesUrl) {
+    this.tag = tag;
     this.posicion = {
-      x: 500,
-      y: 0,
+      x: puntoAparicion.x,
+      y: puntoAparicion.y,
     };
+    this.puntoReaparicion = puntoAparicion;
+    this.animaciones = animacionesUrl;
     this.size = {
       w: 50,
       h: 100,
     };
-    this.imgBase = new Image();
-    this.imgBase.src = "./Sprites/Player/base.jpg";
-
-    this.deltaTime = 60 / 1000; // obtener el tiempo que pasa entre frame y frame
-    this.isGround = false; //Variable para saber si esta tocando el suelo
-    this.collision = {
-      x: false,
-      y: false,
-    };
-    //Integracion gravedad + Salto
-    this.gravedadIntensidad = 10;
     this.velocidad = {
       x: 0,
       y: 0,
     };
     this.fuerzaSalto = 10;
-
-    //Movimiento relativo con camara
+    this.isGround = false; //Variable para saber si esta tocando el suelo
     this.bulletsArray = [];
     this.canIshoot = true;
   }
@@ -35,7 +26,7 @@ class Player {
   disparar() {
     if (this.canIshoot) {
       this.bulletsArray.push(
-        new Bala(this.posicion.x + this.size.w, this.posicion.y, true, this.bulletsArray)
+        new Bala(this.posicion.x + this.size.w, this.posicion.y + 25, true, this.bulletsArray)
       );
       this.canIshoot = false;
       setTimeout(() => {
@@ -44,29 +35,16 @@ class Player {
     }
   }
 
-  dibujar(ctx, mapArray) {
+  dibujar(ctx) {
     ctx.drawImage(this.imgBase, this.posicion.x, this.posicion.y, this.size.w, this.size.h);
+
     this.bulletsArray.forEach((element) => {
       element.dibujar(ctx);
       element.move();
     });
-    this.aplicarGravedad(mapArray);
   }
   mover(vel) {
     this.posicion.x += vel;
-  }
-  aplicarGravedad(mapArray) {
-    if (!this.isGround) {
-      this.velocidad.y += this.gravedadIntensidad * this.deltaTime * this.deltaTime * 10;
-    } else {
-      this.velocidad.y = 0;
-    }
-    this.posicion.y += this.velocidad.y;
-    if (this.posicion.y > 12 * 50) {
-      this.posicion.y = 0;
-      this.posicion.x = 500;
-    }
-    this.colisionTerreno(mapArray);
   }
   salto() {
     if (this.isGround) {
@@ -74,30 +52,60 @@ class Player {
       this.isGround = false;
     }
   }
-  colisionTerreno(mapArray) {
-    this.cuadrantePosicion = {
-      x: Math.floor(this.posicion.x / this.size.w),
-      y: Math.ceil(this.posicion.y / 50),
-    };
-    if (
-      mapArray[this.cuadrantePosicion.y][this.cuadrantePosicion.x] == "T" ||
-      mapArray[this.cuadrantePosicion.y][this.cuadrantePosicion.x] == "L" ||
-      mapArray[this.cuadrantePosicion.y][this.cuadrantePosicion.x] == "D"
-    ) {
-      this.isGround = true;
-    } else {
-      this.isGround = false;
-    }
+}
 
-    this.collision.x = false;
-    if (
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] == "T" ||
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] == "L" ||
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x + 1] == "D" ||
-      mapArray[this.cuadrantePosicion.y - 1][this.cuadrantePosicion.x] == "S"
-    ) {
-      this.collision.x = true;
+class Player extends gameObject {
+  constructor() {
+    super("Player", { x: 500, y: 0 });
+
+    this.size = {
+      w: 50,
+      h: 100,
+    };
+    this.imgBase = new Image();
+    this.imgBase.src = "./Sprites/Player/base.jpg";
+    this.vida = 100;
+    this.vidaHUD = new Vida("Player", this.vida);
+    this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
+  }
+  dibujar(ctx, canvasPosition) {
+    super.dibujar(ctx);
+    this.vidaHUD.dibujar(ctx, canvasPosition);
+  }
+  recibirDano() {
+    console.log("Recibi damage");
+    this.vidaHUD.recibirDano(10);
+  }
+  disparar() {
+    if (this.canIshoot) {
+      if (!this.disparoSonido.paused) {
+        this.disparoSonido.currentTime = 0;
+        this.disparoSonido.play();
+      } else {
+        this.disparoSonido.play();
+      }
+      super.disparar();
     }
-    console.log(this.collision.x);
+  }
+}
+class Enemy extends gameObject {
+  constructor() {
+    super("Enemigo", { x: 800, y: 0 });
+    this.size = {
+      w: 50,
+      h: 100,
+    };
+    this.imgBase = new Image();
+    this.vida = 100;
+    this.imgBase.src = "./Sprites/Enemys/Antioquia/alien.png";
+    this.vidaHUD = new Vida("Enemigo", this.vida, "r");
+  }
+  dibujar(ctx, canvasPosition) {
+    super.dibujar(ctx);
+    this.vidaHUD.dibujar(ctx, canvasPosition);
+  }
+  recibirDano() {
+    console.log("Recibi damage");
+    this.vidaHUD.recibirDano(10);
   }
 }
