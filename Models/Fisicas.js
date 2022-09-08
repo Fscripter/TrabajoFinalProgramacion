@@ -56,7 +56,14 @@ class Fisica {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
       if (element.posicion.x > -canvasPosicion.x && element.posicion.x < -canvasPosicion.x + 1000) {
+        if (element.tag == "Enemigo") {
+          element.show();
+        }
         this.objectsInScreen.push(element);
+      } else {
+        if (element.tag == "Enemigo") {
+          element.hide();
+        }
       }
     });
   }
@@ -88,8 +95,6 @@ class Fisica {
             bala.posicion.y >= enemigo.posicion.y &&
             bala.posicion.y < enemigo.posicion.y + enemigo.size.h
           ) {
-            console.log("estoy en el X enemigo");
-            console.log(bala.posicion.y, enemigo.posicion.y);
             bala.eliminar();
             enemigo.recibirDano();
           }

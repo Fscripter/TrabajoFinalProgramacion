@@ -4,10 +4,17 @@ window.onload = () => {
 
   let request;
   let player1 = new Player();
-  let alien = new Enemy();
+  let alien = new Enemy({
+    x: 100,
+    y: 0,
+  });
+  let alien2 = new Enemy({
+    x: 2000,
+    y: 0,
+  });
 
   //Añadir fisicas
-  var Fisicas = new Fisica([player1, alien]);
+  var Fisicas = new Fisica([player1, alien, alien2]);
 
   //Main Loop
   const performAnimation = () => {
@@ -18,6 +25,7 @@ window.onload = () => {
     Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
     player1.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
     alien.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
+    alien2.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
   };
   requestAnimationFrame(performAnimation);
 
