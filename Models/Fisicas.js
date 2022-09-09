@@ -85,8 +85,6 @@ class Fisica {
 
     if (mainPlayer.bulletsArray.length > 0) {
       mainPlayer.bulletsArray.forEach((bala) => {
-        console.log(bala.posicion);
-        console.log(enemys);
         // posicion de cada bala
         enemys.forEach((enemigo) => {
           if (

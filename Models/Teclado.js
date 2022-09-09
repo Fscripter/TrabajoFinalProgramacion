@@ -5,6 +5,17 @@ class Teclado {
     this.eventosTeclado();
     this.deltaTime = deltaTime;
     this.mapaCanvas = mapaCanvas;
+    this.ambasTeclas = {
+      a: false,
+      d: false,
+    };
+  }
+  chequearAmbasTeclas() {
+    if (this.ambasTeclas.a && this.ambasTeclas.d) {
+      this.player.cambiarEstado("Estatico");
+    } else {
+      this.player.cambiarEstado("Caminando");
+    }
   }
   realizarAccion() {
     for (const [key, value] of Object.entries(this.keyMap)) {
@@ -12,12 +23,22 @@ class Teclado {
         this.player.salto();
       }
       if (key == "d" && value) {
+        this.ambasTeclas.d = true;
+        this.chequearAmbasTeclas();
         this.player.mover(50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x -= 50 * this.deltaTime;
       }
       if (key == "a" && value) {
+        this.ambasTeclas.a = true;
+        this.chequearAmbasTeclas();
         this.player.mover(-50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x += 50 * this.deltaTime;
+      }
+      if (key == "a" && !value) {
+        this.ambasTeclas.a = false;
+      }
+      if (key == "d" && !value) {
+        this.ambasTeclas.d = false;
       }
       if (key == " " && value) {
         this.player.disparar();
@@ -30,6 +51,7 @@ class Teclado {
     });
     window.addEventListener("keyup", (event) => {
       this.keyMap[event.key] = false;
+      this.player.cambiarEstado("Estatico");
     });
   }
 }
