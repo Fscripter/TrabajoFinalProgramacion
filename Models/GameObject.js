@@ -92,11 +92,7 @@ class gameObject {
     this.animacionFrameObj.timeTransition = timeTransition;
     this.animacionFrameObj.endAnimation = false;
     this.animacionFrameObj.animacionFrame = 0;
-    console.clear();
-    console.log(loop, maxFrame, timeTransition);
     console.log("Pase de un estado a otro");
-    console.log(this.animacionFrameObj);
-    console.log(this.estado);
   }
   configurarAnimacionFrame() {
     if (this.estado == "Caminando") {

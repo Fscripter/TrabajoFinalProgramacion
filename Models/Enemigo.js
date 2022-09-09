@@ -1,11 +1,59 @@
 class Enemy extends gameObject {
   constructor(position) {
     let spritesJugador = {
-      derecha: {
-        base: new ImagenDerogada("./Sprites/Player/Derecha.png"),
+      base: {
+        derecha: new ImagenDerogada("./Sprites/Player/Derecha.png"),
+        izquierda: new ImagenDerogada("./Sprites/Player/Izquierda.png"),
+        loop: true,
       },
-      izquierda: {
-        base: new ImagenDerogada("./Sprites/Player/Izquierda.png"),
+      caminar: {
+        derecha: [
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
+        ],
+        izquierda: [
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
+        ],
+        loop: true,
+        maxFrame: 4,
+        timeTransition: 25,
+      },
+      saltar: {
+        derecha: [
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
+        ],
+        izquierda: [
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
+        ],
+        loop: false,
+        maxFrame: 4,
+        timeTransition: 10,
+      },
+      caer: {
+        derecha: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
+        izquierda: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
+        loop: false,
+        maxFrame: 4,
+        timeTransition: 10,
       },
     };
 
@@ -21,12 +69,17 @@ class Enemy extends gameObject {
     this.visible = true;
     this.alive = true;
   }
-  dibujar(ctx, canvasPosition) {
+  dibujar(ctx) {
     if (!this.visible) return;
     if (this.alive == false) return;
 
     super.dibujar(ctx);
-    this.vidaHUD.dibujar(ctx, canvasPosition);
+  }
+  getVida(ctx, canvasPosicion) {
+    if (!this.visible) return;
+    if (this.alive == false) return;
+
+    this.vidaHUD.dibujarNormal(ctx, canvasPosicion);
   }
   recibirDano() {
     if (this.vida > 10) {

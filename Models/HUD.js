@@ -20,19 +20,20 @@ class Vida {
       ctx.strokeText(this.name, -canvasPosition.x + 15, 70);
       ctx.fillStyle = "#000000";
       ctx.fillText(this.name, -canvasPosition.x + 15, 70);
-    } else {
-      ctx.fillRect(-canvasPosition.x + 1000 - this.width - 30, 15, this.width + 10, 30);
-      ctx.fillStyle = "#ff0000";
-      ctx.fill();
-      ctx.fillRect(-canvasPosition.x + 1000 - this.width - 25, 20, this.percentajeWidth, 20);
-      ctx.fillStyle = "#ff0000";
-      ctx.fill();
-      ctx.font = "bold 20px arial";
-      ctx.strokeStyle = "#ffffff";
-      ctx.strokeText(this.name, -canvasPosition.x + 1000 - this.width - 30, 70);
-      ctx.fillStyle = "#000000";
-      ctx.fillText(this.name, -canvasPosition.x + 1000 - this.width - 30, 70);
     }
+  }
+  dibujarNormal(ctx, position) {
+    ctx.fillRect(position.x - this.width - 30, position.y, this.width + 10, 30);
+    ctx.fillStyle = "#ff0000";
+    ctx.fill();
+    ctx.fillRect(position.x - this.width - 25, position.y + 5, this.percentajeWidth, 20);
+    ctx.fillStyle = "#ff0000";
+    ctx.fill();
+    ctx.font = "bold 20px arial";
+    ctx.strokeStyle = "#ffffff";
+    ctx.strokeText(this.name, position.x - this.width - 30, position.y + 55);
+    ctx.fillStyle = "#000000";
+    ctx.fillText(this.name, position.x - this.width - 30, position.y + 55);
   }
   recibirDano(damage) {
     this.life -= damage;

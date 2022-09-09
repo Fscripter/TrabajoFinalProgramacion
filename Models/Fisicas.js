@@ -20,9 +20,7 @@ class Fisica {
       //Realiza movimiento
       element.posicion.y += element.velocidad.y;
       this.detectarSuelo(element);
-      this.reduccionEnemigosCanvas(canvasPosicion);
     });
-    this.colisionBalas();
   }
   detectarSuelo(element) {
     let cuadrantePosicion = {
@@ -56,11 +54,12 @@ class Fisica {
       element.salto();
     }
   }
-  reduccionEnemigosCanvas(canvasPosicion) {
+  reduccionEnemigosCanvas(canvasPosicion, queue) {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
       if (element.posicion.x > -canvasPosicion.x && element.posicion.x < -canvasPosicion.x + 1000) {
         if (element.tag == "Enemigo") {
+          queue.add(element);
           element.show();
         }
         this.objectsInScreen.push(element);
