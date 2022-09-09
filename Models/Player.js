@@ -6,11 +6,27 @@ class Player extends gameObject {
       w: 50,
       h: 100,
     };
-    this.imgBase = new Image();
-    this.imgBase.src = "./Sprites/Player/base.png";
+    this.imagenesOrientacion = [new Image(), new Image()]; // 0 Derecha, 1 Izquierda
+    this.imagenesOrientacion[0].src = "./Sprites/Player/Derecha.png";
+    this.imagenesOrientacion[1].src = "./Sprites/Player/Izquierda.png";
+
     this.vida = 100;
     this.vidaHUD = new Vida("Player", this.vida);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
+    this.orientacion = "D";
+    this.cambiarImagen();
+  }
+  cambiarImagen() {
+    if (this.orientacion == "D") {
+      this.imgBase = this.imagenesOrientacion[0];
+      return;
+    }
+    this.imgBase = this.imagenesOrientacion[1];
+    return;
+  }
+  cambiarOrientacion(leftOrRigth) {
+    this.orientacion = leftOrRigth;
+    this.cambiarImagen();
   }
   dibujar(ctx, canvasPosition) {
     super.dibujar(ctx);
