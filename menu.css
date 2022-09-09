@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center; 
+}
+
+.container{
+    margin: auto;
+    margin-top: 450px;
+    margin-left: 380px;
+    width: 250px;
+    height: auto;
+    text-align: center;
+    background: black;
+    border-radius: 3px;
+    position: absolute;
+
+}
+
+.container ul li{
+    list-style: none;
+}
+.container ul li a{
+    display: block;
+    font-size: 60px;
+    text-decoration: none;
+    color: wheat;
+}
+
+.container:hover ul li a{
+    color: black;
+    
+}
+
+.container ul li a:hover{
+    color: wheat;
+    transform: scale(1.1);
+    background: red;
+    border: 1px solid red;
+}
+
+.title{
+        font-size: 35px;
+        color: #fff;
+        font-family: 'Lobster';
+        margin: auto;
+        margin-top: 120px;
+        margin-left: 265px;
+}

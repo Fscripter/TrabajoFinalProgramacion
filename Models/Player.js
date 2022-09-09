@@ -7,7 +7,7 @@ class Player extends gameObject {
       h: 100,
     };
     this.imgBase = new Image();
-    this.imgBase.src = "./Sprites/Player/base.jpg";
+    this.imgBase.src = "./Sprites/Player/base.png";
     this.vida = 100;
     this.vidaHUD = new Vida("Player", this.vida);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
