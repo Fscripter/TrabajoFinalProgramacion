@@ -93,10 +93,17 @@ class Fisica {
             bala.posicion.x >= enemigo.posicion.x &&
             bala.posicion.x < enemigo.posicion.x + enemigo.size.w &&
             bala.posicion.y >= enemigo.posicion.y &&
-            bala.posicion.y < enemigo.posicion.y + enemigo.size.h
+            bala.posicion.y < enemigo.posicion.y + enemigo.size.h &&
+            enemigo.alive
           ) {
             bala.eliminar();
             enemigo.recibirDano();
+          }
+          if (
+            bala.posicion.y >= enemigo.posicion.y &&
+            bala.posicion.y < enemigo.posicion.y + enemigo.size.h
+          ) {
+            enemigo.salto();
           }
         });
       });

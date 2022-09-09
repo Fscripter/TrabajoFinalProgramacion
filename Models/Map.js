@@ -22,7 +22,7 @@ class Mapa {
       Layout: new Image(),
     };
   }
-  move(vel) {
+  mover(vel) {
     this.canvasPosition.x -= vel;
   }
   cargarTexuras() {

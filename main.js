@@ -13,7 +13,7 @@ window.onload = () => {
   //Añadir fisicas
   var Fisicas = new Fisica([jugador, alien, alien2]);
   //Mover teclado
-  let tecladoRuntime = new Teclado(jugador, Fisicas.deltaTime);
+  let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
   let request;
 
   //Main Loop
