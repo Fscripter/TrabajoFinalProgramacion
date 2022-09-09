@@ -23,15 +23,15 @@ class gameObject {
   destroyBullet() {
     this.bulletsArray.shift();
   }
-  disparar() {
+  disparar(orientacion = "D") {
     if (this.canIshoot) {
       this.bulletsArray.push(
-        new Bala(this.posicion.x + this.size.w, this.posicion.y + 25, true, this.bulletsArray)
+        new Bala(this.posicion.x, this.posicion.y + 25, orientacion, this.bulletsArray, this.size.w)
       );
       this.canIshoot = false;
       setTimeout(() => {
         this.canIshoot = true;
-      }, 500);
+      }, 150);
     }
   }
 

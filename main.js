@@ -3,7 +3,7 @@ window.onload = () => {
   mapaCanvas.cargarZona("Antioquia");
   let jugador = new Player();
   let alien = new Enemy({
-    x: 100,
+    x: 1500,
     y: 0,
   });
   let alien2 = new Enemy({

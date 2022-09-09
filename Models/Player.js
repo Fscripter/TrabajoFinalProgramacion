@@ -24,6 +24,14 @@ class Player extends gameObject {
     this.imgBase = this.imagenesOrientacion[1];
     return;
   }
+  mover(vel) {
+    super.mover(vel);
+    if (vel >= 0) {
+      this.cambiarOrientacion("D"); //Mira hacia la derecha
+    } else {
+      this.cambiarOrientacion("L"); //Mira hacia la izquierda
+    }
+  }
   cambiarOrientacion(leftOrRigth) {
     this.orientacion = leftOrRigth;
     this.cambiarImagen();
@@ -44,7 +52,7 @@ class Player extends gameObject {
       } else {
         this.disparoSonido.play();
       }
-      super.disparar();
+      super.disparar(this.orientacion);
     }
   }
 }

@@ -7,7 +7,6 @@ class Teclado {
     this.mapaCanvas = mapaCanvas;
   }
   realizarAccion() {
-    console.log(this.keyMap);
     for (const [key, value] of Object.entries(this.keyMap)) {
       if (key == "w" && value) {
         this.player.salto();
