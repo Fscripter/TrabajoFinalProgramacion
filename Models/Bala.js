@@ -5,9 +5,9 @@ class Bala {
       y,
     };
     this.right = right;
-    setTimeout(() => {
+    this.timer = setTimeout(() => {
       callback.shift();
-    }, 1000);
+    }, 750);
     this.callback = callback;
     this.img = new Image();
     this.img.src = "./Sprites/Balas/Bala.png";
@@ -24,5 +24,6 @@ class Bala {
   }
   eliminar() {
     this.callback.shift();
+    clearTimeout(this.timer);
   }
 }
