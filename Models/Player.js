@@ -1,19 +1,66 @@
 class Player extends gameObject {
   constructor() {
-    super("Player", { x: 500, y: 0 });
+    let spritesJugador = {
+      base: {
+        derecha: new ImagenDerogada("./Sprites/Player/Derecha.png"),
+        izquierda: new ImagenDerogada("./Sprites/Player/Izquierda.png"),
+        loop: true,
+      },
+      caminar: {
+        derecha: [
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
+        ],
+        izquierda: [
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
+        ],
+        loop: true,
+        maxFrame: 4,
+        timeTransition: 25,
+      },
+      saltar: {
+        derecha: [
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
+        ],
+        izquierda: [
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose2.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose3.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose4.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose5.png"),
+          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
+        ],
+        loop: false,
+        maxFrame: 4,
+        timeTransition: 10,
+      },
+      caer: {
+        derecha: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
+        izquierda: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
+        loop: false,
+        maxFrame: 4,
+        timeTransition: 10,
+      },
+    };
+    super("Player", { x: 500, y: 0 }, spritesJugador);
 
     this.size = {
       w: 50,
       h: 100,
-    };
-    this.spritesJugador = {
-      base: {
-        izquierda: "./Sprites/Player/Izquierda.png",
-        derecha: "./Sprites/Player/Derecha.png",
-      },
-      caminar: {
-        izquierda: [],
-      },
     };
     this.imgBase = new Image();
     this.imgBase.src = "./Sprites/Player/Derecha.png";

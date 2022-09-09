@@ -1,17 +1,33 @@
+class ImagenDerogada extends Image {
+  constructor(url) {
+    super();
+    this.src = url;
+  }
+}
 const animacionesUrl = {
   base: {
-    derecha: "",
-    izquierda: "",
+    derecha: new ImagenDerogada(),
+    izquierda: new ImagenDerogada(),
+    loop: true,
+    timeTransition: 0,
+    maxFrame: 0,
   },
   caminar: {
     derecha: [],
     izquierda: [],
+    loop: true,
+    timeTransition: 0,
+    maxFrame: 0,
   },
-  salto: {
+  saltar: {
     derecha: [],
     izquierda: [],
+    loop: true,
+    timeTransition: 0,
+    maxFrame: 0,
   },
 };
+
 class gameObject {
   constructor(tag, puntoAparicion, animaciones = animacionesUrl) {
     this.tag = tag;
@@ -36,7 +52,18 @@ class gameObject {
 
     this.orientacion = "D"; // Orientacion D: Derecha, L: Izquierda
     this.estado = "Estatico"; // Estatico, caminando, saltando
-    this.animacionId = 0;
+    this.animacionFrameObj = {
+      animacionFrame: 0,
+      loop: false,
+      maxFrame: 0,
+      timeTransition: 0,
+      endAnimation: false,
+    };
+    this.saltando = false;
+    this.caminando = false;
+    this.gameObjectImg = new Image(); //Imagen del objeto a renderizar
+    this.deltaTime = 60 / 1000;
+    this.time = 0;
   }
   cambiarOrientacion(dir) {
     if (dir >= 0) {
@@ -59,32 +86,157 @@ class gameObject {
       }, 150);
     }
   }
-  cambiarEstado(newState) {
-    console.log(this.isGround);
-    if (newState == "Caminando" && this.isGround) {
-      this.estado = newState;
+  configurarAnimation(loop, maxFrame, timeTransition) {
+    this.animacionFrameObj.loop = loop;
+    this.animacionFrameObj.maxFrame = maxFrame;
+    this.animacionFrameObj.timeTransition = timeTransition;
+    this.animacionFrameObj.endAnimation = false;
+    this.animacionFrameObj.animacionFrame = 0;
+    console.clear();
+    console.log(loop, maxFrame, timeTransition);
+    console.log("Pase de un estado a otro");
+    console.log(this.animacionFrameObj);
+    console.log(this.estado);
+  }
+  configurarAnimacionFrame() {
+    if (this.estado == "Caminando") {
+      this.configurarAnimation(
+        this.animaciones.caminar.loop,
+        this.animaciones.caminar.maxFrame,
+        this.animaciones.caminar.timeTransition
+      );
       return;
     }
-    if (newState == "Estatico" && this.isGround) {
-      this.estado = newState;
+    if (this.estado == "Saltando") {
+      this.configurarAnimation(
+        this.animaciones.saltar.loop,
+        this.animaciones.saltar.maxFrame,
+        this.animaciones.saltar.timeTransition
+      );
       return;
     }
-    if (newState == "Saltando" && this.isGround) {
-      this.estado = newState;
-      return;
+    if (this.estado == "Estatico") {
+      this.configurarAnimation(
+        this.animaciones.base.loop,
+        this.animaciones.base.maxFrame,
+        this.animaciones.base.timeTransition
+      );
     }
   }
-  revisarEstado() {
-    if (this.isGround) {
-      if (this.estado != "Caminando") {
-        this.estado = "Estatico";
+  resetearAnimacionFrame() {
+    this.time = 0;
+    this.configurarAnimacionFrame();
+  }
+  aumentarAnimacionFrame() {
+    this.time += 1;
+    if (this.animacionFrameObj.loop) {
+      if (this.time > this.animacionFrameObj.timeTransition) {
+        if (this.animacionFrameObj.animacionFrame > this.animacionFrameObj.maxFrame) {
+          this.animacionFrameObj.animacionFrame = 0;
+        } else {
+          this.animacionFrameObj.animacionFrame += 1;
+        }
+        this.time = 0;
+      }
+      if (this.animacionFrame > this.animacionFrameObj.maxFrame) {
+        this.animacionFrameObj.animacionFrame = 0;
+      }
+    } else {
+      //No estoy en un loop
+      if (this.time > this.animacionFrameObj.timeTransition) {
+        if (this.animacionFrameObj.animacionFrame < this.animacionFrameObj.maxFrame) {
+          this.animacionFrameObj.animacionFrame += 1;
+        }
+        this.time = 0;
       }
     }
   }
+  dibujarAnimacionFrame() {
+    switch (this.estado) {
+      case "Estatico":
+        if (this.orientacion == "D") {
+          this.gameObjectImg = this.animaciones.base.derecha;
+        } else {
+          this.gameObjectImg = this.animaciones.base.izquierda;
+        }
+        break;
+      case "Caminando":
+        if (this.orientacion == "D") {
+          this.gameObjectImg =
+            this.animaciones.caminar.derecha[this.animacionFrameObj.animacionFrame];
+        } else {
+          this.gameObjectImg =
+            this.animaciones.caminar.izquierda[this.animacionFrameObj.animacionFrame];
+        }
+        break;
+      case "Saltando":
+        if (this.orientacion == "D") {
+          this.gameObjectImg =
+            this.animaciones.saltar.derecha[this.animacionFrameObj.animacionFrame];
+        } else {
+          this.gameObjectImg =
+            this.animaciones.saltar.izquierda[this.animacionFrameObj.animacionFrame];
+        }
+        break;
+      case "Cayendo":
+        if (this.orientacion == "D") {
+          this.gameObjectImg = this.animaciones.caer.derecha;
+        } else {
+          this.gameObjectImg = this.animaciones.caer.izquierda;
+        }
+        break;
+      default:
+        this.gameObjectImg = this.animaciones.base.derecha;
+        break;
+    }
+  }
+  cambiarEstado() {
+    if (this.caminando && this.isGround) {
+      if (this.estado == "Caminando") {
+        this.aumentarAnimacionFrame();
+      } else {
+        this.estado = "Caminando";
+        this.resetearAnimacionFrame();
+      }
+      this.estado = "Caminando";
+      return;
+    }
+    if (this.saltando && !this.isGround) {
+      if (this.estado == "Saltando") {
+        this.aumentarAnimacionFrame();
+      } else {
+        this.estado = "Saltando";
+        this.resetearAnimacionFrame();
+      }
+      this.estado = "Saltando";
+      return;
+    }
+    if (!this.isGround && !this.saltando) {
+      if (this.estado == "Cayendo") {
+        this.aumentarAnimacionFrame();
+      } else {
+        this.estado = "Cayendo";
+        this.resetearAnimacionFrame();
+      }
+      this.estado = "Cayendo";
+      return;
+    }
+    if (this.estado == "Estatico") {
+      return;
+    }
+    this.estado = "Estatico";
+    this.resetearAnimacionFrame();
+    return;
+  }
+  revisarEstado() {
+    //Devolver a estatico si se necesita
+    this.cambiarEstado();
+  }
   dibujar(ctx) {
     this.revisarEstado();
+    this.dibujarAnimacionFrame();
 
-    ctx.drawImage(this.imgBase, this.posicion.x, this.posicion.y, this.size.w, this.size.h);
+    ctx.drawImage(this.gameObjectImg, this.posicion.x, this.posicion.y, this.size.w, this.size.h);
 
     this.bulletsArray.forEach((element) => {
       element.dibujar(ctx);
@@ -98,7 +250,8 @@ class gameObject {
   salto() {
     if (this.isGround) {
       this.velocidad.y = -this.fuerzaSalto;
-      this.cambiarEstado("Saltando");
+      this.saltando = true;
+      this.cambiarEstado();
       this.isGround = false;
     }
   }

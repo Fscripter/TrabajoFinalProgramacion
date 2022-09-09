@@ -12,9 +12,19 @@ class Teclado {
   }
   chequearAmbasTeclas() {
     if (this.ambasTeclas.a && this.ambasTeclas.d) {
-      this.player.cambiarEstado("Estatico");
-    } else {
-      this.player.cambiarEstado("Caminando");
+      this.player.caminando = false;
+      this.player.cambiarEstado();
+    }
+    if (!this.ambasTeclas.a && !this.ambasTeclas.d) {
+      this.player.caminando = false;
+      this.player.cambiarEstado();
+    }
+    if (
+      (this.ambasTeclas.a && !this.ambasTeclas.d) ||
+      (this.ambasTeclas.d && !this.ambasTeclas.a)
+    ) {
+      this.player.caminando = true;
+      this.player.cambiarEstado();
     }
   }
   realizarAccion() {
@@ -24,22 +34,21 @@ class Teclado {
       }
       if (key == "d" && value) {
         this.ambasTeclas.d = true;
-        this.chequearAmbasTeclas();
         this.player.mover(50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x -= 50 * this.deltaTime;
       }
       if (key == "a" && value) {
         this.ambasTeclas.a = true;
-        this.chequearAmbasTeclas();
         this.player.mover(-50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x += 50 * this.deltaTime;
-      }
-      if (key == "a" && !value) {
-        this.ambasTeclas.a = false;
       }
       if (key == "d" && !value) {
         this.ambasTeclas.d = false;
       }
+      if (key == "a" && !value) {
+        this.ambasTeclas.a = false;
+      }
+      this.chequearAmbasTeclas();
       if (key == " " && value) {
         this.player.disparar();
       }

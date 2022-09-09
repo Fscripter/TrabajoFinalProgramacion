@@ -1,6 +1,15 @@
 class Enemy extends gameObject {
   constructor(position) {
-    super("Enemigo", position);
+    let spritesJugador = {
+      derecha: {
+        base: new ImagenDerogada("./Sprites/Player/Derecha.png"),
+      },
+      izquierda: {
+        base: new ImagenDerogada("./Sprites/Player/Izquierda.png"),
+      },
+    };
+
+    super("Enemigo", position, spritesJugador);
     this.size = {
       w: 50,
       h: 100,

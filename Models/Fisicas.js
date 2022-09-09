@@ -10,8 +10,12 @@ class Fisica {
     this.objets.forEach((element, index) => {
       if (!element.isGround) {
         element.velocidad.y += this.gravedad * this.deltaTime * this.deltaTime * 10;
+        if (element.velocidad.y >= 0) {
+          element.saltando = false;
+        }
       } else {
         element.velocidad.y = 0;
+        element.saltando = false;
       }
       //Realiza movimiento
       element.posicion.y += element.velocidad.y;
