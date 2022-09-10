@@ -1,9 +1,9 @@
 class Enemy extends gameObject {
-  constructor(position) {
+  constructor(position, dificultad) {
     let spritesJugador = {
       base: {
         derecha: new ImagenDerogada("./Sprites/Player/Derecha.png"),
-        izquierda: new ImagenDerogada("./Sprites/Player/Izquierda.png"),
+        izquierda: new ImagenDerogada("./Sprites/Enemys/Antioquia/Alien.png"),
         loop: true,
       },
       caminar: {
@@ -68,6 +68,12 @@ class Enemy extends gameObject {
     this.vidaHUD = new Vida("Enemigo", this.vida, "r");
     this.visible = true;
     this.alive = true;
+    this.visionEnemigo = {
+      izquierda: false,
+      derecha: false,
+    };
+    this.dificultad = dificultad;
+    this.cambiarOrientacion(-1);
   }
   dibujar(ctx) {
     if (!this.visible) return;
@@ -94,5 +100,57 @@ class Enemy extends gameObject {
   }
   show() {
     this.visible = true;
+  }
+  vision(ctx, posicionJugador) {
+    this.dev = true;
+    this.rangeVision = 450;
+    this.minDerecha = this.posicion.x + this.size.w / 2;
+    this.minIzquierda = this.posicion.x - this.rangeVision + this.size.w / 2;
+
+    if (this.dev) {
+      if (this.visionEnemigo.izquierda) {
+        ctx.strokeStyle = "#00ffff";
+        ctx.strokeRect(this.minIzquierda, this.posicion.y, this.rangeVision, this.size.h); //Vista hacia la izquierda
+      }
+      if (this.visionEnemigo.derecha) {
+        ctx.strokeStyle = "#00ff00";
+        ctx.strokeRect(this.minDerecha, this.posicion.y, this.rangeVision, this.size.h); // Vista hacia la derecha
+      }
+    }
+
+    //Si me vio, correr hacia mi jaksdjakjsd, esto esta chido
+    this.visionEnemigo.derecha = this.deteccionLado(
+      this.minDerecha,
+      this.rangeVision,
+      posicionJugador.x
+    ); // deteccion lado derecho
+    this.visionEnemigo.izquierda = this.deteccionLado(
+      this.minIzquierda,
+      this.rangeVision,
+      posicionJugador.x
+    ); // deteccion lado derecho
+
+    if (this.visionEnemigo.izquierda || this.visionEnemigo.derecha) {
+      this.IA();
+      //Girar hacia el lado donde esta el enemigo
+    }
+  }
+  IA(position) {
+    //Rotar, moverse y atacar
+    if (this.visionEnemigo.izquierda) {
+      this.cambiarOrientacion(-1);
+    }
+    if (this.visionEnemigo.derecha) {
+      this.cambiarOrientacion(1);
+    }
+
+    //Atacare en tantos segundos
+    this.disparar(this.orientacion, 1000 - this.dificultad * 20);
+  }
+  deteccionLado(min, max, positionX) {
+    if (positionX >= min && positionX <= min + max) {
+      return true;
+    }
+    return false;
   }
 }

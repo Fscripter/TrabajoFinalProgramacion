@@ -25,7 +25,7 @@ class Player extends gameObject {
         ],
         loop: true,
         maxFrame: 4,
-        timeTransition: 25,
+        timeTransition: 100,
       },
       saltar: {
         derecha: [
@@ -68,14 +68,22 @@ class Player extends gameObject {
     this.vida = 100;
     this.vidaHUD = new Vida("Player", this.vida);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
+    this.vivo = true;
   }
   dibujar(ctx, canvasPosition) {
+    // if (this.vivo) {
     super.dibujar(ctx);
     this.vidaHUD.dibujar(ctx, canvasPosition);
+    // }
   }
   recibirDano() {
-    console.log("Recibi damage");
-    this.vidaHUD.recibirDano(10);
+    this.vida -= 10;
+    if (this.vida >= 0) {
+      this.vidaHUD.recibirDano(10);
+      // this.vivo = false;
+    } else {
+      console.log("Me mataron");
+    }
   }
   disparar() {
     if (this.canIshoot) {
@@ -85,7 +93,7 @@ class Player extends gameObject {
       } else {
         this.disparoSonido.play();
       }
-      super.disparar(this.orientacion);
+      super.disparar(this.orientacion, 150);
     }
   }
 }

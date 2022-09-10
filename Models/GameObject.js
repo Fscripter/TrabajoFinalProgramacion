@@ -75,15 +75,15 @@ class gameObject {
   destroyBullet() {
     this.bulletsArray.shift();
   }
-  disparar(orientacion = "D") {
+  disparar(orientacion = "D", coolDown) {
     if (this.canIshoot) {
       this.bulletsArray.push(
         new Bala(this.posicion.x, this.posicion.y + 25, orientacion, this.bulletsArray, this.size.w)
       );
       this.canIshoot = false;
-      setTimeout(() => {
+      this.idDispararIntervalo = setTimeout(() => {
         this.canIshoot = true;
-      }, 150);
+      }, coolDown);
     }
   }
   configurarAnimation(loop, maxFrame, timeTransition) {

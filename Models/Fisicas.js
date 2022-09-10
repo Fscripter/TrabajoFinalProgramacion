@@ -1,11 +1,12 @@
 class Fisica {
-  constructor(objects, mapArray) {
+  constructor(objects) {
     this.gravedad = 10;
     this.objets = objects;
     this.deltaTime = 60 / 1000;
     this.objectsInScreen = [];
+    this.enemys = [];
   }
-  aplicarGravedad(mapArray, canvasPosicion) {
+  aplicarGravedad(mapArray) {
     this.mapArray = mapArray;
     this.objets.forEach((element, index) => {
       if (!element.isGround) {
@@ -69,27 +70,56 @@ class Fisica {
         }
       }
     });
+    this.enemigosEnPantalla();
   }
-  colisionBalas() {
-    if (this.objectsInScreen.length < 0) return;
-
-    let mainPlayer;
-    let enemys = [];
+  enemigosEnPantalla() {
     //Buscar balas
+    if (this.objectsInScreen.length < 0) return;
+    this.enemys = [];
     this.objectsInScreen.forEach((element) => {
+      if (element.tag == "Enemigo") {
+        this.enemys.push(element);
+      }
       if (element.tag == "Player") {
-        mainPlayer = element;
-      } else {
-        enemys.push(element);
+        this.mainPlayer = element;
       }
     });
+  }
+  enemigoDetectarJugador(mapaCanvas) {
+    this.enemys.forEach((enemigoss) => {
+      enemigoss.vision(mapaCanvas, this.mainPlayer.posicion);
+    });
+  }
+  colisionBalasEnemigos() {
+    if (this.objectsInScreen.length < 0) return;
+    this.balasEnemigas = [];
+    this.enemys.forEach((enemigo) => {
+      if (enemigo.bulletsArray.length > 0) {
+        this.balasEnemigas = this.balasEnemigas.concat(enemigo.bulletsArray);
+      }
+    });
+    if (this.balasEnemigas.length > 0) {
+      this.balasEnemigas.forEach((bala) => {
+        if (
+          bala.posicion.x >= this.mainPlayer.posicion.x &&
+          bala.posicion.x < this.mainPlayer.posicion.x + this.mainPlayer.size.w &&
+          bala.posicion.y >= this.mainPlayer.posicion.y &&
+          bala.posicion.y < this.mainPlayer.posicion.y + this.mainPlayer.size.h
+        ) {
+          bala.eliminar();
+          this.mainPlayer.recibirDano();
+        }
+      });
+    }
+  }
+  colisionBalasJugador() {
+    if (this.objectsInScreen.length < 0) return;
 
     //Cada bala del jugador interactuara con el enemigo
-
-    if (mainPlayer.bulletsArray.length > 0) {
-      mainPlayer.bulletsArray.forEach((bala) => {
+    if (this.mainPlayer.bulletsArray.length > 0) {
+      this.mainPlayer.bulletsArray.forEach((bala) => {
         // posicion de cada bala
-        enemys.forEach((enemigo) => {
+        this.enemys.forEach((enemigo) => {
           if (
             bala.posicion.x >= enemigo.posicion.x &&
             bala.posicion.x < enemigo.posicion.x + enemigo.size.w &&
