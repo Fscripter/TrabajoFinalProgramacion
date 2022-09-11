@@ -26,7 +26,7 @@ class Mapa {
     this.canvasPosition.x -= vel;
   }
   movimientoY(posicionY) {
-    this.canvasPosition.y = -posicionY + 400;
+    this.canvasPosition.y = -posicionY + 300;
     console.log(this.canvasPosition);
   }
   cargarTexuras() {
@@ -97,7 +97,7 @@ class Mapa {
       650
     );
 
-    for (let fila = 0; fila < 12; fila++) {
+    for (let fila = 0; fila < this.mapaArray.length; fila++) {
       for (let columna = 0; columna < this.sizeMap; columna += 1) {
         this.letterToTexture({ letter: "T", texture: this.texturas.T, columna, fila });
         this.letterToTexture({ letter: "S", texture: this.texturas.S, columna, fila });
