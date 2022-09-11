@@ -14,7 +14,7 @@ window.onload = () => {
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     //animate something
-    tecladoRuntime.realizarAccion();
+    tecladoRuntime.realizarAccion(mapaCanvas);
     mapaCanvas.limpiar();
     mapaCanvas.draw();
     ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);

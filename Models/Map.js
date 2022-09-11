@@ -35,6 +35,11 @@ class Mapa {
     this.texturas.D.src = this.mapaData.texturas.D;
     this.texturas.Layout.src = this.mapaData.texturas.Layout;
   }
+  cargarSonido() {
+    this.ambientSound = new Audio(this.mapaData.sound.ambiente);
+    this.ambientSound.loop = true;
+    this.ambientSound.play();
+  }
   letterToTexture(struct, width = 50, heigth = 50) {
     let { fila, columna, letter, texture } = struct;
 
@@ -67,6 +72,7 @@ class Mapa {
         });
         console.log(this.mapaArray);
         this.cargarTexuras();
+        this.cargarSonido();
         this.draw();
       });
   }

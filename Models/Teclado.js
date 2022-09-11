@@ -9,6 +9,7 @@ class Teclado {
       a: false,
       d: false,
     };
+    this.once = false;
   }
   chequearAmbasTeclas() {
     if (this.ambasTeclas.a && this.ambasTeclas.d) {
