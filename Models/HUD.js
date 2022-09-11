@@ -33,7 +33,7 @@ class Vida {
 class VidaEnemigo extends Vida {
   constructor(name, life) {
     super(name, life);
-    this.color = "#00ff00";
+    this.color = "#0000ff";
   }
   dibujar(ctx, position) {
     ctx.fillRect(position.x - this.width - 30, position.y, this.width + 10, 30);
