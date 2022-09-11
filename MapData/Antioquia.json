@@ -33,5 +33,8 @@
     "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.jpg",
     "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
     "D": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
+  },
+  "sound": {
+    "ambiente": "./Sprites/Terrain/Antioquia/Music/Ambiente.mp3"
   }
 }
