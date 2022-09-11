@@ -65,7 +65,7 @@ class Enemy extends gameObject {
     this.imgBase = new Image();
     this.vida = 100;
     this.imgBase.src = "./Sprites/Enemys/Antioquia/alien.png";
-    this.vidaHUD = new Vida("Enemigo", this.vida, "r");
+    this.vidaHUD = new VidaEnemigo("Enemigo", this.vida, "r");
     this.visible = true;
     this.alive = true;
     this.visionEnemigo = {
@@ -85,7 +85,7 @@ class Enemy extends gameObject {
     if (!this.visible) return;
     if (this.alive == false) return;
 
-    this.vidaHUD.dibujarNormal(ctx, canvasPosicion);
+    this.vidaHUD.dibujar(ctx, canvasPosicion);
   }
   recibirDano() {
     if (this.vida > 10) {

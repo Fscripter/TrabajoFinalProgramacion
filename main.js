@@ -17,7 +17,7 @@ window.onload = () => {
   let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
   let request;
 
-  //Main Loop
+  //Main Loot
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     //animate something
