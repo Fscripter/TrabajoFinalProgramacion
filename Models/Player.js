@@ -66,7 +66,7 @@ class Player extends gameObject {
     this.imgBase.src = "./Sprites/Player/Derecha.png";
 
     this.vida = 100;
-    this.vidaHUD = new Vida("Player", this.vida);
+    this.vidaHUD = new VidaJugador("Player", this.vida);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
     this.vivo = true;
   }
