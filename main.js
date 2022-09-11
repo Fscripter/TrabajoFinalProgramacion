@@ -4,10 +4,10 @@ window.onload = () => {
   let jugador = new Player();
   let alien = new Enemy(
     {
-      x: 1000,
+      x: 500,
       y: 0,
     },
-    2
+    5
   );
   //Añadir fisicas
   var Fisicas = new Fisica([jugador, alien]);
@@ -17,11 +17,12 @@ window.onload = () => {
   let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
   let request;
 
-  //Main Loop
+  //Main Loot
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     //animate something
     tecladoRuntime.realizarAccion(mapaCanvas);
+    mapaCanvas.movimientoY(jugador.posicion.y);
     mapaCanvas.limpiar();
     mapaCanvas.draw();
     ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);

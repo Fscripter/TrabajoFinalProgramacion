@@ -24,5 +24,6 @@ class ColaHUD {
   }
   actualizarPosicion(posicion) {
     this.posicion.x = posicion.x;
+    this.posicion.y = -posicion.y + 15;
   }
 }

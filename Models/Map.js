@@ -5,6 +5,7 @@ class Mapa {
     this.context = this.canvas.getContext("2d");
     this.canvasPosition = {
       x: 0,
+      y: 0,
     };
     this.texturas = {
       S: new Image(),
@@ -23,6 +24,10 @@ class Mapa {
   }
   mover(vel) {
     this.canvasPosition.x -= vel;
+  }
+  movimientoY(posicionY) {
+    this.canvasPosition.y = -posicionY + 400;
+    console.log(this.canvasPosition);
   }
   cargarTexuras() {
     this.texturas.S.src = this.mapaData.texturas.S;
@@ -84,7 +89,13 @@ class Mapa {
         this.sizeMap = element.length;
       }
     });
-    this.context.drawImage(this.texturas.Layout, -this.canvasPosition.x, 0, this.canvas.width, 600);
+    this.context.drawImage(
+      this.texturas.Layout,
+      -this.canvasPosition.x,
+      -this.canvasPosition.y,
+      this.canvas.width,
+      650
+    );
 
     for (let fila = 0; fila < 12; fila++) {
       for (let columna = 0; columna < this.sizeMap; columna += 1) {
@@ -114,6 +125,6 @@ class Mapa {
   }
   limpiar() {
     this.canvas.width = this.canvas.width;
-    this.context.translate(this.canvasPosition.x, 0);
+    this.context.translate(this.canvasPosition.x, this.canvasPosition.y);
   }
 }
