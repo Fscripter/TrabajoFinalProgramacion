@@ -6,7 +6,6 @@ class Mapa {
     this.canvasPosition = {
       x: 0,
     };
-    this.columnaIndice = 0;
     this.texturas = {
       S: new Image(),
       T: new Image(),
@@ -41,7 +40,7 @@ class Mapa {
 
     if (this.mapaArray[fila][columna] == letter) {
       if (width == 50 && heigth == 50) {
-        this.context.drawImage(texture, columna * 50, (fila + 1) * 50, width, heigth);
+        this.context.drawImage(texture, columna * 50, fila * 50, width, heigth);
         return;
       }
       this.context.drawImage(
@@ -81,7 +80,7 @@ class Mapa {
     });
     this.context.drawImage(this.texturas.Layout, -this.canvasPosition.x, 0, this.canvas.width, 600);
 
-    for (let fila = 0; fila < 11; fila++) {
+    for (let fila = 0; fila < 12; fila++) {
       for (let columna = 0; columna < this.sizeMap; columna += 1) {
         this.letterToTexture({ letter: "T", texture: this.texturas.T, columna, fila });
         this.letterToTexture({ letter: "S", texture: this.texturas.S, columna, fila });
