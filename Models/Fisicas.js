@@ -1,3 +1,11 @@
+function trunc(x, posiciones = 0) {
+  var s = x.toString();
+  var l = s.length;
+  var decimalLength = s.indexOf(".") + 1;
+  var numStr = s.substr(0, decimalLength + posiciones);
+  return Number(numStr);
+}
+
 class Fisica {
   constructor(objects) {
     this.gravedad = 10;
@@ -8,9 +16,10 @@ class Fisica {
   }
   aplicarGravedad(mapArray) {
     this.mapArray = mapArray;
-    this.objets.forEach((element, index) => {
+
+    this.objets.forEach((element) => {
       if (!element.isGround) {
-        element.velocidad.y += this.gravedad * this.deltaTime * this.deltaTime * 10;
+        element.velocidad.y += trunc(this.gravedad * this.deltaTime * this.deltaTime * 10, 5);
         if (element.velocidad.y >= 0) {
           element.saltando = false;
         }
@@ -19,41 +28,45 @@ class Fisica {
         element.saltando = false;
       }
       //Realiza movimiento
-      element.posicion.y += element.velocidad.y;
+      element.posicion.y += Math.floor(element.velocidad.y);
       this.detectarSuelo(element);
+      this.detectarColision(element);
     });
   }
-  detectarSuelo(element) {
-    let cuadrantePosicion = {
-      x: Math.floor(element.posicion.x / element.size.w),
-      y: Math.ceil(element.posicion.y / 50),
-    };
-    if (
-      this.mapArray[cuadrantePosicion.y][cuadrantePosicion.x] == "T" ||
-      this.mapArray[cuadrantePosicion.y][cuadrantePosicion.x] == "L" ||
-      this.mapArray[cuadrantePosicion.y][cuadrantePosicion.x] == "D"
-    ) {
-      element.isGround = true;
-    } else {
-      element.isGround = false;
+  detectarTerreno(terreno) {
+    if (terreno == "T" || terreno == "L" || terreno == "D") {
+      return true;
     }
-    this.detectarColision(element);
+  }
+  detectarSuelo(element) {
+    let posicionEnArray = {
+      y: Math.floor((element.posicion.y + element.size.h) / 50),
+      xa: Math.floor(element.posicion.x / 50),
+      xb: Math.floor((element.posicion.x + element.size.w) / 50),
+    };
+
+    let hayTerrenoDebajo = false;
+
+    let primerTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa];
+    let segundoTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xb];
+
+    hayTerrenoDebajo = this.detectarTerreno(primerTerreno) || this.detectarTerreno(segundoTerreno);
+
+    element.isGround = hayTerrenoDebajo;
   }
   detectarColision(element) {
-    let cuadrantePosicion = {
-      x: Math.floor(element.posicion.x / element.size.w),
-      y: Math.ceil(element.posicion.y / 50),
+    let posicionEnArray = {
+      y: Math.floor((element.posicion.y + element.size.h) / 50) - 1,
+      xa: Math.floor(element.posicion.x / 50),
+      xb: Math.floor((element.posicion.x + element.size.w / 5) / 50),
     };
-    let triggerDerecha = this.mapArray[cuadrantePosicion.y - 1][cuadrantePosicion.x + 1];
-    let triggerIzquierda = this.mapArray[cuadrantePosicion.y - 1][cuadrantePosicion.x - 2];
-    if (
-      triggerDerecha == "T" ||
-      triggerDerecha == "L" ||
-      triggerIzquierda == "T" ||
-      triggerIzquierda == "L"
-    ) {
-      element.salto();
-    }
+    let primerTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa];
+    let segundoTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa + 1];
+    let canMove = {
+      l: !this.detectarTerreno(primerTerreno),
+      r: !this.detectarTerreno(segundoTerreno),
+    };
+    element.move = canMove;
   }
   reduccionEnemigosCanvas(canvasPosicion, queue) {
     this.objectsInScreen = [];

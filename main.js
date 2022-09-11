@@ -2,29 +2,8 @@ window.onload = () => {
   var mapaCanvas = new Mapa();
   mapaCanvas.cargarZona("Antioquia");
   let jugador = new Player();
-  let alien = new Enemy(
-    {
-      x: 1000,
-      y: 0,
-    },
-    1
-  );
-  let alien2 = new Enemy(
-    {
-      x: 400,
-      y: 0,
-    },
-    1
-  );
-  let alien3 = new Enemy(
-    {
-      x: 500,
-      y: 0,
-    },
-    1
-  );
   //Añadir fisicas
-  var Fisicas = new Fisica([jugador, alien, alien2, alien3]);
+  var Fisicas = new Fisica([jugador]);
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
@@ -47,9 +26,6 @@ window.onload = () => {
 
     ColaHUDCanvas.dibujar(mapaCanvas.context);
     jugador.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
-    alien.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
-    alien2.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
-    alien3.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
   };
   requestAnimationFrame(performAnimation);
 };

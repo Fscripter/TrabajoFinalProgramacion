@@ -47,6 +47,10 @@ class gameObject {
     };
     this.fuerzaSalto = 10;
     this.isGround = false; //Variable para saber si esta tocando el suelo
+    this.move = {
+      l: true,
+      r: true,
+    };
     this.bulletsArray = [];
     this.canIshoot = true;
 
@@ -64,6 +68,7 @@ class gameObject {
     this.gameObjectImg = new Image(); //Imagen del objeto a renderizar
     this.deltaTime = 60 / 1000;
     this.time = 0;
+    this.dev = true;
   }
   cambiarOrientacion(dir) {
     if (dir >= 0) {
@@ -232,6 +237,11 @@ class gameObject {
     this.revisarEstado();
     this.dibujarAnimacionFrame();
 
+    if (this.dev) {
+      ctx.strokeStyle = "#00FF00";
+      ctx.strokeRect(this.posicion.x, this.posicion.y, this.size.w, this.size.h);
+      ctx.arc(this.posicion.x, this.posicion.y, 10, 0, Math.PI * 2);
+    }
     ctx.drawImage(this.gameObjectImg, this.posicion.x, this.posicion.y, this.size.w, this.size.h);
 
     this.bulletsArray.forEach((element) => {
@@ -240,7 +250,15 @@ class gameObject {
     });
   }
   mover(vel) {
-    this.posicion.x += vel;
+    if (vel >= 0) {
+      if (this.move.r) {
+        this.posicion.x += vel;
+      }
+    } else {
+      if (this.move.l) {
+        this.posicion.x += vel;
+      }
+    }
     this.cambiarOrientacion(vel);
   }
   salto() {
