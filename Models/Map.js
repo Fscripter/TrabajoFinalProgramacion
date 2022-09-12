@@ -27,7 +27,6 @@ class Mapa {
   }
   movimientoY(posicionY) {
     this.canvasPosition.y = -posicionY + 300;
-    console.log(this.canvasPosition);
   }
   cargarTexuras() {
     this.texturas.S.src = this.mapaData.texturas.S;

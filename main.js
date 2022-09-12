@@ -4,7 +4,7 @@ window.onload = () => {
   let jugador = new Player();
   let alien = new Enemy(
     {
-      x: 500,
+      x: 1000,
       y: 0,
     },
     5

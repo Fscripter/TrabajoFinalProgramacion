@@ -37,11 +37,13 @@ class Teclado {
         this.ambasTeclas.d = true;
         this.player.mover(50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x -= 50 * this.deltaTime;
+        console.log(this.player);
       }
       if (key == "a" && value) {
         this.ambasTeclas.a = true;
         this.player.mover(-50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x += 50 * this.deltaTime;
+        console.log(this.player);
       }
       if (key == "d" && !value) {
         this.ambasTeclas.d = false;
