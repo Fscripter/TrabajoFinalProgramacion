@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="menu.css" />
+    <script src="Models/Menu.js"></script>
     <script src="Models/Map.js"></script>
     <script src="Models/Teclado.js"></script>
     <script src="Models/GameObject.js"></script>
@@ -16,8 +17,26 @@
     <script src="Models/Bala.js"></script>
     <script src="Models/Player.js"></script>
     <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" />
   </head>
   <body>
-    <canvas width="1000" height="600" id="Game-ViewPort"></canvas>
+    <div id="Menu">
+      <div class="title">
+        <h1>REVELATION OF MYTHS</h1>
+      </div>
+      <div class="container">
+        <ul>
+          <li><p id="Play">Play</p></li>
+          <li><p id="Option">Options</p></li>
+          <li><p id="Exit">Exit</p></li>
+        </ul>
+      </div>
+    </div>
+    <div id="Cargando">
+      <h1>Cargando...</h1>
+    </div>
+    <div id="Juego">
+      <canvas width="1000" height="600" id="Game-ViewPort"></canvas>
+    </div>
   </body>
 </html>

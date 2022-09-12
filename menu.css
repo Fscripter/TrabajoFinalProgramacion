@@ -1,54 +1,86 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+/*Hidden elements*/
+#Cargando,
+#Juego {
+  display: none;
+}
+#Menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-image: url("Sprites/Fondo/contra-cover-1640029943136.png");
+}
+.container {
+  margin: auto;
+  margin-left: 380px;
+  width: 250px;
+  height: auto;
+  text-align: center;
+  background: black;
+  border-radius: 3px;
+  position: absolute;
 }
 
-body{
-    display: flex;
-    align-items: center; 
+.container ul li {
+  list-style: none;
+}
+.container ul li p {
+  display: block;
+  font-size: 60px;
+  text-decoration: none;
+  color: wheat;
+  cursor: pointer;
 }
 
-.container{
-    margin: auto;
-    margin-top: 450px;
-    margin-left: 380px;
-    width: 250px;
-    height: auto;
-    text-align: center;
-    background: black;
-    border-radius: 3px;
-    position: absolute;
-
+.container:hover ul li p {
+  color: black;
 }
 
-.container ul li{
-    list-style: none;
-}
-.container ul li a{
-    display: block;
-    font-size: 60px;
-    text-decoration: none;
-    color: wheat;
+.container ul li p:hover {
+  color: wheat;
+  transform: scale(1.1);
+  background: red;
+  border: 1px solid red;
 }
 
-.container:hover ul li a{
-    color: black;
-    
+.title {
+  font-size: 35px;
+  color: #fff;
+  font-family: "Lobster";
+  margin: auto;
+  margin-top: 120px;
+  margin-left: 265px;
 }
-
-.container ul li a:hover{
-    color: wheat;
-    transform: scale(1.1);
-    background: red;
-    border: 1px solid red;
+.Juego {
+  display: none;
 }
-
-.title{
-        font-size: 35px;
-        color: #fff;
-        font-family: 'Lobster';
-        margin: auto;
-        margin-top: 120px;
-        margin-left: 265px;
+#Cargando {
+  display: none;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: "Lobster";
+  font-size: 2rem;
+}
+#Juego {
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
 }

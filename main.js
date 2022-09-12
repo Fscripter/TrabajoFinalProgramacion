@@ -1,6 +1,4 @@
-window.onload = () => {
-  var mapaCanvas = new Mapa();
-  mapaCanvas.cargarZona("Antioquia");
+function gameLoop(mapaCanvas) {
   let jugador = new Player();
   let alien = new Enemy(
     {
@@ -17,7 +15,7 @@ window.onload = () => {
   let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
   let request;
 
-  //Main Loot
+  //Main Loop
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     //animate something
@@ -37,4 +35,9 @@ window.onload = () => {
     alien.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
   };
   requestAnimationFrame(performAnimation);
+}
+
+window.onload = () => {
+  var mapaCanvas = new Mapa();
+  let Menu = new MenuJuego(mapaCanvas, gameLoop);
 };

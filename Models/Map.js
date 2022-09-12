@@ -1,6 +1,5 @@
 class Mapa {
   constructor() {
-    this.zonas = ["Pacifico", "Antioquia", "Amazonia"];
     this.canvas = document.getElementById("Game-ViewPort");
     this.context = this.canvas.getContext("2d");
     this.canvasPosition = {
@@ -61,7 +60,8 @@ class Mapa {
       );
     }
   }
-  cargarZona(name) {
+  cargarZona(name, Menu) {
+    this.correctStatus = false;
     fetch(`MapData/${name}.json`)
       .then((response) => {
         return response.json();
@@ -74,10 +74,10 @@ class Mapa {
         this.mapaArray = this.mapaData.Mapa.map((elemento) => {
           return elemento.join().split("");
         });
-        console.log(this.mapaArray);
         this.cargarTexuras();
         this.cargarSonido();
         this.draw();
+        Menu.finalizarCarga(this);
       });
   }
   // Thinking about delete viewport
