@@ -26,6 +26,7 @@ class Player extends gameObject {
         loop: true,
         maxFrame: 4,
         timeTransition: 50,
+        sound: new Audio("./Sprites/Player/Sound/Pasos.mp3"),
       },
       saltar: {
         derecha: [
@@ -74,7 +75,18 @@ class Player extends gameObject {
     // if (this.vivo) {
     super.dibujar(ctx);
     this.vidaHUD.dibujar(ctx, canvasPosition);
+    this.Sonidos();
     // }
+  }
+  Sonidos() {
+    if (this.estado == "Caminando") {
+      this.animaciones.caminar.sound.play();
+      this.animaciones.caminar.sound.loop = true;
+    } else {
+      this.animaciones.caminar.sound.pause();
+      this.animaciones.caminar.sound.loop = false;
+      this.animaciones.caminar.sound.currentTime = 0;
+    }
   }
   recibirDano() {
     this.vida -= 10;

@@ -18,6 +18,7 @@ const animacionesUrl = {
     loop: true,
     timeTransition: 0,
     maxFrame: 0,
+    sound: new Audio(),
   },
   saltar: {
     derecha: [],
