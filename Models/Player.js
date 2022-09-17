@@ -25,7 +25,7 @@ class Player extends gameObject {
         ],
         loop: true,
         maxFrame: 4,
-        timeTransition: 25,
+        timeTransition: 50,
       },
       saltar: {
         derecha: [

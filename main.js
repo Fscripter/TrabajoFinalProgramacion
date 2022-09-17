@@ -13,6 +13,18 @@ function gameLoop(mapaCanvas) {
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
   let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
+  let cinematicas = new Cinematica(
+    {
+      subdito: {
+        posicion: {
+          x: 1000,
+          y: 0,
+        },
+        cinematicDone: false,
+      },
+    },
+    jugador.posicion
+  );
   let request;
 
   //Main Loop
@@ -33,6 +45,7 @@ function gameLoop(mapaCanvas) {
     ColaHUDCanvas.dibujar(mapaCanvas.context);
     jugador.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
     alien.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
+    cinematicas.dibujar(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);
 }

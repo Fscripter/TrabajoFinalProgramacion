@@ -53,6 +53,9 @@ class Fisica {
     hayTerrenoDebajo = this.detectarTerreno(primerTerreno) || this.detectarTerreno(segundoTerreno);
 
     element.isGround = hayTerrenoDebajo;
+    if (hayTerrenoDebajo) {
+      element.posicion.y = posicionEnArray.y * 50 - element.size.h;
+    }
   }
   detectarColision(element) {
     let posicionEnArray = {
