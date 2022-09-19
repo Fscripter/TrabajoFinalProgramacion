@@ -1,63 +1,63 @@
 class Player extends gameObject {
   constructor() {
-    let spritesJugador = {
-      base: {
-        derecha: new ImagenDerogada("./Sprites/Player/Derecha.png"),
-        izquierda: new ImagenDerogada("./Sprites/Player/Izquierda.png"),
-        loop: true,
-      },
-      caminar: {
-        derecha: [
-          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
-        ],
-        izquierda: [
-          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
-          new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
-        ],
-        loop: true,
-        maxFrame: 4,
-        timeTransition: 50,
-        sound: new Audio("./Sprites/Player/Sound/Pasos.mp3"),
-      },
-      saltar: {
-        derecha: [
-          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose2.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose3.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose4.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose5.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
-        ],
-        izquierda: [
-          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose2.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose3.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose4.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose5.png"),
-          new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
-        ],
-        loop: false,
-        maxFrame: 4,
-        timeTransition: 10,
-      },
-      caer: {
-        derecha: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
-        izquierda: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
-        loop: false,
-        maxFrame: 4,
-        timeTransition: 10,
-      },
+    let spriteJugador = {
+      frame: 0,
+      state: ["Estatico", "Caminando", "Saltando", "Cayendo"],
+      animaciones: [
+        {
+          Id: "Estatico",
+          loop: false,
+          velocidad: 0,
+          animaciones: {
+            derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
+          },
+        },
+        {
+          Id: "Caminando",
+          loop: true,
+          velocidad: 6,
+          animaciones: {
+            derecha: [
+              new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
+            ],
+            izquierda: [
+              new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
+              new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
+            ],
+          },
+        },
+        {
+          Id: "Saltando",
+          loop: false,
+          velocidad: 0,
+          animaciones: {
+            derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
+          },
+        },
+        {
+          Id: "Cayendo",
+          loop: false,
+          velocidad: 0,
+          animaciones: {
+            derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
+          },
+        },
+      ],
     };
-    super("Player", { x: 500, y: 0 }, spritesJugador);
+
+    super("Player", { x: 500, y: 0 }, spriteJugador);
 
     this.size = {
       w: 50,
@@ -70,23 +70,16 @@ class Player extends gameObject {
     this.vidaHUD = new VidaJugador("Player", this.vida);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
     this.vivo = true;
+    this.caminando = false;
+    this.saltando = false;
   }
   dibujar(ctx, canvasPosition) {
-    // if (this.vivo) {
+    this.cambiarEstado();
     super.dibujar(ctx);
     this.vidaHUD.dibujar(ctx, canvasPosition);
-    this.Sonidos();
-    // }
   }
-  Sonidos() {
-    if (this.estado == "Caminando") {
-      this.animaciones.caminar.sound.play();
-      this.animaciones.caminar.sound.loop = true;
-    } else {
-      this.animaciones.caminar.sound.pause();
-      this.animaciones.caminar.sound.loop = false;
-      this.animaciones.caminar.sound.currentTime = 0;
-    }
+  cambiarEstado() {
+    this.animacion.obtenerEstadoDeMovimiento(this.isGround, this.caminando, this.saltando);
   }
   recibirDano() {
     this.vida -= 10;

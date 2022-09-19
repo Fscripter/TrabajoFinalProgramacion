@@ -44,7 +44,6 @@ class Cinematica {
       this.posicion.x < this.cinematicas.subdito.posicion.x
     ) {
       this.doAnimation = true;
-      console.log("Aqui hay cine");
     }
   }
   dibujar(canvas) {

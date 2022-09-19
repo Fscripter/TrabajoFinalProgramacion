@@ -14,17 +14,18 @@ class Teclado {
   chequearAmbasTeclas() {
     if (this.ambasTeclas.a && this.ambasTeclas.d) {
       this.player.caminando = false;
-      this.player.cambiarEstado();
     }
     if (!this.ambasTeclas.a && !this.ambasTeclas.d) {
       this.player.caminando = false;
-      this.player.cambiarEstado();
     }
     if (
       (this.ambasTeclas.a && !this.ambasTeclas.d) ||
       (this.ambasTeclas.d && !this.ambasTeclas.a)
     ) {
       this.player.caminando = true;
+      this.player.cambiarEstado();
+    }
+    if (this.player.caminando == false) {
       this.player.cambiarEstado();
     }
   }
@@ -37,13 +38,11 @@ class Teclado {
         this.ambasTeclas.d = true;
         this.player.mover(50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x -= 50 * this.deltaTime;
-        console.log(this.player);
       }
       if (key == "a" && value) {
         this.ambasTeclas.a = true;
         this.player.mover(-50 * this.deltaTime); // move player and world
         this.mapaCanvas.canvasPosition.x += 50 * this.deltaTime;
-        console.log(this.player);
       }
       if (key == "d" && !value) {
         this.ambasTeclas.d = false;
@@ -63,7 +62,6 @@ class Teclado {
     });
     window.addEventListener("keyup", (event) => {
       this.keyMap[event.key] = false;
-      this.player.cambiarEstado("Estatico");
     });
   }
 }
