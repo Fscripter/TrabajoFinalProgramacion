@@ -9,7 +9,7 @@ Char reserved in trees:
 Char reserved in Terrain:
     S: Subsuelo
     T: Terreno
-    L: Extremo izquierdo
+    I: Extremo izquierdo
     D: Extremo Derecho
     M: MuerteTerreno
     O: Objetos de adorno
