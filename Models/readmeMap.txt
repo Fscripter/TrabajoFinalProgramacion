@@ -19,3 +19,11 @@ Char reserved for enemy:
     1: Subdite type 1
     2: Subdite type 2
     3: Subdite type 3
+
+Char reserved for respawn:
+    R: respawn object
+
+Char reserved for objects:
+    W: Muros
+    Y: Rocas
+    Z: Easter egg
