@@ -9,8 +9,8 @@ class Enemy extends gameObject {
           loop: false,
           velocidad: 0,
           animaciones: {
-            derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
-            izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
+            derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Derecha.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Izquierda.png")],
           },
         },
         {
@@ -41,8 +41,8 @@ class Enemy extends gameObject {
           loop: false,
           velocidad: 0,
           animaciones: {
-            derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
-            izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
+            derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Salto/Derecha/Pose1.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Salto/Izquierda/Pose1.png")],
           },
         },
         {
@@ -50,8 +50,8 @@ class Enemy extends gameObject {
           loop: false,
           velocidad: 0,
           animaciones: {
-            derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
-            izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
+            derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Cayendo/Derecha.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Cayendo/Izquierda.png")],
           },
         },
       ],
@@ -65,7 +65,7 @@ class Enemy extends gameObject {
     this.imgBase = new Image();
     this.vida = 100;
     this.imgBase.src = "./Sprites/Enemys/Antioquia/alien.png";
-    this.vidaHUD = new VidaEnemigo("Enemigo", this.vida, "#ffffff");
+    this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff");
     this.visible = true;
     this.alive = true;
     this.visionEnemigo = {
@@ -79,13 +79,18 @@ class Enemy extends gameObject {
     if (!this.visible) return;
     if (this.alive == false) return;
 
+    this.cambiarEstado();
     super.dibujar(ctx);
+    // this.vidaHUD.dibujar(ctx, canvasPosition);
   }
   getVida(ctx, canvasPosicion) {
     if (!this.visible) return;
     if (this.alive == false) return;
 
     this.vidaHUD.dibujar(ctx, canvasPosicion);
+  }
+  cambiarEstado() {
+    this.animacion.obtenerEstadoDeMovimiento(this.isGround, this.caminando, this.saltando);
   }
   recibirDano() {
     if (this.vida > 10) {

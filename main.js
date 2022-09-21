@@ -5,7 +5,7 @@ function gameLoop(mapaCanvas) {
       x: 1000,
       y: 0,
     },
-    5
+    10
   );
   //Añadir fisicas
   var Fisicas = new Fisica([jugador, alien]);
@@ -17,7 +17,7 @@ function gameLoop(mapaCanvas) {
     {
       subdito: {
         posicion: {
-          x: 1000,
+          x: 500,
           y: 0,
         },
         cinematicDone: false,

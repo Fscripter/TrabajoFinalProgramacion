@@ -13,3 +13,9 @@ Char reserved in Terrain:
     D: Extremo Derecho
     M: MuerteTerreno
     O: Objetos de adorno
+
+Char reserved for enemy:
+    0: Boss
+    1: Subdite type 1
+    2: Subdite type 2
+    3: Subdite type 3
