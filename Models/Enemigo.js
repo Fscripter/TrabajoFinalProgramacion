@@ -64,7 +64,7 @@ class Enemy extends gameObject {
     };
     this.imgBase = new Image();
     this.vida = 100;
-    this.imgBase.src = "./Sprites/Enemys/Antioquia/alien.png";
+    this.imgBase.src = "./Sprites/Enemys/Antioquia/Estatico/Derecha.png";
     this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff");
     this.visible = true;
     this.alive = true;

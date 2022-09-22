@@ -20,6 +20,7 @@ class Mapa {
       D: new Image(),
       Layout: new Image(),
     };
+    this.endless = new Array();
   }
   mover(vel) {
     this.canvasPosition.x -= vel;
@@ -100,7 +101,7 @@ class Mapa {
       for (let columna = 0; columna < this.sizeMap; columna += 1) {
         this.letterToTexture({ letter: "T", texture: this.texturas.T, columna, fila });
         this.letterToTexture({ letter: "S", texture: this.texturas.S, columna, fila });
-        this.letterToTexture({ letter: "L", texture: this.texturas.L, columna, fila });
+        this.letterToTexture({ letter: "I", texture: this.texturas.L, columna, fila });
         this.letterToTexture({ letter: "D", texture: this.texturas.D, columna, fila });
 
         //Trees
