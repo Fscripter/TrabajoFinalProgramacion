@@ -56,8 +56,8 @@ class Enemy extends gameObject {
         },
       ],
     };
-
-    super("Enemigo", position, spriteJugador);
+    let face = new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png");
+    super("Enemigo", position, spriteJugador, face);
     this.size = {
       w: 50,
       h: 100,
@@ -65,7 +65,7 @@ class Enemy extends gameObject {
     this.imgBase = new Image();
     this.vida = 100;
     this.imgBase.src = "./Sprites/Enemys/Antioquia/Estatico/Derecha.png";
-    this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff");
+    this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff", this.face);
     this.visible = true;
     this.alive = true;
     this.visionEnemigo = {

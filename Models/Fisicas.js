@@ -75,7 +75,7 @@ class Fisica {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
       if (element.posicion.x > -canvasPosicion.x && element.posicion.x < -canvasPosicion.x + 1000) {
-        if (element.tag == "Enemigo") {
+        if (element.tag == "Enemigo" && element.alive) {
           queue.add(element);
           element.show();
         }
