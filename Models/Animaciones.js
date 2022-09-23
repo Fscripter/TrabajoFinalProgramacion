@@ -112,7 +112,6 @@ class Animaciones {
     }
   }
   dibujar() {
-    console.log(this.state);
     this.actualizarFrames();
     return this.spriteToRender;
   }

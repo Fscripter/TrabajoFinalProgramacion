@@ -10,25 +10,15 @@
     [""],
     [""],
     [""],
-    [""],
-    [""],
-    ["                       TTTTTTTTTTTTTTT"],
-    ["                      SSSSSSSSSSSSSSSSSSS"],
-    [
-      "                 ITTTTTTTTTTTTTTTTTTTTD  "
-    ],
-    [
-      "ITTTTTTTTTTTTTTD SSSSSSSSSSSSSSSSSSSSSS  ITTTTTTTTTTTTTTTTTTTTD"
-    ],
-    [
-      "SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSS"
-    ],
-    [
-      "SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSS"
-    ],
-    [
-      "SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSS"
-    ]
+    ["                                                                                             EAE2 2                                                                                    "],
+    ["                        A  E  A                                                           ITTTTTTTTD                                                                                  "],
+    ["                      TTTTTTTTTTT                                 ITTTTD    A 1    ITTD    SSSSSSSS     1                                                                             "],
+    ["                   3  SSSSSSSSSSS 2                             3 SSSSSS  TTTTTD            SSSSSS    ITTTD                              1                                            "],
+    ["    A    A   3   ITTTTTTTTTTTTTTTTTTTTD         CCC  BAC 2    ITTTTTTTTTTDSSSSSS             SSSS                  3                  ITTTD                             1 1           "],
+    ["ITTTTTTTTTTTTTTD SSSSSSSSSSSSSSSSSSSSSS  ITTTTTTTTTTTTTTTTTTTDSSSSSSSSSSSSSSSSSS  ID                              ITTTTD          ITTTDSSSS                       1   ITTTTTD         "],
+    ["SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS         1                3            1         ISSSSSSSSS                 1   ITTTTTSSSSSSS         "],
+    ["SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS    ITTTTTTTTTTTTTD  ITTTTTTTD  ITTTTTTTTTTTTTTTTTTTTTDSSSS   T  T  T  T  ITTTTTSSSSSSSSSSSSS         "],
+    ["SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS    SSSSSSSSSSSSSSS  SSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSS   S  S  S  S  SSSSSSSSSSSSSSSSSSS         "]
   ],
   "texturas": {
     "S": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
