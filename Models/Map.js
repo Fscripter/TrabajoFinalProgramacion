@@ -30,6 +30,7 @@ class Mapa {
       },
       Total: 0,
     };
+    this.treeSize = {};
   }
   spawnEnemigos(Data, posicion) {
     switch (Data) {
@@ -48,7 +49,6 @@ class Mapa {
       default:
         break;
     }
-    console.log(Data);
   }
   crearEnemigos() {
     //Buscar enemigos en el mapa
@@ -124,6 +124,9 @@ class Mapa {
   }
   // Thinking about delete viewport
 
+  randomSize() {
+    return (Math.random() * (1 - 0.5) + 0.5).toFixed(2);
+  }
   getSizeMap() {
     this.sizeMap = 0;
     this.mapaArray.forEach((element) => {
@@ -131,6 +134,49 @@ class Mapa {
         this.sizeMap = element.length;
       }
     });
+  }
+  saveTreesInfo(posicion) {
+    let Coordenates = `${posicion.x},${posicion.y}`;
+    if (Coordenates in this.treeSize) {
+      return this.treeSize[Coordenates];
+    }
+    let randomSize = this.randomSize();
+    this.treeSize[Coordenates] = randomSize;
+    console.log(`Tree created with coordenates ${Coordenates} and size is ${randomSize}`);
+    return randomSize;
+  }
+  drawTrees(image, posicion) {
+    let randomSizeTree = this.saveTreesInfo(posicion);
+    let worldPosition = {
+      x: posicion.x * 50 - (image.width * randomSizeTree) / 2.5,
+      y: (posicion.y + 1) * 50 - image.height * randomSizeTree,
+    };
+    this.context.drawImage(
+      image,
+      worldPosition.x,
+      worldPosition.y,
+      image.width * randomSizeTree,
+      image.height * randomSizeTree
+    );
+  }
+  selectTrees(value, posicion) {
+    switch (value) {
+      case "A":
+        this.drawTrees(this.texturas.Arbol.A, posicion);
+        break;
+
+      case "B":
+        this.drawTrees(this.texturas.Arbol.B, posicion);
+        break;
+      case "C":
+        this.drawTrees(this.texturas.Arbol.C, posicion);
+        break;
+      case "E":
+        this.drawTrees(this.texturas.Arbol.D, posicion);
+        break;
+      default:
+        break;
+    }
   }
   draw() {
     this.getSizeMap();
@@ -150,21 +196,22 @@ class Mapa {
         this.letterToTexture({ letter: "D", texture: this.texturas.D, columna, fila });
 
         //Trees
-        this.letterToTexture(
-          { letter: "A", texture: this.texturas.Arbol.A, columna, fila },
-          250,
-          300
-        );
+        // this.letterToTexture(
+        //   { letter: "A", texture: this.texturas.Arbol.A, columna, fila },
+        //   this.texturas.Arbol.A.width,
+        //   this.texturas.Arbol.A.height
+        // );
         this.letterToTexture(
           { letter: "B", texture: this.texturas.Arbol.B, columna, fila },
-          250,
-          300
+          this.texturas.Arbol.B.width,
+          this.texturas.Arbol.B.height
         );
         this.letterToTexture(
           { letter: "C", texture: this.texturas.Arbol.C, columna, fila },
-          200,
-          300
+          this.texturas.Arbol.C.width,
+          this.texturas.Arbol.C.height
         );
+        this.selectTrees(this.mapaArray[fila][columna], { x: columna, y: fila });
       }
     }
     this.enemigos.forEach((enemigo) => {
