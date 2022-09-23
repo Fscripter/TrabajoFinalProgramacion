@@ -21,6 +21,46 @@ class Mapa {
       Layout: new Image(),
     };
     this.endless = new Array();
+    this.enemigos = []; // Enemigos coleccion
+    this.totalEnemigos = {
+      tipo: {
+        1: 0,
+        2: 0,
+        3: 0,
+      },
+      Total: 0,
+    };
+  }
+  spawnEnemigos(Data, posicion) {
+    switch (Data) {
+      case "1":
+        this.enemigos.push(new Enemy(posicion, 1));
+        break;
+      case "2":
+        this.enemigos.push(new Enemy(posicion, 2));
+        break;
+      case "3":
+        this.enemigos.push(new Enemy(posicion, 3));
+        break;
+      case "0":
+        this.enemigos.push(new Enemy(posicion, 0));
+        break;
+      default:
+        break;
+    }
+    console.log(Data);
+  }
+  crearEnemigos() {
+    //Buscar enemigos en el mapa
+    this.getSizeMap();
+    for (let fila = 0; fila < this.mapaArray.length; fila++) {
+      for (let columna = 0; columna < this.sizeMap; columna++) {
+        this.spawnEnemigos(this.mapaArray[fila][columna], {
+          x: columna * 50,
+          y: fila * 25,
+        });
+      }
+    }
   }
   mover(vel) {
     this.canvasPosition.x -= vel;
@@ -78,17 +118,22 @@ class Mapa {
         this.cargarTexuras();
         this.cargarSonido();
         this.draw();
+        this.crearEnemigos();
         Menu.finalizarCarga(this);
       });
   }
   // Thinking about delete viewport
-  draw() {
+
+  getSizeMap() {
     this.sizeMap = 0;
     this.mapaArray.forEach((element) => {
       if (element.length > this.sizeMap) {
         this.sizeMap = element.length;
       }
     });
+  }
+  draw() {
+    this.getSizeMap();
     this.context.drawImage(
       this.texturas.Layout,
       -this.canvasPosition.x,
@@ -122,6 +167,9 @@ class Mapa {
         );
       }
     }
+    this.enemigos.forEach((enemigo) => {
+      enemigo.dibujar(this.context, this.canvasPosition);
+    });
   }
   limpiar() {
     this.canvas.width = this.canvas.width;
