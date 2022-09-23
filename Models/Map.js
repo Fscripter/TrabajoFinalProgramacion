@@ -92,13 +92,6 @@ class Mapa {
         this.context.drawImage(texture, columna * 50, fila * 50, width, heigth);
         return;
       }
-      this.context.drawImage(
-        texture,
-        columna * 50 - width / 1.75,
-        (fila + 2) * 50 - heigth,
-        width,
-        heigth
-      );
     }
   }
   cargarZona(name, Menu) {
@@ -196,21 +189,6 @@ class Mapa {
         this.letterToTexture({ letter: "D", texture: this.texturas.D, columna, fila });
 
         //Trees
-        // this.letterToTexture(
-        //   { letter: "A", texture: this.texturas.Arbol.A, columna, fila },
-        //   this.texturas.Arbol.A.width,
-        //   this.texturas.Arbol.A.height
-        // );
-        this.letterToTexture(
-          { letter: "B", texture: this.texturas.Arbol.B, columna, fila },
-          this.texturas.Arbol.B.width,
-          this.texturas.Arbol.B.height
-        );
-        this.letterToTexture(
-          { letter: "C", texture: this.texturas.Arbol.C, columna, fila },
-          this.texturas.Arbol.C.width,
-          this.texturas.Arbol.C.height
-        );
         this.selectTrees(this.mapaArray[fila][columna], { x: columna, y: fila });
       }
     }
