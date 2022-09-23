@@ -1,10 +1,10 @@
 Each row equals 50px
 
 Char reserved in trees:
-    A: Arbol type A
-    B: Arbol type B
-    C: Arbol type C
-    E: Arbol type D
+    A: Arbol type 1
+    B: Arbol type 2
+    C: Arbol type 3
+    E: Arbol type 4
 
 Char reserved in Terrain:
     S: Subsuelo
