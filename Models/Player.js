@@ -56,7 +56,7 @@ class Player extends gameObject {
         timeTransition: 10,
       },
     };
-    super("Player", { x: 500, y: 0 }, spritesJugador);
+    super("Player", { x: 400, y: 0 }, spritesJugador);
 
     this.size = {
       w: 50,
