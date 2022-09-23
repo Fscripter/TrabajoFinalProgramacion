@@ -56,8 +56,8 @@ class Player extends gameObject {
         },
       ],
     };
-
-    super("Player", { x: 500, y: 0 }, spriteJugador);
+    let face = new ImagenDerogada("./Sprites/Player/Face.png");
+    super("Player", { x: 500, y: 0 }, spriteJugador, face);
 
     this.size = {
       w: 50,
@@ -67,7 +67,7 @@ class Player extends gameObject {
     this.imgBase.src = "./Sprites/Player/Derecha.png";
 
     this.vida = 100;
-    this.vidaHUD = new BarraVida("Player", this.vida, "#00ff00");
+    this.vidaHUD = new BarraVida("Player", this.vida, "#00ff00", this.face);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
     this.vivo = true;
     this.caminando = false;

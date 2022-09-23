@@ -1,5 +1,5 @@
 class gameObject {
-  constructor(tag, puntoAparicion, animaciones) {
+  constructor(tag, puntoAparicion, animaciones, face) {
     this.tag = tag;
     this.posicion = {
       x: puntoAparicion.x,
@@ -30,6 +30,7 @@ class gameObject {
 
     this.deltaTime = 60 / 1000;
     this.animacion = new Animaciones(animaciones, this.orientacion, this);
+    this.face = face;
   }
   cambiarOrientacion(dir) {
     if (dir >= 0) {
