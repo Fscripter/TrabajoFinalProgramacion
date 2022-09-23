@@ -150,7 +150,7 @@ class Enemy extends gameObject {
     }
 
     //Atacare en tantos segundos
-    this.disparar(this.orientacion, 1000 - this.dificultad * 20);
+    this.disparar(this.orientacion, 250 + this.dificultad * 250);
   }
   deteccionLado(min, max, positionX) {
     if (positionX >= min && positionX <= min + max) {

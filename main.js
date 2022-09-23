@@ -1,14 +1,8 @@
 function gameLoop(mapaCanvas) {
   let jugador = new Player();
-  let alien = new Enemy(
-    {
-      x: 1000,
-      y: 0,
-    },
-    10
-  );
   //Añadir fisicas
-  var Fisicas = new Fisica([jugador, alien]);
+  let totalObjects = [jugador].concat(mapaCanvas.enemigos);
+  var Fisicas = new Fisica(totalObjects);
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
@@ -44,7 +38,6 @@ function gameLoop(mapaCanvas) {
 
     ColaHUDCanvas.dibujar(mapaCanvas.context);
     jugador.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
-    alien.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
     cinematicas.dibujar(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);
