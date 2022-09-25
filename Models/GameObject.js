@@ -75,10 +75,8 @@ class gameObject {
     });
   }
   mover(vel) {
-    if (vel >= 0) {
-      if (this.move.r) {
-        this.posicion.x += vel;
-      }
+    if (vel >= 0 && this.move.r) {
+      this.posicion.x += vel;
     } else {
       if (this.move.l) {
         this.posicion.x += vel;

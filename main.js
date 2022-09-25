@@ -1,24 +1,12 @@
 function gameLoop(mapaCanvas) {
   let jugador = new Player();
   //Añadir fisicas
-  let totalObjects = [jugador].concat(mapaCanvas.enemigos);
+  let totalObjects = [jugador].concat(mapaCanvas.enemySpawn.enemys);
   var Fisicas = new Fisica(totalObjects);
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
   let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
-  let cinematicas = new Cinematica(
-    {
-      subdito: {
-        posicion: {
-          x: 500,
-          y: 0,
-        },
-        cinematicDone: false,
-      },
-    },
-    jugador.posicion
-  );
   let request;
 
   //Main Loop
@@ -38,7 +26,6 @@ function gameLoop(mapaCanvas) {
 
     ColaHUDCanvas.dibujar(mapaCanvas.context);
     jugador.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
-    cinematicas.dibujar(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);
 }
