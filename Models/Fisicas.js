@@ -102,16 +102,16 @@ class Fisica {
     });
   }
   enemigoDetectarJugador(mapaCanvas) {
-    this.enemys.forEach((enemigoss) => {
-      enemigoss.vision(mapaCanvas, this.mainPlayer.posicion);
+    this.enemys.forEach((enemigos) => {
+      enemigos.vision(this.mainPlayer.posicion);
     });
   }
   colisionBalasEnemigos() {
     if (this.objectsInScreen.length < 0) return;
     this.balasEnemigas = [];
     this.enemys.forEach((enemigo) => {
-      if (enemigo.bulletsArray.length > 0) {
-        this.balasEnemigas = this.balasEnemigas.concat(enemigo.bulletsArray);
+      if (enemigo.bulletsInGame.length > 0) {
+        this.balasEnemigas = this.balasEnemigas.concat(enemigo.bulletsInGame);
       }
     });
     if (this.balasEnemigas.length > 0) {
@@ -132,8 +132,8 @@ class Fisica {
     if (this.objectsInScreen.length < 0) return;
 
     //Cada bala del jugador interactuara con el enemigo
-    if (this.mainPlayer.bulletsArray.length > 0) {
-      this.mainPlayer.bulletsArray.forEach((bala) => {
+    if (this.mainPlayer.bulletsInGame.length > 0) {
+      this.mainPlayer.bulletsInGame.forEach((bala) => {
         // posicion de cada bala
         this.enemys.forEach((enemigo) => {
           if (

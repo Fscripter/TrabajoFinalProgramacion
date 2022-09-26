@@ -21,8 +21,8 @@ let InitialCinematicas = {
 
 class Cinematica {
   //Follows player
-  constructor(cinematicas = InitialCinematicas) {
-    this.cinematicas = cinematicas;
+  constructor(posicion) {
+    this.posicion = posicion;
     this.timeTransition = 5000; // 1 segundo de cinematica
     this.timeElapsed = 0;
     this.deltaTime = 1000 / 60;
@@ -39,25 +39,30 @@ class Cinematica {
   }
   transition() {
     if (
-      this.posicion.x >= this.cinematicas.subdito.posicion.x - 480 &&
-      this.posicion.x < this.cinematicas.subdito.posicion.x
+      -this.canvasPosicion.x >= this.posicion.x - 480 &&
+      this.canvasPosicion.x < this.posicion.x
     ) {
       this.doAnimation = true;
+      console.log("Hi");
     }
   }
-  dibujar(canvas, posicion) {
-    this.posicion = posicion;
+  draw(canvas, canvasPosicion) {
+    console.log(canvasPosicion.x + 500);
+    this.canvasPosicion = canvasPosicion;
     this.render();
+    let posicionDraw = {
+      x: -this.canvasPosicion.x,
+      y: -this.canvasPosicion.y,
+    };
     if (this.doAnimation) {
       canvas.fillStyle = "#000000";
-      canvas.fillRect(this.posicion.x - 500, this.posicion.y - 600, 1000, 400);
+      canvas.fillRect(posicionDraw.x, posicionDraw.y - 300, 1000, 400);
       canvas.fillStyle = "#000000";
-      canvas.fillRect(this.posicion.x - 500, this.posicion.y + 200, 1000, 200);
+      canvas.fillRect(posicionDraw.x, posicionDraw.y + 500, 1000, 200);
     }
   }
   render() {
     this.transition();
     this.increaseTime();
   }
-  doCinematic() {}
 }

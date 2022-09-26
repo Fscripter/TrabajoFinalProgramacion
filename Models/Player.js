@@ -77,7 +77,7 @@ class Player extends gameObject {
     this.cambiarEstado();
     super.dibujar(ctx);
     this.vidaHUD.dibujar(ctx, {
-      x: this.posicion.x - 250,
+      x: -canvasPosition.x + 250,
       y: -canvasPosition.y + 15,
     });
   }
@@ -88,7 +88,6 @@ class Player extends gameObject {
     this.vida -= 10;
     if (this.vida >= 0) {
       this.vidaHUD.recibirDano(10);
-      // this.vivo = false;
     } else {
       console.log("Me mataron");
     }
@@ -97,10 +96,8 @@ class Player extends gameObject {
     if (this.canIshoot) {
       if (!this.disparoSonido.paused) {
         this.disparoSonido.currentTime = 0;
-        this.disparoSonido.play();
-      } else {
-        this.disparoSonido.play();
       }
+      this.disparoSonido.play();
       super.disparar(this.orientacion, 150);
     }
   }
