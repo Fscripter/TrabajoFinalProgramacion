@@ -81,9 +81,6 @@ class Player extends gameObject {
       y: -canvasPosition.y + 15,
     });
   }
-  mover(vel) {
-    super.mover(vel);
-  }
   cambiarEstado() {
     this.animacion.obtenerEstadoDeMovimiento(this.isGround, this.caminando, this.saltando);
   }
