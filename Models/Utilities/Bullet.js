@@ -7,7 +7,7 @@ class Bullet {
     this.speed = orientacion == "D" ? 10 : -10;
     this.index = new Date();
     this.lifeTime = 0; // seconds alive
-    this.deathTime = 750; // death time
+    this.deathTime = 2; // death time
   }
   draw(context) {
     this.checkLife();
@@ -18,7 +18,7 @@ class Bullet {
     this.posicion.x += this.speed;
   }
   checkLife() {
-    this.lifeTime += 1000 / 60;
+    this.lifeTime += 60 / 1000;
     if (this.lifeTime > this.deathTime) {
       this.eliminar();
     }
