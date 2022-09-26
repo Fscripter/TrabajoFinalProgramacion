@@ -10,13 +10,18 @@ class Spawn {
       total: 0,
     };
     this.enemys = [];
+    this.scenes = [];
   }
   spawnEnemys(Level, Posicion) {
     let acceptedLvl = ["0", "1", "2", "3"];
     if (acceptedLvl.indexOf(Level) == -1) {
       return;
     }
+    Posicion.y -= 100;
     this.enemys.push(new Enemy(Posicion, Level));
+
+    //Add scenes
+
     this.totalEnemigos.tipo[Level]++;
     this.totalEnemigos.total++;
   }
@@ -26,7 +31,7 @@ class Spawn {
       for (let columna = 0; columna < maxColumn; columna++) {
         this.spawnEnemys(mapaArray[fila][columna], {
           x: columna * 50,
-          y: fila * 25,
+          y: fila * 50,
         });
       }
     }

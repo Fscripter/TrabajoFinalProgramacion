@@ -106,24 +106,12 @@ class Enemy extends gameObject {
   show() {
     this.visible = true;
   }
-  vision(ctx, posicionJugador) {
-    this.dev = true;
+  vision(posicionJugador) {
+    this.dev = false;
     this.rangeVision = 450;
     this.minDerecha = this.posicion.x + this.size.w / 2;
     this.minIzquierda = this.posicion.x - this.rangeVision + this.size.w / 2;
 
-    if (this.dev) {
-      if (this.visionEnemigo.izquierda) {
-        ctx.strokeStyle = "#00ffff";
-        ctx.strokeRect(this.minIzquierda, this.posicion.y, this.rangeVision, this.size.h); //Vista hacia la izquierda
-      }
-      if (this.visionEnemigo.derecha) {
-        ctx.strokeStyle = "#00ff00";
-        ctx.strokeRect(this.minDerecha, this.posicion.y, this.rangeVision, this.size.h); // Vista hacia la derecha
-      }
-    }
-
-    //Si me vio, correr hacia mi jaksdjakjsd, esto esta chido
     this.visionEnemigo.derecha = this.deteccionLado(
       this.minDerecha,
       this.rangeVision,
@@ -140,7 +128,7 @@ class Enemy extends gameObject {
       //Girar hacia el lado donde esta el enemigo
     }
   }
-  IA(position) {
+  IA() {
     //Rotar, moverse y atacar
     if (this.visionEnemigo.izquierda) {
       this.cambiarOrientacion(-1);
@@ -150,7 +138,9 @@ class Enemy extends gameObject {
     }
 
     //Atacare en tantos segundos
-    this.disparar(this.orientacion, 250 + this.dificultad * 250);
+    if (this.alive) {
+      this.disparar(this.orientacion, 250 + this.dificultad * 250);
+    }
   }
   deteccionLado(min, max, positionX) {
     if (positionX >= min && positionX <= min + max) {
