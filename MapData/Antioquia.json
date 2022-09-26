@@ -38,6 +38,6 @@
     }
   },
   "sound": {
-    "ambiente": "./Sprites/Terrain/Antioquia/Music/Ambiente.mp3"
+    "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
   }
 }
