@@ -65,6 +65,7 @@ class Fisica {
     };
     let primerTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa];
     let segundoTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa + 1];
+
     let canMove = {
       l: !this.detectarTerreno(primerTerreno),
       r: !this.detectarTerreno(segundoTerreno),
