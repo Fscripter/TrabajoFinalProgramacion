@@ -1,5 +1,5 @@
 class BarraVida {
-  constructor(name, life, color, face) {
+  constructor(name, life, color, face, lvl = null) {
     this.name = name;
     this.life = life;
     this.color = color;
@@ -12,6 +12,7 @@ class BarraVida {
       maxTime: 250,
     };
     this.initialColor = color;
+    this.lvl = lvl;
   }
   dibujar(ctx, position) {
     ctx.beginPath();
@@ -27,6 +28,9 @@ class BarraVida {
     ctx.fillRect(position.x - this.width + 45, position.y + 5, this.percentajeWidth, 20);
     ctx.font = "bolder 25px Lobster";
     ctx.fillStyle = "#000000";
+    if (this.lvl != null) {
+      ctx.fillText(this.name + " lvl " + this.lvl, position.x - this.width + 40, position.y + 50);
+    }
     ctx.fillText(this.name, position.x - this.width + 40, position.y + 50);
     ctx.closePath();
     this.turnRed();

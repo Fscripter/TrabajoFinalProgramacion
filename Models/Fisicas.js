@@ -34,7 +34,7 @@ class Fisica {
     });
   }
   detectarTerreno(terreno) {
-    if (terreno == "T" || terreno == "L" || terreno == "D") {
+    if (terreno == "T" || terreno == "I" || terreno == "D") {
       return true;
     }
   }

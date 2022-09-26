@@ -36,7 +36,7 @@ class Teclado {
       }
       if (key == "d" && value) {
         this.ambasTeclas.d = true;
-        this.player.mover(50 * this.deltaTime); // move player and world
+        this.player.mover(50 * this.deltaTime, this); // move player and world
         this.mapaCanvas.canvasPosition.x -= 50 * this.deltaTime;
       }
       if (key == "a" && value) {
