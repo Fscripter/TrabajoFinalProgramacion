@@ -34,7 +34,7 @@
       "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
     },
     "scene": {
-      "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.jpg"
+      "Layout": "./Sprites/Terrain/Antioquia/Objetos/Layout.svg"
     }
   },
   "sound": {
