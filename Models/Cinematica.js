@@ -21,12 +21,11 @@ let InitialCinematicas = {
 
 class Cinematica {
   //Follows player
-  constructor(cinematicas = InitialCinematicas, posicion) {
+  constructor(cinematicas = InitialCinematicas) {
     this.cinematicas = cinematicas;
     this.timeTransition = 5000; // 1 segundo de cinematica
     this.timeElapsed = 0;
     this.deltaTime = 1000 / 60;
-    this.posicion = posicion;
     this.doAnimation = false;
   }
   increaseTime() {
@@ -46,7 +45,8 @@ class Cinematica {
       this.doAnimation = true;
     }
   }
-  dibujar(canvas) {
+  dibujar(canvas, posicion) {
+    this.posicion = posicion;
     this.render();
     if (this.doAnimation) {
       canvas.fillStyle = "#000000";
