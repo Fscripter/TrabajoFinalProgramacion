@@ -1,5 +1,5 @@
 class gameObject {
-  constructor(tag, puntoAparicion, animaciones) {
+  constructor(tag, puntoAparicion, animaciones, face) {
     this.tag = tag;
     this.posicion = {
       x: puntoAparicion.x,
@@ -20,7 +20,7 @@ class gameObject {
       l: true,
       r: true,
     };
-    this.bulletsArray = [];
+    this.bulletsInGame = [];
     this.canIshoot = true;
 
     this.caminar = false;
@@ -30,6 +30,7 @@ class gameObject {
 
     this.deltaTime = 60 / 1000;
     this.animacion = new Animaciones(animaciones, this.orientacion, this);
+    this.face = face;
   }
   cambiarOrientacion(dir) {
     if (dir >= 0) {
@@ -40,14 +41,17 @@ class gameObject {
     this.orientacion = "L";
     this.animacion.cambiarOrientacion(this.orientacion);
   }
-  destroyBullet() {
-    this.bulletsArray.shift();
-  }
   disparar(orientacion = "D", coolDown) {
     if (this.canIshoot) {
-      this.bulletsArray.push(
-        new Bala(this.posicion.x, this.posicion.y + 25, orientacion, this.bulletsArray, this.size.w)
-      );
+      let posicion = {
+        x: this.posicion.x,
+        y: this.posicion.y + 25,
+      };
+      if (orientacion == "D") {
+        posicion.x += this.size.w;
+      }
+
+      this.bulletsInGame.push(new Bullet(posicion, orientacion, this.bulletsInGame));
       this.canIshoot = false;
       this.idDispararIntervalo = setTimeout(() => {
         this.canIshoot = true;
@@ -67,17 +71,13 @@ class gameObject {
       this.size.w,
       this.size.h
     );
-
-    this.bulletsArray.forEach((element) => {
-      element.dibujar(ctx);
-      element.move();
+    this.bulletsInGame.forEach((bullet) => {
+      bullet.draw(ctx);
     });
   }
   mover(vel) {
-    if (vel >= 0) {
-      if (this.move.r) {
-        this.posicion.x += vel;
-      }
+    if (vel >= 0 && this.move.r) {
+      this.posicion.x += vel;
     } else {
       if (this.move.l) {
         this.posicion.x += vel;

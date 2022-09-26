@@ -56,8 +56,8 @@ class Enemy extends gameObject {
         },
       ],
     };
-
-    super("Enemigo", position, spriteJugador);
+    let face = new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png");
+    super("Enemigo", position, spriteJugador, face);
     this.size = {
       w: 50,
       h: 100,
@@ -65,14 +65,14 @@ class Enemy extends gameObject {
     this.imgBase = new Image();
     this.vida = 100;
     this.imgBase.src = "./Sprites/Enemys/Antioquia/Estatico/Derecha.png";
-    this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff");
+    this.dificultad = dificultad;
+    this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff", this.face, this.dificultad);
     this.visible = true;
     this.alive = true;
     this.visionEnemigo = {
       izquierda: false,
       derecha: false,
     };
-    this.dificultad = dificultad;
     this.cambiarOrientacion(-1);
   }
   dibujar(ctx) {
@@ -106,24 +106,12 @@ class Enemy extends gameObject {
   show() {
     this.visible = true;
   }
-  vision(ctx, posicionJugador) {
-    this.dev = true;
+  vision(posicionJugador) {
+    this.dev = false;
     this.rangeVision = 450;
     this.minDerecha = this.posicion.x + this.size.w / 2;
     this.minIzquierda = this.posicion.x - this.rangeVision + this.size.w / 2;
 
-    if (this.dev) {
-      if (this.visionEnemigo.izquierda) {
-        ctx.strokeStyle = "#00ffff";
-        ctx.strokeRect(this.minIzquierda, this.posicion.y, this.rangeVision, this.size.h); //Vista hacia la izquierda
-      }
-      if (this.visionEnemigo.derecha) {
-        ctx.strokeStyle = "#00ff00";
-        ctx.strokeRect(this.minDerecha, this.posicion.y, this.rangeVision, this.size.h); // Vista hacia la derecha
-      }
-    }
-
-    //Si me vio, correr hacia mi jaksdjakjsd, esto esta chido
     this.visionEnemigo.derecha = this.deteccionLado(
       this.minDerecha,
       this.rangeVision,
@@ -140,7 +128,7 @@ class Enemy extends gameObject {
       //Girar hacia el lado donde esta el enemigo
     }
   }
-  IA(position) {
+  IA() {
     //Rotar, moverse y atacar
     if (this.visionEnemigo.izquierda) {
       this.cambiarOrientacion(-1);
@@ -150,7 +138,9 @@ class Enemy extends gameObject {
     }
 
     //Atacare en tantos segundos
-    this.disparar(this.orientacion, 250 + this.dificultad * 250);
+    if (this.alive) {
+      this.disparar(this.orientacion, 250 + this.dificultad * 250);
+    }
   }
   deteccionLado(min, max, positionX) {
     if (positionX >= min && positionX <= min + max) {
