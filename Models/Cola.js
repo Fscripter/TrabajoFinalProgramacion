@@ -9,8 +9,8 @@ class ColaHUD {
   dibujar(ctx) {
     for (let itemsCola = 0; itemsCola < this.queue.length; itemsCola++) {
       let posicionItem = {
-        x: -this.posicion.x + 1000,
-        y: this.posicion.y + itemsCola * 70,
+        x: -this.posicion.x + 900,
+        y: this.posicion.y + itemsCola * 80,
       };
       this.queue[itemsCola].getVida(ctx, posicionItem);
     }
