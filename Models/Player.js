@@ -56,8 +56,8 @@ class Player extends gameObject {
         },
       ],
     };
-
-    super("Player", { x: 500, y: 0 }, spriteJugador);
+    let face = new ImagenDerogada("./Sprites/Player/Face.png");
+    super("Player", { x: 500, y: 0 }, spriteJugador, face);
 
     this.size = {
       w: 50,
@@ -67,7 +67,7 @@ class Player extends gameObject {
     this.imgBase.src = "./Sprites/Player/Derecha.png";
 
     this.vida = 100;
-    this.vidaHUD = new BarraVida("Player", this.vida, "#00ff00");
+    this.vidaHUD = new BarraVida("Player", this.vida, "#00ff00", this.face);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
     this.vivo = true;
     this.caminando = false;
@@ -77,7 +77,7 @@ class Player extends gameObject {
     this.cambiarEstado();
     super.dibujar(ctx);
     this.vidaHUD.dibujar(ctx, {
-      x: this.posicion.x - 250,
+      x: -canvasPosition.x + 250,
       y: -canvasPosition.y + 15,
     });
   }
@@ -88,7 +88,6 @@ class Player extends gameObject {
     this.vida -= 10;
     if (this.vida >= 0) {
       this.vidaHUD.recibirDano(10);
-      // this.vivo = false;
     } else {
       console.log("Me mataron");
     }
@@ -97,10 +96,8 @@ class Player extends gameObject {
     if (this.canIshoot) {
       if (!this.disparoSonido.paused) {
         this.disparoSonido.currentTime = 0;
-        this.disparoSonido.play();
-      } else {
-        this.disparoSonido.play();
       }
+      this.disparoSonido.play();
       super.disparar(this.orientacion, 150);
     }
   }

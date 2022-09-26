@@ -20,6 +20,7 @@ class MenuJuego {
     this.mapa = mapa;
     this.gameLoop = gameLoop;
     this.addEvents();
+    this.finalizarCarga = this.finalizarCarga.bind(this);
   }
   addEvents() {
     this.playButtton = document.getElementById("Play");
@@ -39,6 +40,6 @@ class MenuJuego {
     this.state = "MapaCargado";
     this.initialMenu.style.display = "none";
     this.cargando.style.display = "none";
-    this.gameLoop(mapaCanvas);
+    this.gameLoop(this.mapa);
   }
 }
