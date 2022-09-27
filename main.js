@@ -4,8 +4,8 @@ function gameLoop(mapaCanvas) {
     x: 500,
     y: 0,
   });
-  // let totalObjects = [jugador].concat(mapaCanvas.enemySpawn.enemys);
-  var Fisicas = new Fisica([Marin]);
+  let totalObjects = [Marin].concat(mapaCanvas.boxGenerator.boxes);
+  var Fisicas = new Fisica(totalObjects);
   //Cola enemigos
   // let ColaHUDCanvas = new ColaHUD();
   //Mover teclado

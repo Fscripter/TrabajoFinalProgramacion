@@ -15,17 +15,17 @@ class boxSpawner {
     }
     switch (Type) {
       case "H":
-        this.boxes.push();
+        this.boxes.push(new BoxHealing(Posicion));
         this.totalBoxes.healers++;
         this.totalBoxes.total++;
         break;
       case "P":
-        this.boxes.push();
+        this.boxes.push(new boxAmmo(Posicion));
         this.totalBoxes.ammo++;
         this.totalBoxes.total++;
         break;
       case "X":
-        this.boxes.push();
+        this.boxes.push(new TNT(Posicion));
         this.totalBoxes.tnt++;
         this.totalBoxes.total++;
         break;
@@ -54,7 +54,7 @@ class boxSpawner {
   }
   draw(context) {
     this.boxes.forEach((Box) => {
-      Box.dibujar(context);
+      Box.draw(context);
     });
   }
 }

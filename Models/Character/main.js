@@ -6,11 +6,6 @@ class Character extends GameObject {
       r: true,
     };
     this.life = life;
-    this.physicsData = {
-      isGravity: true,
-      jumpForce: 10,
-      isGround: false,
-    };
     this.stateData = {
       jumping: false,
     };

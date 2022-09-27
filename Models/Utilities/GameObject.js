@@ -12,6 +12,14 @@ class GameObject {
       y: 0,
     };
     this.saltando = false;
+    this.physicsData = {
+      isGravity: true,
+      jumpForce: 10,
+      isGround: false,
+    };
+    this.stateData = {
+      jumping: false,
+    };
   }
   draw(context) {
     console.log("Dibujando pj");
