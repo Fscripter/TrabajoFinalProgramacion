@@ -7,6 +7,7 @@ class Mapa {
       y: 0,
     };
     this.texturasGenerator = new Textures();
+    this.boxGenerator = new boxSpawner();
   }
   mover(vel) {
     this.canvasPosition.x -= vel;
@@ -55,6 +56,7 @@ class Mapa {
         console.log(Menu);
         this.trees = new TreeGenerator(this.texturas.arbol, this.context);
         // this.enemySpawn.getEnemysFromMap(this.mapaArray);
+        this.boxGenerator.getBoxesFromMap(this.mapaArray);
       });
   }
   getSizeMap() {
@@ -86,8 +88,10 @@ class Mapa {
         this.letterToTexture(mapaLetra, posicion);
         //Trees
         this.trees.selectTrees(mapaLetra, posicion);
+        //Boxes
       }
     }
+    this.boxGenerator.draw(this.context);
   }
   limpiar() {
     this.canvas.width = this.canvas.width;

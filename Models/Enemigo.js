@@ -81,7 +81,6 @@ class Enemy extends gameObject {
 
     this.cambiarEstado();
     super.dibujar(ctx);
-    // this.vidaHUD.dibujar(ctx, canvasPosition);
   }
   getVida(ctx, canvasPosicion) {
     if (!this.visible) return;
