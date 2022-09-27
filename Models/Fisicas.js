@@ -18,14 +18,14 @@ class Fisica {
     this.mapArray = mapArray;
 
     this.objets.forEach((element) => {
-      if (!element.isGround) {
+      if (!element.physicsData.isGround) {
         element.velocidad.y += trunc(this.gravedad * this.deltaTime * this.deltaTime * 10, 5);
         if (element.velocidad.y >= 0) {
-          element.saltando = false;
+          element.stateData.jumping = false;
         }
       } else {
         element.velocidad.y = 0;
-        element.saltando = false;
+        element.stateData.jumping = false;
       }
       //Realiza movimiento
       element.positionWorld.y += Math.floor(element.velocidad.y);
@@ -52,7 +52,7 @@ class Fisica {
 
     hayTerrenoDebajo = this.detectarTerreno(primerTerreno) || this.detectarTerreno(segundoTerreno);
 
-    element.isGround = hayTerrenoDebajo;
+    element.physicsData.isGround = hayTerrenoDebajo;
     if (hayTerrenoDebajo) {
       element.positionWorld.y = posicionEnArray.y * 50 - element.size.h;
     }
