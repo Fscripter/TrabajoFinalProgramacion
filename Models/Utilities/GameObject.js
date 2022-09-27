@@ -5,7 +5,7 @@ class GameObject {
       y: position.y - size.h,
     };
     this.imagen = new Image();
-    this.imagen.src = baseUrl;
+    this.imagen.src = "./Sprites/Player/Derecha.png";
     this.size = size;
     this.velocidad = {
       x: 0,

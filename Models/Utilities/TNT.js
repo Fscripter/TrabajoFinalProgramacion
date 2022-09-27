@@ -18,6 +18,12 @@ class TNT extends Box {
                 enemy.doDamage(this.damage);
             }
         }
+        let X = Math.abs(enemy.positionWorld.position.x - this.positionWorld.x);
+        let Y =  Math.abs(enemy.positionWorld.position.y - this.positionWorld.y);
+        let radioInteraccion = Math.pow(X,2) + Math.pow(Y,2) // X.X + Y.Y = R.R
+        if (radioInteraccion<= Math.pow(this.radius,2)){
+                enemy.doDamage(this.damage);
+            }
         this.active = False;            
     }
     interaction(Player,enemysArray){

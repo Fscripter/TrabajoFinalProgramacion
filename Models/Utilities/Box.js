@@ -1,4 +1,4 @@
-class box extends GameObject{
+class Box extends GameObject{
     constructor(position,size,baseUrl)
     super(position,size,baseUrl){
     }
