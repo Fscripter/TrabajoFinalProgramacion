@@ -28,9 +28,9 @@ class Fisica {
         element.saltando = false;
       }
       //Realiza movimiento
-      element.posicion.y += Math.floor(element.velocidad.y);
+      element.positionWorld.y += Math.floor(element.velocidad.y);
       this.detectarSuelo(element);
-      this.detectarColision(element);
+      // this.detectarColision(element);
     });
   }
   detectarTerreno(terreno) {
@@ -40,9 +40,9 @@ class Fisica {
   }
   detectarSuelo(element) {
     let posicionEnArray = {
-      y: Math.floor((element.posicion.y + element.size.h) / 50),
-      xa: Math.floor(element.posicion.x / 50),
-      xb: Math.floor((element.posicion.x + element.size.w) / 50),
+      y: Math.floor((element.positionWorld.y + element.size.h) / 50),
+      xa: Math.floor(element.positionWorld.x / 50),
+      xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
 
     let hayTerrenoDebajo = false;
@@ -54,7 +54,7 @@ class Fisica {
 
     element.isGround = hayTerrenoDebajo;
     if (hayTerrenoDebajo) {
-      element.posicion.y = posicionEnArray.y * 50 - element.size.h;
+      element.positionWorld.y = posicionEnArray.y * 50 - element.size.h;
     }
   }
   detectarColision(element) {

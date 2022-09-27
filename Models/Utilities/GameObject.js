@@ -1,16 +1,26 @@
-class gameObject {
-  constructor(position, imagenBase = new Image()) {
-    this.size = {
-      w: imagenBase.width,
-      h: imagenBase.height,
-    };
+class GameObject {
+  constructor(position, size, baseUrl) {
     this.positionWorld = {
       x: position.x,
-      y: position.y - this.size.h,
+      y: position.y - size.h,
     };
-    this.imagenBase = imagenBase;
+    this.imagen = new Image();
+    this.imagen.src = "./Sprites/Player/Derecha.png";
+    this.size = size;
+    this.velocidad = {
+      x: 0,
+      y: 0,
+    };
+    this.saltando = false;
   }
   draw(context) {
-    context.drawImage(this.imagenBase, this.positionWorld.x, this.positionWorld.y);
+    console.log("Dibujando pj");
+    context.drawImage(
+      this.imagen,
+      this.positionWorld.x,
+      this.positionWorld.y,
+      this.size.w,
+      this.size.h
+    );
   }
 }
