@@ -1,14 +1,7 @@
 function gameLoop(mapaCanvas) {
-  let jugador = new GameObject(
-    { x: 500, y: 400 },
-    {
-      w: 50,
-      h: 100,
-    }
-  );
   //Añadir fisicas
   // let totalObjects = [jugador].concat(mapaCanvas.enemySpawn.enemys);
-  var Fisicas = new Fisica([jugador]);
+  // var Fisicas = new Fisica([]);
   //Cola enemigos
   // let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
@@ -20,10 +13,9 @@ function gameLoop(mapaCanvas) {
     request = requestAnimationFrame(performAnimation);
     //animate something
     // tecladoRuntime.realizarAccion(mapaCanvas);
-    mapaCanvas.movimientoY(jugador.positionWorld.y);
+    // mapaCanvas.movimientoY(jugador.positionWorld.y);
     mapaCanvas.limpiar();
     mapaCanvas.draw();
-    jugador.draw(mapaCanvas.context);
     // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
     // // Fisicas.reduccionEnemigosCanvas(mapaCanvas.canvasPosition, ColaHUDCanvas);
