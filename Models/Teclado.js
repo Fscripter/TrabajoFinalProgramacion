@@ -23,10 +23,10 @@ class Teclado {
       (this.ambasTeclas.d && !this.ambasTeclas.a)
     ) {
       this.player.caminando = true;
-      this.player.cambiarEstado();
+      // this.player.cambiarEstado();
     }
     if (this.player.caminando == false) {
-      this.player.cambiarEstado();
+      // this.player.cambiarEstado();
     }
   }
   realizarAccion() {
@@ -36,17 +36,11 @@ class Teclado {
       }
       if (key == "d" && value) {
         this.ambasTeclas.d = true;
-        this.player.mover(50 * this.deltaTime, this); // move player and world
-        if (this.player.move.r) {
-          this.mapaCanvas.canvasPosition.x -= 50 * this.deltaTime;
-        } // move player and world
+        this.player.move(50 * this.deltaTime, this); // move player and world
       }
       if (key == "a" && value) {
         this.ambasTeclas.a = true;
-        this.player.mover(-50 * this.deltaTime);
-        if (this.player.move.l) {
-          this.mapaCanvas.canvasPosition.x += 50 * this.deltaTime;
-        } // move player and world
+        this.player.move(-50 * this.deltaTime, this);
       }
       if (key == "d" && !value) {
         this.ambasTeclas.d = false;

@@ -1,30 +1,29 @@
 function gameLoop(mapaCanvas) {
   //Añadir fisicas
+  let Marin = new Player({
+    x: 500,
+    y: 0,
+  });
   // let totalObjects = [jugador].concat(mapaCanvas.enemySpawn.enemys);
-  // var Fisicas = new Fisica([]);
+  var Fisicas = new Fisica([Marin]);
   //Cola enemigos
   // let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
-  // let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
+  let tecladoRuntime = new Teclado(Marin, mapaCanvas, Fisicas.deltaTime);
   let request;
 
   //Main Loop
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
+    tecladoRuntime.realizarAccion();
     //animate something
-    // tecladoRuntime.realizarAccion(mapaCanvas);
-    // mapaCanvas.movimientoY(jugador.positionWorld.y);
+    mapaCanvas.movimientoY(Marin.positionWorld.y);
     mapaCanvas.limpiar();
     mapaCanvas.draw();
-    // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
-    Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
-    // // Fisicas.reduccionEnemigosCanvas(mapaCanvas.canvasPosition, ColaHUDCanvas);
-    // // Fisicas.enemigoDetectarJugador(mapaCanvas.context);
-    // // Fisicas.colisionBalasJugador();
-    // // Fisicas.colisionBalasEnemigos();
+    //Dibujar aqui
 
-    // ColaHUDCanvas.dibujar(mapaCanvas.context);
-    // jugador.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
+    Marin.draw(mapaCanvas.context);
+    Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
   };
   requestAnimationFrame(performAnimation);
 }
