@@ -60,7 +60,7 @@ class Player extends Character {
           },
           {
             id: "Agachar",
-            transitionTime: 60,
+            transitionTime: 30,
             loop: false,
             animaciones: {
               derecha: [

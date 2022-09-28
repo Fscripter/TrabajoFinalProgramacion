@@ -25,7 +25,7 @@ class Character extends GameObject {
     this.orientation = "R";
     this.animation = new Animator(settingsAnimations, this.orientation);
     this.face = face;
-    this.HUD = new BarraVida("Character", this.life, "#00ff00", this.face);
+    this.HUD = new BarraVida("Character", this.life, "#ffffff", this.face);
     this.bullets = [];
     this.canIshoot = true;
     this.bulletType = shootSettings.bulletType;
