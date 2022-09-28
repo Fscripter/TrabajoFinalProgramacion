@@ -4,13 +4,14 @@ class Player extends Character {
       position,
       { w: 50, h: 100 },
       "./Sprites/Player/Derecha.png",
-      100,
+      200,
       {
-        states: ["Estatico", "Caminar", "Saltar", "Caer"],
+        states: ["Estatico", "Caminar", "Saltar", "Caer", "Agachar"],
         animations: [
           {
             id: "Estatico",
             transitionTime: 100,
+            loop: false,
             animaciones: {
               derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
@@ -19,6 +20,7 @@ class Player extends Character {
           {
             id: "Caminar",
             transitionTime: 200,
+            loop: true,
             animaciones: {
               derecha: [
                 new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
@@ -41,6 +43,7 @@ class Player extends Character {
           {
             id: "Saltar",
             transitionTime: 0,
+            loop: false,
             animaciones: {
               derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
@@ -49,9 +52,29 @@ class Player extends Character {
           {
             id: "Caer",
             transitionTime: 0,
+            loop: false,
             animaciones: {
               derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
+            },
+          },
+          {
+            id: "Agachar",
+            transitionTime: 60,
+            loop: false,
+            animaciones: {
+              derecha: [
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso1.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso2.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso3.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso4.png"),
+              ],
+              izquierda: [
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso1.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso2.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso3.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Paso4.png"),
+              ],
             },
           },
         ],
@@ -60,8 +83,12 @@ class Player extends Character {
       {
         bulletType: BulletGun,
         coolDown: 250,
-      }
+      },
+      50
     );
+    this.ammo = 50;
+    this.ammoHUD = new AmmoHUD(this.ammo);
+    this.stateData.duck = false;
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -74,6 +101,12 @@ class Player extends Character {
       mapaMovement.mapaCanvas.canvasPosition.x -= vel;
     }
   }
+  getUp() {
+    this.stateData.duck = false;
+  }
+  getDown() {
+    this.stateData.duck = true;
+  }
   jump() {
     super.jump();
   }
@@ -81,6 +114,10 @@ class Player extends Character {
     this.changeState();
     super.draw(context);
     this.HUD.draw(context, {
+      x: this.positionWorld.x - 250,
+      y: this.positionWorld.y - 270,
+    });
+    this.ammoHUD.draw(context, {
       x: this.positionWorld.x - 250,
       y: this.positionWorld.y - 270,
     });
@@ -99,6 +136,19 @@ class Player extends Character {
       this.animation.changeState("Caminar");
       return;
     }
+    if (this.physicsData.isGround && this.stateData.duck) {
+      this.animation.changeState("Agachar");
+      return;
+    }
     this.animation.changeState("Estatico");
+  }
+  shoot() {
+    super.shoot();
+    this.ammoHUD.updateAmmount(this.ammo);
+  }
+  increaseAmmo(addAdmo) {
+    if (super.increaseAmmo(addAdmo)) {
+      this.ammoHUD.updateAmmount(this.ammo);
+    }
   }
 }

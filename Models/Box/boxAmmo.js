@@ -8,12 +8,12 @@ class boxAmmo extends Box {
       },
       "./Sprites/Objects/Ammo.png"
     );
-    this.maxAmmo = 100;
+    this.maxAmmo = 50;
   }
   GiveAmmo(Target) {
-    Target.Ammo += 50;
+    Target.increaseAmmo(this.maxAmmo);
   }
-  interaction(Player, Ammo) {
+  interaction(Player) {
     super.interaction();
     this.GiveAmmo(Player);
   }

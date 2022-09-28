@@ -8,10 +8,10 @@ class BoxHealing extends Box {
       },
       "./Sprites/Objects/Healing.png"
     );
-    this.Healing = 60;
+    this.lifeRestore = 60;
   }
   Healing(Target) {
-    Target.life += this.Healing;
+    Target.heal(this.lifeRestore);
   }
   interaction(Player, enemysArray) {
     super.interaction();

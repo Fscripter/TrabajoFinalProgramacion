@@ -13,19 +13,16 @@ class Teclado {
   }
   chequearAmbasTeclas() {
     if (this.ambasTeclas.a && this.ambasTeclas.d) {
-      this.player.caminando = false;
+      this.player.stateData.moving = false;
     }
     if (!this.ambasTeclas.a && !this.ambasTeclas.d) {
-      this.player.caminando = false;
+      this.player.stateData.moving = false;
     }
     if (
       (this.ambasTeclas.a && !this.ambasTeclas.d) ||
       (this.ambasTeclas.d && !this.ambasTeclas.a)
     ) {
       this.player.stateData.moving = true;
-    }
-    if (!this.ambasTeclas.a && !this.ambasTeclas.d) {
-      this.player.stateData.moving = false;
     }
   }
   realizarAccion() {
@@ -46,6 +43,12 @@ class Teclado {
       }
       if (key == "a" && !value) {
         this.ambasTeclas.a = false;
+      }
+      if (key == "s" && value) {
+        this.player.getDown();
+      }
+      if (key == "s" && !value) {
+        this.player.getUp();
       }
       this.chequearAmbasTeclas();
       if (key == " " && value) {

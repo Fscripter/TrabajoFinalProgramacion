@@ -23,7 +23,11 @@ class Animator {
   skipFrame() {
     this.actualFrame++;
     if (this.actualFrame + 1 > this.currentAnimation.animaciones.derecha.length) {
-      this.setTimer();
+      if (this.currentAnimation.loop == false) {
+        this.actualFrame--;
+      } else {
+        this.setTimer();
+      }
     } else {
       this.timeElapsed = 0;
     }
@@ -52,7 +56,7 @@ class Animator {
       }
     });
     this.setTimer();
-    console.log(`ID: ${this.id}, State is: ${this.currentState}`);
+    // console.log(`ID: ${this.id}, State is: ${this.currentState}`);
   }
   changeState(newState) {
     if (this.states.indexOf(newState) == -1 || this.currentState == newState) {

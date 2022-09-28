@@ -8,6 +8,7 @@ function gameLoop(mapaCanvas) {
     .concat(mapaCanvas.boxGenerator.boxes)
     .concat(mapaCanvas.enemyGenerator.enemys);
   var Fisicas = new Fisica(totalObjects);
+  mapaCanvas.collider.getPlayer(Marin);
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
