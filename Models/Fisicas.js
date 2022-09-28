@@ -29,7 +29,7 @@ class Fisica {
       }
       //Realiza movimiento
       element.positionWorld.y += Math.floor(element.velocidad.y);
-      this.detectarSuelo(element);
+      this.detectGround(element);
       // this.detectarColision(element);
     });
   }
@@ -38,23 +38,24 @@ class Fisica {
       return true;
     }
   }
-  detectarSuelo(element) {
-    let posicionEnArray = {
+  detectGround(element) {
+    //Only detect ground if we are falling
+    if (element.stateData.jumping) {
+      return;
+    }
+    let positionArr = {
       y: Math.floor((element.positionWorld.y + element.size.h) / 50),
       xa: Math.floor(element.positionWorld.x / 50),
       xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
+    let isFloor = false;
+    let axisX = this.mapArray[positionArr.y][positionArr.xa];
+    let axisXWidth = this.mapArray[positionArr.y][positionArr.xb];
 
-    let hayTerrenoDebajo = false;
-
-    let primerTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa];
-    let segundoTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xb];
-
-    hayTerrenoDebajo = this.detectarTerreno(primerTerreno) || this.detectarTerreno(segundoTerreno);
-
-    element.physicsData.isGround = hayTerrenoDebajo;
-    if (hayTerrenoDebajo) {
-      element.positionWorld.y = posicionEnArray.y * 50 - element.size.h;
+    isFloor = this.detectarTerreno(axisX) || this.detectarTerreno(axisXWidth);
+    element.physicsData.isGround = isFloor;
+    if (isFloor) {
+      element.positionWorld.y = positionArr.y * 50 - element.size.h;
     }
   }
   detectarColision(element) {
@@ -75,16 +76,18 @@ class Fisica {
   reduccionEnemigosCanvas(canvasPosicion, queue) {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
-      if (element.posicion.x > -canvasPosicion.x && element.posicion.x < -canvasPosicion.x + 1000) {
-        if (element.tag == "Enemigo" && element.alive) {
-          queue.add(element);
-          element.show();
-        }
+      if (element.type != "Enemy") {
+        return;
+      }
+      if (
+        element.positionWorld.x > -canvasPosicion.x &&
+        element.positionWorld.x < -canvasPosicion.x + 1000
+      ) {
+        queue.add(element);
+        element.active = true;
         this.objectsInScreen.push(element);
       } else {
-        if (element.tag == "Enemigo") {
-          element.hide();
-        }
+        element.active = false;
       }
     });
     this.enemigosEnPantalla();
@@ -99,6 +102,7 @@ class Fisica {
       }
       if (element.tag == "Player") {
         this.mainPlayer = element;
+        console.log(element);
       }
     });
   }
@@ -123,7 +127,7 @@ class Fisica {
           bala.posicion.y >= this.mainPlayer.posicion.y &&
           bala.posicion.y < this.mainPlayer.posicion.y + this.mainPlayer.size.h
         ) {
-          bala.eliminar();
+          bala.delete();
           this.mainPlayer.recibirDano();
         }
       });
@@ -144,7 +148,7 @@ class Fisica {
             bala.posicion.y < enemigo.posicion.y + enemigo.size.h &&
             enemigo.alive
           ) {
-            bala.eliminar();
+            bala.delete();
             enemigo.recibirDano();
           }
           if (

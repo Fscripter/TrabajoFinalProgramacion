@@ -48,8 +48,8 @@ class boxSpawner {
   }
   getInfo() {
     console.log(
-      `Hay un total de: %c${this.totalBoxes.total} enemigos`,
-      "color: red; font-size: 24px"
+      `Hay un total de: %c${this.totalBoxes.total} cajas`,
+      "color: green; font-size: 18px"
     );
   }
   draw(context) {

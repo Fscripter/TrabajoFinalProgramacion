@@ -66,7 +66,6 @@ class Enemy extends gameObject {
     this.vida = 100;
     this.imgBase.src = "./Sprites/Enemys/Antioquia/Estatico/Derecha.png";
     this.dificultad = dificultad;
-    this.vidaHUD = new BarraVida(this.tag, this.vida, "#ffffff", this.face, this.dificultad);
     this.visible = true;
     this.alive = true;
     this.visionEnemigo = {

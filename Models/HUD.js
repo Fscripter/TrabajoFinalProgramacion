@@ -14,7 +14,7 @@ class BarraVida {
     this.initialColor = color;
     this.lvl = lvl;
   }
-  dibujar(ctx, position) {
+  draw(ctx, position) {
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(position.x - this.width - 5, position.y + 25, 30, 0, Math.PI * 2);

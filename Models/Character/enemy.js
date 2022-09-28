@@ -1,4 +1,4 @@
-class Player extends Character {
+class Enemy extends Character {
   constructor(position) {
     super(
       position,
@@ -12,7 +12,7 @@ class Player extends Character {
             id: "Estatico",
             transitionTime: 100,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
+              derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Derecha.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
             },
           },
@@ -56,12 +56,13 @@ class Player extends Character {
           },
         ],
       },
-      new ImagenDerogada("./Sprites/Player/Face.png"),
+      new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
         bulletType: BulletGun,
-        coolDown: 250,
+        coolDown: 150,
       }
     );
+    this.type = "Enemy";
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -74,16 +75,12 @@ class Player extends Character {
       mapaMovement.mapaCanvas.canvasPosition.x -= vel;
     }
   }
-  jump() {
-    super.jump();
+  salto() {
+    super.salto();
   }
   draw(context) {
     this.changeState();
     super.draw(context);
-    this.HUD.draw(context, {
-      x: this.positionWorld.x - 250,
-      y: this.positionWorld.y - 270,
-    });
   }
   changeState() {
     //Each one, defines own rules for animations

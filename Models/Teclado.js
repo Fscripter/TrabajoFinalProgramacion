@@ -22,17 +22,16 @@ class Teclado {
       (this.ambasTeclas.a && !this.ambasTeclas.d) ||
       (this.ambasTeclas.d && !this.ambasTeclas.a)
     ) {
-      this.player.caminando = true;
-      // this.player.cambiarEstado();
+      this.player.stateData.moving = true;
     }
-    if (this.player.caminando == false) {
-      // this.player.cambiarEstado();
+    if (!this.ambasTeclas.a && !this.ambasTeclas.d) {
+      this.player.stateData.moving = false;
     }
   }
   realizarAccion() {
     for (const [key, value] of Object.entries(this.keyMap)) {
       if (key == "w" && value) {
-        this.player.salto();
+        this.player.jump();
       }
       if (key == "d" && value) {
         this.ambasTeclas.d = true;
@@ -50,7 +49,7 @@ class Teclado {
       }
       this.chequearAmbasTeclas();
       if (key == " " && value) {
-        this.player.disparar();
+        this.player.shoot();
       }
     }
   }
