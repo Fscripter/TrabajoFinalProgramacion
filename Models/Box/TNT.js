@@ -10,7 +10,6 @@ class TNT extends Box {
     );
     this.damage = 40;
     this.radius = 150;
-    this.active = true;
     this.isblow = false;
   }
   blow(Player, enemysArray) {

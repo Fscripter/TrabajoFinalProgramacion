@@ -4,10 +4,13 @@ function gameLoop(mapaCanvas) {
     x: 500,
     y: 0,
   });
-  let totalObjects = [Marin].concat(mapaCanvas.boxGenerator.boxes);
+  let totalObjects = [Marin]
+    .concat(mapaCanvas.boxGenerator.boxes)
+    .concat(mapaCanvas.enemyGenerator.enemys);
   var Fisicas = new Fisica(totalObjects);
+  mapaCanvas.collider.getPlayer(Marin);
   //Cola enemigos
-  // let ColaHUDCanvas = new ColaHUD();
+  let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
   let tecladoRuntime = new Teclado(Marin, mapaCanvas, Fisicas.deltaTime);
   let request;
@@ -24,6 +27,10 @@ function gameLoop(mapaCanvas) {
 
     Marin.draw(mapaCanvas.context);
     Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
+    Fisicas.reduccionEnemigosCanvas(mapaCanvas.canvasPosition, ColaHUDCanvas);
+    //Cola enemigos
+    ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
+    ColaHUDCanvas.dibujar(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);
 }

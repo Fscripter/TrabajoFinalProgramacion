@@ -1,26 +1,24 @@
-class Player extends Character {
+class Enemy extends Character {
   constructor(position) {
     super(
       position,
       { w: 50, h: 100 },
       "./Sprites/Player/Derecha.png",
-      200,
+      100,
       {
-        states: ["Estatico", "Caminar", "Saltar", "Caer", "Agachar"],
+        states: ["Estatico", "Caminar", "Saltar", "Caer"],
         animations: [
           {
             id: "Estatico",
             transitionTime: 100,
-            loop: false,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
+              derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Derecha.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
             },
           },
           {
             id: "Caminar",
             transitionTime: 200,
-            loop: true,
             animaciones: {
               derecha: [
                 new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
@@ -43,7 +41,6 @@ class Player extends Character {
           {
             id: "Saltar",
             transitionTime: 0,
-            loop: false,
             animaciones: {
               derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
@@ -52,43 +49,20 @@ class Player extends Character {
           {
             id: "Caer",
             transitionTime: 0,
-            loop: false,
             animaciones: {
               derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
             },
           },
-          {
-            id: "Agachar",
-            transitionTime: 60,
-            loop: false,
-            animaciones: {
-              derecha: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso4.png"),
-              ],
-              izquierda: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso4.png"),
-              ],
-            },
-          },
         ],
       },
-      new ImagenDerogada("./Sprites/Player/Face.png"),
+      new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
         bulletType: BulletGun,
-        coolDown: 250,
-      },
-      50
+        coolDown: 150,
+      }
     );
-    this.ammo = 50;
-    this.ammoHUD = new AmmoHUD(this.ammo);
-    this.stateData.duck = false;
+    this.type = "Enemy";
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -101,26 +75,12 @@ class Player extends Character {
       mapaMovement.mapaCanvas.canvasPosition.x -= vel;
     }
   }
-  getUp() {
-    this.stateData.duck = false;
-  }
-  getDown() {
-    this.stateData.duck = true;
-  }
-  jump() {
-    super.jump();
+  salto() {
+    super.salto();
   }
   draw(context) {
     this.changeState();
     super.draw(context);
-    this.HUD.draw(context, {
-      x: this.positionWorld.x - 250,
-      y: this.positionWorld.y - 270,
-    });
-    this.ammoHUD.draw(context, {
-      x: this.positionWorld.x - 250,
-      y: this.positionWorld.y - 270,
-    });
   }
   changeState() {
     //Each one, defines own rules for animations
@@ -136,19 +96,6 @@ class Player extends Character {
       this.animation.changeState("Caminar");
       return;
     }
-    if (this.physicsData.isGround && this.stateData.duck) {
-      this.animation.changeState("Agachar");
-      return;
-    }
     this.animation.changeState("Estatico");
-  }
-  shoot() {
-    super.shoot();
-    this.ammoHUD.updateAmmount(this.ammo);
-  }
-  increaseAmmo(addAdmo) {
-    if (super.increaseAmmo(addAdmo)) {
-      this.ammoHUD.updateAmmount(this.ammo);
-    }
   }
 }

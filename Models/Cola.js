@@ -7,12 +7,13 @@ class ColaHUD {
     };
   }
   dibujar(ctx) {
+    // console.log(this.queue);
     for (let itemsCola = 0; itemsCola < this.queue.length; itemsCola++) {
       let posicionItem = {
         x: -this.posicion.x + 900,
         y: this.posicion.y + itemsCola * 80,
       };
-      this.queue[itemsCola].getVida(ctx, posicionItem);
+      this.queue[itemsCola].HUD.draw(ctx, posicionItem);
     }
     this.actualizarCola();
   }

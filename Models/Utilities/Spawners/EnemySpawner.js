@@ -1,4 +1,4 @@
-class Spawn {
+class enemySpawner {
   constructor() {
     this.totalEnemigos = {
       tipo: {
@@ -44,9 +44,9 @@ class Spawn {
       "color: red; font-size: 24px"
     );
   }
-  draw(context, canvasPosition) {
+  draw(context) {
     this.enemys.forEach((enemy) => {
-      enemy.dibujar(context, canvasPosition);
+      enemy.draw(context);
     });
   }
 }
