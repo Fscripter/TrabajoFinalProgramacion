@@ -9,6 +9,7 @@ class boxAmmo extends Box {
       "./Sprites/Objects/Ammo.png"
     );
     this.maxAmmo = 50;
+    this.sound = new Audio("./Sprites/Objects/Ammo.mp3");
   }
   GiveAmmo(Target) {
     Target.increaseAmmo(this.maxAmmo);
@@ -16,5 +17,6 @@ class boxAmmo extends Box {
   interaction(Player) {
     super.interaction();
     this.GiveAmmo(Player);
+    this.sound.play();
   }
 }
