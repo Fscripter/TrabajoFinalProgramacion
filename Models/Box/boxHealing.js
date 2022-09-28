@@ -9,6 +9,7 @@ class BoxHealing extends Box {
       "./Sprites/Objects/Healing.png"
     );
     this.lifeRestore = 60;
+    this.sound = new Audio("./Sprites/Objects/Healing.mp3");
   }
   Healing(Target) {
     Target.heal(this.lifeRestore);
@@ -16,5 +17,6 @@ class BoxHealing extends Box {
   interaction(Player, enemysArray) {
     super.interaction();
     this.Healing(Player);
+    this.sound.play();
   }
 }

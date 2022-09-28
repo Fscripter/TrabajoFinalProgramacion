@@ -13,10 +13,13 @@ class Collider {
     this.player = player;
   }
   collisionNormalBox(box) {
-    if (
+    let isInX =
       this.player.positionWorld.x >= box.positionWorld.x &&
-      this.player.positionWorld.x < box.positionWorld.x + box.size.w
-    ) {
+      this.player.positionWorld.x < box.positionWorld.x + box.size.w;
+    let isInY =
+      this.player.positionWorld.y >= box.positionWorld.y - 50 &&
+      this.player.positionWorld.y < box.positionWorld.y + box.size.h;
+    if (isInX && isInY) {
       box.interaction(this.player);
     }
   }
