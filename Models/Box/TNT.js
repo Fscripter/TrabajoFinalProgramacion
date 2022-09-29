@@ -8,8 +8,8 @@ class TNT extends Box {
       },
       "./Sprites/Objects/TNT.png"
     );
-    this.damage = 40;
-    this.radius = 150;
+    this.damage = 80;
+    this.radius = 350;
     this.isblow = false;
     this.animation = new Animator(
       {
@@ -49,12 +49,15 @@ class TNT extends Box {
     if (this.isblow == false) {
       return;
     }
+    enemysArray = enemysArray.concat(Player);
     enemysArray.forEach((enemy) => {
       let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
       let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
       let radioInteraccion = Math.pow(X, 2) + Math.pow(Y, 2); // X.X + Y.Y = R.R
+      console.log(radioInteraccion, Math.pow(this.radius, 2));
       if (radioInteraccion <= Math.pow(this.radius, 2)) {
         enemy.doDamage(this.damage);
+        console.log(radioInteraccion);
       }
     });
     this.changeState();
