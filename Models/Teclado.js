@@ -33,10 +33,12 @@ class Teclado {
       if (key == "d" && value) {
         this.ambasTeclas.d = true;
         this.player.move(50 * this.deltaTime, this); // move player and world
+        this.player.getDown();
       }
       if (key == "a" && value) {
         this.ambasTeclas.a = true;
         this.player.move(-50 * this.deltaTime, this);
+        this.player.getUp();
       }
       if (key == "d" && !value) {
         this.ambasTeclas.d = false;
@@ -44,7 +46,7 @@ class Teclado {
       if (key == "a" && !value) {
         this.ambasTeclas.a = false;
       }
-      if (key == "s" && value) {
+      if (key == "s" && value && !this.player.stateData.moving) {
         this.player.getDown();
       }
       if (key == "s" && !value) {

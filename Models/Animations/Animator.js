@@ -2,11 +2,11 @@ class Animator {
   constructor(settings, orientation = null) {
     this.states = settings.states;
     this.animations = settings.animations;
-    this.currentState = settings.states[1];
+    this.currentState = settings.states[0];
 
     this.id = new Date().getTime();
 
-    this.currentAnimation = settings.animations[1];
+    this.currentAnimation = settings.animations[0];
     this.actualFrame = 0;
     this.timeElapsed = 0;
     this.orientation = orientation;

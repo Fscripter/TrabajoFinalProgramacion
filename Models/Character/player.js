@@ -64,16 +64,16 @@ class Player extends Character {
             loop: false,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso4.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso1.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso2.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso3.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso4.png"),
               ],
               izquierda: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Paso4.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso1.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso2.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso3.png"),
+                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso4.png"),
               ],
             },
           },
@@ -84,11 +84,20 @@ class Player extends Character {
         bulletType: BulletGun,
         coolDown: 250,
       },
-      50
+      50,
+      {
+        normal: {
+          x: 0,
+          y: 50,
+        },
+        down: {
+          x: 0,
+          y: 70,
+        },
+      }
     );
     this.ammo = 50;
     this.ammoHUD = new AmmoHUD(this.ammo);
-    this.stateData.duck = false;
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -105,6 +114,11 @@ class Player extends Character {
     this.stateData.duck = false;
   }
   getDown() {
+    console.log(this.stateData);
+    if (this.stateData.moving == true) {
+      this.getUp();
+      return;
+    }
     this.stateData.duck = true;
   }
   jump() {
