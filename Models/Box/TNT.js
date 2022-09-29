@@ -53,23 +53,26 @@ class TNT extends Box {
     this.changeState();
   }
   blow(Player, enemysArray) {
-    if (this.isblow == false) {
+    // console.log(this.isblow);
+    if (this.isblow) {
       return;
     }
-    for (enemy in enemysArray) {
-      let X = Math.abs(enemy.positionWorld.position.x - this.positionWorld.x);
-      let Y = Math.abs(enemy.positionWorld.position.y - this.positionWorld.y);
+    console.log(enemysArray);
+    enemysArray.forEach((enemy) => {
+      let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
+      let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
       let radioInteraccion = Math.pow(X, 2) + Math.pow(Y, 2); // X.X + Y.Y = R.R
       if (radioInteraccion <= Math.pow(this.radius, 2)) {
         enemy.doDamage(this.damage);
       }
-    }
-    this.active = false;
+    });
   }
   interaction(Player, enemysArray) {
     this.blow(Player, enemysArray);
   }
-  changeState() {}
+  changeState() {
+    this.animation.changeState("Explosion");
+  }
   changeEvent() {
     this.isblow = true;
   }
