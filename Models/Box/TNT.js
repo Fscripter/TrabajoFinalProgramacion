@@ -8,8 +8,8 @@ class TNT extends Box {
       },
       "./Sprites/Objects/TNT.png"
     );
-    this.damage = 40;
-    this.radius = 150;
+    this.damage = 80;
+    this.radius = 350;
     this.isblow = false;
     this.animation = new Animator(
       {
@@ -29,12 +29,12 @@ class TNT extends Box {
             loop: false,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame1.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame2.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame3.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame4.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame5.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame6.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame1.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame2.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame3.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame4.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame5.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame6.png"),
               ],
             },
           },
@@ -42,26 +42,34 @@ class TNT extends Box {
       },
       "R"
     );
-    this.changeState();
+    this.sound = new Audio("./Sprites/Objects/TNT.mp3");
   }
   blow(Player, enemysArray) {
+    // console.log(this.isblow);
     if (this.isblow == false) {
       return;
     }
-    for (enemy in enemysArray) {
-      let X = Math.abs(enemy.positionWorld.position.x - this.positionWorld.x);
-      let Y = Math.abs(enemy.positionWorld.position.y - this.positionWorld.y);
+    enemysArray = enemysArray.concat(Player);
+    enemysArray.forEach((enemy) => {
+      let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
+      let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
       let radioInteraccion = Math.pow(X, 2) + Math.pow(Y, 2); // X.X + Y.Y = R.R
+      console.log(radioInteraccion, Math.pow(this.radius, 2));
       if (radioInteraccion <= Math.pow(this.radius, 2)) {
         enemy.doDamage(this.damage);
+        console.log(radioInteraccion);
       }
-    }
-    this.active = false;
+    });
+    this.changeState();
+    this.sound.play();
   }
   interaction(Player, enemysArray) {
+    this.changeEvent();
     this.blow(Player, enemysArray);
   }
-  changeState() {}
+  changeState() {
+    this.animation.changeState("Explosion");
+  }
   changeEvent() {
     this.isblow = true;
   }
