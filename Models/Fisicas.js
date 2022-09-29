@@ -76,7 +76,7 @@ class Fisica {
   reduccionEnemigosCanvas(canvasPosicion, queue) {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
-      if (element.type != "Enemy") {
+      if (!(element instanceof Character)) {
         return;
       }
       if (
@@ -97,68 +97,25 @@ class Fisica {
     if (this.objectsInScreen.length < 0) return;
     this.enemys = [];
     this.objectsInScreen.forEach((element) => {
-      if (element.tag == "Enemigo") {
+      if (element instanceof Enemy) {
         this.enemys.push(element);
       }
-      if (element.tag == "Player") {
+      if (element instanceof Player) {
         this.mainPlayer = element;
         console.log(element);
       }
     });
   }
-  enemigoDetectarJugador(mapaCanvas) {
+  enemigoDetectarJugador() {
     this.enemys.forEach((enemigos) => {
-      enemigos.vision(this.mainPlayer.posicion);
+      enemigos.IA(
+        {
+          life: this.mainPlayer.life,
+          ammount: this.mainPlayer.ammount,
+          positionWorld: this.mainPlayer.positionWorld,
+        },
+        this.mainPlayer.bullets
+      );
     });
-  }
-  colisionBalasEnemigos() {
-    if (this.objectsInScreen.length < 0) return;
-    this.balasEnemigas = [];
-    this.enemys.forEach((enemigo) => {
-      if (enemigo.bulletsInGame.length > 0) {
-        this.balasEnemigas = this.balasEnemigas.concat(enemigo.bulletsInGame);
-      }
-    });
-    if (this.balasEnemigas.length > 0) {
-      this.balasEnemigas.forEach((bala) => {
-        if (
-          bala.posicion.x >= this.mainPlayer.posicion.x &&
-          bala.posicion.x < this.mainPlayer.posicion.x + this.mainPlayer.size.w &&
-          bala.posicion.y >= this.mainPlayer.posicion.y &&
-          bala.posicion.y < this.mainPlayer.posicion.y + this.mainPlayer.size.h
-        ) {
-          bala.delete();
-          this.mainPlayer.recibirDano();
-        }
-      });
-    }
-  }
-  colisionBalasJugador() {
-    if (this.objectsInScreen.length < 0) return;
-
-    //Cada bala del jugador interactuara con el enemigo
-    if (this.mainPlayer.bulletsInGame.length > 0) {
-      this.mainPlayer.bulletsInGame.forEach((bala) => {
-        // posicion de cada bala
-        this.enemys.forEach((enemigo) => {
-          if (
-            bala.posicion.x >= enemigo.posicion.x &&
-            bala.posicion.x < enemigo.posicion.x + enemigo.size.w &&
-            bala.posicion.y >= enemigo.posicion.y &&
-            bala.posicion.y < enemigo.posicion.y + enemigo.size.h &&
-            enemigo.alive
-          ) {
-            bala.delete();
-            enemigo.recibirDano();
-          }
-          if (
-            bala.posicion.y >= enemigo.posicion.y &&
-            bala.posicion.y < enemigo.posicion.y + enemigo.size.h
-          ) {
-            enemigo.salto();
-          }
-        });
-      });
-    }
   }
 }

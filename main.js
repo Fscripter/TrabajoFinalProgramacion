@@ -28,6 +28,7 @@ function gameLoop(mapaCanvas) {
     Marin.draw(mapaCanvas.context);
     Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
     Fisicas.reduccionEnemigosCanvas(mapaCanvas.canvasPosition, ColaHUDCanvas);
+    Fisicas.enemigoDetectarJugador();
     //Cola enemigos
     ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);
