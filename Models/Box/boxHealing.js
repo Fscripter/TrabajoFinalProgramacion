@@ -6,7 +6,7 @@ class BoxHealing extends Box {
         w: 100,
         h: 50,
       },
-      "./Sprites/Objects/Healing.png"
+      "./Sprites/Objects/Caja/BoxHealing/Healing.png"
     );
     this.lifeRestore = 60;
     this.sound = new Audio("./Sprites/Objects/Healing.mp3");
