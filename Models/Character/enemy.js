@@ -116,6 +116,10 @@ class Enemy extends Character {
       life: Number,
       ammount: Number,
     },
+    worldInfo = {
+      l: false,
+      r: false,
+    },
     bulletsArray
   ) {
     if (playerData.ammount < 30) {
