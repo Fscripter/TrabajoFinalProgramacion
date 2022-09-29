@@ -20,7 +20,7 @@ class TNT extends Box {
             loop: false,
             transitionTime: 100,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Objects/TNT.png")],
+              derecha: [new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/TNT.png")],
             },
           },
           {
@@ -29,20 +29,12 @@ class TNT extends Box {
             loop: false,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
-              ],
-              izquierda: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame1.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame2.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame3.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame4.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame5.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame6.png"),
               ],
             },
           },
