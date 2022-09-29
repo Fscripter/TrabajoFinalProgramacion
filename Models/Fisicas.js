@@ -111,7 +111,7 @@ class Fisica {
       enemigos.IA(
         {
           life: this.mainPlayer.life,
-          ammount: this.mainPlayer.ammount,
+          ammount: this.mainPlayer.ammo,
           positionWorld: this.mainPlayer.positionWorld,
         },
         this.mainPlayer.bullets

@@ -105,7 +105,7 @@ class Enemy extends Character {
     life: Number,
     ammount: Number,
   }, bulletsArray) {
-    if (ammount < 30) {
+    if (playerData.ammount < 30) {
       if (playerData.positionWorld.x > this.positionWorld.x) {
         this.move(2);
       } else {
