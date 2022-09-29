@@ -50,14 +50,12 @@ class TNT extends Box {
       },
       "R"
     );
-    this.changeState();
   }
   blow(Player, enemysArray) {
     // console.log(this.isblow);
-    if (this.isblow) {
+    if (this.isblow == false) {
       return;
     }
-    console.log(enemysArray);
     enemysArray.forEach((enemy) => {
       let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
       let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
@@ -66,8 +64,10 @@ class TNT extends Box {
         enemy.doDamage(this.damage);
       }
     });
+    this.changeState();
   }
   interaction(Player, enemysArray) {
+    this.changeEvent();
     this.blow(Player, enemysArray);
   }
   changeState() {

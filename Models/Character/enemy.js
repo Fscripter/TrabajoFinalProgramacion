@@ -64,7 +64,7 @@ class Enemy extends Character {
     );
     this.type = "Enemy";
   }
-  move(vel, mapaMovement) {
+  move(vel) {
     if (this.canIMove.l || this.canIMove.r) {
       super.move(vel);
       this.orientation = "L";
@@ -72,7 +72,6 @@ class Enemy extends Character {
         this.orientation = "R";
       }
       this.animation.changeOrientation(this.orientation);
-      mapaMovement.mapaCanvas.canvasPosition.x -= vel;
     }
   }
   salto() {
@@ -98,4 +97,15 @@ class Enemy extends Character {
     }
     this.animation.changeState("Estatico");
   }
+  IA(
+    playerData = {
+      positionWorld: {
+        x: Number,
+        y: Number,
+      },
+      life: Number,
+      ammount: Number,
+    },
+    balasArray = Array
+  ) {}
 }

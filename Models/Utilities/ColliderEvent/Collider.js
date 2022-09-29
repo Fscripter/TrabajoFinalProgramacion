@@ -19,8 +19,9 @@ class Collider {
     let isInY =
       bullet.positionWorld.y >= box.positionWorld.y - 50 &&
       bullet.positionWorld.y < box.positionWorld.y + box.size.h;
-    if (isInX && isInY) {
+    if (isInX && isInY && box.active && !box.isBblow) {
       box.interaction(this.player, this.enemysArray);
+      bullet.delete();
     }
   }
   collisionNormalBox(box) {
