@@ -29,12 +29,12 @@ class TNT extends Box {
             loop: false,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame1.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame2.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame3.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame4.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame5.png"),
-                new ImagenDerogada("./Sprites/Objects/Caja/Box TNT/Frame6.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame1.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame2.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame3.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame4.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame5.png"),
+                new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/Frame6.png"),
               ],
             },
           },
@@ -42,6 +42,7 @@ class TNT extends Box {
       },
       "R"
     );
+    this.sound = new Audio("./Sprites/Objects/TNT.mp3");
   }
   blow(Player, enemysArray) {
     // console.log(this.isblow);
@@ -57,6 +58,7 @@ class TNT extends Box {
       }
     });
     this.changeState();
+    this.sound.play();
   }
   interaction(Player, enemysArray) {
     this.changeEvent();
