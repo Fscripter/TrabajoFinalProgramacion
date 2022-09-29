@@ -18,6 +18,20 @@ class Fisica {
     this.mapArray = mapArray;
 
     this.objets.forEach((element) => {
+      if (element instanceof Player) {
+        this.mainPlayer = element;
+      }
+      if (element.positionWorld.y > this.mapArray.length * 50) {
+        let IDtoDelte = element.delete();
+        let idDeleted = undefined;
+        this.enemys.forEach((enemy, index) => {
+          if (enemy.id == IDtoDelte) {
+            idDeleted = index;
+          }
+        });
+        this.enemys.splice(idDeleted, 1);
+        return;
+      }
       if (!element.physicsData.isGround) {
         element.velocidad.y += trunc(this.gravedad * this.deltaTime * this.deltaTime * 10, 5);
         if (element.velocidad.y >= 0) {
@@ -76,7 +90,7 @@ class Fisica {
   reduccionEnemigosCanvas(canvasPosicion, queue) {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
-      if (!(element instanceof Character)) {
+      if (!(element instanceof Enemy)) {
         return;
       }
       if (
@@ -86,7 +100,6 @@ class Fisica {
         queue.add(element);
         element.active = true;
         this.objectsInScreen.push(element);
-        console.log(this.objectsInScreen);
       } else {
         element.active = false;
       }
@@ -103,7 +116,6 @@ class Fisica {
       }
       if (element instanceof Player) {
         this.mainPlayer = element;
-        console.log(element);
       }
     });
   }

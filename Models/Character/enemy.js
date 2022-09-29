@@ -1,5 +1,5 @@
 class Enemy extends Character {
-  constructor(position) {
+  constructor(position, id, padreArr) {
     super(
       position,
       { w: 50, h: 100 },
@@ -63,6 +63,19 @@ class Enemy extends Character {
       }
     );
     this.type = "Enemy";
+    this.id = id;
+    this.father = padreArr;
+  }
+  delete() {
+    this.father.enemys.map((enemy, index) => {
+      if (enemy.id == this.id) {
+        this.lastID = this.id;
+        this.id = index;
+      }
+    });
+    this.father.enemys.splice(this.id, 1);
+    console.log(this);
+    return this.lastID;
   }
   move(vel) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -97,25 +110,28 @@ class Enemy extends Character {
     }
     this.animation.changeState("Estatico");
   }
-  IA(playerData = {
-    positionWorld: {
-      x: Number,
-      y: Number,
+  IA(
+    playerData = {
+      positionWorld: {
+        x: Number,
+        y: Number,
+      },
+      life: Number,
+      ammount: Number,
     },
-    life: Number,
-    ammount: Number,
-  }, bulletsArray) {
+    bulletsArray
+  ) {
     if (playerData.ammount < 30) {
       if (playerData.positionWorld.x > this.positionWorld.x) {
         this.move(2);
       } else {
         this.move(-2);
       }
-    }else{
-      if(playerData.positionWorld.x>this.positionWorld.x){
-        this.move(-2)
-      }else{
-        this.move(2)
+    } else {
+      if (playerData.positionWorld.x > this.positionWorld.x) {
+        this.move(-2);
+      } else {
+        this.move(2);
       }
     }
   }

@@ -12,13 +12,14 @@ class enemySpawner {
     this.enemys = [];
     this.scenes = [];
   }
+  deleteEnemyFromScene() {}
   spawnEnemys(Level, Posicion) {
     let acceptedLvl = ["0", "1", "2", "3"];
     if (acceptedLvl.indexOf(Level) == -1) {
       return;
     }
     Posicion.y -= 100;
-    this.enemys.push(new Enemy(Posicion, Level));
+    this.enemys.push(new Enemy(Posicion, this.enemys.length, this));
 
     //Add scenes
 
