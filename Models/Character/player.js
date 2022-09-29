@@ -114,7 +114,6 @@ class Player extends Character {
     this.stateData.duck = false;
   }
   getDown() {
-    console.log(this.stateData);
     if (this.stateData.moving == true) {
       this.getUp();
       return;
