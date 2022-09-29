@@ -118,6 +118,7 @@ class Enemy extends Character {
     },
     worldInfo = {
       l: false,
+      x: false,
       r: false,
     },
     bulletsArray
