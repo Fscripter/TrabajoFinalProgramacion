@@ -86,6 +86,7 @@ class Fisica {
         queue.add(element);
         element.active = true;
         this.objectsInScreen.push(element);
+        console.log(this.objectsInScreen);
       } else {
         element.active = false;
       }
@@ -111,7 +112,7 @@ class Fisica {
       enemigos.IA(
         {
           life: this.mainPlayer.life,
-          ammount: this.mainPlayer.ammount,
+          ammount: this.mainPlayer.ammo,
           positionWorld: this.mainPlayer.positionWorld,
         },
         this.mainPlayer.bullets
