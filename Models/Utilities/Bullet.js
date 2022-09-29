@@ -8,6 +8,7 @@ class Bullet {
     this.index = new Date();
     this.lifeTime = 0; // seconds alive
     this.deathTime = 2; // death time
+    console.log(this.posicion);
   }
   draw(context) {
     this.checkLife();

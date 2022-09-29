@@ -7,7 +7,8 @@ class Character extends GameObject {
     settingsAnimations,
     face,
     shootSettings,
-    ammo = "Infinite"
+    ammo = "Infinite",
+    positionAmmoDelta
   ) {
     super(position, size, baseUrl);
     this.canIMove = {
@@ -19,6 +20,7 @@ class Character extends GameObject {
     this.stateData = {
       jumping: false,
       moving: false,
+      duck: false,
     };
     this.alive = true;
     this.active = true;
@@ -31,7 +33,7 @@ class Character extends GameObject {
     this.bulletType = shootSettings.bulletType;
     this.coolDown = shootSettings.coolDown;
     this.ammo = ammo;
-    console.log(this.ammo);
+    this.positionAmmoDelta = positionAmmoDelta;
   }
   move(vel) {
     this.positionWorld.x += vel;
@@ -83,7 +85,20 @@ class Character extends GameObject {
       bullet.draw(context);
     });
   }
+  updateAmmoPosition() {
+    this.positionAmmo = {
+      normal: {
+        x: this.positionWorld.x + this.positionAmmoDelta.normal.x,
+        y: this.positionWorld.y + this.positionAmmoDelta.normal.y,
+      },
+      down: {
+        x: this.positionWorld.x + this.positionAmmoDelta.down.x,
+        y: this.positionWorld.y + this.positionAmmoDelta.down.y,
+      },
+    };
+  }
   shoot() {
+    this.updateAmmoPosition();
     if (this.ammo == "Infinite") {
       this.createBullet(this.orientation, this.coolDown);
       return;
@@ -92,13 +107,22 @@ class Character extends GameObject {
       this.createBullet(this.orientation, this.coolDown);
     }
   }
-  createBullet(orientacion = "D", coolDown) {
+  createBullet(orientacion = "D") {
     if (this.canIshoot) {
       if (orientacion == "D") {
         posicion.x += this.size.w;
       }
 
-      this.bullets.push(new this.bulletType(this.positionWorld, this.orientation, this.bullets));
+      if (this.stateData.duck) {
+        this.bullets.push(
+          new this.bulletType(this.positionAmmo.down, this.orientation, this.bullets)
+        );
+      } else {
+        this.bullets.push(
+          new this.bulletType(this.positionAmmo.normal, this.orientation, this.bullets)
+        );
+      }
+
       this.canIshoot = false;
       this.increaseAmmo(-1);
       this.idIntervalShoot = setTimeout(() => {

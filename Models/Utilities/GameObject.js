@@ -7,6 +7,7 @@ class GameObject {
     this.imagen = new Image();
     this.imagen.src = baseUrl;
     this.size = size;
+    this.collisionSize = size;
     this.velocidad = {
       x: 0,
       y: 0,
