@@ -97,28 +97,26 @@ class Enemy extends Character {
     }
     this.animation.changeState("Estatico");
   }
-  IA(playerData={
-    positionWorld:{
+  IA(playerData = {
+    positionWorld: {
       x: Number,
       y: Number,
     },
     life: Number,
     ammount: Number,
-  },bulletsArray){
-    if (playerData.life<50){
-      if(playerData.positionWorld.x>this.positionWorld.x){
+  }, bulletsArray) {
+    if (ammount < 30) {
+      if (playerData.positionWorld.x > this.positionWorld.x) {
         this.move(2);
-      }else {
+      } else {
         this.move(-2);
       }
-    }
-    if(ammount<30){
+    }else{
       if(playerData.positionWorld.x>this.positionWorld.x){
-        this.move(2);
-      }else {
-        this.move(-2);
-    }
+        this.move(-2)
+      }else{
+        this.move(2)
+      }
     }
   }
-  IA();
 }
