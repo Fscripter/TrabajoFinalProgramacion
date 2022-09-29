@@ -19,7 +19,11 @@ class enemySpawner {
       return;
     }
     Posicion.y -= 100;
-    this.enemys.push(new Enemy(Posicion, this.enemys.length, this));
+    if (Level == "3") {
+      this.enemys.push(new EnemyBoss(Posicion, this.enemys.length, this));
+    } else {
+      this.enemys.push(new Enemy(Posicion, this.enemys.length, this));
+    }
 
     //Add scenes
 

@@ -87,9 +87,6 @@ class Enemy extends Character {
       this.animation.changeOrientation(this.orientation);
     }
   }
-  salto() {
-    super.salto();
-  }
   draw(context) {
     this.changeState();
     super.draw(context);
@@ -108,7 +105,7 @@ class Enemy extends Character {
       this.animation.changeState("Caminar");
       return;
     }
-    this.animation.changeState("Estatico");
+    this.animation.changeState("Caminar");
   }
   IA(
     playerData = {
