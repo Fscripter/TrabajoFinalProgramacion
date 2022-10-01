@@ -15,7 +15,6 @@ class EnemyBoss extends Enemy {
   ) {
     if (Math.abs(playerData.positionWorld.x - this.positionWorld.x) < 200) {
       this.jump();
-      console.log(this);
     }
   }
 }

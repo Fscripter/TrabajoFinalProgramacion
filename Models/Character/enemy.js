@@ -40,9 +40,16 @@ class Enemy extends Character {
           },
           {
             id: "Saltar",
-            transitionTime: 0,
+            transitionTime: 1000,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
+              derecha: [
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
+              ],
               izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
             },
           },

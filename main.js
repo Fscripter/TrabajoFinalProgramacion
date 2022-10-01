@@ -4,6 +4,7 @@ function gameLoop(mapaCanvas) {
     x: 500,
     y: 0,
   });
+  let aviondePapel = new Avion();
   let totalObjects = [Marin]
     .concat(mapaCanvas.boxGenerator.boxes)
     .concat(mapaCanvas.enemyGenerator.enemys);
@@ -32,6 +33,7 @@ function gameLoop(mapaCanvas) {
     //Cola enemigos
     ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);
+    aviondePapel.draw(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);
 }
