@@ -6,8 +6,10 @@ class Mapa {
       x: 0,
       y: 0,
     };
-    this.enemySpawn = new Spawn();
     this.texturasGenerator = new Textures();
+    this.boxGenerator = new boxSpawner();
+    this.enemyGenerator = new enemySpawner();
+    this.collider = new Collider();
   }
   mover(vel) {
     this.canvasPosition.x -= vel;
@@ -55,7 +57,9 @@ class Mapa {
         this.texturas = this.texturasGenerator.load(this.mapaData.texturas, Menu);
         console.log(Menu);
         this.trees = new TreeGenerator(this.texturas.arbol, this.context);
-        this.enemySpawn.getEnemysFromMap(this.mapaArray);
+        this.enemyGenerator.getEnemysFromMap(this.mapaArray);
+        this.boxGenerator.getBoxesFromMap(this.mapaArray);
+        this.collider.getEntities(this.boxGenerator.boxes, this.enemyGenerator.enemys);
       });
   }
   getSizeMap() {
@@ -87,9 +91,12 @@ class Mapa {
         this.letterToTexture(mapaLetra, posicion);
         //Trees
         this.trees.selectTrees(mapaLetra, posicion);
+        //Boxes
       }
     }
-    this.enemySpawn.draw(this.context, this.canvasPosition);
+    this.boxGenerator.draw(this.context);
+    this.enemyGenerator.draw(this.context);
+    this.collider.collision();
   }
   limpiar() {
     this.canvas.width = this.canvas.width;

@@ -18,19 +18,33 @@ class Fisica {
     this.mapArray = mapArray;
 
     this.objets.forEach((element) => {
-      if (!element.isGround) {
+      if (element instanceof Player) {
+        this.mainPlayer = element;
+      }
+      if (element.positionWorld.y > this.mapArray.length * 50) {
+        let IDtoDelte = element.delete();
+        let idDeleted = undefined;
+        this.enemys.forEach((enemy, index) => {
+          if (enemy.id == IDtoDelte) {
+            idDeleted = index;
+          }
+        });
+        this.enemys.splice(idDeleted, 1);
+        return;
+      }
+      if (!element.physicsData.isGround) {
         element.velocidad.y += trunc(this.gravedad * this.deltaTime * this.deltaTime * 10, 5);
         if (element.velocidad.y >= 0) {
-          element.saltando = false;
+          element.stateData.jumping = false;
         }
       } else {
         element.velocidad.y = 0;
-        element.saltando = false;
+        element.stateData.jumping = false;
       }
       //Realiza movimiento
-      element.posicion.y += Math.floor(element.velocidad.y);
-      this.detectarSuelo(element);
-      this.detectarColision(element);
+      element.positionWorld.y += Math.floor(element.velocidad.y);
+      this.detectGround(element);
+      // this.detectarColision(element);
     });
   }
   detectarTerreno(terreno) {
@@ -38,23 +52,24 @@ class Fisica {
       return true;
     }
   }
-  detectarSuelo(element) {
-    let posicionEnArray = {
-      y: Math.floor((element.posicion.y + element.size.h) / 50),
-      xa: Math.floor(element.posicion.x / 50),
-      xb: Math.floor((element.posicion.x + element.size.w) / 50),
+  detectGround(element) {
+    //Only detect ground if we are falling
+    if (element.stateData.jumping) {
+      return;
+    }
+    let positionArr = {
+      y: Math.floor((element.positionWorld.y + element.size.h) / 50),
+      xa: Math.floor(element.positionWorld.x / 50),
+      xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
+    let isFloor = false;
+    let axisX = this.mapArray[positionArr.y][positionArr.xa];
+    let axisXWidth = this.mapArray[positionArr.y][positionArr.xb];
 
-    let hayTerrenoDebajo = false;
-
-    let primerTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xa];
-    let segundoTerreno = this.mapArray[posicionEnArray.y][posicionEnArray.xb];
-
-    hayTerrenoDebajo = this.detectarTerreno(primerTerreno) || this.detectarTerreno(segundoTerreno);
-
-    element.isGround = hayTerrenoDebajo;
-    if (hayTerrenoDebajo) {
-      element.posicion.y = posicionEnArray.y * 50 - element.size.h;
+    isFloor = this.detectarTerreno(axisX) || this.detectarTerreno(axisXWidth);
+    element.physicsData.isGround = isFloor;
+    if (isFloor) {
+      element.positionWorld.y = positionArr.y * 50 - element.size.h;
     }
   }
   detectarColision(element) {
@@ -75,16 +90,18 @@ class Fisica {
   reduccionEnemigosCanvas(canvasPosicion, queue) {
     this.objectsInScreen = [];
     this.objets.forEach((element) => {
-      if (element.posicion.x > -canvasPosicion.x && element.posicion.x < -canvasPosicion.x + 1000) {
-        if (element.tag == "Enemigo" && element.alive) {
-          queue.add(element);
-          element.show();
-        }
+      if (!(element instanceof Enemy)) {
+        return;
+      }
+      if (
+        element.positionWorld.x > -canvasPosicion.x &&
+        element.positionWorld.x < -canvasPosicion.x + 1000
+      ) {
+        queue.add(element);
+        element.active = true;
         this.objectsInScreen.push(element);
       } else {
-        if (element.tag == "Enemigo") {
-          element.hide();
-        }
+        element.active = false;
       }
     });
     this.enemigosEnPantalla();
@@ -94,67 +111,24 @@ class Fisica {
     if (this.objectsInScreen.length < 0) return;
     this.enemys = [];
     this.objectsInScreen.forEach((element) => {
-      if (element.tag == "Enemigo") {
+      if (element instanceof Enemy) {
         this.enemys.push(element);
       }
-      if (element.tag == "Player") {
+      if (element instanceof Player) {
         this.mainPlayer = element;
       }
     });
   }
-  enemigoDetectarJugador(mapaCanvas) {
+  enemigoDetectarJugador() {
     this.enemys.forEach((enemigos) => {
-      enemigos.vision(this.mainPlayer.posicion);
+      enemigos.IA(
+        {
+          life: this.mainPlayer.life,
+          ammount: this.mainPlayer.ammo,
+          positionWorld: this.mainPlayer.positionWorld,
+        },
+        this.mainPlayer.bullets
+      );
     });
-  }
-  colisionBalasEnemigos() {
-    if (this.objectsInScreen.length < 0) return;
-    this.balasEnemigas = [];
-    this.enemys.forEach((enemigo) => {
-      if (enemigo.bulletsInGame.length > 0) {
-        this.balasEnemigas = this.balasEnemigas.concat(enemigo.bulletsInGame);
-      }
-    });
-    if (this.balasEnemigas.length > 0) {
-      this.balasEnemigas.forEach((bala) => {
-        if (
-          bala.posicion.x >= this.mainPlayer.posicion.x &&
-          bala.posicion.x < this.mainPlayer.posicion.x + this.mainPlayer.size.w &&
-          bala.posicion.y >= this.mainPlayer.posicion.y &&
-          bala.posicion.y < this.mainPlayer.posicion.y + this.mainPlayer.size.h
-        ) {
-          bala.eliminar();
-          this.mainPlayer.recibirDano();
-        }
-      });
-    }
-  }
-  colisionBalasJugador() {
-    if (this.objectsInScreen.length < 0) return;
-
-    //Cada bala del jugador interactuara con el enemigo
-    if (this.mainPlayer.bulletsInGame.length > 0) {
-      this.mainPlayer.bulletsInGame.forEach((bala) => {
-        // posicion de cada bala
-        this.enemys.forEach((enemigo) => {
-          if (
-            bala.posicion.x >= enemigo.posicion.x &&
-            bala.posicion.x < enemigo.posicion.x + enemigo.size.w &&
-            bala.posicion.y >= enemigo.posicion.y &&
-            bala.posicion.y < enemigo.posicion.y + enemigo.size.h &&
-            enemigo.alive
-          ) {
-            bala.eliminar();
-            enemigo.recibirDano();
-          }
-          if (
-            bala.posicion.y >= enemigo.posicion.y &&
-            bala.posicion.y < enemigo.posicion.y + enemigo.size.h
-          ) {
-            enemigo.salto();
-          }
-        });
-      });
-    }
   }
 }

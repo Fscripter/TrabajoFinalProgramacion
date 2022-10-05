@@ -1,4 +1,4 @@
-class Spawn {
+class enemySpawner {
   constructor() {
     this.totalEnemigos = {
       tipo: {
@@ -12,13 +12,18 @@ class Spawn {
     this.enemys = [];
     this.scenes = [];
   }
+  deleteEnemyFromScene() {}
   spawnEnemys(Level, Posicion) {
     let acceptedLvl = ["0", "1", "2", "3"];
     if (acceptedLvl.indexOf(Level) == -1) {
       return;
     }
     Posicion.y -= 100;
-    this.enemys.push(new Enemy(Posicion, Level));
+    if (Level == "3") {
+      this.enemys.push(new EnemyBoss(Posicion, this.enemys.length, this));
+    } else {
+      this.enemys.push(new Enemy(Posicion, this.enemys.length, this));
+    }
 
     //Add scenes
 
@@ -44,9 +49,9 @@ class Spawn {
       "color: red; font-size: 24px"
     );
   }
-  draw(context, canvasPosition) {
+  draw(context) {
     this.enemys.forEach((enemy) => {
-      enemy.dibujar(context, canvasPosition);
+      enemy.draw(context);
     });
   }
 }
