@@ -105,18 +105,24 @@ class Enemy extends Character {
     life: Number,
     ammount: Number,
   }, bulletsArray) {
-    if (playerData.ammount < 30) {
-      if (playerData.positionWorld.x > this.positionWorld.x) {
-        this.move(2);
-      } else {
-        this.move(-2);
+    // if (playerData.ammount < 30) {
+    // //   if (playerData.positionWorld.x > this.positionWorld.x) {
+    // //     this.move(2);
+    // //   } else {
+    // //     this.move(-2);
+    // //   }
+    // // }else{
+    // //   if(playerData.positionWorld.x>this.positionWorld.x){
+    // //     this.move(-2)
+    // //   }else{
+    // //     this.move(2)
+    // //   }
+    //   }
+    bulletsArray.forEach(bullet => {
+      if(math.abs(bullet.positionWorld.x-this.positionWorld.x)<10){
+        this.jump();
       }
-    }else{
-      if(playerData.positionWorld.x>this.positionWorld.x){
-        this.move(-2)
-      }else{
-        this.move(2)
-      }
-    }
-  }
+
+    });
+  } 
 }
