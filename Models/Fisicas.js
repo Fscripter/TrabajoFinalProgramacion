@@ -127,6 +127,7 @@ class Fisica {
           ammount: this.mainPlayer.ammo,
           positionWorld: this.mainPlayer.positionWorld,
         },
+        null,
         this.mainPlayer.bullets
       );
     });

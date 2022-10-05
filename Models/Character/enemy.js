@@ -123,7 +123,6 @@ class Enemy extends Character {
       life: Number,
       ammount: Number,
     },
-<<<<<<< HEAD
     worldInfo = {
       l: false,
       x: false,
@@ -131,24 +130,6 @@ class Enemy extends Character {
     },
     bulletsArray
   ) {
-    // if (playerData.ammount < 30) {
-    //   if (playerData.positionWorld.x > this.positionWorld.x) {
-    //     this.move(2);
-    //   } else {
-    //     this.move(-2);
-    //   }
-    // } else {
-    //   if (playerData.positionWorld.x > this.positionWorld.x) {
-    //     this.move(-2);
-    //   } else {
-    //     this.move(2);
-    //   }
-    // }
-  }
-=======
-    life: Number,
-    ammount: Number,
-  }, bulletsArray) {
     // if (playerData.ammount < 30) {
     // //   if (playerData.positionWorld.x > this.positionWorld.x) {
     // //     this.move(2);
@@ -162,12 +143,12 @@ class Enemy extends Character {
     // //     this.move(2)
     // //   }
     //   }
-    bulletsArray.forEach(bullet => {
-      if(math.abs(bullet.positionWorld.x-this.positionWorld.x)<10){
+    bulletsArray.forEach((bullet) => {
+      console.log("Hi");
+      if (Math.abs(bullet.positionWorld.x - this.positionWorld.x) < 100) {
+        console.log(this);
         this.jump();
       }
-
     });
-  } 
->>>>>>> 2e58a4683c6700985a1587b3a47e022074f2fa4c
+  }
 }
