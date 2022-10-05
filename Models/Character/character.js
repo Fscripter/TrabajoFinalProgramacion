@@ -39,10 +39,12 @@ class Character extends GameObject {
     this.positionWorld.x += vel;
   }
   doDamage(damage) {
-    this.life -= damage;
-    if (this.life < 0) {
-      this.alive = false;
+    if (this.life > 0) {
+      this.life -= damage;
+      this.updateLifeHUD();
+      return;
     }
+    this.alive = false;
     this.updateLifeHUD();
   }
   heal(life) {
@@ -61,6 +63,10 @@ class Character extends GameObject {
     }
     this.imagen = this.animation.drawAnimation();
     super.draw(context);
+    context.beginPath();
+    context.arc(this.positionWorld.x, this.positionWorld.y, 10, 0, Math.PI * 2);
+    context.fill();
+    context.closePath();
     this.drawBullets(context);
   }
   jump() {
@@ -100,28 +106,23 @@ class Character extends GameObject {
   shoot() {
     this.updateAmmoPosition();
     if (this.ammo == "Infinite") {
-      this.createBullet(this.orientation, this.coolDown);
+      this.createBullet();
       return;
     }
     if (this.ammo > 0) {
-      this.createBullet(this.orientation, this.coolDown);
+      this.createBullet();
     }
   }
-  createBullet(orientacion = "D") {
+  createBullet() {
     if (this.canIshoot) {
-      if (orientacion == "D") {
+      let posicion = this.positionAmmo.normal;
+      if (this.stateData.duck) {
+        posicion = this.positionAmmo.down;
+      }
+      if (this.orientation == "D") {
         posicion.x += this.size.w;
       }
-
-      if (this.stateData.duck) {
-        this.bullets.push(
-          new this.bulletType(this.positionAmmo.down, this.orientation, this.bullets)
-        );
-      } else {
-        this.bullets.push(
-          new this.bulletType(this.positionAmmo.normal, this.orientation, this.bullets)
-        );
-      }
+      this.bullets.push(new this.bulletType(posicion, this.orientation, this.bullets));
 
       this.canIshoot = false;
       this.increaseAmmo(-1);

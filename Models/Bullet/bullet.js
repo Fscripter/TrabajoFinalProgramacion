@@ -17,6 +17,8 @@ class Bullet extends GameObject {
   draw(context) {
     this.checkLife();
     super.draw(context);
+    context.strokeStyle = "#00ff00";
+    context.strokeRect(this.positionWorld.x, this.positionWorld.y, this.size.w, this.size.h);
     this.move();
   }
   checkLife() {

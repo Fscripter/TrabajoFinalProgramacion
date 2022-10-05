@@ -14,6 +14,7 @@ class Bullet {
     this.checkLife();
     this.move();
     context.drawImage(this.img, this.posicion.x, this.posicion.y, 20, 20);
+    context.fillRect(this.posicion.x);
   }
   move() {
     this.posicion.x += this.speed;
