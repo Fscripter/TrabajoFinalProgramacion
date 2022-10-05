@@ -130,24 +130,17 @@ class Enemy extends Character {
     },
     bulletsArray
   ) {
-    // if (playerData.ammount < 30) {
-    // //   if (playerData.positionWorld.x > this.positionWorld.x) {
-    // //     this.move(2);
-    // //   } else {
-    // //     this.move(-2);
-    // //   }
-    // // }else{
-    // //   if(playerData.positionWorld.x>this.positionWorld.x){
-    // //     this.move(-2)
-    // //   }else{
-    // //     this.move(2)
-    // //   }
-    //   }
+    let isRigth = playerData.positionWorld.x > this.positionWorld.x;
+    let direction = isRigth ? 2 : -2;
+    if (playerData.ammount > 30) {
+      direction *= -1;
+    }
+    this.move(direction);
+
     bulletsArray.forEach((bullet) => {
-      console.log("Hi");
       if (Math.abs(bullet.positionWorld.x - this.positionWorld.x) < 100) {
-        console.log(this);
         this.jump();
+        // this.shoot();
       }
     });
   }
