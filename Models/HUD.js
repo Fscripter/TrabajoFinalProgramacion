@@ -2,10 +2,11 @@ class BarraVida {
   constructor(name, life, color, face, lvl = null) {
     this.name = name;
     this.life = life;
+    this.maxLife = life;
     this.color = color;
     this.width = 200;
     this.face = face;
-    this.percentajeWidth = (life / 100) * this.width;
+    this.updateLife(life);
     this.isDamaged = false;
     this.timers = {
       actual: 0,
@@ -14,7 +15,13 @@ class BarraVida {
     this.initialColor = color;
     this.lvl = lvl;
   }
-  dibujar(ctx, position) {
+  updateLife(life) {
+    this.life = life;
+    this.percentajeWidth = (life / this.maxLife) * this.width;
+    // life -> 100 -> 250
+    // anyChange -> calc -> width
+  }
+  draw(ctx, position) {
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(position.x - this.width - 5, position.y + 25, 30, 0, Math.PI * 2);

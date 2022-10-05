@@ -67,7 +67,6 @@ class Player extends gameObject {
     this.imgBase.src = "./Sprites/Player/Derecha.png";
 
     this.vida = 100;
-    this.vidaHUD = new BarraVida("Player", this.vida, "#00ff00", this.face);
     this.disparoSonido = new Audio("./Sprites/Player/Sound/disparo.mp3");
     this.vivo = true;
     this.caminando = false;
@@ -76,7 +75,7 @@ class Player extends gameObject {
   dibujar(ctx, canvasPosition) {
     this.cambiarEstado();
     super.dibujar(ctx);
-    this.vidaHUD.dibujar(ctx, {
+    this.HUD.dibujar(ctx, {
       x: -canvasPosition.x + 250,
       y: -canvasPosition.y + 15,
     });

@@ -1,31 +1,37 @@
 function gameLoop(mapaCanvas) {
-  let jugador = new Player();
   //Añadir fisicas
-  let totalObjects = [jugador].concat(mapaCanvas.enemySpawn.enemys);
+  let Marin = new Player({
+    x: 500,
+    y: 0,
+  });
+  let totalObjects = [Marin]
+    .concat(mapaCanvas.boxGenerator.boxes)
+    .concat(mapaCanvas.enemyGenerator.enemys);
   var Fisicas = new Fisica(totalObjects);
+  mapaCanvas.collider.getPlayer(Marin);
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
-  let tecladoRuntime = new Teclado(jugador, mapaCanvas, Fisicas.deltaTime);
+  let tecladoRuntime = new Teclado(Marin, mapaCanvas, Fisicas.deltaTime);
   let request;
 
   //Main Loop
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
+    tecladoRuntime.realizarAccion();
     //animate something
-    tecladoRuntime.realizarAccion(mapaCanvas);
-    mapaCanvas.movimientoY(jugador.posicion.y);
+    mapaCanvas.movimientoY(Marin.positionWorld.y);
     mapaCanvas.limpiar();
     mapaCanvas.draw();
-    ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
+    //Dibujar aqui
+
+    Marin.draw(mapaCanvas.context);
     Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
     Fisicas.reduccionEnemigosCanvas(mapaCanvas.canvasPosition, ColaHUDCanvas);
-    Fisicas.enemigoDetectarJugador(mapaCanvas.context);
-    Fisicas.colisionBalasJugador();
-    Fisicas.colisionBalasEnemigos();
-
+    Fisicas.enemigoDetectarJugador();
+    //Cola enemigos
+    ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);
-    jugador.dibujar(mapaCanvas.context, mapaCanvas.canvasPosition);
   };
   requestAnimationFrame(performAnimation);
 }

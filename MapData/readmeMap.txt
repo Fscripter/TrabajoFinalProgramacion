@@ -27,3 +27,8 @@ Char reserved for objects:
     W: Muros
     Y: Rocas
     Z: Easter egg
+
+Char reserved for box:
+    X: TNT
+    H: Heal
+    P: Ammount
