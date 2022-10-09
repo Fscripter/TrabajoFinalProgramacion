@@ -1,0 +1,3 @@
+class bullet extends Projectile{
+    
+}
