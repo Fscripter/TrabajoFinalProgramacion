@@ -8,7 +8,16 @@ class Character extends GameObject {
     face,
     shootSettings,
     ammo = "Infinite",
-    positionAmmoDelta
+    positionAmmoDelta = {
+      normal: {
+        x: 0,
+        y: 50,
+      },
+      down: {
+        x: 0,
+        y: 70,
+      },
+    }
   ) {
     super(position, size, baseUrl);
     this.canIMove = {
@@ -34,6 +43,7 @@ class Character extends GameObject {
     this.coolDown = shootSettings.coolDown;
     this.ammo = ammo;
     this.positionAmmoDelta = positionAmmoDelta;
+    this.collider = new Collision(this);
     console.log(this.positionAmmoDelta);
   }
   move(vel) {
@@ -76,6 +86,7 @@ class Character extends GameObject {
     context.fill();
     context.closePath();
     this.drawBullets(context);
+    this.collider.draw(context);
   }
   jump() {
     if (this.physicsData.isGround) {
@@ -110,6 +121,18 @@ class Character extends GameObject {
         y: this.positionWorld.y + this.positionAmmoDelta.down.y,
       },
     };
+  }
+  getUp() {
+    this.stateData.duck = false;
+    this.collider.changeState("Estatico");
+  }
+  getDown() {
+    if (this.stateData.moving == true) {
+      this.getUp();
+      return;
+    }
+    this.stateData.duck = true;
+    this.collider.changeState("Down");
   }
   shoot() {
     this.updateAmmoPosition();

@@ -65,7 +65,7 @@ class Enemy extends Character {
       },
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
-        bulletType: BulletGun,
+        bulletType: Laser,
         coolDown: 150,
       }
     );
