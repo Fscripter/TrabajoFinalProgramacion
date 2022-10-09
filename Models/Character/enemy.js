@@ -165,9 +165,24 @@ class Enemy extends Character {
     this.animation.changeState("Estatico");
   }
   AI(player, bulletsArray) {
+    let distanceX = Math.abs(this.positionWorld.x - player.positionWorld.x);
     let isRight = this.positionWorld.x < player.positionWorld.x;
     let isUp = this.positionWorld.y < player.positionWorld.y;
     let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
+    if (isRight && distanceX < 400) {
+      this.shoot();
+      this.orientation = "R";
+      this.animation.changeOrientation("R");
+    }
+    if (!isRight && distanceX < 400) {
+      this.animation.changeOrientation("L");
+      this.orientation = "L";
+      this.shoot();
+    }
+    if (isRight && isUp) {
+      this.shoot();
+      this.jump();
+    }
     bulletsArray.forEach((bullet = Bullet) => {
       let distanceBullet = Math.abs(
         bullet.positionWorld.x - this.positionWorld.x
