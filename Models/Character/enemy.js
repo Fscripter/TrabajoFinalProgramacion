@@ -65,7 +65,7 @@ class Enemy extends Character {
       },
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
-        bulletType: Laser,
+        bulletType: Bullet,
         coolDown: 150,
       }
     );
@@ -114,24 +114,23 @@ class Enemy extends Character {
     }
     this.animation.changeState("Estatico");
   }
-  AI(player,bulletsArray) {
-    let fallingDown = (!this.stateData.jumping && !this.physicsData.isGround)
-    bulletsArray.forEach(bullet => {
-      let bulletDistance = Math.abs(bullet.positionWorld.x-this.positionWorld.x)
-      if (bullet.positionWorld.y>player.positionWorld.y){
-        this.jump()
-      };
-      if (bullet.positionWorld.y<this.positionWorld.y && bulletDistance< 15){
+  AI(player, bulletsArray) {
+    let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
+    bulletsArray.forEach((bullet) => {
+      let bulletDistance = Math.abs(bullet.positionWorld.x - this.positionWorld.x);
+      if (bullet.positionWorld.y > player.positionWorld.y) {
+        this.jump();
+      }
+      if (bullet.positionWorld.y < this.positionWorld.y && bulletDistance < 15) {
         // this.getDown()
         // setTimeout(this.getUp,500)
-        
-      };
-      if (!fallingDown && bullet.orientation == "R" && bulletDistance<10){
-        this.move(-2)
-      };
-      if (!fallingDown && bullet.orientation == "L" && bulletDistance<10){
-        this.move(2)
-      };
+      }
+      if (!fallingDown && bullet.orientation == "R" && bulletDistance < 10) {
+        this.move(-2);
+      }
+      if (!fallingDown && bullet.orientation == "L" && bulletDistance < 10) {
+        this.move(2);
+      }
     });
     let isRight = this.positionWorld.x - player.positionWorld.x < 0;
     let isUp = this.positionWorld.y - player.positionWorld.y < 0;

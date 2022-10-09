@@ -5,7 +5,7 @@ class Laser extends Projectile {
       h: 3,
     });
     this.image = new ImagenDerogada("./Sprites/Balas/Laser.png");
-    this.speed = 10;
+    this.speed = 15;
     if (this.orientation == "L") {
       this.speed *= -1;
     }
@@ -16,6 +16,5 @@ class Laser extends Projectile {
   draw(context) {
     this.move();
     super.draw(context);
-    console.log(this.positionWorld);
   }
 }

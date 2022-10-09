@@ -44,7 +44,7 @@ class Character extends GameObject {
     this.ammo = ammo;
     this.positionAmmoDelta = positionAmmoDelta;
     this.collider = new Collision(this);
-    console.log(this.positionAmmoDelta);
+    this.destroyBullet = this.destroyBullet.bind(this);
   }
   move(vel) {
     this.positionWorld.x += vel;
@@ -74,13 +74,6 @@ class Character extends GameObject {
     }
     this.imagen = this.animation.drawAnimation();
     super.draw(context);
-    if (this instanceof Player) {
-      context.beginPath();
-      context.fillStyle = "#ff0000";
-      context.arc(this.positionAmmo.normal.x, this.positionAmmo.normal.y, 10, 0, Math.PI * 2);
-      context.fill();
-      context.closePath();
-    }
     context.beginPath();
     context.arc(this.positionWorld.x, this.positionWorld.y, 10, 0, Math.PI * 2);
     context.fill();
@@ -146,15 +139,15 @@ class Character extends GameObject {
   }
   createBullet() {
     if (this.canIshoot) {
+      this.updateAmmoPosition();
+      let posicion = this.positionAmmo.normal;
       if (this.stateData.duck) {
-        this.bullets.push(
-          new this.bulletType(this.positionAmmo.down, this.orientation, this.bullets)
-        );
-      } else {
-        this.bullets.push(
-          new this.bulletType(this.positionAmmo.normal, this.orientation, this.bullets)
-        );
+        posicion = this.positionAmmo.down;
       }
+      if (this.orientation == "R") {
+        posicion.x += this.size.w;
+      }
+      this.bullets.push(new this.bulletType(posicion, this.orientation, this.bullets));
 
       this.canIshoot = false;
       this.increaseAmmo(-1);
@@ -162,5 +155,9 @@ class Character extends GameObject {
         this.canIshoot = true;
       }, this.coolDown);
     }
+  }
+  destroyBullet(id) {
+    let isIn = this.bullets.indexOf(id);
+    console.log(isIn);
   }
 }

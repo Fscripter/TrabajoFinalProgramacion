@@ -1,17 +1,17 @@
 class Collider {
-  constructor() {
-    console.log("Colision engine started");
+  constructor() {}
+  addObjects(box, enemy) {
+    this.boxes = box;
+    this.enemys = enemy;
+    console.log("Objects added to Collision! ✔");
   }
   collision() {
     this.collisionBoxEntities();
     this.getCollisionBullets();
   }
-  getEntities(boxArray, enemysArray) {
-    this.boxes = boxArray;
-    this.enemysArray = enemysArray;
-  }
   getPlayer(player) {
     this.player = player;
+    console.log("Player added to Collision! ✔");
   }
   VerifyPoint(Point, objectB) {
     let isInX =
@@ -60,7 +60,7 @@ class Collider {
     let isIn = this.getCollisionBetween(bullet, box);
 
     if (isIn && !box.isblow) {
-      box.interaction(this.player, this.enemysArray);
+      box.interaction(this.player, this.enemys.enemys);
       bullet.delete();
     }
   }
@@ -85,19 +85,19 @@ class Collider {
   getCollisionBullets() {
     this.player.bullets.forEach((bullet) => {
       //Colision balas TNT
-      this.boxes.forEach((box) => {
+      this.boxes.boxes.forEach((box) => {
         if (box instanceof TNT) {
           this.getCollisionTNT(bullet, box);
         }
       });
       //Colision balas enemigos
-      this.enemysArray.forEach((enemy) => {
+      this.enemys.enemys.forEach((enemy) => {
         this.getCollisionEnemy(bullet, enemy);
       });
     });
   }
   collisionBoxEntities() {
-    this.boxes.forEach((box) => {
+    this.boxes.boxes.forEach((box) => {
       if (!box.active) {
         return;
       }

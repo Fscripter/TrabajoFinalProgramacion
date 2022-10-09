@@ -6,7 +6,7 @@ class TNT extends Box {
         w: 50,
         h: 50,
       },
-      "./Sprites/Objects/TNT.png"
+      "./Sprites/Objects/Caja/BoxTNT/TNT.png"
     );
     this.damage = 80;
     this.radius = 350;

@@ -13,6 +13,7 @@ class Physic {
   }
   getMap(map) {
     this.map = map;
+    console.log("Physics added! ✔");
   }
   onGravity(objects) {
     //Aplicar gravedad a n
