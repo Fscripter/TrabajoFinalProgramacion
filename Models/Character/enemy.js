@@ -12,11 +12,7 @@ class Enemy extends Character {
             id: "Estatico",
             transitionTime: 100,
             animaciones: {
-              derecha: [
-                new ImagenDerogada(
-                  "./Sprites/Enemys/Antioquia/Estatico/Derecha.png"
-                ),
-              ],
+              derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Derecha.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
             },
           },
@@ -25,44 +21,20 @@ class Enemy extends Character {
             transitionTime: 200,
             animaciones: {
               derecha: [
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose1.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose2.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose3.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose4.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose5.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose6.png"
-                ),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
               ],
               izquierda: [
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Izquierda/Pose1.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Izquierda/Pose2.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Izquierda/Pose3.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Izquierda/Pose4.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Izquierda/Pose5.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Izquierda/Pose6.png"
-                ),
+                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
               ],
             },
           },
@@ -71,44 +43,22 @@ class Enemy extends Character {
             transitionTime: 1000,
             animaciones: {
               derecha: [
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose1.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose2.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose3.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose4.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose5.png"
-                ),
-                new ImagenDerogada(
-                  "./Sprites/Player/Caminar/Derecha/Pose6.png"
-                ),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
+                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
               ],
-              izquierda: [
-                new ImagenDerogada(
-                  "./Sprites/Player/Salto/Izquierda/Pose1.png"
-                ),
-              ],
+              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
             },
           },
           {
             id: "Caer",
             transitionTime: 0,
             animaciones: {
-              derecha: [
-                new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
-              ],
-              izquierda: [
-                new ImagenDerogada(
-                  "./Sprites/Player/Salto/Izquierda/Pose6.png"
-                ),
-              ],
+              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
+              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
             },
           },
         ],
@@ -116,7 +66,7 @@ class Enemy extends Character {
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
         bulletType: Bullet,
-        coolDown: 150,
+        coolDown: 1500,
       }
     );
     this.type = "Enemy";
@@ -184,9 +134,7 @@ class Enemy extends Character {
       this.jump();
     }
     bulletsArray.forEach((bullet = Bullet) => {
-      let distanceBullet = Math.abs(
-        bullet.positionWorld.x - this.positionWorld.x
-      );
+      let distanceBullet = Math.abs(bullet.positionWorld.x - this.positionWorld.x);
       if (
         bullet.positionWorld.y >= this.positionWorld.y + this.size.h / 2 &&
         bullet.positionWorld.y <= this.positionWorld.y + this.size.h &&
@@ -210,18 +158,10 @@ class Enemy extends Character {
       ) {
         this.getUp();
       }
-      if (
-        fallingDown == true &&
-        distanceBullet < bullet.size.w + 20 &&
-        bullet.orientation == "R"
-      ) {
+      if (fallingDown == true && distanceBullet < bullet.size.w + 20 && bullet.orientation == "R") {
         this.move(-2);
       }
-      if (
-        fallingDown == true &&
-        distanceBullet < bullet.size.w + 20 &&
-        bullet.orientation == "L"
-      ) {
+      if (fallingDown == true && distanceBullet < bullet.size.w + 20 && bullet.orientation == "L") {
         this.move(2);
       }
     });
