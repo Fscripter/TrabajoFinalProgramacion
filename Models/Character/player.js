@@ -112,6 +112,7 @@ class Player extends Character {
   }
   getUp() {
     this.stateData.duck = false;
+    this.collision.changeState("Estatico");
   }
   getDown() {
     if (this.stateData.moving == true) {
@@ -119,6 +120,7 @@ class Player extends Character {
       return;
     }
     this.stateData.duck = true;
+    this.collision.changeState("Down");
   }
   jump() {
     super.jump();

@@ -1,5 +1,5 @@
 class Mapa {
-  constructor() {
+  constructor(engine) {
     this.canvas = document.getElementById("Game-ViewPort");
     this.context = this.canvas.getContext("2d");
     this.canvasPosition = {
@@ -7,9 +7,7 @@ class Mapa {
       y: 0,
     };
     this.texturasGenerator = new Textures();
-    this.boxGenerator = new boxSpawner();
-    this.enemyGenerator = new enemySpawner();
-    this.collider = new Collider();
+    this.engine = engine;
   }
   mover(vel) {
     this.canvasPosition.x -= vel;
@@ -55,11 +53,9 @@ class Mapa {
         this.cargarSonido();
         this.draw();
         this.texturas = this.texturasGenerator.load(this.mapaData.texturas, Menu);
-        console.log(Menu);
         this.trees = new TreeGenerator(this.texturas.arbol, this.context);
-        this.enemyGenerator.getEnemysFromMap(this.mapaArray);
-        this.boxGenerator.getBoxesFromMap(this.mapaArray);
-        this.collider.getEntities(this.boxGenerator.boxes, this.enemyGenerator.enemys);
+
+        this.engine.createObjects(this.mapaArray);
       });
   }
   getSizeMap() {
@@ -94,9 +90,6 @@ class Mapa {
         //Boxes
       }
     }
-    this.boxGenerator.draw(this.context);
-    this.enemyGenerator.draw(this.context);
-    this.collider.collision();
   }
   limpiar() {
     this.canvas.width = this.canvas.width;

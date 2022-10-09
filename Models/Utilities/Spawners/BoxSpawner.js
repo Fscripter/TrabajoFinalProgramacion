@@ -33,19 +33,13 @@ class boxSpawner {
         break;
     }
   }
-  getBoxesFromMap(mapaArray = []) {
-    for (let fila = 0; fila < mapaArray.length; fila++) {
-      let maxColumn = mapaArray[fila].length;
-      for (let columna = 0; columna < maxColumn; columna++) {
-        this.spawnBox(mapaArray[fila][columna], {
-          x: columna * 50,
-          y: fila * 50,
-        });
-      }
-    }
-    console.log("Box added");
-    this.getInfo();
+  getBoxesFromMap(data) {
+    this.spawnBox(data.value, {
+      x: data.x * 50,
+      y: data.y * 50,
+    });
   }
+
   getInfo() {
     console.log(
       `Hay un total de: %c${this.totalBoxes.total} cajas`,

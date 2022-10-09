@@ -54,10 +54,8 @@ class TNT extends Box {
       let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
       let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
       let radioInteraccion = Math.pow(X, 2) + Math.pow(Y, 2); // X.X + Y.Y = R.R
-      console.log(radioInteraccion, Math.pow(this.radius, 2));
       if (radioInteraccion <= Math.pow(this.radius, 2)) {
         enemy.doDamage(this.damage);
-        console.log(radioInteraccion);
       }
     });
     this.changeState();

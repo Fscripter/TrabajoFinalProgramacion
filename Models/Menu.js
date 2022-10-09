@@ -1,5 +1,5 @@
 class MenuJuego {
-  constructor(mapa, gameLoop) {
+  constructor(mapa, engine, gameLoop) {
     /**
      * Tiene estados:
      *  Inicial,
@@ -18,6 +18,7 @@ class MenuJuego {
     this.cargando = document.getElementById("Cargando");
     this.juego = document.getElementById("Juego");
     this.mapa = mapa;
+    this.engine = engine;
     this.gameLoop = gameLoop;
     this.addEvents();
     this.finalizarCarga = this.finalizarCarga.bind(this);
@@ -32,7 +33,7 @@ class MenuJuego {
     this.state = "Cargando";
     this.initialMenu.style.display = "none";
     this.cargando.style.display = "flex";
-    console.log(this.mapa);
+
     this.juego.style.display = "flex";
     this.mapa.cargarZona(this.zonaElegida, this);
   }
@@ -40,6 +41,6 @@ class MenuJuego {
     this.state = "MapaCargado";
     this.initialMenu.style.display = "none";
     this.cargando.style.display = "none";
-    this.gameLoop(this.mapa);
+    this.gameLoop(this.mapa, this.engine);
   }
 }
