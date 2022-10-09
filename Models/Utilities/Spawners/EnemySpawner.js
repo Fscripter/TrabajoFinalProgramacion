@@ -30,18 +30,11 @@ class enemySpawner {
     this.totalEnemigos.tipo[Level]++;
     this.totalEnemigos.total++;
   }
-  getEnemysFromMap(mapaArray = []) {
-    for (let fila = 0; fila < mapaArray.length; fila++) {
-      let maxColumn = mapaArray[fila].length;
-      for (let columna = 0; columna < maxColumn; columna++) {
-        this.spawnEnemys(mapaArray[fila][columna], {
-          x: columna * 50,
-          y: fila * 50,
-        });
-      }
-    }
-    console.log("Enemys added");
-    this.getInfo();
+  getEnemysFromMap(data) {
+    this.spawnEnemys(data.value, {
+      x: data.x * 50,
+      y: data.y * 50,
+    });
   }
   getInfo() {
     console.log(

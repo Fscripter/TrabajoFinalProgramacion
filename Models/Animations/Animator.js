@@ -11,7 +11,7 @@ class Animator {
     this.timeElapsed = 0;
     this.orientation = orientation;
 
-    console.log(`Animations made with ID ${this.id}`);
+    // console.log(`Animations made with ID ${this.id}`);
   }
   changeOrientation(newOrientation) {
     this.orientation = newOrientation;

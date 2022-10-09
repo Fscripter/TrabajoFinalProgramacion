@@ -37,7 +37,6 @@ class Textures {
     return imagesPreview;
   }
   checkLoad() {
-    console.log(`imagen ${this.elementLoaded} cargada`);
     this.elementLoaded++;
     if (this.elementLoaded == this.queue.length) {
       this.complete = true;

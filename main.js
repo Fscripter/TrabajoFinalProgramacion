@@ -1,19 +1,14 @@
-function gameLoop(mapaCanvas) {
+function gameLoop(mapaCanvas, GameEngine) {
   //Añadir fisicas
   let Marin = new Player({
     x: 500,
     y: 0,
   });
-  let aviondePapel = new Avion();
-  let totalObjects = [Marin]
-    .concat(mapaCanvas.boxGenerator.boxes)
-    .concat(mapaCanvas.enemyGenerator.enemys);
-  var Fisicas = new Fisica(totalObjects);
-  mapaCanvas.collider.getPlayer(Marin);
+  GameEngine.getPlayer(Marin);
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
-  let tecladoRuntime = new Teclado(Marin, mapaCanvas, Fisicas.deltaTime);
+  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000);
   let request;
 
   //Main Loop
@@ -25,20 +20,18 @@ function gameLoop(mapaCanvas) {
     mapaCanvas.limpiar();
     mapaCanvas.draw();
     //Dibujar aqui
+    GameEngine.render(mapaCanvas.context);
 
     Marin.draw(mapaCanvas.context);
-    Fisicas.aplicarGravedad(mapaCanvas.mapaArray, mapaCanvas.canvasPosition);
-    Fisicas.reduccionEnemigosCanvas(mapaCanvas.canvasPosition, ColaHUDCanvas);
-    Fisicas.enemigoDetectarJugador();
     //Cola enemigos
     ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);
-    aviondePapel.draw(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);
 }
 
 window.onload = () => {
-  var mapaCanvas = new Mapa();
-  let Menu = new MenuJuego(mapaCanvas, gameLoop);
+  var GameEngine = new Engine();
+  var mapaCanvas = new Mapa(GameEngine);
+  let Menu = new MenuJuego(mapaCanvas, GameEngine, gameLoop);
 };

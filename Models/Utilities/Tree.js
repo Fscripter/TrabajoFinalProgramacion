@@ -1,6 +1,5 @@
 class TreeGenerator {
   constructor(texturas, context) {
-    console.log(texturas, context);
     this.amount = 0;
     this.trees = {};
     this.texturas = texturas;
@@ -16,7 +15,7 @@ class TreeGenerator {
     }
     let randomSize = this.randomSize();
     this.trees[Coordenates] = randomSize;
-    console.log(`Tree created with coordenates ${Coordenates} and size is ${randomSize}`);
+    // console.log(`Tree created with coordenates ${Coordenates} and size is ${randomSize}`);
     this.amount += 1;
     return randomSize;
   }

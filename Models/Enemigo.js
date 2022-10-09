@@ -73,6 +73,7 @@ class Enemy extends gameObject {
       derecha: false,
     };
     this.cambiarOrientacion(-1);
+    console.log(this.posicion);
   }
   dibujar(ctx) {
     if (!this.visible) return;
