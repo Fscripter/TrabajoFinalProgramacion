@@ -1,8 +1,9 @@
 class Projectile {
-  constructor(position, orientacion, size, imageUrl) {
+  constructor(position, orientation, size, damage) {
     this.positionWorld = position;
-    this.orientacion = orientacion;
+    this.orientation = orientation;
     this.size = size;
+    this.damage = damage;
     this.image = new ImagenDerogada("./Sprites/Objects/Cajas1.jpeg");
   }
   draw(context) {
