@@ -1,11 +1,15 @@
 class Engine {
   constructor() {
     console.clear();
-    console.log("Game engine started");
+    console.log("Game engine started!");
     this.enemys = new enemySpawner();
     this.boxes = new boxSpawner();
-    console.log("Physics engine started!");
+
+    console.log("Physics engine loading...");
     this.physics = new Physic();
+
+    console.log("Colision engine loading...");
+    this.collisionEngine = new Collider();
   }
   createObjects(map = Array) {
     this.map = map;
@@ -23,11 +27,14 @@ class Engine {
       }
     }
     console.log("Objects created! ✔");
+    //Add physics
     this.physics.getMap(map);
-    console.log("Physics added! ✔");
+    //Add objects
+    this.collisionEngine.addObjects(this.boxes, this.enemys);
   }
   getPlayer(player) {
     this.player = player;
+    this.collisionEngine.getPlayer(this.player);
   }
   enemyIAtoPlayer() {
     this.enemys.enemys.forEach((enemy) => {
@@ -41,6 +48,7 @@ class Engine {
   }
   render(context) {
     this.enemyIAtoPlayer();
+    this.collisionEngine.collision();
     this.physics.onGravity(this.enemys.enemys.concat(this.boxes.boxes).concat(this.player));
     this.enemys.draw(context);
     this.boxes.draw(context);

@@ -15,4 +15,5 @@ class Projectile {
       this.size.h
     );
   }
+  delete() {}
 }
