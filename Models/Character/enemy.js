@@ -114,26 +114,6 @@ class Enemy extends Character {
     }
     this.animation.changeState("Estatico");
   }
-<<<<<<< HEAD
-  AI(player,bulletsArray) {
-    let fallingDown = (!this.stateData.jumping && !this.physicsData.isGround)
-    bulletsArray.forEach(bullet => {
-      let bulletDistance = Math.abs(bullet.positionWorld.x-this.positionWorld.x)
-      if (bullet.positionWorld.y=this.positionWorld.y && bulletDistance<15){
-        this.jump()
-      };
-      if (bullet.positionWorld.y<this.positionWorld.y && bulletDistance< 15){
-        this.getDown()
-        setTimeout(this.getUp,500)
-        
-      };
-      if (!fallingDown && bullet.orientation == "R" && bulletDistance<10){
-        this.move(2)
-      };
-      if (!fallingDown && bullet.orientation == "L" && bulletDistance<10){
-        this.move(-2)
-      };
-=======
   AI(player, balasArray) {
     balasArray.forEach((bala) => {
       let bulletDistance = Math.abs(bala.positionWorld.x - this.positionWorld.x);
@@ -152,7 +132,6 @@ class Enemy extends Character {
       if (fallingDown == true && (bullet.orientation == "L") & (bulletDistance < 10)) {
         this.move(2);
       }
->>>>>>> 016c2647d8870b0e41b7ea6445eee2cff2133046
     });
     let isRight = this.positionWorld.x - player.positionWorld.x < 0;
     let isUp = this.positionWorld.y - player.positionWorld.y < 0;

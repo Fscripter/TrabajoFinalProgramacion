@@ -1,6 +1,5 @@
 let scriptList = [
   "Models/Utilities/Textures.js",
-  "Models/Utilities/Spawners/EnemySpawner.js",
   "Models/Menu.js",
   "Models/Animaciones.js",
   "Models/Map.js",
@@ -11,6 +10,7 @@ let scriptList = [
   "Models/Character/character.js",
   "Models/Character/player.js",
   "Models/Character/enemy.js",
+  "Models/Utilities/Spawners/EnemySpawner.js",
   "Models/Box/Box.js",
   "Models/Box/TNT.js",
   "Models/Box/boxHealing.js",
@@ -25,7 +25,6 @@ let scriptList = [
   "Models/Utilities/ColliderEvent/Collider.js",
   "Models/Utilities/UI/Ammo.js",
   "Models/Character/EnemyBoss.js",
-  "Models/Character/enemy.js",
   "Models/Engine/Engine.js",
   "Models/Utilities/ColliderEvent/Collision.js",
   "main.js",
