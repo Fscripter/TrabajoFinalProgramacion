@@ -65,7 +65,7 @@ class Enemy extends Character {
       },
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
-        bulletType: BulletGun,
+        bulletType: Laser,
         coolDown: 150,
       }
     );
@@ -114,33 +114,5 @@ class Enemy extends Character {
     }
     this.animation.changeState("Estatico");
   }
-  AI(player, balasArray) {
-    balasArray.forEach((bala) => {
-      let bulletDistance = Math.abs(bala.positionWorld.x - this.positionWorld.x);
-      let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
-      if (bala.positionWorld.y == this.positionWorld.y || bulletDistance < 15) {
-        this.jump();
-        return;
-      }
-      if (bala.positionWorld.y < this.positionWorld.y || bulletDistance < 15) {
-        this.getDown();
-        setTimeout(this.getUp, 500);
-      }
-      if (fallingDown == true && (bullet.orientation == "R") & (bulletDistance < 10)) {
-        this.move(-2);
-      }
-      if (fallingDown == true && (bullet.orientation == "L") & (bulletDistance < 10)) {
-        this.move(2);
-      }
-    });
-    let isRight = this.positionWorld.x - player.positionWorld.x < 0;
-    let isUp = this.positionWorld.y - player.positionWorld.y < 0;
-    if (isRight == true && isUp == true && !player.getDown) {
-      this.orientation = "D";
-      this.jump();
-      if (fallingDown == true) {
-        this.shoot();
-      }
-    }
-  }
+  AI() {}
 }

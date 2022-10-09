@@ -110,16 +110,7 @@ class Player extends Character {
       mapaMovement.mapaCanvas.canvasPosition.x -= vel;
     }
   }
-  getUp() {
-    this.stateData.duck = false;
-  }
-  getDown() {
-    if (this.stateData.moving == true) {
-      this.getUp();
-      return;
-    }
-    this.stateData.duck = true;
-  }
+
   jump() {
     super.jump();
   }

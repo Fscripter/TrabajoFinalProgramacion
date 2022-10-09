@@ -29,6 +29,7 @@ let scriptList = [
   "Models/Utilities/ColliderEvent/Collision.js",
   "Models/Projectile/projectile.js",
   "Models/Projectile/laser.js",
+  "Models/Projectile/bullet/bullet.js",
   "main.js",
 ];
 

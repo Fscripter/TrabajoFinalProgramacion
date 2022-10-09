@@ -111,6 +111,16 @@ class Character extends GameObject {
       },
     };
   }
+  getUp() {
+    this.stateData.duck = false;
+  }
+  getDown() {
+    if (this.stateData.moving == true) {
+      this.getUp();
+      return;
+    }
+    this.stateData.duck = true;
+  }
   shoot() {
     this.updateAmmoPosition();
     if (this.ammo == "Infinite") {
