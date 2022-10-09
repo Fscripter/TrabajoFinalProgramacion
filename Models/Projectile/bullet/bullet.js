@@ -7,7 +7,9 @@ class bullet extends Projectile{
         },
         this.image.src = "./bullet.png"
         this.speed = 30;
-
+        if (orientation=="L"){
+            this.speed*=-1
+        }
     }
     draw(context) {
         super.draw(context)

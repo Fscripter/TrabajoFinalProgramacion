@@ -118,7 +118,7 @@ class Enemy extends Character {
     let fallingDown = (!this.stateData.jumping && !this.physicsData.isGround)
     bulletsArray.forEach(bullet => {
       let bulletDistance = Math.abs(bullet.positionWorld.x-this.positionWorld.x)
-      if (bullet.positionWorld.y==this.positionWorld.y && bulletDistance<15){
+      if (bullet.positionWorld.y>player.positionWorld.y){
         this.jump()
       };
       if (bullet.positionWorld.y<this.positionWorld.y && bulletDistance< 15){
@@ -127,10 +127,10 @@ class Enemy extends Character {
         
       };
       if (!fallingDown && bullet.orientation == "R" && bulletDistance<10){
-        this.move(2)
+        this.move(-2)
       };
       if (!fallingDown && bullet.orientation == "L" && bulletDistance<10){
-        this.move(-2)
+        this.move(2)
       };
     });
     let isRight = this.positionWorld.x - player.positionWorld.x < 0;
