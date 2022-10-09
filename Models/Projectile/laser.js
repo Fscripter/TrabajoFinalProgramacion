@@ -9,6 +9,8 @@ class Laser extends Projectile {
     if (this.orientation == "L") {
       this.speed *= -1;
     }
+    this.sound = new Audio("./Sprites/Player/Sound/laser.mp3");
+    this.sound.play();
   }
   move() {
     this.positionWorld.x += this.speed;

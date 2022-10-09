@@ -8,6 +8,11 @@ class Bullet extends Projectile {
     this.damage = 30;
     this.image.src = "./Models/Projectile/bullet/bullet.png";
     this.speed = 30;
+    if (orientation != "R") {
+      this.speed = -30;
+    }
+    this.sound = new Audio("./Sprites/Player/Sound/disparo.mp3");
+    this.sound.play();
   }
   draw(context) {
     super.draw(context);
