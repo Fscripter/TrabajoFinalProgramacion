@@ -81,7 +81,7 @@ class Player extends Character {
       },
       new ImagenDerogada("./Sprites/Player/Face.png"),
       {
-        bulletType: Laser,
+        bulletType: Bullet,
         coolDown: 250,
       },
       50,
@@ -98,6 +98,13 @@ class Player extends Character {
     );
     this.ammo = 50;
     this.ammoHUD = new AmmoHUD(this.ammo);
+  }
+  changeWeapon(type) {
+    if (type == 1) {
+      this.bulletType = Bullet;
+      return;
+    }
+    this.bulletType = Laser;
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {

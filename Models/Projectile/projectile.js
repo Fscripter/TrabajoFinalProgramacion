@@ -5,6 +5,10 @@ class Projectile {
     this.size = size;
     this.damage = damage;
     this.image = new ImagenDerogada("./Sprites/Objects/Cajas1.jpeg");
+    this.id = new Date().getMilliseconds() + "" + Math.random();
+  }
+  addCallback(callback) {
+    this.callback = callback;
   }
   draw(context) {
     context.drawImage(
@@ -15,5 +19,7 @@ class Projectile {
       this.size.h
     );
   }
-  delete() {}
+  delete() {
+    this.callback(this.id);
+  }
 }

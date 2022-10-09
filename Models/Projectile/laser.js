@@ -14,7 +14,7 @@ class Laser extends Projectile {
     this.positionWorld.x += this.speed;
   }
   draw(context) {
-    this.move();
     super.draw(context);
+    this.move();
   }
 }

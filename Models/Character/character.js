@@ -147,7 +147,9 @@ class Character extends GameObject {
       if (this.orientation == "R") {
         posicion.x += this.size.w;
       }
-      this.bullets.push(new this.bulletType(posicion, this.orientation, this.bullets));
+      let Bala = new this.bulletType(posicion, this.orientation);
+      Bala.addCallback(this.destroyBullet);
+      this.bullets.push(Bala);
 
       this.canIshoot = false;
       this.increaseAmmo(-1);
@@ -157,7 +159,10 @@ class Character extends GameObject {
     }
   }
   destroyBullet(id) {
-    let isIn = this.bullets.indexOf(id);
-    console.log(isIn);
+    this.bullets.forEach((bullet, index) => {
+      if (bullet.id == id) {
+        this.bullets.splice(index, 1);
+      }
+    });
   }
 }

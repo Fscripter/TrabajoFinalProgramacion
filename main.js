@@ -15,6 +15,8 @@ function gameLoop(mapaCanvas, GameEngine) {
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     tecladoRuntime.realizarAccion();
+    GameEngine.getCanvasPosition(mapaCanvas.canvasPosition);
+    GameEngine.addQueue(ColaHUDCanvas);
     //animate something
     mapaCanvas.movimientoY(Marin.positionWorld.y);
     mapaCanvas.limpiar();
@@ -24,7 +26,7 @@ function gameLoop(mapaCanvas, GameEngine) {
 
     Marin.draw(mapaCanvas.context);
     //Cola enemigos
-    ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
+    // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);
   };
   requestAnimationFrame(performAnimation);

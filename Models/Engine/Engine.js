@@ -32,6 +32,21 @@ class Engine {
     //Add objects
     this.collisionEngine.addObjects(this.boxes, this.enemys);
   }
+  getCanvasPosition(canvasPosition) {
+    this.canvasPosition = canvasPosition;
+  }
+  addQueue(colaHud = new ColaHUD()) {
+    colaHud.actualizarPosicion(this.canvasPosition);
+    this.enemys.enemys.forEach((enemy) => {
+      if (
+        enemy.positionWorld.x > -this.canvasPosition.x &&
+        enemy.positionWorld.x < -this.canvasPosition.x + 1000 &&
+        enemy.alive
+      ) {
+        colaHud.add(enemy);
+      }
+    });
+  }
   getPlayer(player) {
     this.player = player;
     this.collisionEngine.getPlayer(this.player);

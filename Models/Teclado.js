@@ -56,6 +56,12 @@ class Teclado {
       if (key == " " && value) {
         this.player.shoot();
       }
+      if (key == "1" && value) {
+        this.player.changeWeapon(Number(key));
+      }
+      if (key == "2" && value) {
+        this.player.changeWeapon(Number(key));
+      }
     }
   }
   eventosTeclado() {
