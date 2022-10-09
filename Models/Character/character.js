@@ -65,7 +65,6 @@ class Character extends GameObject {
     this.imagen = this.animation.drawAnimation();
     super.draw(context);
     if (this instanceof Player) {
-      this.updateAmmoPosition();
       context.beginPath();
       context.fillStyle = "#ff0000";
       context.arc(this.positionAmmo.normal.x, this.positionAmmo.normal.y, 10, 0, Math.PI * 2);
@@ -124,16 +123,15 @@ class Character extends GameObject {
   }
   createBullet() {
     if (this.canIshoot) {
-      let posicion = this.positionAmmo.normal;
       if (this.stateData.duck) {
-        posicion = this.positionAmmo.down;
+        this.bullets.push(
+          new this.bulletType(this.positionAmmo.down, this.orientation, this.bullets)
+        );
+      } else {
+        this.bullets.push(
+          new this.bulletType(this.positionAmmo.normal, this.orientation, this.bullets)
+        );
       }
-      if (this.orientation == "D") {
-        posicion.x += this.size.w;
-      }
-      console.log(posicion);
-      console.log(this.positionAmmo);
-      this.bullets.push(new this.bulletType(posicion, this.orientation, this.bullets));
 
       this.canIshoot = false;
       this.increaseAmmo(-1);

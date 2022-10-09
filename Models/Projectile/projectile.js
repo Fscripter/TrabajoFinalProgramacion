@@ -1,5 +1,5 @@
 class Projectile {
-  constructor(position, orientacion, size) {
+  constructor(position, orientacion, size, imageUrl) {
     this.positionWorld = position;
     this.orientacion = orientacion;
     this.size = size;

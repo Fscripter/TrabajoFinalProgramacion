@@ -118,7 +118,7 @@ class Enemy extends Character {
     balasArray.forEach((bala) => {
       let bulletDistance = Math.abs(bala.positionWorld.x - this.positionWorld.x);
       let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
-      if ((bala.positionWorld.y = this.positionWorld.y || bulletDistance < 15)) {
+      if (bala.positionWorld.y == this.positionWorld.y || bulletDistance < 15) {
         this.jump();
         return;
       }

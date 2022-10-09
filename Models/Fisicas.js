@@ -17,9 +17,6 @@ class Physic {
   onGravity(objects) {
     //Aplicar gravedad a n
     objects.forEach((element) => {
-      if (element instanceof Bullet || element instanceof BulletGun) {
-        console.log(element);
-      }
       if (!element.physicsData.isGround) {
         element.velocidad.y += trunc(this.gravity * this.deltaTime * this.deltaTime * 10, 5);
         if (element.velocidad.y >= 0) {
