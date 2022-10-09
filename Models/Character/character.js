@@ -28,7 +28,6 @@ class Character extends GameObject {
     this.animation = new Animator(settingsAnimations, this.orientation);
     this.face = face;
     this.HUD = new BarraVida("Character", this.life, "#ffffff", this.face);
-    this.collision = new Collision(this);
     this.bullets = [];
     this.canIshoot = true;
     this.bulletType = shootSettings.bulletType;
@@ -69,7 +68,6 @@ class Character extends GameObject {
     context.fill();
     context.closePath();
     this.drawBullets(context);
-    this.collision.draw(context);
   }
   jump() {
     if (this.physicsData.isGround) {

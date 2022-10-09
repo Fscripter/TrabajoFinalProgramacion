@@ -98,6 +98,7 @@ class Player extends Character {
     );
     this.ammo = 50;
     this.ammoHUD = new AmmoHUD(this.ammo);
+    this.collision=new collision
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -112,7 +113,6 @@ class Player extends Character {
   }
   getUp() {
     this.stateData.duck = false;
-    this.collision.changeState("Estatico");
   }
   getDown() {
     if (this.stateData.moving == true) {
@@ -120,7 +120,6 @@ class Player extends Character {
       return;
     }
     this.stateData.duck = true;
-    this.collision.changeState("Down");
   }
   jump() {
     super.jump();
@@ -136,6 +135,7 @@ class Player extends Character {
       x: this.positionWorld.x - 250,
       y: this.positionWorld.y - 270,
     });
+    this.collision.draw(context)
   }
   changeState() {
     //Each one, defines own rules for animations
