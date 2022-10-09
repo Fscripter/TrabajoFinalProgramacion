@@ -34,6 +34,7 @@ class Character extends GameObject {
     this.coolDown = shootSettings.coolDown;
     this.ammo = ammo;
     this.positionAmmoDelta = positionAmmoDelta;
+    console.log(this.positionAmmoDelta);
   }
   move(vel) {
     this.positionWorld.x += vel;
@@ -63,6 +64,14 @@ class Character extends GameObject {
     }
     this.imagen = this.animation.drawAnimation();
     super.draw(context);
+    if (this instanceof Player) {
+      this.updateAmmoPosition();
+      context.beginPath();
+      context.fillStyle = "#ff0000";
+      context.arc(this.positionAmmo.normal.x, this.positionAmmo.normal.y, 10, 0, Math.PI * 2);
+      context.fill();
+      context.closePath();
+    }
     context.beginPath();
     context.arc(this.positionWorld.x, this.positionWorld.y, 10, 0, Math.PI * 2);
     context.fill();
@@ -122,6 +131,8 @@ class Character extends GameObject {
       if (this.orientation == "D") {
         posicion.x += this.size.w;
       }
+      console.log(posicion);
+      console.log(this.positionAmmo);
       this.bullets.push(new this.bulletType(posicion, this.orientation, this.bullets));
 
       this.canIshoot = false;
