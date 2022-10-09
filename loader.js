@@ -27,6 +27,8 @@ let scriptList = [
   "Models/Character/EnemyBoss.js",
   "Models/Engine/Engine.js",
   "Models/Utilities/ColliderEvent/Collision.js",
+  "Models/Projectile/projectile.js",
+  "Models/Projectile/laser.js",
   "main.js",
 ];
 

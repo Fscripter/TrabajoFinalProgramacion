@@ -3,7 +3,7 @@ class Projectile {
     this.positionWorld = position;
     this.orientation = orientation;
     this.size = size;
-    this.damage=damage;
+    this.damage = damage;
     this.image = new ImagenDerogada("./Sprites/Objects/Cajas1.jpeg");
   }
   draw(context) {

@@ -81,7 +81,7 @@ class Player extends Character {
       },
       new ImagenDerogada("./Sprites/Player/Face.png"),
       {
-        bulletType: BulletGun,
+        bulletType: Laser,
         coolDown: 250,
       },
       50,
