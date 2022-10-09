@@ -117,7 +117,7 @@ class Enemy extends Character {
   AI(player, bulletsArray) {
     let distanceX = Math.abs(this.positionWorld.x - player.positionWorld.x);
     let isRight = this.positionWorld.x < player.positionWorld.x;
-    let isUp = this.positionWorld.y < player.positionWorld.y;
+    let isUp = this.positionWorld.y > player.positionWorld.y;
     let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
     if (isRight && distanceX < 400) {
       this.shoot();
@@ -130,6 +130,10 @@ class Enemy extends Character {
       this.shoot();
     }
     if (isRight && isUp) {
+      this.shoot();
+      this.jump();
+    }
+    if (!isRight && isUp) {
       this.shoot();
       this.jump();
     }
