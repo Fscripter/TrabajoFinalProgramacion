@@ -165,27 +165,49 @@ class Enemy extends Character {
     this.animation.changeState("Estatico");
   }
   AI(player, bulletsArray) {
+    let isRight = (this.positionWorld.x < player.positionWorld.x)
+    let isUp = (this.positionWorld.y < player.positionWorld.y)
     let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
     bulletsArray.forEach((bullet = Bullet) => {
-      let distanceX = Math.abs(bullet.positionWorld.x - this.positionWorld.x);
+      let distanceBullet = Math.abs(bullet.positionWorld.x - this.positionWorld.x);
       if (
         bullet.positionWorld.y >= this.positionWorld.y + this.size.h / 2 &&
         bullet.positionWorld.y <= this.positionWorld.y + this.size.h &&
-        distanceX < 50 + bullet.size.w &&
-        distanceX > 50 + bullet.size.w
+        distanceBullet < 50 + bullet.size.w
       ) {
         this.jump();
       }
       if (
-        bullet.positionWorld.y >= this.positionWorld.y + this.size.h / 3 &&
-        distanceX < 50 + bullet.size.w &&
-        fallingDown &&
-        distanceX > 50 + bullet.size.w &&
-        !this.stateData.jumping
+        bullet.positionWorld.y >= this.positionWorld.y &&
+        bullet.positionWorld.y <= this.positionWorld.y + this.size.h + 1 / 2 &&
+        !this.stateData.jumping &&
+        distanceBullet < 200 &&
+        bullet.positionWorld.y > this.positionWorld.y - (1 / 3) * this.size.h
       ) {
         this.getDown();
-        console.log("get down");
       }
+      if (
+        bullet.orientation == "R" &&
+        bullet.positionWorld.x > this.positionWorld.x &&
+        distanceBullet < 10
+      ) {
+        this.getUp();
+      }
+      if (
+        fallingDown == true &&
+        distanceBullet < bullet.size.w + 20 &&
+        bullet.orientation == "R"
+      ) {
+        this.move(-2);
+      }
+      if (
+        fallingDown == true &&
+        distanceBullet < bullet.size.w + 20 &&
+        bullet.orientation == "L"
+      ) {
+        this.move(2);
+      }
+      if ()
     });
   }
 }
