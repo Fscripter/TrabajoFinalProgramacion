@@ -116,7 +116,7 @@ class Enemy extends Character {
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
         bulletType: Bullet,
-        coolDown: 150,
+        coolDown: 1500,
       }
     );
     this.type = "Enemy";
@@ -179,30 +179,24 @@ class Enemy extends Character {
       this.orientation = "L";
       this.shoot();
     }
-    if (isRight && isUp) {
-      this.shoot();
+    if (isRight && isUp && this.canIshoot == true) {
       this.jump();
+      this.shoot();
     }
-    if (!isRight && isUp) {
-      this.shoot();
+    if (!isRight && isUp && this.canIshoot == true) {
       this.jump();
+      this.shoot();
     }
     bulletsArray.forEach((bullet = Bullet) => {
       let distanceBullet = Math.abs(
         bullet.positionWorld.x - this.positionWorld.x
       );
       if (
-        bullet.positionWorld.y >= this.positionWorld.y + this.size.h / 2 &&
-        bullet.positionWorld.y <= this.positionWorld.y + this.size.h &&
-        distanceBullet < 50 + bullet.size.w
-      ) {
-        this.jump();
-      }
-      if (
         bullet.positionWorld.y >= this.positionWorld.y &&
-        bullet.positionWorld.y <= this.positionWorld.y + this.size.h + 1 / 2 &&
+        bullet.positionWorld.y <=
+          this.positionWorld.y + this.size.h + 1 / 2 + 5 &&
         !this.stateData.jumping &&
-        distanceBullet < 200 &&
+        distanceBullet < 100 + bullet.size.w &&
         bullet.positionWorld.y > this.positionWorld.y - (1 / 3) * this.size.h
       ) {
         this.getDown();
@@ -227,6 +221,10 @@ class Enemy extends Character {
         bullet.orientation == "L"
       ) {
         this.move(2);
+      }
+      if (bullet.positionWorld.y > this.positionWorld.y + this.size.h / 2) {
+        let quadrant = "IV";
+        console.log(quadrant);
       }
     });
   }

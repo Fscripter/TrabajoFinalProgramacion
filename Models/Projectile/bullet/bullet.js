@@ -7,9 +7,9 @@ class Bullet extends Projectile {
     super(position, orientation, size);
     this.damage = 30;
     this.image.src = "./Models/Projectile/bullet/bullet.png";
-    this.speed = 30;
+    this.speed = 10;
     if (orientation != "R") {
-      this.speed = -30;
+      this.speed = -10;
     }
     this.sound = new Audio("./Sprites/Player/Sound/disparo.mp3");
     this.sound.play();
