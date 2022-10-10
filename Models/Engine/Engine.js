@@ -35,14 +35,20 @@ class Engine {
   getCanvasPosition(canvasPosition) {
     this.canvasPosition = canvasPosition;
   }
+  isInScreen(gameObject = new GameObject()) {
+    if (
+      gameObject.positionWorld.x >= -this.canvasPosition.x &&
+      gameObject.positionWorld.x < -this.canvasPosition.x + 1000 &&
+      gameObject.alive
+    ) {
+      return true;
+    }
+  }
   addQueue(colaHud = new ColaHUD()) {
     colaHud.actualizarPosicion(this.canvasPosition);
     this.enemys.enemys.forEach((enemy) => {
-      if (
-        enemy.positionWorld.x > -this.canvasPosition.x &&
-        enemy.positionWorld.x < -this.canvasPosition.x + 1000 &&
-        enemy.alive
-      ) {
+      let isIn = this.isInScreen(enemy);
+      if (isIn) {
         colaHud.add(enemy);
       }
     });
@@ -53,12 +59,15 @@ class Engine {
   }
   enemyIAtoPlayer() {
     this.enemys.enemys.forEach((enemy) => {
-      enemy.AI(
-        {
-          positionWorld: this.player.positionWorld,
-        },
-        this.player.bullets
-      );
+      let isIn = this.isInScreen(enemy);
+      if (isIn) {
+        enemy.AI(
+          {
+            positionWorld: this.player.positionWorld,
+          },
+          this.player.bullets
+        );
+      }
     });
   }
   render(context) {
