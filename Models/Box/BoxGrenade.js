@@ -1,4 +1,4 @@
-class boxAmmo extends Box {
+class Grenade extends Box {
   constructor(position) {
     super(
       position,
@@ -8,11 +8,11 @@ class boxAmmo extends Box {
       },
       "./Sprites/Objects/Caja/BoxAmmo/Ammo.png"
     );
-    this.maxAmmo = 30;
+    this.maxAmmo = 5;
     this.sound = new Audio("./Sprites/Objects/Ammo.mp3");
   }
   GiveAmmo(Target = new Player()) {
-    Target.weapons.weaponImage.bullet += this.maxAmmo;
+    Target.weapons.weaponInfo.grenade += this.maxAmmo;
   }
   interaction(Player) {
     super.interaction();
