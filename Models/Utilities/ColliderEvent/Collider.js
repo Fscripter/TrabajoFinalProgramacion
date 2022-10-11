@@ -70,7 +70,7 @@ class Collider {
   getCollisionEnemy(bullet, enemy) {
     let isIn = this.getCollisionBetween(bullet, enemy);
     if (isIn && enemy.alive) {
-      enemy.doDamage(10);
+      enemy.doDamage(bullet.damage);
       bullet.delete();
     }
   }
