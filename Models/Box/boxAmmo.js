@@ -12,7 +12,7 @@ class boxAmmo extends Box {
     this.sound = new Audio("./Sprites/Objects/Ammo.mp3");
   }
   GiveAmmo(Target = new Player()) {
-    Target.weapons.weaponImage.bullet += this.maxAmmo;
+    Target.weapons.weaponInfo.bullet += this.maxAmmo;
   }
   interaction(Player) {
     super.interaction();
