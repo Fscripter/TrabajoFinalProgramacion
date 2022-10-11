@@ -1,4 +1,4 @@
-class Laser extends Box {
+class BoxLaser extends Box {
   constructor(position) {
     super(
       position,

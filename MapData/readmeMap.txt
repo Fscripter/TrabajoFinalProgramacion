@@ -32,3 +32,6 @@ Char reserved for box:
     X: TNT
     H: Heal
     P: Ammount
+    L: Laser
+    G: Grenade
+    F: Flamethrower

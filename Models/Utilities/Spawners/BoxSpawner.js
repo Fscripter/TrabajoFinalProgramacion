@@ -9,7 +9,7 @@ class boxSpawner {
     this.boxes = [];
   }
   spawnBox(Type, Posicion) {
-    let acceptedTypes = ["X", "H", "P"];
+    let acceptedTypes = ["X", "H", "P", "L", "G", "F"];
     if (acceptedTypes.indexOf(Type) == -1) {
       return;
     }
@@ -29,6 +29,11 @@ class boxSpawner {
         this.totalBoxes.tnt++;
         this.totalBoxes.total++;
         break;
+      // case "L":
+      //   this.boxes.push(new boxLl(Posicion));
+      //   this.totalBoxes.tnt++;
+      //   this.totalBoxes.total++;
+      //   break;
       default:
         break;
     }
