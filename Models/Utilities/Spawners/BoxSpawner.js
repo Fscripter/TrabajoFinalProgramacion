@@ -2,8 +2,11 @@ class boxSpawner {
   constructor() {
     this.totalBoxes = {
       healers: 0,
-      ammo: 0,
+      Rifle: 0,
       tnt: 0,
+      Laser: 0,
+      Flamethrower: 0,
+      Grenade: 0,
       total: 0,
     };
     this.boxes = [];
@@ -21,7 +24,7 @@ class boxSpawner {
         break;
       case "P":
         this.boxes.push(new boxAmmo(Posicion));
-        this.totalBoxes.ammo++;
+        this.totalBoxes.Rifle++;
         this.totalBoxes.total++;
         break;
       case "X":
@@ -29,11 +32,21 @@ class boxSpawner {
         this.totalBoxes.tnt++;
         this.totalBoxes.total++;
         break;
-      // case "L":
-      //   this.boxes.push(new boxLl(Posicion));
-      //   this.totalBoxes.tnt++;
-      //   this.totalBoxes.total++;
-      //   break;
+      case "L":
+        this.boxes.push(new BoxLaser(Posicion));
+        this.totalBoxes.BoxLaser++;
+        this.totalBoxes.total++;
+        break;
+      case "F":
+        this.boxes.push(new Boxflamethrower(Posicion));
+        this.totalBoxes.Flamethrower++;
+        this.totalBoxes.total++;
+        break;
+      case "G":
+        this.boxes.push(new BoxGrenade(Posicion));
+        this.totalBoxes.Grenade++;
+        this.totalBoxes.total++;
+        break;
       default:
         break;
     }
