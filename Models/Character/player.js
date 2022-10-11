@@ -101,7 +101,6 @@ class Player extends Character {
   }
   updateAmmo() {
     this.ammo = this.weapons.currentAmmo;
-    console.log(this.ammo);
   }
   changeWeapon(type) {
     this.weapons.changeWeapon(type);

@@ -83,7 +83,7 @@ class Engine {
     this.enemyIAtoPlayer();
     this.collisionEngine.collision();
     this.physics.onGravity(this.enemys.enemys.concat(this.boxes.boxes).concat(this.player));
-    this.physics.onGravity(this.searchGrenadesInPlayer());
+    this.physics.onGravity(this.searchGrenadesInPlayer(), true);
     this.enemys.draw(context);
     this.boxes.draw(context);
   }

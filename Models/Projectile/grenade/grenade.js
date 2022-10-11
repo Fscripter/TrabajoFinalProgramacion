@@ -8,6 +8,9 @@ class Grenade extends Projectile {
       x: 8,
       y: -10,
     };
+    if (this.orientation != "R") {
+      this.velocidad.x *= -1;
+    }
     this.physicsData = {
       isGravity: true,
       jumpForce: 10,
@@ -36,7 +39,7 @@ class Grenade extends Projectile {
     this.speed = 0;
     enemysArray = enemysArray.concat(Player);
     let enemysAffected = 0;
-    enemysArray.forEach((enemy, index) => {
+    enemysArray.forEach((enemy) => {
       let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
       let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
       let radioInteraccion = Math.pow(X, 2) + Math.pow(Y, 2); // X.X + Y.Y = R.R
@@ -58,6 +61,13 @@ class Grenade extends Projectile {
     this.collider.draw(context);
   }
   reducirFuerza() {
+    if (this.orientation != "R") {
+      this.velocidad.x += 60 / 1000;
+      if (this.velocidad.x > 0) {
+        this.velocidad.x = 0;
+      }
+      return;
+    }
     //Reducir fuerza en x, y aplicar gravedad
     this.velocidad.x -= 60 / 1000;
     if (this.velocidad.x < 0) {
