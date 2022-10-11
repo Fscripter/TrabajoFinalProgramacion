@@ -13,7 +13,7 @@ class weaponHud {
       flamethrower: new ImagenDerogada("./Sprites/Player/Weapons/Flamethrower.png"),
     };
     this.weapons = ["bullet", "laser", "grenade", "flamethrower"];
-    this.currentWeapon = this.weapons[0];
+    this.changeWeapon(1);
     this.changeImage();
   }
   draw(context, position) {
@@ -29,7 +29,13 @@ class weaponHud {
       return;
     }
     this.currentWeapon = this.weapons[newWeapon - 1];
+    this.currentAmmo = this.weaponInfo[this.currentWeapon];
+    console.log(this.currentAmmo);
     this.changeImage();
+  }
+  decreaseAmmount() {
+    this.weaponInfo[this.currentWeapon]--;
+    this.currentAmmo = this.weaponInfo[this.currentWeapon];
   }
   changeImage() {
     this.weaponImageRender = this.weaponImage[this.currentWeapon];

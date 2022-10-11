@@ -31,7 +31,7 @@ let scriptList = [
   "Models/Projectile/laser/laser.js",
   "Models/Projectile/bullet/bullet.js",
   "Models/Projectile/grenade/grenade.js",
-  "Models/Hud/ArmaHud.js",
+  "Models/Hud/weaponsHud.js",
   "main.js",
 ];
 

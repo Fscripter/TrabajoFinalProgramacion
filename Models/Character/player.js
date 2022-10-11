@@ -96,9 +96,12 @@ class Player extends Character {
         },
       }
     );
-    this.ammo = 50;
-    this.ammoHUD = new AmmoHUD(this.ammo);
     this.weapons = new weaponHud();
+    this.updateAmmo();
+  }
+  updateAmmo() {
+    this.ammo = this.weapons.currentAmmo;
+    console.log(this.ammo);
   }
   changeWeapon(type) {
     this.weapons.changeWeapon(type);
@@ -134,10 +137,6 @@ class Player extends Character {
       x: this.positionWorld.x - 250,
       y: this.positionWorld.y - 270,
     });
-    this.ammoHUD.draw(context, {
-      x: this.positionWorld.x - 250,
-      y: this.positionWorld.y - 270,
-    });
     this.weapons.draw(context, {
       x: this.positionWorld.x - 250,
       y: this.positionWorld.y - 270,
@@ -164,13 +163,13 @@ class Player extends Character {
     this.animation.changeState("Estatico");
   }
   shoot() {
-    super.shoot();
-    this.ammoHUD.updateAmmount(this.ammo);
-  }
-  increaseAmmo(addAdmo) {
-    if (super.increaseAmmo(addAdmo)) {
-      this.ammoHUD.updateAmmount(this.ammo);
+    this.updateAmmo();
+    if (this.ammo > 0) {
+      super.shoot();
     }
+  }
+  increaseAmmo() {
+    this.weapons.decreaseAmmount();
   }
   randomAudio() {
     let audioNumber = (Math.random() * (3 - 1) + 1).toFixed(0);
