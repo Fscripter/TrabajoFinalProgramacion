@@ -2,7 +2,7 @@ class Laser extends Projectile {
   constructor(posicion, orientation) {
     super(posicion, orientation, {
       w: 100,
-      h: 10,
+      h: 15,
     });
     this.animation = new Animator(
       {

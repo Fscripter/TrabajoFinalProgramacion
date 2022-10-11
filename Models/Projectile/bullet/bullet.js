@@ -1,8 +1,8 @@
 class Bullet extends Projectile {
   constructor(position, orientation) {
     let size = {
-      w: 10,
-      h: 5,
+      w: 30,
+      h: 10,
     };
     super(position, orientation, size);
     this.damage = 30;
