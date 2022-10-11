@@ -9,6 +9,7 @@ class Boxflamethrower extends Box {
       "./Sprites/Objects/Caja/BoxFlamethrower/Flamethrower.png"
     );
     this.maxAmmo = 10;
+    this.sound = new Audio("./Sprites/Objects/Ammo.mp3");
   }
   GiveAmmo(Target = new Player()) {
     Target.weapons.weaponInfo += this.maxAmmo;
