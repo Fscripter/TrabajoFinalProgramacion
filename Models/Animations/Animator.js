@@ -10,6 +10,7 @@ class Animator {
     this.actualFrame = 0;
     this.timeElapsed = 0;
     this.orientation = orientation;
+    this.lastFrame = false;
 
     // console.log(`Animations made with ID ${this.id}`);
   }
@@ -19,12 +20,14 @@ class Animator {
   setTimer() {
     this.actualFrame = 0;
     this.timeElapsed = 0;
+    this.lastFrame = false;
   }
   skipFrame() {
     this.actualFrame++;
     if (this.actualFrame + 1 > this.currentAnimation.animaciones.derecha.length) {
       if (this.currentAnimation.loop == false) {
         this.actualFrame--;
+        this.lastFrame = true;
       } else {
         this.setTimer();
       }

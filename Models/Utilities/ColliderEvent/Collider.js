@@ -8,16 +8,19 @@ class Collider {
   collision() {
     this.collisionBoxEntities();
     this.getCollisionBullets();
+    this.collisionBulletsEnemy();
   }
   getPlayer(player) {
     this.player = player;
     console.log("Player added to Collision! ✔");
   }
-  VerifyPoint(Point, objectB) {
+  VerifyPoint(Point, objectB = new Character()) {
     let isInX =
-      Point.x >= objectB.positionWorld.x && Point.x < objectB.positionWorld.x + objectB.size.w;
+      Point.x >= objectB.collider.measure.x &&
+      Point.x < objectB.collider.measure.x + objectB.collider.measure.w;
     let isInY =
-      Point.y >= objectB.positionWorld.y && Point.y < objectB.positionWorld.y + objectB.size.h;
+      Point.y >= objectB.collider.measure.y &&
+      Point.y < objectB.collider.measure.y + objectB.collider.measure.h;
 
     return isInX && isInY;
   }
@@ -93,6 +96,13 @@ class Collider {
       //Colision balas enemigos
       this.enemys.enemys.forEach((enemy) => {
         this.getCollisionEnemy(bullet, enemy);
+      });
+    });
+  }
+  collisionBulletsEnemy() {
+    this.enemys.enemys.forEach((enemy) => {
+      enemy.bullets.forEach((bullet) => {
+        this.getCollisionEnemy(bullet, this.player);
       });
     });
   }
