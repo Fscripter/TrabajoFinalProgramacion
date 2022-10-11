@@ -8,7 +8,7 @@ class Boxflamethrower extends Box {
       },
       "./Sprites/Objects/Caja/BoxFlamethrower/Flamethrower.png"
     );
-    this.maxAmmo = 100;
+    this.maxAmmo = 10;
   }
   GiveAmmo(Target = new Player()) {
     Target.weapons.weaponInfo += this.maxAmmo;
