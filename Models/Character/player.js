@@ -98,13 +98,19 @@ class Player extends Character {
     );
     this.ammo = 50;
     this.ammoHUD = new AmmoHUD(this.ammo);
+    this.weapons = new weaponHud();
   }
   changeWeapon(type) {
+    this.weapons.changeWeapon(type);
     if (type == 1) {
       this.bulletType = Bullet;
       return;
     }
-    this.bulletType = Laser;
+    if (type == 2) {
+      this.bulletType = Laser;
+      return;
+    }
+    this.bulletType = Grenade;
   }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -129,6 +135,10 @@ class Player extends Character {
       y: this.positionWorld.y - 270,
     });
     this.ammoHUD.draw(context, {
+      x: this.positionWorld.x - 250,
+      y: this.positionWorld.y - 270,
+    });
+    this.weapons.draw(context, {
       x: this.positionWorld.x - 250,
       y: this.positionWorld.y - 270,
     });
@@ -161,5 +171,15 @@ class Player extends Character {
     if (super.increaseAmmo(addAdmo)) {
       this.ammoHUD.updateAmmount(this.ammo);
     }
+  }
+  randomAudio() {
+    let audioNumber = (Math.random() * (3 - 1) + 1).toFixed(0);
+    let damageSound = new Audio();
+    damageSound.src = `./Sprites/Player/Sound/Damage/${audioNumber}.mp3`;
+    return damageSound;
+  }
+  doDamage(damage) {
+    this.randomAudio().play();
+    super.doDamage(damage);
   }
 }
