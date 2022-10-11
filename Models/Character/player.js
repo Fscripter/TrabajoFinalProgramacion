@@ -118,14 +118,27 @@ class Player extends Character {
     }
     this.bulletType = Flamethrower;
   }
+  drawBullets(context) {
+    this.updateAmmoPosition();
+    let posicion = this.positionAmmo.normal;
+    if (this.stateData.duck) {
+      posicion = this.positionAmmo.down;
+    }
+    if (this.orientation == "R") {
+      posicion.x += this.size.w;
+    } else {
+      posicion.x -= this.size.w * 2;
+    }
+    this.bullets.forEach((bullet) => {
+      if (bullet instanceof Flamethrower) {
+        bullet.update(posicion, this.orientation);
+      }
+      bullet.draw(context);
+    });
+  }
   move(vel, mapaMovement) {
     if (this.canIMove.l || this.canIMove.r) {
       super.move(vel);
-      this.bullets.forEach((bullet) => {
-        if (bullet instanceof Flamethrower) {
-          bullet.delete();
-        }
-      });
       this.orientation = "L";
       if (vel > 0) {
         this.orientation = "R";

@@ -15,7 +15,7 @@ class Flamethrower extends Projectile {
         animations: [
           {
             id: "living",
-            transitionTime: 40,
+            transitionTime: 20,
             loop: false,
             animaciones: {
               derecha: [
@@ -44,6 +44,7 @@ class Flamethrower extends Projectile {
       },
       this.orientation
     );
+    this.collision = new Collision(this);
   }
   draw(context) {
     this.image = this.animation.drawAnimation();
@@ -51,5 +52,10 @@ class Flamethrower extends Projectile {
       this.delete();
     }
     super.draw(context);
+    this.collision.draw(context);
+  }
+  update(position, orientation) {
+    this.positionWorld = position;
+    this.orientation = orientation;
   }
 }

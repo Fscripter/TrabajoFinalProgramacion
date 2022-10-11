@@ -11,11 +11,11 @@ class Character extends GameObject {
     positionAmmoDelta = {
       normal: {
         x: 0,
-        y: 50,
+        y: 35,
       },
       down: {
         x: 0,
-        y: 70,
+        y: 58,
       },
     }
   ) {
@@ -50,12 +50,13 @@ class Character extends GameObject {
     this.positionWorld.x += vel;
   }
   doDamage(damage) {
-    if (this.life > 0) {
+    if (this.life - damage > 0) {
       this.life -= damage;
       this.updateLifeHUD();
       return;
     }
     this.alive = false;
+    this.life -= damage;
     this.updateLifeHUD();
   }
   heal(life) {

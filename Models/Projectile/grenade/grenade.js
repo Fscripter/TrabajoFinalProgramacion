@@ -27,7 +27,7 @@ class Grenade extends Projectile {
     this.image = new ImagenDerogada("./Sprites/Balas/Grenade.png");
     this.collider = new Collision(this);
     this.radius = 75;
-    this.damage = 20;
+    this.damage = 40;
     this.sound = new Audio("./Sprites/Objects/TNT.mp3");
   }
   reducirVida() {
