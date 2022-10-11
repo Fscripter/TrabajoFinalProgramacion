@@ -125,7 +125,7 @@ class Collider {
         return;
       }
       //Colision jugador - Heal/Ammo
-      if (box instanceof BoxHealing || box instanceof boxAmmo) {
+      if (!(box instanceof TNT)) {
         this.collisionNormalBox(box);
         return;
       }
