@@ -29,11 +29,11 @@ class boxSpawner {
         this.totalBoxes.tnt++;
         this.totalBoxes.total++;
         break;
-      // case "L":
-      //   this.boxes.push(new boxLl(Posicion));
-      //   this.totalBoxes.tnt++;
-      //   this.totalBoxes.total++;
-      //   break;
+      case "L":
+        this.boxes.push(new BoxL(Posicion));
+        this.totalBoxes.tnt++;
+        this.totalBoxes.total++;
+        break;
       default:
         break;
     }
