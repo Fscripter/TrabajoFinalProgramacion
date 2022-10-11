@@ -87,6 +87,19 @@ class Collider {
   }
   getCollisionBullets() {
     this.player.bullets.forEach((bullet) => {
+      if (bullet instanceof Grenade) {
+        if (bullet.readyToBlow == true && bullet.isBlow == false) {
+          bullet.blow(this.player, this.enemys.enemys);
+          return;
+        }
+        this.enemys.enemys.forEach((enemy) => {
+          let isIn = this.getCollisionBetween(bullet, enemy);
+          if (isIn && enemy.alive) {
+            bullet.blow(this.player, this.enemys.enemys);
+          }
+        });
+        return;
+      }
       //Colision balas TNT
       this.boxes.boxes.forEach((box) => {
         if (box instanceof TNT) {

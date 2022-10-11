@@ -48,7 +48,6 @@ class Physic {
       xa: Math.floor(element.positionWorld.x / 50),
       xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
-
     let isFloor = false;
     let axisX = this.map[positionArr.y][positionArr.xa];
     let axisXWidth = this.map[positionArr.y][positionArr.xb];
