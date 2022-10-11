@@ -6,6 +6,12 @@ class weaponHud {
       laser: 30,
       flamethrower: 50,
     };
+    this.weaponCooldown = {
+      grenade: 2000,
+      rifle: 200,
+      laser: 500,
+      flamethrower: 200,
+    };
     this.weaponImage = {
       grenade: new ImagenDerogada("./Sprites/Player/Weapons/Grenade.png"),
       laser: new ImagenDerogada("./Sprites/Player/Weapons/Laser.png"),
@@ -31,11 +37,13 @@ class weaponHud {
     }
     this.currentWeapon = this.weapons[newWeapon - 1];
     this.currentAmmo = this.weaponInfo[this.currentWeapon];
+    this.currentCooldown = this.weaponCooldown[this.currentWeapon];
     this.changeImage();
   }
   decreaseAmmount() {
     this.weaponInfo[this.currentWeapon]--;
     this.currentAmmo = this.weaponInfo[this.currentWeapon];
+    this.currentCooldown = this.weaponCooldown[this.currentWeapon];
   }
   changeImage() {
     this.weaponImageRender = this.weaponImage[this.currentWeapon];
