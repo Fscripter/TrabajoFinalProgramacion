@@ -2,17 +2,18 @@ class weaponHud {
   constructor() {
     this.weaponInfo = {
       grenade: 5,
-      bullet: 10,
+      rifle: 10,
       laser: 30,
       flamethrower: 50,
     };
     this.weaponImage = {
       grenade: new ImagenDerogada("./Sprites/Player/Weapons/Grenade.png"),
       laser: new ImagenDerogada("./Sprites/Player/Weapons/Laser.png"),
-      bullet: new ImagenDerogada("./Sprites/Player/Weapons/Rifle.png"),
+      rifle: new ImagenDerogada("./Sprites/Player/Weapons/Rifle.png"),
       flamethrower: new ImagenDerogada("./Sprites/Player/Weapons/Flamethrower.png"),
     };
-    this.weapons = ["bullet", "laser", "grenade", "flamethrower"];
+    this.weapons = ["rifle", "laser", "grenade", "flamethrower"];
+    this.currentWeapon = this.weapons[0];
     this.changeWeapon(1);
     this.changeImage();
   }
@@ -30,7 +31,6 @@ class weaponHud {
     }
     this.currentWeapon = this.weapons[newWeapon - 1];
     this.currentAmmo = this.weaponInfo[this.currentWeapon];
-    console.log(this.currentAmmo);
     this.changeImage();
   }
   decreaseAmmount() {

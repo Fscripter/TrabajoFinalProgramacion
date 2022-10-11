@@ -15,7 +15,7 @@ class Physic {
     this.map = map;
     console.log("Physics added! ✔");
   }
-  onGravity(objects) {
+  onGravity(objects, deleted = false) {
     //Aplicar gravedad a n
     objects.forEach((element) => {
       if (!element.physicsData.isGround) {
@@ -29,7 +29,7 @@ class Physic {
       }
       // //Realiza movimiento
       element.positionWorld.y += Math.floor(element.velocidad.y);
-      this.detectGround(element);
+      this.detectGround(element, deleted);
     });
   }
   detectarTerreno(terreno) {
@@ -37,7 +37,7 @@ class Physic {
       return true;
     }
   }
-  detectGround(element) {
+  detectGround(element, deleted) {
     //Only detect ground if we are falling
     if (element.stateData.jumping) {
       return;
@@ -49,6 +49,18 @@ class Physic {
       xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
     let isFloor = false;
+    if (this.map[positionArr.y] === undefined) {
+      if (deleted) {
+        element.delete();
+        return;
+      }
+    }
+    if (
+      this.map[positionArr.y][positionArr.xa] == undefined ||
+      this.map[positionArr.y][positionArr.xb] == undefined
+    ) {
+      return;
+    }
     let axisX = this.map[positionArr.y][positionArr.xa];
     let axisXWidth = this.map[positionArr.y][positionArr.xb];
     isFloor = this.detectarTerreno(axisX) || this.detectarTerreno(axisXWidth);
