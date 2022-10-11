@@ -11,6 +11,7 @@ class TNT extends Box {
     this.damage = 80;
     this.radius = 350;
     this.isblow = false;
+    this.activeRadius = this.radius;
     this.animation = new Animator(
       {
         states: ["No interaccion", "Explosion"],
@@ -71,8 +72,25 @@ class TNT extends Box {
   changeEvent() {
     this.isblow = true;
   }
+  checkLastFrame() {
+    if (this.animation.lastFrame && this.isblow) {
+      this.active = false;
+    }
+  }
   draw(context) {
     this.imagen = this.animation.drawAnimation();
+    this.checkLastFrame();
     super.draw(context);
+    if (this.isblow && this.active) {
+      this.activeRadius -= this.radius / 30;
+      if (!(this.activeRadius > 0)) {
+        this.activeRadius = 0;
+      }
+      context.beginPath();
+      context.fillStyle = "rgba(255,0,0,0.4)";
+      context.arc(this.positionWorld.x, this.positionWorld.y, this.activeRadius, 0, Math.PI * 2);
+      context.fill();
+      context.closePath();
+    }
   }
 }

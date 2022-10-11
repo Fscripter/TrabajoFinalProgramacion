@@ -2,6 +2,7 @@ class Box extends GameObject {
   constructor(position, size, baseUrl) {
     super(position, size, baseUrl);
     this.active = true;
+    this.collider = new Collision(this);
   }
   interaction() {
     this.active = false;
@@ -16,5 +17,6 @@ class Box extends GameObject {
       return;
     }
     super.draw(context);
+    this.collider.draw(context);
   }
 }
