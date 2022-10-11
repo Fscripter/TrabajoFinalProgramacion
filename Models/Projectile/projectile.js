@@ -6,6 +6,7 @@ class Projectile {
     this.damage = damage;
     this.image = new ImagenDerogada("./Sprites/Objects/Cajas1.jpeg");
     this.id = new Date().getMilliseconds() + "" + Math.random();
+    this.collider = new Collision(this);
   }
   addCallback(callback) {
     this.callback = callback;
@@ -18,6 +19,7 @@ class Projectile {
       this.size.w,
       this.size.h
     );
+    this.collider.draw(context);
   }
   delete() {
     this.callback(this.id);

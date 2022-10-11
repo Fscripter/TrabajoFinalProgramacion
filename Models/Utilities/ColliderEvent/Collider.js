@@ -28,29 +28,29 @@ class Collider {
     let isIn =
       this.VerifyPoint(
         {
-          x: objectA.positionWorld.x,
-          y: objectA.positionWorld.y,
+          x: objectA.collider.measure.x,
+          y: objectA.collider.measure.y,
         },
         objectB
       ) ||
       this.VerifyPoint(
         {
-          x: objectA.positionWorld.x - objectA.size.w,
-          y: objectA.positionWorld.y,
+          x: objectA.collider.measure.x + objectA.collider.measure.w,
+          y: objectA.collider.measure.y,
         },
         objectB
       ) ||
       this.VerifyPoint(
         {
-          x: objectA.positionWorld.x - objectA.size.w,
-          y: objectA.positionWorld.y + objectA.size.h,
+          x: objectA.collider.measure.x + objectA.collider.measure.w,
+          y: objectA.collider.measure.y + objectA.collider.measure.h,
         },
         objectB
       ) ||
       this.VerifyPoint(
         {
-          x: objectA.positionWorld.x,
-          y: objectA.positionWorld.y + objectA.size.h,
+          x: objectA.collider.measure.x,
+          y: objectA.collider.measure.y + objectA.size.h,
         },
         objectB
       );
