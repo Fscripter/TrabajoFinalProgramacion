@@ -88,11 +88,11 @@ class Player extends Character {
       {
         normal: {
           x: 0,
-          y: 50,
+          y: 35,
         },
         down: {
           x: 0,
-          y: 70,
+          y: 58,
         },
       }
     );
