@@ -70,10 +70,20 @@ class Engine {
       }
     });
   }
+  searchGrenadesInPlayer() {
+    let grenades = [];
+    this.player.bullets.forEach((bullet) => {
+      if (bullet instanceof Grenade) {
+        grenades.push(bullet);
+      }
+    });
+    return grenades;
+  }
   render(context) {
     this.enemyIAtoPlayer();
     this.collisionEngine.collision();
     this.physics.onGravity(this.enemys.enemys.concat(this.boxes.boxes).concat(this.player));
+    this.physics.onGravity(this.searchGrenadesInPlayer());
     this.enemys.draw(context);
     this.boxes.draw(context);
   }

@@ -49,6 +49,9 @@ class Physic {
       xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
 
+    if (element instanceof Grenade) {
+      console.log(element.positionWorld);
+    }
     let isFloor = false;
     let axisX = this.map[positionArr.y][positionArr.xa];
     let axisXWidth = this.map[positionArr.y][positionArr.xb];
