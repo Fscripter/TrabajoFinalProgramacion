@@ -1,4 +1,4 @@
-class Laser extends Box {
+class BoxLaser extends Box {
   constructor(position) {
     super(
       position,
@@ -6,7 +6,7 @@ class Laser extends Box {
         w: 100,
         h: 50,
       },
-      "./Sprites/Objects/Caja/BoxAmmo/Ammo.png"
+      "./Sprites/Objects/Caja/BoxLaser/Laser.png"
     );
     this.maxAmmo = 20;
     this.sound = new Audio("./Sprites/Objects/Ammo.mp3");

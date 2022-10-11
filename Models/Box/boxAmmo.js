@@ -6,7 +6,7 @@ class boxAmmo extends Box {
         w: 100,
         h: 50,
       },
-      "./Sprites/Objects/Caja/BoxAmmo/Ammo.png"
+      "./Sprites/Objects/Caja/BoxRifle/Rifle.png"
     );
     this.maxAmmo = 30;
     this.sound = new Audio("./Sprites/Objects/Ammo.mp3");

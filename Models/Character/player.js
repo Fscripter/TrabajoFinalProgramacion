@@ -23,20 +23,44 @@ class Player extends Character {
             loop: true,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Derecha/Pose1.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Derecha/Pose2.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Derecha/Pose3.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Derecha/Pose4.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Derecha/Pose5.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Derecha/Pose6.png"
+                ),
               ],
               izquierda: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Izquierda/Pose1.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Izquierda/Pose2.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Izquierda/Pose3.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Izquierda/Pose4.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Izquierda/Pose5.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Caminar/Izquierda/Pose6.png"
+                ),
               ],
             },
           },
@@ -45,8 +69,14 @@ class Player extends Character {
             transitionTime: 0,
             loop: false,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
+              derecha: [
+                new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png"),
+              ],
+              izquierda: [
+                new ImagenDerogada(
+                  "./Sprites/Player/Salto/Izquierda/Pose1.png"
+                ),
+              ],
             },
           },
           {
@@ -54,8 +84,14 @@ class Player extends Character {
             transitionTime: 0,
             loop: false,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
+              derecha: [
+                new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
+              ],
+              izquierda: [
+                new ImagenDerogada(
+                  "./Sprites/Player/Salto/Izquierda/Pose6.png"
+                ),
+              ],
             },
           },
           {
@@ -64,16 +100,32 @@ class Player extends Character {
             loop: false,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso4.png"),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Derecha/Paso1.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Derecha/Paso2.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Derecha/Paso3.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Derecha/Paso4.png"
+                ),
               ],
               izquierda: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso4.png"),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Izquierda/Paso1.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Izquierda/Paso2.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Izquierda/Paso3.png"
+                ),
+                new ImagenDerogada(
+                  "./Sprites/Player/Agachar/Izquierda/Paso4.png"
+                ),
               ],
             },
           },

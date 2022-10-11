@@ -1,9 +1,13 @@
-class flamethrower extends Box {
+class Boxflamethrower extends Box {
   constructor(position) {
-    super(position, {
-      w: 100,
-      h: 50,
-    });
+    super(
+      position,
+      {
+        w: 100,
+        h: 50,
+      },
+      "./Sprites/Objects/Caja/BoxFlamethrower/Flamethrower.png"
+    );
     this.maxAmmo = 100;
   }
   GiveAmmo(Target = new Player()) {
