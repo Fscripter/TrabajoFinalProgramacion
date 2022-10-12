@@ -4,16 +4,17 @@ function gameLoop(mapaCanvas, GameEngine) {
     x: 500,
     y: 0,
   });
-  // let Sky = new Dog({
-  //   x: 500,
-  //   y: 0,
-  // });
+  let Sky = new Dog({
+    x: 500,
+    y: 0,
+  });
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
-  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000);
+  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000, Sky);
   let request;
   GameEngine.getPlayer(Marin);
+  GameEngine.getDog(Sky);
 
   //Main Loop
   const performAnimation = () => {
@@ -29,7 +30,7 @@ function gameLoop(mapaCanvas, GameEngine) {
     GameEngine.render(mapaCanvas.context);
 
     Marin.draw(mapaCanvas.context);
-    // Sky.draw(mapaCanvas.context);
+    Sky.draw(mapaCanvas.context);
     //Cola enemigos
     // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);

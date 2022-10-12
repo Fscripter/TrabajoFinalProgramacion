@@ -57,6 +57,9 @@ class Engine {
     this.player = player;
     this.collisionEngine.getPlayer(this.player);
   }
+  getDog(dog) {
+    this.dog = dog;
+  }
   enemyIAtoPlayer() {
     this.enemys.enemys.forEach((enemy) => {
       let isIn = this.isInScreen(enemy);
@@ -82,7 +85,9 @@ class Engine {
   render(context) {
     this.enemyIAtoPlayer();
     this.collisionEngine.collision();
-    this.physics.onGravity(this.enemys.enemys.concat(this.boxes.boxes).concat(this.player));
+    this.physics.onGravity(
+      this.enemys.enemys.concat(this.boxes.boxes).concat(this.player).concat(this.dog)
+    );
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
     this.enemys.draw(context);
     this.boxes.draw(context);
