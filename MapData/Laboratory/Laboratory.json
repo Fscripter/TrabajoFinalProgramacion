@@ -30,13 +30,7 @@
       "Z": "./MapData/Laboratory/Terrain/Z.png"
     },
     "Objects": {
-      "TNT": {
-        "size": {
-          "w": 50,
-          "h": 100
-        },
-        "sprite": "./MapData/Laboratory/Objects/Box/TNT.png"
-      }
+      "TNT": "./MapData/Laboratory/Objects/Box/TNT.png"
     },
     "scene": {
       "Layout": "./MapData/Laboratory/Layout/Layout.jpg"
@@ -44,5 +38,13 @@
   },
   "sound": {
     "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
+  },
+  "configsObjects": {
+    "TNT": {
+      "size": {
+        "w": 50,
+        "h": 100
+      }
+    }
   }
 }
