@@ -11,9 +11,10 @@ function gameLoop(mapaCanvas, GameEngine) {
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
-  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000);
+  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000, Sky);
   let request;
   GameEngine.getPlayer(Marin);
+  GameEngine.getDog(Sky);
 
   //Main Loop
   const performAnimation = () => {
