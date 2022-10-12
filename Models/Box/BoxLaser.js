@@ -3,7 +3,7 @@ class BoxLaser extends Box {
     super(
       position,
       {
-        w: 100,
+        w: 50,
         h: 50,
       },
       "./Sprites/Objects/Caja/BoxLaser/Laser.png"
