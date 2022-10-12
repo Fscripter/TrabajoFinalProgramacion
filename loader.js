@@ -9,6 +9,7 @@ let scriptList = [
   "Models/Animations/Animator.js",
   "Models/Character/character.js",
   "Models/Character/player.js",
+  "Models/Character/Dog.js",
   "Models/Character/enemy.js",
   "Models/Utilities/Spawners/EnemySpawner.js",
   "Models/Box/Box.js",

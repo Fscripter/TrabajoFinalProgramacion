@@ -8,8 +8,8 @@ class Dog extends Character {
           transitionTime: 100,
           loop: false,
           animaciones: {
-            derecha: [new ImagenDerogada("./Sprites/Dog/DogRight.png")],
-            izquierda: [new ImagenDerogada("./Sprites/Dog/DogLeft.png")],
+            derecha: [new ImagenDerogada("./Sprites/Dog/Derecha/DogRight.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Dog/Izquierda/DogLeft.png")],
           },
         },
         {
@@ -36,12 +36,8 @@ class Dog extends Character {
           transitionTime: 0,
           loop: false,
           animaciones: {
-            derecha: [
-              new ImagenDerogada("./Sprites/Dog/Derecha/Saltando/1.png"),
-            ],
-            izquierda: [
-              new ImagenDerogada("./Sprites/Dog/Izquierda/Saltando/1.png"),
-            ],
+            derecha: [new ImagenDerogada("./Sprites/Dog/Derecha/Saltando/1.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Dog/Izquierda/Saltando/1.png")],
           },
         },
         {
@@ -49,12 +45,8 @@ class Dog extends Character {
           transitionTime: 0,
           loop: false,
           animaciones: {
-            derecha: [
-              new ImagenDerogada("./Sprites/Dog/Derecha/Cayendo/1.png"),
-            ],
-            izquierda: [
-              new ImagenDerogada("./Sprites/Dog/Izquierda/Cayendo/1.png"),
-            ],
+            derecha: [new ImagenDerogada("./Sprites/Dog/Derecha/Cayendo/1.png")],
+            izquierda: [new ImagenDerogada("./Sprites/Dog/Izquierda/Cayendo/1.png")],
           },
         },
         {
