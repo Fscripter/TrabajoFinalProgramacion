@@ -1,13 +1,13 @@
 class BoxGrenade extends Box {
-  constructor(position) {
-    super(
-      position,
-      {
-        w: 50,
-        h: 50,
-      },
-      "./Sprites/Objects/Caja/BoxGrenade/Grenade.png"
-    );
+  constructor(
+    position,
+    size = {
+      w: 50,
+      h: 50,
+    },
+    sprite = "./Sprites/Objects/Caja/BoxGrenade/Grenade.png"
+  ) {
+    super(position, size, sprite);
     this.maxAmmo = 5;
     this.sound = new Audio("./Sprites/Objects/Ammo.mp3");
   }

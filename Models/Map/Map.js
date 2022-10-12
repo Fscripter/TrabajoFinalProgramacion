@@ -63,8 +63,15 @@ class Mapa {
 
         let xPosition = this.getSizeMap();
         this.addArrToTotal(this.verifyArr(mapArray));
-        this.scenes[name] = new Escena(xPosition, texturas, mapArray, ambientSound);
+        this.scenes[name] = new Escena(
+          xPosition,
+          texturas,
+          mapArray,
+          ambientSound,
+          mapData.configsObjects
+        );
         console.log(`Scene ${name} added ✔`);
+        this.engine.addBox(this.scenes[name].boxes);
       });
   }
   addArrToTotal(newArray) {
@@ -117,8 +124,7 @@ class Mapa {
       this.loadScene("Graveyard");
       return;
     }
-    console.log("Nice");
-    console.log(this.totalMap);
+    console.log("Maps loaded");
   }
   cargarZona(Menu) {
     this.correctStatus = false;

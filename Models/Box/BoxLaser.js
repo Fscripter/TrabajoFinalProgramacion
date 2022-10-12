@@ -1,13 +1,13 @@
 class BoxLaser extends Box {
-  constructor(position) {
-    super(
-      position,
-      {
-        w: 50,
-        h: 50,
-      },
-      "./Sprites/Objects/Caja/BoxLaser/Laser.png"
-    );
+  constructor(
+    position,
+    size = {
+      w: 50,
+      h: 50,
+    },
+    sprite = "./Sprites/Objects/Caja/BoxTNT/TNT.png"
+  ) {
+    super(position, size, sprite);
     this.maxAmmo = 20;
     this.sound = new Audio("./Sprites/Objects/Ammo.mp3");
   }

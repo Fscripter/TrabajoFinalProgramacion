@@ -14,7 +14,7 @@
     [""],
     [""],
     [""],
-    ["                    T T T T"],
+    ["                    T H GBSF"],
     [" T              LCCCCCCCCCCCCR"],
     ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ"],
     ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ"],
@@ -30,7 +30,12 @@
       "Z": "./MapData/Laboratory/Terrain/Z.png"
     },
     "Objects": {
-      "TNT": "./MapData/Laboratory/Objects/Box/TNT.png"
+      "T": "./MapData/Laboratory/Objects/Box/TNT/TNT.png",
+      "H": "./MapData/Laboratory/Objects/Box/Heal/Heal.png",
+      "G": "./Sprites/Objects/Caja/BoxGrenade/Grenade.png",
+      "B": "./Sprites/Objects/Caja/BoxRifle/Rifle.png",
+      "S": "./Sprites/Objects/Caja/BoxLaser/Laser.png",
+      "F": "./Sprites/Objects/Caja/BoxFlamethrower/Flamethrower.png"
     },
     "scene": {
       "Layout": "./MapData/Laboratory/Layout/Layout.jpg"
@@ -40,10 +45,34 @@
     "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
   },
   "configsObjects": {
-    "TNT": {
+    "T": {
       "size": {
         "w": 50,
-        "h": 100
+        "h": 80
+      }
+    },
+    "H": {
+      "size": {
+        "w": 50,
+        "h": 70
+      }
+    },
+    "G": {
+      "size": {
+        "w": 50,
+        "h": 50
+      }
+    },
+    "F": {
+      "size": {
+        "w": 50,
+        "h": 50
+      }
+    },
+    "S": {
+      "size": {
+        "w": 50,
+        "h": 50
       }
     }
   }

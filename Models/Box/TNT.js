@@ -1,13 +1,13 @@
 class TNT extends Box {
-  constructor(position) {
-    super(
-      position,
-      {
-        w: 50,
-        h: 50,
-      },
-      "./Sprites/Objects/Caja/BoxTNT/TNT.png"
-    );
+  constructor(
+    position,
+    size = {
+      w: 50,
+      h: 50,
+    },
+    sprite = "./Sprites/Objects/Caja/BoxTNT/TNT.png"
+  ) {
+    super(position, size, sprite);
     this.damage = 80;
     this.radius = 350;
     this.isblow = false;
@@ -21,7 +21,7 @@ class TNT extends Box {
             loop: false,
             transitionTime: 100,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Objects/Caja/BoxTNT/TNT.png")],
+              derecha: [new ImagenDerogada(sprite)],
             },
           },
           {

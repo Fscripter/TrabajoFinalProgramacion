@@ -1,9 +1,15 @@
 class Collider {
-  constructor() {}
+  constructor() {
+    this.boxes = [];
+    this.enemys = [];
+  }
   addObjects(box, enemy) {
-    this.boxes = box;
-    this.enemys = enemy;
+    this.boxes = [];
+    this.enemys = [];
     console.log("Objects added to Collision! ✔");
+  }
+  addBox(boxArr) {
+    this.boxes = this.boxes.concat(boxArr);
   }
   collision() {
     this.collisionBoxEntities();
@@ -63,7 +69,7 @@ class Collider {
     let isIn = this.getCollisionBetween(bullet, box);
 
     if (isIn && !box.isblow) {
-      box.interaction(this.player, this.enemys.enemys);
+      box.interaction(this.player, this.enemys);
       bullet.delete();
     }
   }
@@ -92,7 +98,7 @@ class Collider {
           bullet.blow(this.player, this.enemys.enemys);
           return;
         }
-        this.enemys.enemys.forEach((enemy) => {
+        this.enemys.forEach((enemy) => {
           let isIn = this.getCollisionBetween(bullet, enemy);
           if (isIn && enemy.alive) {
             bullet.blow(this.player, this.enemys.enemys);
@@ -101,26 +107,26 @@ class Collider {
         return;
       }
       //Colision balas TNT
-      this.boxes.boxes.forEach((box) => {
+      this.boxes.forEach((box) => {
         if (box instanceof TNT) {
           this.getCollisionTNT(bullet, box);
         }
       });
       //Colision balas enemigos
-      this.enemys.enemys.forEach((enemy) => {
+      this.enemys.forEach((enemy) => {
         this.getCollisionEnemy(bullet, enemy);
       });
     });
   }
   collisionBulletsEnemy() {
-    this.enemys.enemys.forEach((enemy) => {
+    this.enemys.forEach((enemy) => {
       enemy.bullets.forEach((bullet) => {
         this.getCollisionEnemy(bullet, this.player);
       });
     });
   }
   collisionBoxEntities() {
-    this.boxes.boxes.forEach((box) => {
+    this.boxes.forEach((box) => {
       if (!box.active) {
         return;
       }
