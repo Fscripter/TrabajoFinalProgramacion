@@ -12,8 +12,8 @@ class MenuJuego {
      */
     this.state = "Inicial";
     this.zonaCargada = "";
-    this.zonas = ["Laboratory/Laboratory", "Forest/Forest"];
-    this.zonaElegida = this.zonas[1];
+    this.zonas = ["Laboratory", "Forest", "Graveyard"];
+    this.zonaElegida = this.zonas[0];
     this.initialMenu = document.getElementById("Menu");
     this.cargando = document.getElementById("Cargando");
     this.juego = document.getElementById("Juego");

@@ -9,6 +9,10 @@ class Mapa {
     this.texturasGenerator = new Textures();
     this.engine = engine;
   }
+  cargarEscena(arr) {
+    const dimensions = [arr.length, arr.reduce((x, y) => Math.max(x, y.length), 0)];
+    console.log(dimensions);
+  }
   mover(vel) {
     this.canvasPosition.x -= vel;
   }
@@ -37,7 +41,7 @@ class Mapa {
   }
   cargarZona(name, Menu) {
     this.correctStatus = false;
-    fetch(`MapData/${name}.json`)
+    fetch(`MapData/${name}/${name}.json`)
       .then((response) => {
         return response.json();
       })
