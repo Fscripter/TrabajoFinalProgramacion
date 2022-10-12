@@ -1,11 +1,11 @@
 function gameLoop(mapaCanvas, GameEngine) {
   //Añadir fisicas
   let Marin = new Player({
-    x: 500,
+    x: 0,
     y: 0,
   });
   let Sky = new Dog({
-    x: 500,
+    x: 0,
     y: 0,
   });
   //Cola enemigos

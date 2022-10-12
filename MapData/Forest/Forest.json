@@ -1,6 +1,6 @@
 {
   "Zona nombre": "Laboratory",
-  "Zona ID": 2,
+  "Zona ID": 3,
   "MapaUrl": "./MapData/Antioquia/Raw.txt",
   "Mapa": [
     [""],
@@ -14,11 +14,11 @@
     [""],
     [""],
     [""],
-    [""],
-    ["LCCCCCCCCCCCCCCR"],
-    ["DDDDDDDDDDDDDDDD"],
-    ["DDDDDDDDDDDDDDDD"],
-    ["DDDDDDDDDDDDDDDD"]
+    ["   R      CCC"],
+    ["LCCCR  LCCCCCCCCCR"],
+    ["DDDDR  DDDDDDDDDDD"],
+    ["DDDDR  DDDDDDDDDDD"],
+    ["DDDDR  DDDDDDDDDDD"]
   ],
   "texturas": {
     "terreno": {

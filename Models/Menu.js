@@ -12,8 +12,6 @@ class MenuJuego {
      */
     this.state = "Inicial";
     this.zonaCargada = "";
-    this.zonas = ["Laboratory", "Forest", "Graveyard"];
-    this.zonaElegida = this.zonas[0];
     this.initialMenu = document.getElementById("Menu");
     this.cargando = document.getElementById("Cargando");
     this.juego = document.getElementById("Juego");
@@ -35,7 +33,7 @@ class MenuJuego {
     this.cargando.style.display = "flex";
 
     this.juego.style.display = "flex";
-    this.mapa.cargarZona(this.zonaElegida, this);
+    this.mapa.cargarZona(this);
   }
   finalizarCarga(mapaCanvas) {
     this.state = "MapaCargado";

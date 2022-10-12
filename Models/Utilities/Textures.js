@@ -16,8 +16,9 @@ class Textures {
     this.elementLoaded = 0;
   }
   addTextures() {}
-  load(textures, Menu) {
-    this.Menu = Menu;
+  load(textures, Map, name) {
+    this.Map = Map;
+    this.name = name;
     this.textures = textures;
     this.newTextures = {};
     //Load terrain
@@ -40,7 +41,7 @@ class Textures {
     this.elementLoaded++;
     if (this.elementLoaded == this.queue.length) {
       this.complete = true;
-      this.Menu.finalizarCarga();
+      this.Map.finalizarCarga(this.name);
     }
   }
 }
