@@ -132,4 +132,22 @@ class Dog extends Character {
     }
     this.animation.changeState("Estatico");
   }
+  move(vel) {
+    if (this.canIMove.l || this.canIMove.r) {
+      super.move(vel);
+      this.orientation = "L";
+      if (vel > 0) {
+        this.orientation = "R";
+      }
+      this.animation.changeOrientation(this.orientation);
+    }
+  }
+  getDown() {
+    if (this.stateData.moving == true) {
+      this.getUp();
+      return;
+    }
+    this.stateData.duck = true;
+    this.collider.changeState("Estatico");
+  }
 }
