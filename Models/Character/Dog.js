@@ -100,7 +100,7 @@ class Dog extends Character {
   }
   updateTime() {
     this.timeElapsed += 1000 / 60;
-    if (this.timeElapsed > this.timeToHeal) {
+    if (this.timeElapsed > this.timeToHeal && this.Amo.alive) {
       this.Healing();
       this.timeElapsed = 0;
       this.stateData.Healing = true;
@@ -110,7 +110,6 @@ class Dog extends Character {
     }
     if (this.stateData.Healing == true && this.animation.lastFrame) {
       this.stateData.Healing = false;
-      console.log("curado");
     }
   }
   getPlayer(player = Player) {
