@@ -15,6 +15,7 @@ function gameLoop(mapaCanvas, GameEngine) {
   let request;
   GameEngine.getPlayer(Marin);
   GameEngine.getDog(Sky);
+  Sky.getPlayer(Marin);
 
   //Main Loop
   const performAnimation = () => {

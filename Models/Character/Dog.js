@@ -68,17 +68,19 @@ class Dog extends Character {
           },
           {
             id: "Curar",
-            transitionTime: 30,
+            transitionTime: 500,
             loop: false,
             animaciones: {
               derecha: [
                 new ImagenDerogada("./Sprites/Dog/Derecha/Curando/1.png"),
                 new ImagenDerogada("./Sprites/Dog/Derecha/Curando/2.png"),
                 new ImagenDerogada("./Sprites/Dog/Derecha/Curando/3.png"),
+                new ImagenDerogada("./Sprites/Dog/Derecha/Curando/3.png"),
               ],
               izquierda: [
                 new ImagenDerogada("./Sprites/Dog/Izquierda/Curando/1.png"),
                 new ImagenDerogada("./Sprites/Dog/Izquierda/Curando/2.png"),
+                new ImagenDerogada("./Sprites/Dog/Izquierda/Curando/3.png"),
                 new ImagenDerogada("./Sprites/Dog/Izquierda/Curando/3.png"),
               ],
             },
@@ -102,13 +104,34 @@ class Dog extends Character {
         },
       }
     );
+    this.timeToHeal = 40000;
     this.forHealing = 20;
+    this.timeElapsed = 0;
+    this.stateData.Healing = false;
+  }
+  updateTime() {
+    this.timeElapsed += 1000 / 60;
+    if (this.timeElapsed > this.timeToHeal) {
+      this.Healing();
+      this.timeElapsed = 0;
+      this.stateData.Healing = true;
+      console.log("curando");
+      this.changeState();
+    }
+    if (this.stateData.Healing == true && this.animation.lastFrame) {
+      this.stateData.Healing = false;
+      console.log("curado");
+    }
+  }
+  getPlayer(player = Player) {
+    this.Amo = player;
   }
 
-  Healing(Target = new Player()) {
-    Target.life += this.forHealing;
+  Healing() {
+    this.Amo.life += this.forHealing;
   }
   draw(context) {
+    this.updateTime();
     this.changeState();
     super.draw(context);
   }
@@ -122,14 +145,19 @@ class Dog extends Character {
       this.animation.changeState("Saltar");
       return;
     }
+    if (this.stateData.Healing == true) {
+      this.animation.changeState("Curar");
+      return;
+    }
     if (this.physicsData.isGround && this.stateData.moving) {
       this.animation.changeState("Caminar");
       return;
     }
     if (this.physicsData.isGround && this.stateData.duck) {
-      this.animation.changeState("Agachar");
+      this.animation.changeState("Estatico");
       return;
     }
+
     this.animation.changeState("Estatico");
   }
   move(vel) {
