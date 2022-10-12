@@ -1,0 +1,43 @@
+{
+  "Zona nombre": "Laboratory",
+  "Zona ID": 2,
+  "MapaUrl": "./MapData/Antioquia/Raw.txt",
+  "Mapa": [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    ["LCCCCCCCCCCCCCCR"],
+    ["DDDDDDDDDDDDDDDD"],
+    ["DDDDDDDDDDDDDDDD"],
+    ["DDDDDDDDDDDDDDDD"]
+  ],
+  "texturas": {
+    "terreno": {
+      "D": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
+      "C": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
+      "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
+      "R": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
+    },
+    "arbol": {
+      "A": "./Sprites/Terrain/Antioquia/Objetos/ArbolA.png",
+      "B": "./Sprites/Terrain/Antioquia/Objetos/ArbolB.png",
+      "C": "./Sprites/Terrain/Antioquia/Objetos/ArbolC.png",
+      "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
+    },
+    "scene": {
+      "Layout": "./MapData/Graveyard/Layout/Layout.jpg"
+    }
+  },
+  "sound": {
+    "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
+  }
+}
