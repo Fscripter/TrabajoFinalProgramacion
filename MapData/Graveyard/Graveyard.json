@@ -1,5 +1,5 @@
 {
-  "Zona nombre": "Laboratory",
+  "Zona nombre": "Graveyard",
   "Zona ID": 2,
   "MapaUrl": "./MapData/Antioquia/Raw.txt",
   "Mapa": [
@@ -14,7 +14,7 @@
     [""],
     [""],
     [""],
-    [""],
+    ["     A      B"],
     ["LCCCCCCCCCCCCCCR"],
     ["DDDDDDDDDDDDDDDD"],
     ["DDDDDDDDDDDDDDDD"],
@@ -22,14 +22,15 @@
   ],
   "texturas": {
     "terreno": {
-      "D": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
-      "C": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
-      "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
-      "R": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
+      "D": "./Sprites/Terrain/Graveyard/Sub.png",
+      "C": "./Sprites/Terrain/Graveyard/Center.png",
+      "L": "./Sprites/Terrain/Graveyard/Left.png",
+      "R": "./Sprites/Terrain/Graveyard/Right.png",
+      "A": "./Sprites/Terrain/Graveyard/Tree.png",
+      "B": "./Sprites/Terrain/Graveyard/DeadBush.png"
     },
     "arbol": {
-      "A": "./Sprites/Terrain/Antioquia/Objetos/ArbolA.png",
-      "B": "./Sprites/Terrain/Antioquia/Objetos/ArbolB.png",
+      
       "C": "./Sprites/Terrain/Antioquia/Objetos/ArbolC.png",
       "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
     },

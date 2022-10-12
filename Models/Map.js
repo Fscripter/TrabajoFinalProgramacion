@@ -10,7 +10,10 @@ class Mapa {
     this.engine = engine;
   }
   cargarEscena(arr) {
-    const dimensions = [arr.length, arr.reduce((x, y) => Math.max(x, y.length), 0)];
+    const dimensions = [
+      arr.length,
+      arr.reduce((x, y) => Math.max(x, y.length), 0),
+    ];
     console.log(dimensions);
   }
   mover(vel) {
@@ -25,7 +28,7 @@ class Mapa {
     this.ambientSound.play();
   }
   letterToTexture(textura, posicion) {
-    let allowedTextures = ["D", "C", "L", "R", "X", "Z", "V"];
+    let allowedTextures = ["D", "C", "L", "R", "X", "Z", "V", "A", "B"];
     if (allowedTextures.indexOf(textura) == -1) {
       return;
     }
@@ -56,7 +59,10 @@ class Mapa {
         // this.cargarTexuras();
         this.cargarSonido();
         this.draw();
-        this.texturas = this.texturasGenerator.load(this.mapaData.texturas, Menu);
+        this.texturas = this.texturasGenerator.load(
+          this.mapaData.texturas,
+          Menu
+        );
         this.trees = new TreeGenerator(this.texturas.arbol, this.context);
 
         this.engine.createObjects(this.mapaArray);
