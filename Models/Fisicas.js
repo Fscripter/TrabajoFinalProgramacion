@@ -33,7 +33,7 @@ class Physic {
     });
   }
   detectarTerreno(terreno) {
-    if (terreno == "T" || terreno == "I" || terreno == "D") {
+    if (terreno == "L" || terreno == "C" || terreno == "R") {
       return true;
     }
   }

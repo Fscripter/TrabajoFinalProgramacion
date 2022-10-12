@@ -1,0 +1,61 @@
+{
+  "Zona nombre": "Laboratory",
+  "Zona ID": 2,
+  "MapaUrl": "./MapData/Antioquia/Raw.txt",
+  "Mapa": [
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [
+      "                                                                                            XBAB2H2                                                                                   "
+    ],
+    [
+      "                        A  C  A                                     HLF                   TTTTTTTTTD                                                                                  "
+    ],
+    [
+      "                      TTTTTTTTTTT                                 TTTTTD    AX1    TTTD    SSSSSSSS     1                                                                             "
+    ],
+    [
+      "                   3  SSSSSSSSSSS 2X                            3 SSSSSS  TTTTTD            SSSSSS    TTTTD                            PGH1                                            "
+    ],
+    [
+      "  P AH X P A 3   TTTTTTTTTTTTTTTTTTTTTD    C   C  H  B   C 2  TTTTTTTTTTTDSSSSSS             SSSS                  3X            H    TTTTD                             1 1           "
+    ],
+    [
+      "TTTTTTTTTTTTTTTD SSSSSSSSSSSSSSSSSSSSSS  TTTTTTTTTTTTTTTTTTTTDSSSSSSSSSSSSSSSSSS  TD                              TTTTTD          TTTTDSSSS                       1X  TTTTTTD         "
+    ],
+    [
+      "SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS       X 1  F             3            1  X      TSSSSSSSSS                 1   TTTTTTSSSSSSS         "
+    ],
+    [
+      "SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS    TTTTTTTTTTTTTTD  TTTTTTTTD  TTTTTTTTTTTTTTTTTTTTTTDSSSS   T  T  T  T  TTTTTTSSSSSSSSSSSSS         "
+    ],
+    [
+      "SSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS    SSSSSSSSSSSSSSS  SSSSSSSSS  SSSSSSSSSSSSSSSSSSSSSSSSSSS   S  S  S  S  SSSSSSSSSSSSSSSSSSS         "
+    ]
+  ],
+  "texturas": {
+    "terreno": {
+      "S": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
+      "T": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
+      "I": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
+      "D": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
+    },
+    "arbol": {
+      "A": "./Sprites/Terrain/Antioquia/Objetos/ArbolA.png",
+      "B": "./Sprites/Terrain/Antioquia/Objetos/ArbolB.png",
+      "C": "./Sprites/Terrain/Antioquia/Objetos/ArbolC.png",
+      "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
+    },
+    "scene": {
+      "Layout": "./MapData/Forest/Layout/Layout.jpg"
+    }
+  },
+  "sound": {
+    "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
+  }
+}

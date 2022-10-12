@@ -23,8 +23,6 @@ let scriptList = [
   "Models/Fisicas.js",
   "Models/HUD.js",
   "Models/Utilities/Tree.js",
-  "Models/Bullet/bullet.js",
-  "Models/Bullet/bulletGun.js",
   "Models/Utilities/ColliderEvent/Collider.js",
   "Models/Utilities/UI/Ammo.js",
   "Models/Character/EnemyBoss.js",

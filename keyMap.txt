@@ -1,0 +1,29 @@
+Terrain map:
+    L: left terrain
+    C: Center terrain
+    R: Rigth terrain
+    D: Down terrain
+    X: Left Down Terrain
+    Z: Left Rigth Terrain
+
+Objects map:
+    Q: Object A
+    W: Object B
+    U: Object C
+    I: Object D
+    O: Object E
+
+Box map:
+    T: TNT
+    H: Heal
+    G: Grenade
+    F: Flamethrower
+    S: Laser
+
+Enemy:
+    1: Boss
+    2: Enemy Lvl II
+    3: Enemy Lvl III
+    4: Enemy Lvl IV
+    5: Enemy Lvl VI
+    6: Enemy Lvl VI

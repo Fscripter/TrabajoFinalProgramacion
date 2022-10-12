@@ -23,7 +23,7 @@ class Engine {
           value: map[yAxis][xAxis],
         };
         this.enemys.getEnemysFromMap(dateStructure);
-        this.boxes.getBoxesFromMap(dateStructure);
+        // this.boxes.getBoxesFromMap(dateStructure);
       }
     }
     console.log("Objects created! ✔");

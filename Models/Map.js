@@ -21,7 +21,7 @@ class Mapa {
     this.ambientSound.play();
   }
   letterToTexture(textura, posicion) {
-    let allowedTextures = ["T", "S", "I", "D"];
+    let allowedTextures = ["D", "C", "L", "R", "X", "Z", "V"];
     if (allowedTextures.indexOf(textura) == -1) {
       return;
     }
@@ -86,7 +86,7 @@ class Mapa {
 
         this.letterToTexture(mapaLetra, posicion);
         //Trees
-        this.trees.selectTrees(mapaLetra, posicion);
+        // this.trees.selectTrees(mapaLetra, posicion);
         //Boxes
       }
     }
