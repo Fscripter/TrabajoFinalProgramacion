@@ -169,6 +169,7 @@ class Enemy extends Character {
     let isRight = this.positionWorld.x < player.positionWorld.x;
     let isUp = this.positionWorld.y > player.positionWorld.y;
     let fallingDown = !this.stateData.jumping && !this.physicsData.isGround;
+    let quadrant = 0;
     if (isRight && distanceX < 400) {
       this.shoot();
       this.orientation = "R";
@@ -222,6 +223,45 @@ class Enemy extends Character {
       ) {
         this.move(2);
       }
+      if (
+        bullet.positionWorld.y < this.positionWorld.y &&
+        bullet.positionWorld.y > this.positionWorld.y - this.size.h &&
+        distanceBullet < 100
+      ) {
+        quadrant = "IV";
+        console.log("IV");
+      }
+      if (
+        bullet.positionWorld.y > this.positionWorld.y &&
+        bullet.positionWorld.y < this.positionWorld.y + this.size.h / 2 &&
+        distanceBullet < 100
+      ) {
+        quadrant = "III";
+        console.log("III");
+      }
+      if (
+        bullet.positionWorld.y > this.positionWorld.y + this.size.h / 2 &&
+        bullet.positionWorld.y < this.positionWorld.y + this.size.h &&
+        distanceBullet < 100
+      ) {
+        quadrant = "II";
+        console.log("II");
+      }
+      if (
+        bullet.positionWorld.y > this.positionWorld.y + this.size.h &&
+        bullet.positionWorld.y < this.positionWorld.y + this.size.h * 2
+      ) {
+        quadrant = "I";
+        console.log("I");
+      }
+      if ((quadrant = "II") && distanceBullet < 100 + bullet.size.w) {
+        this.jump();
+      }
+      if ((quadrant = "III")) {
+        this.getDown();
+      }
+
+      // console.log(quadrant);
     });
   }
 }

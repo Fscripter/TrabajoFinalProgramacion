@@ -35,3 +35,4 @@ Char reserved for box:
     L: Laser
     G: Grenade
     F: Flamethrower
+

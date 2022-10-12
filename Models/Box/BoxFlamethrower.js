@@ -3,7 +3,7 @@ class Boxflamethrower extends Box {
     super(
       position,
       {
-        w: 100,
+        w: 50,
         h: 50,
       },
       "./Sprites/Objects/Caja/BoxFlamethrower/Flamethrower.png"
