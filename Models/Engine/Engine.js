@@ -9,28 +9,28 @@ class Engine {
     this.physics = new Physic();
 
     console.log("Colision engine loading...");
-    // this.collisionEngine = new Collider();
+    this.collisionEngine = new Collider();
   }
   createObjects(map = Array) {
     this.map = map;
     console.log("Creating objects...");
 
-    // for (let yAxis = 0; yAxis < map.length; yAxis++) {
-    //   for (let xAxis = 0; xAxis < map[yAxis].length; xAxis++) {
-    //     let dateStructure = {
-    //       x: xAxis,
-    //       y: yAxis,
-    //       value: map[yAxis][xAxis],
-    //     };
-    //     this.enemys.getEnemysFromMap(dateStructure);
-    //     // this.boxes.getBoxesFromMap(dateStructure);
-    //   }
-    // }
+    for (let yAxis = 0; yAxis < map.length; yAxis++) {
+      for (let xAxis = 0; xAxis < map[yAxis].length; xAxis++) {
+        let dateStructure = {
+          x: xAxis,
+          y: yAxis,
+          value: map[yAxis][xAxis],
+        };
+        // this.enemys.getEnemysFromMap(dateStructure);
+        this.boxes.getBoxesFromMap(dateStructure);
+      }
+    }
     console.log("Objects created! ✔");
     //Add physics
     this.physics.getMap(map);
     //Add objects
-    // this.collisionEngine.addObjects(this.boxes, this.enemys);
+    this.collisionEngine.addObjects(this.boxes, this.enemys);
   }
   getCanvasPosition(canvasPosition) {
     this.canvasPosition = canvasPosition;
@@ -55,7 +55,7 @@ class Engine {
   }
   getPlayer(player) {
     this.player = player;
-    // this.collisionEngine.getPlayer(this.player);
+    this.collisionEngine.getPlayer(this.player);
   }
   getDog(dog) {
     this.dog = dog;
@@ -84,12 +84,12 @@ class Engine {
   }
   render(context) {
     this.enemyIAtoPlayer();
-    // this.collisionEngine.collision();
+    this.collisionEngine.collision();
     this.physics.onGravity(
       this.enemys.enemys.concat(this.boxes.boxes).concat(this.player).concat(this.dog)
     );
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
     // this.enemys.draw(context);
-    // this.boxes.draw(context);
+    this.boxes.draw(context);
   }
 }

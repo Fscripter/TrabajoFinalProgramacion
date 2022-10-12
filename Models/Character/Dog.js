@@ -92,7 +92,7 @@ class Dog extends Character {
         },
       }
     );
-    this.timeToHeal = 40000;
+    this.timeToHeal = 10000;
     this.forHealing = 20;
     this.timeElapsed = 0;
     this.stateData.Healing = false;
@@ -117,7 +117,7 @@ class Dog extends Character {
   }
 
   Healing() {
-    this.Amo.life += this.forHealing;
+    this.Amo.heal(this.forHealing);
   }
   draw(context) {
     this.updateTime();

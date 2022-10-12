@@ -33,6 +33,7 @@ class Mapa {
       }
     }
     if (Loaded == true) {
+      this.loadNewZone();
       this.Menu.finalizarCarga();
       this.engine.createObjects(this.totalMap);
       console.log("Map added ✔");
@@ -82,7 +83,10 @@ class Mapa {
   verifyArr(newArray = []) {
     let max = this.getSize(newArray);
     let arrCopy = newArray;
-    for (let fila = 0; fila < newArray.length; fila++) {
+    for (let fila = 0; fila < 20; fila++) {
+      if (newArray[fila] == undefined) {
+        newArray[fila] = [];
+      }
       let length = newArray[fila].length;
       let difference = max - length;
       if (difference != 0) {
@@ -114,6 +118,7 @@ class Mapa {
       return;
     }
     console.log("Nice");
+    console.log(this.totalMap);
   }
   cargarZona(Menu) {
     this.correctStatus = false;
