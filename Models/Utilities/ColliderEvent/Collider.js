@@ -1,7 +1,7 @@
 class Collider {
   constructor() {
     this.boxes = [];
-    this.enemys = [];
+    this.enemys = [new Enemy({ x: 1000, y: 0 }, 2)];
   }
   addObjects(box, enemy) {
     this.boxes = [];
@@ -95,7 +95,7 @@ class Collider {
     this.player.bullets.forEach((bullet) => {
       if (bullet instanceof Grenade) {
         if (bullet.readyToBlow == true && bullet.isBlow == false) {
-          bullet.blow(this.player, this.enemys.enemys);
+          bullet.blow(this.player, this.enemys);
           return;
         }
         this.enemys.forEach((enemy) => {

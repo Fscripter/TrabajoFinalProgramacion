@@ -2,11 +2,11 @@ const animacionUrls = {
   derecha: [],
   izquierda: [],
 };
-
 class ImagenDerogada extends Image {
   constructor(url) {
-    super();
+    super(0, 0);
     this.src = url;
+    return this;
   }
 }
 

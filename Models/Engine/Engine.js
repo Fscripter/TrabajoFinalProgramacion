@@ -1,6 +1,6 @@
 class Engine {
   constructor() {
-    console.clear();
+    // console.clear();
     console.log("Game engine started!");
     this.enemys = new enemySpawner();
     this.boxes = new boxSpawner();
@@ -12,7 +12,6 @@ class Engine {
     this.collisionEngine = new Collider();
   }
   addBox(boxArr) {
-    console.log(boxArr);
     this.collisionEngine.addBox(boxArr);
   }
   createObjects(map = Array) {

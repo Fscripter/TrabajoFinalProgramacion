@@ -38,7 +38,9 @@ let scriptList = [
   "Models/Hud/weaponsHud.js",
   "main.js",
 ];
+var EngineList = ["Models/Engine/Collider.js"];
 
+scriptList = scriptList.concat(EngineList);
 scriptList.forEach((scriptSrc) => {
   let script = document.createElement("script"); //creating <script> element
   script.src = scriptSrc;
