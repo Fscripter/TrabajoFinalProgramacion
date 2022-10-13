@@ -38,7 +38,8 @@ let scriptList = [
   "Models/Hud/weaponsHud.js",
   "main.js",
 ];
-var EngineList = ["Models/Engine/Collider.js"];
+var toolList = ["Models/Tools/Img.js"];
+var EngineList = ["Models/Engine/Hitbox.js"];
 
 scriptList = scriptList.concat(EngineList);
 scriptList.forEach((scriptSrc) => {

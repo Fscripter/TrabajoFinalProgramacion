@@ -42,9 +42,10 @@ var Hitbox = /** @class */ (function () {
         }
     };
     Hitbox.prototype.draw = function (context) {
+        this.updateMeasure();
         context.strokeStyle = "#00FF00";
         context.strokeRect(this.measure.x, this.measure.y, this.measure.w, this.measure.h);
     };
     return Hitbox;
 }());
-//# sourceMappingURL=Collider.js.map
+//# sourceMappingURL=Hitbox.js.map
