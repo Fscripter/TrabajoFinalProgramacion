@@ -16,7 +16,11 @@ class Escena {
       switch (letter) {
         case "T":
           this.boxes.push(
-            new TNT(positionWorld, this.configs[letter].size, this.textures.Objects[letter].src)
+            new TNT(
+              positionWorld,
+              this.configs[letter].size,
+              this.textures.Objects[letter].src
+            )
           );
           break;
         case "H":
@@ -57,7 +61,11 @@ class Escena {
           break;
         case "B":
           this.boxes.push(
-            new boxAmmo(positionWorld, this.configs[letter].size, this.textures.Objects[letter].src)
+            new boxAmmo(
+              positionWorld,
+              this.configs[letter].size,
+              this.textures.Objects[letter].src
+            )
           );
           break;
         default:

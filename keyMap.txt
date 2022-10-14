@@ -25,5 +25,5 @@ Enemy:
     2: Enemy Lvl II
     3: Enemy Lvl III
     4: Enemy Lvl IV
-    5: Enemy Lvl VI
+    5: Enemy Lvl V
     6: Enemy Lvl VI
