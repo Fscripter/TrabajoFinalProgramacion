@@ -6,7 +6,31 @@ class Escena {
     this.sound = sound;
     this.configs = configs;
     this.boxes = [];
+    this.Decorations = [];
     this.createObjects();
+  }
+  createDecorations(letter, position) {
+    if (letter in this.configs) {
+      let positionWorld = position;
+      positionWorld.x *= 50;
+      positionWorld.y *= 50;
+      switch (letter) {
+        case "A":
+          console.log(this.textures, this.configs);
+          console.log(positionWorld);
+          this.Decorations.push(
+            new ObjectsMap(
+              positionWorld,
+              this.configs[letter].size,
+              this.textures.Decorations[letter].src
+            )
+          );
+          console.log(this.Decorations);
+          break;
+        default:
+          break;
+      }
+    }
   }
   createBox(letter, position) {
     if (letter in this.configs) {
@@ -81,6 +105,7 @@ class Escena {
         let mapaLetra = this.mapArr[fila][columna];
         let posicion = { x: columna, y: fila };
         this.createBox(mapaLetra, posicion);
+        this.createDecorations(mapaLetra, posicion);
       }
     }
   }
@@ -115,13 +140,15 @@ class Escena {
     this.boxes.forEach((box) => {
       box.draw(context);
     });
+    this.Decorations.forEach((decoration) => {
+      decoration.draw(context);
+    });
   }
   letterToTexture(textura, posicion, context) {
-    let allowedTextures = ["D", "C", "L", "R", "X", "Z", "V"];
+    let allowedTextures = ["D", "C", "L", "R", "X", "Z", "V", "M", "N"];
     if (allowedTextures.indexOf(textura) == -1) {
       return;
     }
-    // console.log(this.texturas.terreno, textura, this.texturas.terreno[textura]);
     context.drawImage(
       this.textures.terreno[textura],
       this.xPosicion * 50 + posicion.x * 50,
