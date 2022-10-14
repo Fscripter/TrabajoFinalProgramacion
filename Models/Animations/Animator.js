@@ -3,15 +3,12 @@ class Animator {
     this.states = settings.states;
     this.animations = settings.animations;
     this.currentState = settings.states[0];
-
     this.id = new Date().getTime();
-
     this.currentAnimation = settings.animations[0];
     this.actualFrame = 0;
     this.timeElapsed = 0;
     this.orientation = orientation;
     this.lastFrame = false;
-
     // console.log(`Animations made with ID ${this.id}`);
   }
   changeOrientation(newOrientation) {

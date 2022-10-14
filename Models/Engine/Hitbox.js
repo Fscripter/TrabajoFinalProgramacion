@@ -1,6 +1,5 @@
-"use strict";
-var Hitbox = /** @class */ (function () {
-    function Hitbox(gameObject) {
+class Hitbox {
+    constructor(gameObject, Character) {
         this.normal = {
             x: gameObject.positionWorld.x,
             y: gameObject.positionWorld.y,
@@ -18,10 +17,10 @@ var Hitbox = /** @class */ (function () {
         this.states = ["Estatico", "Down"];
         this.currentState = "Estatico";
     }
-    Hitbox.prototype.getPosition = function () {
+    getPosition() {
         return this.gameObject.positionWorld;
-    };
-    Hitbox.prototype.changeState = function (newState) {
+    }
+    changeState(newState) {
         if (newState != this.currentState) {
             this.currentState = newState;
             if (newState == "Estatico") {
@@ -33,19 +32,17 @@ var Hitbox = /** @class */ (function () {
                 this.updateMeasure();
             }
         }
-    };
-    Hitbox.prototype.updateMeasure = function () {
+    }
+    updateMeasure() {
         this.measure.x = this.getPosition().x;
         this.measure.y = this.getPosition().y;
         if (this.currentState == "Down") {
             this.measure.y += this.gameObject.size.h - this.measure.h;
         }
-    };
-    Hitbox.prototype.draw = function (context) {
+    }
+    draw(context) {
         this.updateMeasure();
         context.strokeStyle = "#00FF00";
         context.strokeRect(this.measure.x, this.measure.y, this.measure.w, this.measure.h);
-    };
-    return Hitbox;
-}());
-//# sourceMappingURL=Hitbox.js.map
+    }
+}

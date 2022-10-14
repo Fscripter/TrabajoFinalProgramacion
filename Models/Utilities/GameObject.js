@@ -1,6 +1,5 @@
-"use strict";
-var GameObject = /** @class */ (function () {
-    function GameObject(position, size, baseUrl) {
+class GameObject {
+    constructor(position, size, baseUrl) {
         this.positionWorld = {
             x: position.x,
             y: position.y - size.h,
@@ -22,9 +21,7 @@ var GameObject = /** @class */ (function () {
             jumping: false,
         };
     }
-    GameObject.prototype.draw = function (context) {
+    draw(context) {
         context.drawImage(this.imagen, this.positionWorld.x, this.positionWorld.y, this.size.w, this.size.h);
-    };
-    return GameObject;
-}());
-//# sourceMappingURL=GameObject.js.map
+    }
+}
