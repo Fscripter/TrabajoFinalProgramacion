@@ -5,6 +5,8 @@ Terrain map:
     D: Down terrain
     X: Left Down Terrain
     Z: Left Rigth Terrain
+    M: Bad terrain over
+    N: Bad terrain down
 
 Objects map:
     Q: Object A
@@ -19,6 +21,7 @@ Box map:
     G: Grenade
     F: Flamethrower
     S: Laser
+    B: Rifle
 
 Enemy:
     1: Boss
@@ -27,3 +30,19 @@ Enemy:
     4: Enemy Lvl IV
     5: Enemy Lvl VI
     6: Enemy Lvl VI
+
+Decorations:
+    A: decoration I
+    E: decoration II
+    J: decoration III
+    K: decoration IV
+    P: decoration V
+    V: decoration VI
+
+Main Title:
+    Y: Titulo
+
+Objects destroyable:
+    7:
+    8:
+    9:

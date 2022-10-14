@@ -5,20 +5,40 @@
   "Mapa": [
     [""],
     [""],
+    ["                                                                                  "],
+    ["                                                        LCCCCCCCR  "],
+    ["                                                       LXDDDDDDDZ"],
+    ["                                                                                   "],
+    ["                                                                    LCCCCCCR      "],
     [""],
     [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    ["                    T H GBSF"],
-    [" T              LCCCCCCCCCCCCR"],
-    ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ"],
-    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ"],
-    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ"]
+    [
+      "                                                                               LCCR                                                                                   LCCR"
+    ],
+    [
+      "                                                                             LCCCCR                                                                                 LCCCCR"
+    ],
+    [
+      "                    T H G S F                                               LCCCCCCR                        T H GBSF                                               LCCCCCCR"
+    ],
+    [
+      " TA             LCCCCCCCCCCCCR                       LCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ     T              LCCCCCCCCCCCCR                       LCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ"
+    ],
+    [
+      "LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    LCCCCCCCCCR   LCCDDDDDDDDDDDDZ                   LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
+    ],
+    [
+      "XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
+    ],
+    [
+      "XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
+    ],
+    [
+      "XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
+    ],
+    [
+      "XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
+    ]
   ],
   "texturas": {
     "terreno": {
@@ -27,15 +47,20 @@
       "L": "./MapData/Laboratory/Terrain/L.png",
       "R": "./MapData/Laboratory/Terrain/R.png",
       "X": "./MapData/Laboratory/Terrain/X.png",
-      "Z": "./MapData/Laboratory/Terrain/Z.png"
+      "Z": "./MapData/Laboratory/Terrain/Z.png",
+      "M": "./MapData/Laboratory/Terrain/M.png",
+      "N": "./MapData/Laboratory/Terrain/N.png"
     },
     "Objects": {
       "T": "./MapData/Laboratory/Objects/Box/TNT/TNT.png",
       "H": "./MapData/Laboratory/Objects/Box/Heal/Heal.png",
       "G": "./Sprites/Objects/Caja/BoxGrenade/Grenade.png",
       "B": "./Sprites/Objects/Caja/BoxRifle/Rifle.png",
-      "S": "./Sprites/Objects/Caja/BoxLaser/Laser.png",
-      "F": "./Sprites/Objects/Caja/BoxFlamethrower/Flamethrower.png"
+      "S": "./MapData/Laboratory/Objects/Box/Laser/Laser.png",
+      "F": "./MapData/Laboratory/Objects/Box/Flamethrower/Flamethrower.png"
+    },
+    "Decorations": {
+      "A": "./MapData/Laboratory/Objects/Decorations/First.png"
     },
     "scene": {
       "Layout": "./MapData/Laboratory/Layout/Layout.jpg"
@@ -71,7 +96,13 @@
     },
     "S": {
       "size": {
-        "w": 50,
+        "w": 65,
+        "h": 50
+      }
+    },
+    "A": {
+      "size": {
+        "w": 65,
         "h": 50
       }
     }

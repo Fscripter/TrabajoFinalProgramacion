@@ -8,6 +8,7 @@ function gameLoop(mapaCanvas, GameEngine) {
     x: 0,
     y: 0,
   });
+  let fps = 0;
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
@@ -17,6 +18,10 @@ function gameLoop(mapaCanvas, GameEngine) {
   GameEngine.getDog(Sky);
   Sky.getPlayer(Marin);
 
+  setInterval(() => {
+    console.log(fps);
+    fps = 0;
+  }, 1000);
   //Main Loop
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
@@ -32,6 +37,7 @@ function gameLoop(mapaCanvas, GameEngine) {
 
     Marin.draw(mapaCanvas.context);
     Sky.draw(mapaCanvas.context);
+    fps++;
     //Cola enemigos
     // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);

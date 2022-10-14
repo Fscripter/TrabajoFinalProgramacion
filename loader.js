@@ -37,7 +37,7 @@ let scriptList = [
   "Models/Hud/weaponsHud.js",
   "main.js",
 ];
-var toolList = ["Models/Tools/Img.js"];
+var toolList = ["Models/Tools/Img.js", "Models/Map/Objects/Objects.js"];
 var characterList = ["Models/Character/player/player.js"];
 var EngineList = ["Models/Engine/Hitbox.js"];
 
