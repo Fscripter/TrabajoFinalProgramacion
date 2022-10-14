@@ -42,7 +42,7 @@ var toolList = ["Models/Tools/Img.js"];
 var characterList = ["Models/Character/player/player.js"];
 var EngineList = ["Models/Engine/Hitbox.js"];
 
-scriptList = scriptList.concat(EngineList);
+scriptList = scriptList.concat(EngineList).concat(characterList).concat(toolList);
 scriptList.forEach((scriptSrc) => {
   let script = document.createElement("script"); //creating <script> element
   script.src = scriptSrc;
