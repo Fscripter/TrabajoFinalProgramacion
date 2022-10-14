@@ -2,14 +2,6 @@ const animacionUrls = {
   derecha: [],
   izquierda: [],
 };
-class ImagenDerogada extends Image {
-  constructor(url) {
-    super(0, 0);
-    this.src = url;
-    return this;
-  }
-}
-
 const Initialsettings = {
   frame: 0,
   state: ["Estatico", "Caminando"], //n states, n animaciones
