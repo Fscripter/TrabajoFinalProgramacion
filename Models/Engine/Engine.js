@@ -18,6 +18,13 @@ class Engine {
   }
   changeState() {
     this.state = this.state == "Running" ? "Stop" : "Running";
+    console.log("Estado cambiado", this.state);
+    if (this.state == "Stop") {
+      this.menu.pausa();
+    }
+  }
+  getMenu(menu) {
+    this.menu = menu;
   }
   addBox(boxArr) {
     this.collisionEngine.addBox(boxArr);

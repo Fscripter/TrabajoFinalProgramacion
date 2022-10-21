@@ -24,31 +24,30 @@ function gameLoop(mapaCanvas, GameEngine) {
   }, 1000);
   //Main Loop
   const performAnimation = () => {
-    if (GameEngine.state == "Stop") {
-      return;
-    }
     request = requestAnimationFrame(performAnimation);
-    tecladoRuntime.realizarAccion();
-    GameEngine.getCanvasPosition(mapaCanvas.canvasPosition);
-    //animate something
-    mapaCanvas.movimientoY(Marin.positionWorld.y);
-    mapaCanvas.limpiar();
-    mapaCanvas.draw();
-    //Dibujar aqui
-    GameEngine.render(mapaCanvas.context);
+    if (GameEngine.state != "Stop") {
+      tecladoRuntime.realizarAccion();
+      GameEngine.getCanvasPosition(mapaCanvas.canvasPosition);
+      //animate something
+      mapaCanvas.movimientoY(Marin.positionWorld.y);
+      mapaCanvas.limpiar();
+      mapaCanvas.draw();
+      //Dibujar aqui
+      GameEngine.render(mapaCanvas.context);
 
-    Marin.draw(mapaCanvas.context);
-    Sky.draw(mapaCanvas.context);
-    fps++;
-    //Cola enemigos
-    // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
-    mapaCanvas.context.fillStyle = "#FF0000";
-    mapaCanvas.context.fontStyle = "arial 25px";
-    mapaCanvas.context.fillText(
-      lastFrame,
-      -mapaCanvas.canvasPosition.x + 900,
-      mapaCanvas.canvasPosition.y + 800
-    );
+      Marin.draw(mapaCanvas.context);
+      Sky.draw(mapaCanvas.context);
+      fps++;
+      //Cola enemigos
+      // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
+      mapaCanvas.context.fillStyle = "#FF0000";
+      mapaCanvas.context.fontStyle = "arial 25px";
+      mapaCanvas.context.fillText(
+        lastFrame,
+        -mapaCanvas.canvasPosition.x + 900,
+        mapaCanvas.canvasPosition.y + 800
+      );
+    }
   };
   requestAnimationFrame(performAnimation);
 }
@@ -57,4 +56,5 @@ window.onload = () => {
   var GameEngine = new Engine();
   var mapaCanvas = new Mapa(GameEngine);
   let Menu = new MenuJuego(mapaCanvas, GameEngine, gameLoop);
+  GameEngine.getMenu(Menu);
 };
