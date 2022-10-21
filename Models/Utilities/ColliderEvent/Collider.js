@@ -1,15 +1,13 @@
 class Collider {
   constructor() {
     this.boxes = [];
-    this.enemys = [new Enemy({ x: 1000, y: 0 }, 2)];
-  }
-  addObjects(box, enemy) {
-    this.boxes = [];
     this.enemys = [];
-    console.log("Objects added to Collision! ✔");
   }
   addBox(boxArr) {
     this.boxes = this.boxes.concat(boxArr);
+  }
+  addEnemy(enemyArr) {
+    this.enemys = this.enemys.concat(enemyArr);
   }
   collision() {
     this.collisionBoxEntities();

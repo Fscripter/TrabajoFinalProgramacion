@@ -9,6 +9,7 @@ function gameLoop(mapaCanvas, GameEngine) {
     y: 0,
   });
   let fps = 0;
+  let lastFrame = 0;
   //Cola enemigos
   let ColaHUDCanvas = new ColaHUD();
   //Mover teclado
@@ -19,7 +20,7 @@ function gameLoop(mapaCanvas, GameEngine) {
   Sky.getPlayer(Marin);
 
   setInterval(() => {
-    console.log(fps);
+    lastFrame = fps;
     fps = 0;
   }, 1000);
   //Main Loop
@@ -41,6 +42,13 @@ function gameLoop(mapaCanvas, GameEngine) {
     //Cola enemigos
     // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
     ColaHUDCanvas.dibujar(mapaCanvas.context);
+    mapaCanvas.context.fillStyle = "#FF0000";
+    mapaCanvas.context.fontStyle = "arial 25px";
+    mapaCanvas.context.fillText(
+      lastFrame,
+      -mapaCanvas.canvasPosition.x + 900,
+      mapaCanvas.canvasPosition.y + 800
+    );
   };
   requestAnimationFrame(performAnimation);
 }

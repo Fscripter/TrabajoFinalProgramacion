@@ -12,33 +12,15 @@
     ["                                                                    LCCCCCCR      "],
     [""],
     [""],
-    [
-      "                                                                               LCCR                                                                                   LCCR"
-    ],
-    [
-      "                                                                             LCCCCR                                                                                 LCCCCR"
-    ],
-    [
-      "                    T H G S F                                               LCCCCCCR                        T H GBSF                                               LCCCCCCR"
-    ],
-    [
-      " TA             LCCCCCCCCCCCCR                       LCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ     T              LCCCCCCCCCCCCR                       LCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ"
-    ],
-    [
-      "LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    LCCCCCCCCCR   LCCDDDDDDDDDDDDZ                   LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ]
+    ["                                                                               LCCR   "],
+    ["                                                                             LCCCCR   "],
+    ["                   0T H G S F                              0               LCCCCCCR  "],
+    [" TA 0     0     LCCCCCCCCCCCCR                      LCCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ    "],
+    ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "]
   ],
   "texturas": {
     "terreno": {

@@ -14,21 +14,13 @@ class Engine {
   addBox(boxArr) {
     this.collisionEngine.addBox(boxArr);
   }
+  addEnemy(enemyArr) {
+    this.collisionEngine.addEnemy(enemyArr);
+  }
   createObjects(map = Array) {
     this.map = map;
     console.log("Creating objects...");
 
-    for (let yAxis = 0; yAxis < map.length; yAxis++) {
-      for (let xAxis = 0; xAxis < map[yAxis].length; xAxis++) {
-        let dateStructure = {
-          x: xAxis,
-          y: yAxis,
-          value: map[yAxis][xAxis],
-        };
-        // this.enemys.getEnemysFromMap(dateStructure);
-        // this.boxes.getBoxesFromMap(dateStructure);
-      }
-    }
     console.log("Objects created! ✔");
     //Add physics
     this.physics.getMap(map);
@@ -49,7 +41,7 @@ class Engine {
   }
   addQueue(colaHud = new ColaHUD()) {
     colaHud.actualizarPosicion(this.canvasPosition);
-    this.enemys.enemys.forEach((enemy) => {
+    this.collisionEngine.enemys.forEach((enemy) => {
       let isIn = this.isInScreen(enemy);
       if (isIn) {
         colaHud.add(enemy);
@@ -64,7 +56,7 @@ class Engine {
     this.dog = dog;
   }
   enemyIAtoPlayer() {
-    this.enemys.enemys.forEach((enemy) => {
+    this.collisionEngine.enemys.forEach((enemy) => {
       let isIn = this.isInScreen(enemy);
       if (isIn) {
         enemy.AI(
@@ -91,8 +83,8 @@ class Engine {
     this.physics.onGravity(
       this.enemys.enemys.concat(this.collisionEngine.boxes).concat(this.player).concat(this.dog)
     );
+    this.physics.onGravity(this.collisionEngine.enemys);
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
-    // this.enemys.draw(context);
-    this.boxes.draw(context);
+    this.enemyIAtoPlayer();
   }
 }

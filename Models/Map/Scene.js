@@ -6,6 +6,7 @@ class Escena {
     this.sound = sound;
     this.configs = configs;
     this.boxes = [];
+    this.enemys = [];
     this.Decorations = [];
     this.createObjects();
   }
@@ -30,6 +31,14 @@ class Escena {
         default:
           break;
       }
+    }
+  }
+  createEnemy(letter, position) {
+    if (letter == "0") {
+      let positionWorld = position;
+      positionWorld.x *= 50;
+      positionWorld.y *= 50;
+      this.enemys.push(new Enemy(positionWorld, 2));
     }
   }
   createBox(letter, position) {
@@ -97,6 +106,7 @@ class Escena {
         let mapaLetra = this.mapArr[fila][columna];
         let posicion = { x: columna, y: fila };
         this.createBox(mapaLetra, posicion);
+        this.createEnemy(mapaLetra, posicion);
         this.createDecorations(mapaLetra, posicion);
       }
     }
@@ -134,6 +144,9 @@ class Escena {
     });
     this.Decorations.forEach((decoration) => {
       decoration.draw(context);
+    });
+    this.enemys.forEach((enemy) => {
+      enemy.draw(context);
     });
   }
   letterToTexture(textura, posicion, context) {
