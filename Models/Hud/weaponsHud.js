@@ -2,7 +2,7 @@ class weaponHud {
   constructor() {
     this.weaponInfo = {
       grenade: 5,
-      rifle: 10,
+      rifle: 100,
       laser: 30,
       flamethrower: 50,
     };
@@ -18,17 +18,27 @@ class weaponHud {
       rifle: new ImagenDerogada("./Sprites/Player/Weapons/Rifle.png"),
       flamethrower: new ImagenDerogada("./Sprites/Player/Weapons/Flamethrower.png"),
     };
+    this.layout = new ImagenDerogada("./Sprites/Menu/UI/Weapon.png");
     this.weapons = ["rifle", "laser", "grenade", "flamethrower"];
     this.currentWeapon = this.weapons[0];
     this.changeWeapon(1);
     this.changeImage();
   }
+  drawText(context, position) {
+    context.font = "bolder 18px lobster center";
+    context.fill();
+    context.fillStyle = "#FFFFFF";
+    context.fillText(
+      `${this.weaponInfo[this.currentWeapon]}`,
+      position.x + 85,
+      position.y + 75,
+      30
+    );
+  }
   draw(context, position) {
-    context.fillRect(position.x + 60, position.y - 6, 100, 50);
-    context.drawImage(this.weaponImageRender, position.x + 70, position.y, 35, 35);
-    context.font = "bolder 25px lobster";
-    context.fillStyle = "#ffffff";
-    context.fillText(`x ${this.weaponInfo[this.currentWeapon]}`, position.x + 115, position.y + 25);
+    context.drawImage(this.layout, position.x + 50, position.y, 100, 75);
+    this.drawText(context, position);
+    context.drawImage(this.weaponImageRender, position.x + 85, position.y + 20, 45, 45);
   }
   changeWeapon(newWeapon) {
     if (this.weapons[newWeapon - 1] == undefined) {

@@ -78,7 +78,7 @@ class Dog extends Character {
       new ImagenDerogada("./Sprites/Player/Face.png"),
       {
         bulletType: Bullet,
-        coolDown: 250,
+        coolDown: 4000,
       },
       50,
       {

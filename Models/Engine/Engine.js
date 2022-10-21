@@ -5,11 +5,14 @@ class Engine {
     this.enemys = new enemySpawner();
     this.boxes = new boxSpawner();
 
+    console.log("Score engine loading...");
+    this.score = new Score();
+
     console.log("Physics engine loading...");
     this.physics = new Physic();
 
     console.log("Colision engine loading...");
-    this.collisionEngine = new Collider();
+    this.collisionEngine = new Collider(this);
   }
   addBox(boxArr) {
     this.collisionEngine.addBox(boxArr);
@@ -86,5 +89,9 @@ class Engine {
     this.physics.onGravity(this.collisionEngine.enemys);
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
     this.enemyIAtoPlayer();
+    this.score.draw(context, {
+      x: this.player.positionWorld.x + 350,
+      y: this.player.positionWorld.y + 250,
+    });
   }
 }
