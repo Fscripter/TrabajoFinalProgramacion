@@ -83,10 +83,6 @@ class Character extends GameObject {
     }
     this.imagen = this.animation.drawAnimation();
     super.draw(context);
-    context.beginPath();
-    context.arc(this.positionWorld.x, this.positionWorld.y, 10, 0, Math.PI * 2);
-    context.fill();
-    context.closePath();
     this.drawBullets(context);
     this.collider.draw(context);
   }

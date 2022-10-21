@@ -17,8 +17,6 @@ class Escena {
       positionWorld.y *= 50;
       switch (letter) {
         case "A":
-          console.log(this.textures, this.configs);
-          console.log(positionWorld);
           this.Decorations.push(
             new ObjectsMap(
               positionWorld,
@@ -26,7 +24,6 @@ class Escena {
               this.textures.Decorations[letter].src
             )
           );
-          console.log(this.Decorations);
           break;
         default:
           break;
@@ -99,7 +96,6 @@ class Escena {
     }
   }
   createObjects() {
-    console.log(`creating objects in ${this.xPosicion}...`);
     for (let fila = 0; fila < this.mapArr.length; fila++) {
       let size = this.mapArr[fila].length;
       for (let columna = 0; columna < size; columna += 1) {

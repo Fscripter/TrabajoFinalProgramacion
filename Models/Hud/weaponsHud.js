@@ -26,11 +26,12 @@ class weaponHud {
   }
   drawText(context, position) {
     context.font = "bolder 18px lobster center";
+    context.textAlign = "center";
     context.fill();
     context.fillStyle = "#FFFFFF";
     context.fillText(
       `${this.weaponInfo[this.currentWeapon]}`,
-      position.x + 85,
+      position.x + 95,
       position.y + 75,
       30
     );

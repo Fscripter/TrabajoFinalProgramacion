@@ -10,10 +10,9 @@ function gameLoop(mapaCanvas, GameEngine) {
   });
   let fps = 0;
   let lastFrame = 0;
-  //Cola enemigos
-  let ColaHUDCanvas = new ColaHUD();
+
   //Mover teclado
-  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000, Sky);
+  let tecladoRuntime = new Teclado(Marin, mapaCanvas, 60 / 1000, Sky, GameEngine);
   let request;
   GameEngine.getPlayer(Marin);
   GameEngine.getDog(Sky);
@@ -25,10 +24,12 @@ function gameLoop(mapaCanvas, GameEngine) {
   }, 1000);
   //Main Loop
   const performAnimation = () => {
+    if (GameEngine.state == "Stop") {
+      return;
+    }
     request = requestAnimationFrame(performAnimation);
     tecladoRuntime.realizarAccion();
     GameEngine.getCanvasPosition(mapaCanvas.canvasPosition);
-    GameEngine.addQueue(ColaHUDCanvas);
     //animate something
     mapaCanvas.movimientoY(Marin.positionWorld.y);
     mapaCanvas.limpiar();
@@ -41,7 +42,6 @@ function gameLoop(mapaCanvas, GameEngine) {
     fps++;
     //Cola enemigos
     // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
-    ColaHUDCanvas.dibujar(mapaCanvas.context);
     mapaCanvas.context.fillStyle = "#FF0000";
     mapaCanvas.context.fontStyle = "arial 25px";
     mapaCanvas.context.fillText(

@@ -72,6 +72,7 @@ class Enemy extends Character {
     this.type = "Enemy";
     this.id = id;
     this.father = padreArr;
+    this.HUD = new enemyHUD("Enemigo", this.maxLife, "red", this.face, null, null);
   }
   delete() {
     this.father.enemys.map((enemy, index) => {
@@ -83,6 +84,17 @@ class Enemy extends Character {
     this.father.enemys.splice(this.id, 1);
     console.log(this);
     return this.lastID;
+  }
+  doDamage(damage, callback = () => {}) {
+    if (this.life - damage > 0) {
+      this.life -= damage;
+      this.HUD.doDamage(damage);
+      return;
+    }
+    this.alive = false;
+    this.life = 0;
+    callback();
+    this.updateLifeHUD();
   }
   move(vel) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -96,6 +108,7 @@ class Enemy extends Character {
   }
   draw(context) {
     this.changeState();
+    this.HUD.draw(context, this.positionWorld);
     super.draw(context);
   }
   changeState() {

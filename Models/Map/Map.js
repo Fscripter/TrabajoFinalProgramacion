@@ -125,7 +125,6 @@ class Mapa {
       this.loadScene("Graveyard");
       return;
     }
-    console.log("Maps loaded");
   }
   cargarZona(Menu) {
     this.correctStatus = false;

@@ -1,5 +1,5 @@
 class Teclado {
-  constructor(player, mapaCanvas, deltaTime, dog) {
+  constructor(player, mapaCanvas, deltaTime, dog, engine) {
     this.player = player;
     this.dog = dog;
     this.keyMap = {};
@@ -11,6 +11,7 @@ class Teclado {
       d: false,
     };
     this.once = false;
+    this.engine = engine;
   }
   chequearAmbasTeclas() {
     if (this.ambasTeclas.a && this.ambasTeclas.d) {
@@ -31,6 +32,10 @@ class Teclado {
   }
   realizarAccion() {
     for (const [key, value] of Object.entries(this.keyMap)) {
+      if (key == "p" && value) {
+        console.log("Pausar");
+        this.engine.changeState();
+      }
       if (key == "w" && value) {
         this.player.jump();
         this.dog.jump();
@@ -74,10 +79,10 @@ class Teclado {
   }
   eventosTeclado() {
     window.addEventListener("keydown", (event) => {
-      this.keyMap[event.key] = true;
+      this.keyMap[event.key.toLowerCase()] = true;
     });
     window.addEventListener("keyup", (event) => {
-      this.keyMap[event.key] = false;
+      this.keyMap[event.key.toLowerCase()] = false;
     });
   }
 }

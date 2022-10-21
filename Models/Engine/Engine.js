@@ -13,6 +13,11 @@ class Engine {
 
     console.log("Colision engine loading...");
     this.collisionEngine = new Collider(this);
+
+    this.state = "Running";
+  }
+  changeState() {
+    this.state = this.state == "Running" ? "Stop" : "Running";
   }
   addBox(boxArr) {
     this.collisionEngine.addBox(boxArr);
@@ -22,13 +27,8 @@ class Engine {
   }
   createObjects(map = Array) {
     this.map = map;
-    console.log("Creating objects...");
-
-    console.log("Objects created! ✔");
     //Add physics
     this.physics.getMap(map);
-    //Add objects
-    // this.collisionEngine.addObjects([], []);
   }
   getCanvasPosition(canvasPosition) {
     this.canvasPosition = canvasPosition;
@@ -41,15 +41,6 @@ class Engine {
     ) {
       return true;
     }
-  }
-  addQueue(colaHud = new ColaHUD()) {
-    colaHud.actualizarPosicion(this.canvasPosition);
-    this.collisionEngine.enemys.forEach((enemy) => {
-      let isIn = this.isInScreen(enemy);
-      if (isIn) {
-        colaHud.add(enemy);
-      }
-    });
   }
   getPlayer(player) {
     this.player = player;
@@ -88,7 +79,6 @@ class Engine {
     );
     this.physics.onGravity(this.collisionEngine.enemys);
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
-    this.enemyIAtoPlayer();
     this.score.draw(context, {
       x: this.player.positionWorld.x + 350,
       y: this.player.positionWorld.y + 250,

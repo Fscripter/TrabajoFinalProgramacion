@@ -17,6 +17,5 @@ class Score {
   }
   increaseScore() {
     this.actualScore++;
-    console.log("Hi", this);
   }
 }
