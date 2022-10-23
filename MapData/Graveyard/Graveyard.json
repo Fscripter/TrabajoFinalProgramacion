@@ -14,11 +14,11 @@
     [""],
     [""],
     [""],
-    ["     A      B"],
-    ["LCCCCCCCCCCCCCCR"],
-    ["DDDDDDDDDDDDDDDD"],
-    ["DDDDDDDDDDDDDDDD"],
-    ["DDDDDDDDDDDDDDDD"]
+    [""],
+    ["LCCCCCCCCCCCCCCCCCCCR"],
+    ["LCCCCCCCCCCCCCCCCCCCR"],
+    ["LCCCCCCCCCCCCCCCCCCCR"],
+    ["LCCCCCCCCCCCCCCCCCCCR"]
   ],
   "texturas": {
     "terreno": {

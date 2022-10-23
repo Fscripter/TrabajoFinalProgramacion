@@ -5,7 +5,7 @@ class ObjectsMap {
     this.imagen = new ImagenDerogada(imgUrl);
   }
   draw(context) {
-    console.log(this.imagen);
+    console.log(this);
     context.drawImage(
       this.imagen,
       this.positionWorld.x,

@@ -25,6 +25,7 @@ class MenuJuego {
     this.playButtton = document.getElementById("Play");
     this.playButtton.addEventListener("click", () => {
       this.playGame();
+      console.log("Clicked");
     });
   }
   playGame() {

@@ -5,40 +5,20 @@
   "Mapa": [
     [""],
     [""],
-    ["                                                                                  "],
-    ["                                                        LCCCCCCCR  "],
-    ["                                                       LXDDDDDDDZ"],
-    ["                                                                                   "],
-    ["                                                                    LCCCCCCR      "],
     [""],
     [""],
-    [
-      "                                                                               LCCR                                                                                   LCCR"
-    ],
-    [
-      "                                                                             LCCCCR                                                                                 LCCCCR"
-    ],
-    [
-      "                    T H G S F                                               LCCCCCCR                        T H GBSF                                               LCCCCCCR"
-    ],
-    [
-      " TA             LCCCCCCCCCCCCR                       LCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ     T              LCCCCCCCCCCCCR                       LCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ"
-    ],
-    [
-      "LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    LCCCCCCCCCR   LCCDDDDDDDDDDDDZ                   LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ],
-    [
-      "XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ    XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ"
-    ]
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    [""],
+    ["LCCCR  LCCCCCCCCCR   LCCCCCCCCCR  LCCCCCCCCCR  LCCCCCCCCCR"],
+    ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"],
+    ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"],
+    ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"]
   ],
   "texturas": {
     "terreno": {
