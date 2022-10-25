@@ -17,6 +17,9 @@ body {
 #Juego {
   display: none;
 }
+#Pausa h1 {
+  color: white;
+}
 #Menu {
   width: 100%;
   height: 100%;

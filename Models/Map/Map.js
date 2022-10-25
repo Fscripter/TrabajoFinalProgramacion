@@ -72,6 +72,7 @@ class Mapa {
         );
         console.log(`Scene ${name} added ✔`);
         this.engine.addBox(this.scenes[name].boxes);
+        this.engine.addEnemy(this.scenes[name].enemys);
       });
   }
   addArrToTotal(newArray) {
@@ -124,7 +125,6 @@ class Mapa {
       this.loadScene("Graveyard");
       return;
     }
-    console.log("Maps loaded");
   }
   cargarZona(Menu) {
     this.correctStatus = false;

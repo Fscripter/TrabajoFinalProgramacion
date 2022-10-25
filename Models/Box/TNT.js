@@ -45,7 +45,7 @@ class TNT extends Box {
     );
     this.sound = new Audio("./Sprites/Objects/TNT.mp3");
   }
-  blow(Player, enemysArray) {
+  blow(Player, enemysArray, callback = () => {}) {
     // console.log(this.isblow);
     if (this.isblow == false) {
       return;
@@ -55,16 +55,16 @@ class TNT extends Box {
       let X = Math.abs(enemy.positionWorld.x - this.positionWorld.x);
       let Y = Math.abs(enemy.positionWorld.y - this.positionWorld.y);
       let radioInteraccion = Math.pow(X, 2) + Math.pow(Y, 2); // X.X + Y.Y = R.R
-      if (radioInteraccion <= Math.pow(this.radius, 2)) {
-        enemy.doDamage(this.damage);
+      if (radioInteraccion <= Math.pow(this.radius, 2) && enemy.alive) {
+        enemy.doDamage(this.damage, callback);
       }
     });
     this.changeState();
     this.sound.play();
   }
-  interaction(Player, enemysArray) {
+  interaction(Player, enemysArray, callback = () => {}) {
     this.changeEvent();
-    this.blow(Player, enemysArray);
+    this.blow(Player, enemysArray, callback);
   }
   changeState() {
     this.animation.changeState("Explosion");

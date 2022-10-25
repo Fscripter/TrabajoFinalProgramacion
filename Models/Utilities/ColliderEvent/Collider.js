@@ -1,15 +1,15 @@
 class Collider {
-  constructor() {
-    this.boxes = [];
-    this.enemys = [new Enemy({ x: 1000, y: 0 }, 2)];
-  }
-  addObjects(box, enemy) {
+  constructor(engine) {
     this.boxes = [];
     this.enemys = [];
-    console.log("Objects added to Collision! ✔");
+    this.engine = engine;
+    this.engine.score.increaseScore = this.engine.score.increaseScore.bind(engine.score);
   }
   addBox(boxArr) {
     this.boxes = this.boxes.concat(boxArr);
+  }
+  addEnemy(enemyArr) {
+    this.enemys = this.enemys.concat(enemyArr);
   }
   collision() {
     this.collisionBoxEntities();
@@ -69,14 +69,14 @@ class Collider {
     let isIn = this.getCollisionBetween(bullet, box);
 
     if (isIn && !box.isblow) {
-      box.interaction(this.player, this.enemys);
+      box.interaction(this.player, this.enemys, this.engine.score.increaseScore);
       bullet.delete();
     }
   }
   getCollisionEnemy(bullet, enemy) {
     let isIn = this.getCollisionBetween(bullet, enemy);
     if (isIn && enemy.alive) {
-      enemy.doDamage(bullet.damage);
+      enemy.doDamage(bullet.damage, this.engine.score.increaseScore);
       bullet.delete();
     }
   }
@@ -101,7 +101,7 @@ class Collider {
         this.enemys.forEach((enemy) => {
           let isIn = this.getCollisionBetween(bullet, enemy);
           if (isIn && enemy.alive) {
-            bullet.blow(this.player, this.enemys.enemys);
+            bullet.blow(this.player, [enemy]);
           }
         });
         return;

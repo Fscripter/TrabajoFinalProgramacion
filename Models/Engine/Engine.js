@@ -5,35 +5,37 @@ class Engine {
     this.enemys = new enemySpawner();
     this.boxes = new boxSpawner();
 
+    console.log("Score engine loading...");
+    this.score = new Score();
+
     console.log("Physics engine loading...");
     this.physics = new Physic();
 
     console.log("Colision engine loading...");
-    this.collisionEngine = new Collider();
+    this.collisionEngine = new Collider(this);
+
+    this.state = "Running";
+  }
+  changeState() {
+    this.state = this.state == "Running" ? "Stop" : "Running";
+    console.log("Estado cambiado", this.state);
+    if (this.state == "Stop") {
+      this.menu.pausa();
+    }
+  }
+  getMenu(menu) {
+    this.menu = menu;
   }
   addBox(boxArr) {
     this.collisionEngine.addBox(boxArr);
   }
+  addEnemy(enemyArr) {
+    this.collisionEngine.addEnemy(enemyArr);
+  }
   createObjects(map = Array) {
     this.map = map;
-    console.log("Creating objects...");
-
-    for (let yAxis = 0; yAxis < map.length; yAxis++) {
-      for (let xAxis = 0; xAxis < map[yAxis].length; xAxis++) {
-        let dateStructure = {
-          x: xAxis,
-          y: yAxis,
-          value: map[yAxis][xAxis],
-        };
-        // this.enemys.getEnemysFromMap(dateStructure);
-        // this.boxes.getBoxesFromMap(dateStructure);
-      }
-    }
-    console.log("Objects created! ✔");
     //Add physics
     this.physics.getMap(map);
-    //Add objects
-    // this.collisionEngine.addObjects([], []);
   }
   getCanvasPosition(canvasPosition) {
     this.canvasPosition = canvasPosition;
@@ -47,15 +49,6 @@ class Engine {
       return true;
     }
   }
-  addQueue(colaHud = new ColaHUD()) {
-    colaHud.actualizarPosicion(this.canvasPosition);
-    this.enemys.enemys.forEach((enemy) => {
-      let isIn = this.isInScreen(enemy);
-      if (isIn) {
-        colaHud.add(enemy);
-      }
-    });
-  }
   getPlayer(player) {
     this.player = player;
     this.collisionEngine.getPlayer(this.player);
@@ -64,7 +57,7 @@ class Engine {
     this.dog = dog;
   }
   enemyIAtoPlayer() {
-    this.enemys.enemys.forEach((enemy) => {
+    this.collisionEngine.enemys.forEach((enemy) => {
       let isIn = this.isInScreen(enemy);
       if (isIn) {
         enemy.AI(
@@ -91,8 +84,11 @@ class Engine {
     this.physics.onGravity(
       this.enemys.enemys.concat(this.collisionEngine.boxes).concat(this.player).concat(this.dog)
     );
+    this.physics.onGravity(this.collisionEngine.enemys);
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
-    // this.enemys.draw(context);
-    this.boxes.draw(context);
+    this.score.draw(context, {
+      x: this.player.positionWorld.x + 350,
+      y: this.player.positionWorld.y + 250,
+    });
   }
 }

@@ -6,6 +6,7 @@ class Escena {
     this.sound = sound;
     this.configs = configs;
     this.boxes = [];
+    this.enemys = [];
     this.Decorations = [];
     this.createObjects();
   }
@@ -23,11 +24,18 @@ class Escena {
               this.textures.Decorations[letter].src
             )
           );
-          console.log(this.Decorations);
           break;
         default:
           break;
       }
+    }
+  }
+  createEnemy(letter, position) {
+    if (letter == "0") {
+      let positionWorld = position;
+      positionWorld.x *= 50;
+      positionWorld.y *= 50;
+      this.enemys.push(new Enemy(positionWorld, 2));
     }
   }
   createBox(letter, position) {
@@ -96,13 +104,13 @@ class Escena {
     }
   }
   createObjects() {
-    console.log(`creating objects in ${this.xPosicion}...`);
     for (let fila = 0; fila < this.mapArr.length; fila++) {
       let size = this.mapArr[fila].length;
       for (let columna = 0; columna < size; columna += 1) {
         let mapaLetra = this.mapArr[fila][columna];
         let posicion = { x: columna, y: fila };
         this.createBox(mapaLetra, posicion);
+        this.createEnemy(mapaLetra, posicion);
         this.createDecorations(mapaLetra, posicion);
       }
     }
@@ -140,6 +148,9 @@ class Escena {
     });
     this.Decorations.forEach((decoration) => {
       decoration.draw(context);
+    });
+    this.enemys.forEach((enemy) => {
+      enemy.draw(context);
     });
   }
   letterToTexture(textura, posicion, context) {

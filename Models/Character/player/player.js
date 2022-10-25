@@ -99,6 +99,16 @@ class Player extends Character {
     this.weapons = new weaponHud();
     this.updateAmmo();
   }
+  doDamage(damage) {
+    if (this.life - damage > 0) {
+      this.life -= damage;
+      this.updateLifeHUD();
+      return;
+    }
+    this.alive = false;
+    this.life = 0;
+    this.updateLifeHUD();
+  }
   updateAmmo() {
     this.ammo = this.weapons.currentAmmo;
     this.coolDown = this.weapons.currentCooldown;

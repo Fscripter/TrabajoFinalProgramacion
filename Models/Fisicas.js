@@ -37,6 +37,11 @@ class Physic {
       return true;
     }
   }
+  detectDead(terrain) {
+    if (terrain == "M" || terrain == "N") {
+      return true;
+    }
+  }
   detectGround(element, deleted) {
     //Only detect ground if we are falling
     if (element.stateData.jumping) {
@@ -64,6 +69,12 @@ class Physic {
     let axisX = this.map[positionArr.y][positionArr.xa];
     let axisXWidth = this.map[positionArr.y][positionArr.xb];
     isFloor = this.detectarTerreno(axisX) || this.detectarTerreno(axisXWidth);
+    let danger = this.detectDead(axisX) || this.detectDead(axisXWidth);
+    if (danger) {
+      element.doDamage(1000);
+      console.log("Se muere");
+      return;
+    }
     element.physicsData.isGround = isFloor;
     if (isFloor) {
       element.positionWorld.y = positionArr.y * 50 - element.size.h;

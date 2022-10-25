@@ -14,6 +14,7 @@ class MenuJuego {
     this.zonaCargada = "";
     this.initialMenu = document.getElementById("Menu");
     this.cargando = document.getElementById("Cargando");
+    this.pausaMenu = document.getElementById("Pausa");
     this.juego = document.getElementById("Juego");
     this.mapa = mapa;
     this.engine = engine;
@@ -36,10 +37,26 @@ class MenuJuego {
     this.juego.style.display = "flex";
     this.mapa.cargarZona(this);
   }
-  finalizarCarga(mapaCanvas) {
+  finalizarCarga() {
     this.state = "MapaCargado";
+    this.pausaMenu.style.display = "none";
+    this.juego.style.display = "flex";
     this.initialMenu.style.display = "none";
     this.cargando.style.display = "none";
     this.gameLoop(this.mapa, this.engine);
+  }
+  pausa() {
+    this.pausaMenu.style.display = "flex";
+    this.initialMenu.style.display = "none";
+    this.cargando.style.display = "none";
+    this.juego.style.display = "none";
+    document.getElementById("reanudar").addEventListener("click", () => {
+      console.log(this.gameLoop);
+      this.pausaMenu.style.display = "none";
+      this.juego.style.display = "flex";
+      this.initialMenu.style.display = "none";
+      this.cargando.style.display = "none";
+      this.engine.changeState();
+    });
   }
 }
