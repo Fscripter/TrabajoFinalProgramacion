@@ -34,7 +34,7 @@ class Character extends GameObject {
     this.alive = true;
     this.active = true;
     this.orientation = "R";
-    this.animation = new Animator(settingsAnimations, this.orientation);
+
     this.face = face;
     this.HUD = new BarraVida(
       "Character",
@@ -52,7 +52,8 @@ class Character extends GameObject {
     this.positionAmmoDelta = positionAmmoDelta;
     this.collider = new Collision(this);
     this.destroyBullet = this.destroyBullet.bind(this);
-    this.dev = false;
+    this.dev = true;
+    this.Animator = new AnimatorEngine(settingsAnimations, this.size);
   }
   move(vel) {
     this.positionWorld.x += vel;
@@ -82,8 +83,8 @@ class Character extends GameObject {
     if (!this.active) {
       return;
     }
-    this.imagen = this.animation.drawAnimation();
-    super.draw(context);
+    this.imagen = this.Animator.drawAnimation();
+    context.drawImage(this.imagen, this.positionWorld.x, this.positionWorld.y);
     this.drawBullets(context);
     if (this.dev) {
       this.collider.draw(context);

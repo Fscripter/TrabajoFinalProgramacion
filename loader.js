@@ -46,7 +46,7 @@ var EngineList = [
   "Models/Animations/AnimatorFrames.js",
 ];
 
-scriptList = scriptList.concat(EngineList).concat(characterList).concat(toolList).concat(enemyList);
+scriptList = scriptList.concat(characterList).concat(toolList).concat(enemyList).concat(EngineList);
 scriptList.forEach((scriptSrc) => {
   let script = document.createElement("script"); //creating <script> element
   script.src = scriptSrc;

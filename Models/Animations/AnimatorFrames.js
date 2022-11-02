@@ -1,35 +1,53 @@
 let settings = {
   states: ["Default"],
-  animations: [
-    {
-      id: "Default",
+  tileWidth: 32,
+  animations: {
+    Default: {
       transitionTime: 100,
       loop: false,
-      animaciones: {
-        derecha: new ImagenDerogada(""),
+      spriteSheet: {
+        l: new ImagenDerogada(""),
+        r: new ImagenDerogada(""),
       },
-      tile: 32,
     },
-  ],
+  },
 };
-class AnimatorFrames {
-  constructor(settings, orientation = null) {
-    this.states = settings.states;
-    this.animations = settings.animations;
-    this.currentState = settings.states[0];
-    this.id = new Date().getTime();
-    this.currentAnimation = settings.animations[0];
-    this.actualFrame = 0;
-    this.timeElapsed = 0;
-    this.orientation = orientation;
-    this.lastFrame = false;
-    this.virtualCanvas = document.createElement("canvas");
-    this.virtualContext = this.virtualCanvas.getContext("2d");
-    this.maxFrames = Math.floor(this.currentAnimation);
-    // console.log(`Animations made with ID ${this.id}`);
+class AnimatorEngine {
+  constructor(params = settings, size) {
+    this.canvas = document.createElement("canvas");
+    this.context = this.canvas.getContext("2d");
+    this.states = params.states;
+    this.tileWidth = params.tileWidth;
+    this.animations = params.animations;
+    this.animations.Default.spriteSheet.l.onload = () => {
+      this.animations.Default.spriteSheet.r.onload = () => {
+        let maxFrame = this.animations.Default.spriteSheet.r.naturalWidth / this.tileWidth;
+        this.setMaxFrame(Math.floor(maxFrame));
+      };
+      this.changeState("Default");
+      this.orientation = "R";
+      this.size = size;
+    };
   }
   changeOrientation(newOrientation) {
-    this.orientation = newOrientation;
+    if (this.orientation == newOrientation) {
+      console.log("La misma");
+      return;
+    }
+    if (newOrientation != this.orientation) {
+      this.orientation = newOrientation;
+      console.log("Orientacion cambiada");
+    }
+  }
+  setMaxFrame(maxFrame) {
+    this.maxFrame = maxFrame;
+  }
+  changeKeyFrameAnimation() {
+    this.currentAnimation = this.animations[this.currentState];
+    if (this.currentAnimation == undefined) {
+      console.log("Animacion no encontrada");
+    }
+    this.setTimer();
   }
   setTimer() {
     this.actualFrame = 0;
@@ -38,7 +56,7 @@ class AnimatorFrames {
   }
   skipFrame() {
     this.actualFrame++;
-    if (this.actualFrame + 1 > this.currentAnimation.animaciones.derecha.length) {
+    if (this.actualFrame + 1 > this.maxFrame) {
       if (this.currentAnimation.loop == false) {
         this.actualFrame--;
         this.lastFrame = true;
@@ -47,33 +65,15 @@ class AnimatorFrames {
       }
     } else {
       this.timeElapsed = 0;
+      this.clearCanvas();
     }
   }
   increaseTimer() {
     this.timeElapsed += 1000 / 60;
     if (this.timeElapsed > this.currentAnimation.transitionTime) {
       this.skipFrame();
+      this.clearCanvas();
     }
-  }
-  drawAnimation() {
-    this.increaseTimer();
-    if (this.orientation == null) {
-      return this.currentAnimation.animaciones.derecha[this.actualFrame];
-    }
-    if (this.orientation == "R") {
-      return this.currentAnimation.animaciones.derecha[this.actualFrame];
-    }
-    return this.currentAnimation.animaciones.izquierda[this.actualFrame];
-  }
-  changeKeyFrameAnimation() {
-    //select animation
-    this.animations.forEach((animacion) => {
-      if (animacion.id == this.currentState) {
-        this.currentAnimation = animacion;
-      }
-    });
-    this.setTimer();
-    // console.log(`ID: ${this.id}, State is: ${this.currentState}`);
   }
   changeState(newState) {
     if (this.states.indexOf(newState) == -1 || this.currentState == newState) {
@@ -82,5 +82,27 @@ class AnimatorFrames {
     }
     this.currentState = newState;
     this.changeKeyFrameAnimation();
+  }
+  clearCanvas() {
+    this.canvas.width = this.canvas.width;
+  }
+  drawAnimation() {
+    this.increaseTimer();
+    this.clearCanvas();
+    if (this.orientation == null) {
+      this.orientation = "R";
+    }
+    this.context.drawImage(
+      this.currentAnimation.spriteSheet[this.orientation.toLowerCase()],
+      32 * this.actualFrame,
+      0,
+      32,
+      32,
+      0,
+      0,
+      50,
+      50
+    );
+    return this.canvas;
   }
 }

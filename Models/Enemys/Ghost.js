@@ -1,32 +1,31 @@
 class Ghost extends Character {
   constructor(position) {
     let animationSet = {
-      states: ["Estatico", "Caminar"],
-      animations: [
-        {
-          id: "Estatico",
+      states: ["Default", "Caminar"],
+      tileWidth: 32,
+      animations: {
+        Default: {
           transitionTime: 150,
-          animaciones: {
-            derecha: [
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile000.png"),
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile001.png"),
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile002.png"),
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile003.png"),
-            ],
-            izquierda: [
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile000.png"),
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile001.png"),
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile002.png"),
-              new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/tile003.png"),
-            ],
+          loop: true,
+          spriteSheet: {
+            l: new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/Fantasma-Idle-L.png"),
+            r: new ImagenDerogada("./Sprites/Enemys/Fantasma/Estatico/Fantasma-Idle.png"),
           },
         },
-      ],
+        Caminar: {
+          transitionTime: 100,
+          loop: true,
+          spriteSheet: {
+            l: new ImagenDerogada("./Sprites/Enemys/Fantasma/Caminar/Fantasma-Moving-L.png"),
+            r: new ImagenDerogada("./Sprites/Enemys/Fantasma/Caminar/Fantasma-Moving.png"),
+          },
+        },
+      },
     };
     super(
       position,
       { w: 50, h: 50 },
-      animationSet.animations[0].animaciones.derecha[0],
+      new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       100,
       animationSet,
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
@@ -46,7 +45,7 @@ class Ghost extends Character {
       if (vel > 0) {
         this.orientation = "R";
       }
-      this.animation.changeOrientation(this.orientation);
+      this.Animator.changeOrientation(this.orientation);
     }
   }
   AI(player = new Player(), bulletsArray) {
@@ -54,14 +53,11 @@ class Ghost extends Character {
     let rawDistance = player.positionWorld.x - this.positionWorld.x;
     let distance = Math.abs(rawDistance);
     if (distance < 300) {
-      this.dev = true;
       if (rawDistance < 0) {
         this.move(-1);
         return;
       }
       this.move(1);
-    } else {
-      this.dev = false;
     }
   }
   draw(context) {
@@ -71,8 +67,8 @@ class Ghost extends Character {
     if (!this.active) {
       return;
     }
-    this.imagen = this.animation.drawAnimation();
-    super.draw(context);
+    this.imagen = this.Animator.drawAnimation();
+    context.drawImage(this.imagen, this.positionWorld.x, this.positionWorld.y);
     this.drawBullets(context);
     if (this.dev) {
       this.collider.draw(context);

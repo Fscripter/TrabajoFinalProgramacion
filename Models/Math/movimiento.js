@@ -7,27 +7,33 @@ class ImagenDerogada extends Image {
 }
 
 let canvas = document.getElementById("canvas");
-let context = canvas.getContext("2d");
+let context = canvas.getContext("2d", { alpha: false });
 
+let virtualCanvas = document.createElement("canvas");
+let virtualContext = virtualCanvas.getContext("2d", { alpha: false });
 let img = new ImagenDerogada("../../Sprites/Enemys/Pirata/Pirata-Moving.png");
-var animacion = new Animator({
-  states: ["Estatico", "Caminar", "Saltar", "Caer", "Agachar"],
-  animations: [
-    {
-      id: "Estatico",
-      transitionTime: 100,
-      loop: false,
-      animaciones: {
-        derecha: [img],
-      },
-    },
-  ],
-});
-setInterval(() => {
-  canvas.width = 1000;
-  animacion.skipFrame();
-  animacion.draw(context);
-}, 200);
+
+let range = [1, 10, 100, 1000, 10000, 100000, 1000000];
 img.onload = () => {
-  animacion.draw(context);
+  range.map((maxPictures) => {
+    var startNormal = window.performance.now();
+    for (let nPictures = 0; nPictures < maxPictures; nPictures++) {
+      context.drawImage(img, nPictures * 10, 0);
+    }
+    var endNormal = window.performance.now();
+    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    var startVirtual = window.performance.now();
+    for (let nPictures = 0; nPictures < maxPictures; nPictures++) {
+      virtualContext.drawImage(img, nPictures * 10, 0);
+    }
+    context.drawImage(virtualCanvas, 0, 0);
+    var endVirtual = window.performance.now();
+    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+    console.log(
+      `X:${maxPictures},Y: ${endNormal - startNormal};X:${maxPictures},Y:${
+        endVirtual - startVirtual
+      }`
+    );
+  });
 };
