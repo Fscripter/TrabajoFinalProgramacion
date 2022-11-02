@@ -14,7 +14,8 @@ body {
 }
 /*Hidden elements*/
 #Cargando,
-#Juego {
+#Juego,
+#Pausa {
   display: none;
 }
 #Pausa h1 {

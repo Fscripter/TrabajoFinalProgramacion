@@ -52,6 +52,7 @@ class Character extends GameObject {
     this.positionAmmoDelta = positionAmmoDelta;
     this.collider = new Collision(this);
     this.destroyBullet = this.destroyBullet.bind(this);
+    this.dev = false;
   }
   move(vel) {
     this.positionWorld.x += vel;
@@ -84,7 +85,9 @@ class Character extends GameObject {
     this.imagen = this.animation.drawAnimation();
     super.draw(context);
     this.drawBullets(context);
-    this.collider.draw(context);
+    if (this.dev) {
+      this.collider.draw(context);
+    }
   }
   jump() {
     if (this.physicsData.isGround) {

@@ -15,6 +15,8 @@ class Engine {
     this.collisionEngine = new Collider(this);
 
     this.state = "Running";
+    this.time = 0;
+    this.lightInGame = [];
   }
   changeState() {
     this.state = this.state == "Running" ? "Stop" : "Running";
@@ -91,4 +93,37 @@ class Engine {
       y: this.player.positionWorld.y + 250,
     });
   }
+  rayTracing(context, mapaCanvas) {
+    let layout = new ImagenDerogada("./MapData/Background.png");
+    let layoutB = new ImagenDerogada("./MapData/Background - copia.png");
+    //This is not ray tracing, sorry xd
+    this.time++;
+    if (this.time < 20) {
+      layoutB.style.transform = "rotate(45deg)";
+      context.globalCompositeOperation = "multiply";
+      context.drawImage(
+        layoutB,
+        -mapaCanvas.canvasPosition.x + 200,
+        -mapaCanvas.realCanvasPosition.y,
+        1000,
+        600
+      );
+    }
+    if (this.time > 20) {
+      context.globalCompositeOperation = "multiply";
+      context.drawImage(
+        layoutB,
+        -mapaCanvas.canvasPosition.x + 200,
+        -mapaCanvas.realCanvasPosition.y,
+        1000,
+        600
+      );
+    }
+    if (this.time > 50) {
+      this.time = 0;
+    }
+    for (const Ligth in this.lightInGame) {
+    }
+  }
+  addLight(Ligth) {}
 }

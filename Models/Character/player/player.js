@@ -2,7 +2,7 @@ class Player extends Character {
   constructor(position) {
     super(
       position,
-      { w: 50, h: 100 },
+      { w: 50, h: 50 },
       "./Sprites/Player/Derecha.png",
       200,
       {
@@ -13,7 +13,7 @@ class Player extends Character {
             transitionTime: 100,
             loop: false,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
+              derecha: [new ImagenDerogada("./Sprites/Enemys/Pirata/Pirata.png")],
               izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
             },
           },
@@ -163,6 +163,7 @@ class Player extends Character {
   }
   draw(context) {
     this.changeState();
+    this.imagen.style.transform = "rotate(45deg)";
     super.draw(context);
     this.HUD.draw(context, {
       x: this.positionWorld.x - 250,

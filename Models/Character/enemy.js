@@ -2,7 +2,7 @@ class Enemy extends Character {
   constructor(position, id, padreArr) {
     super(
       position,
-      { w: 50, h: 100 },
+      { w: 50, h: 50 },
       "./Sprites/Player/Derecha.png",
       100,
       {
@@ -12,8 +12,8 @@ class Enemy extends Character {
             id: "Estatico",
             transitionTime: 100,
             animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Derecha.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
+              derecha: [new ImagenDerogada("./Sprites/Enemys/Fantasma/Fantasma.png")],
+              izquierda: [new ImagenDerogada("./Sprites/Enemys/Candileja/Candileja.png")],
             },
           },
           {
