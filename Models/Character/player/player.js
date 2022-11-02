@@ -23,12 +23,10 @@ class Player extends Character {
             loop: true,
             animaciones: {
               derecha: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
+                new ImagenDerogada("./Sprites/Enemys/Pirata/Caminar/Derecha/tile000.png"),
+                new ImagenDerogada("./Sprites/Enemys/Pirata/Caminar/Derecha/tile001.png"),
+                new ImagenDerogada("./Sprites/Enemys/Pirata/Caminar/Derecha/tile002.png"),
+                new ImagenDerogada("./Sprites/Enemys/Pirata/Caminar/Derecha/tile003.png"),
               ],
               izquierda: [
                 new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),

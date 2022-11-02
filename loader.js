@@ -40,7 +40,11 @@ let scriptList = [
 var toolList = ["Models/Tools/Img.js", "Models/Map/Objects/Objects.js"];
 var characterList = ["Models/Character/player/player.js", "Models/Hud/enemyHud.js"];
 var enemyList = ["Models/Enemys/Ghost.js"];
-var EngineList = ["Models/Engine/Hitbox.js", "Models/Engine/Score.js"];
+var EngineList = [
+  "Models/Engine/Hitbox.js",
+  "Models/Engine/Score.js",
+  "Models/Animations/AnimatorFrames.js",
+];
 
 scriptList = scriptList.concat(EngineList).concat(characterList).concat(toolList).concat(enemyList);
 scriptList.forEach((scriptSrc) => {
