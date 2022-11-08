@@ -57,7 +57,17 @@ class Escena {
             )
           );
           this.ligths.push(
-            new GameObject(positionWorld, this.configs[letter].size, "./MapData/MipMapTnT.png")
+            new GameObject(
+              {
+                x: position.x - 155,
+                y: position.y + 150,
+              },
+              {
+                h: 250,
+                w: 350,
+              },
+              "./MapData/Laboratory/Objects/Box/TNT/TNTMip.png"
+            )
           );
           break;
         case "H":
@@ -66,6 +76,19 @@ class Escena {
               positionWorld,
               this.configs[letter].size,
               this.textures.Objects[letter].src
+            )
+          );
+          this.ligths.push(
+            new GameObject(
+              {
+                x: position.x - 155,
+                y: position.y + 150,
+              },
+              {
+                h: 250,
+                w: 350,
+              },
+              "./MapData/Laboratory/Objects/Box/Heal/HealMip.png"
             )
           );
           break;
@@ -77,6 +100,19 @@ class Escena {
               this.textures.Objects[letter].src
             )
           );
+          this.ligths.push(
+            new GameObject(
+              {
+                x: position.x - 155,
+                y: position.y + 150,
+              },
+              {
+                h: 250,
+                w: 350,
+              },
+              "./MapData/Laboratory/Objects/Box/Heal/HealMip.png"
+            )
+          );
           break;
         case "F":
           this.boxes.push(
@@ -84,6 +120,19 @@ class Escena {
               positionWorld,
               this.configs[letter].size,
               this.textures.Objects[letter].src
+            )
+          );
+          this.ligths.push(
+            new GameObject(
+              {
+                x: position.x - 155,
+                y: position.y + 150,
+              },
+              {
+                h: 250,
+                w: 350,
+              },
+              "./MapData/Laboratory/Objects/Box/Flamethrower/FlamethrowerMip.png"
             )
           );
           break;
@@ -95,6 +144,19 @@ class Escena {
               this.textures.Objects[letter].src
             )
           );
+          this.ligths.push(
+            new GameObject(
+              {
+                x: position.x - 155,
+                y: position.y + 150,
+              },
+              {
+                h: 250,
+                w: 350,
+              },
+              "./MapData/Laboratory/Objects/Box/Laser/LaserMip.png"
+            )
+          );
           break;
         case "B":
           this.boxes.push(
@@ -102,6 +164,13 @@ class Escena {
               positionWorld,
               this.configs[letter].size,
               this.textures.Objects[letter].src
+            )
+          );
+          this.ligths.push(
+            new GameObject(
+              positionWorld,
+              this.configs[letter].size,
+              "./MapData/MipMapTnT.png"
             )
           );
           break;

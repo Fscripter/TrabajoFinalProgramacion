@@ -84,7 +84,10 @@ class Engine {
     this.enemyIAtoPlayer();
     this.collisionEngine.collision();
     this.physics.onGravity(
-      this.enemys.enemys.concat(this.collisionEngine.boxes).concat(this.player).concat(this.dog)
+      this.enemys.enemys
+        .concat(this.collisionEngine.boxes)
+        .concat(this.player)
+        .concat(this.dog)
     );
     this.physics.onGravity(this.collisionEngine.enemys);
     this.physics.onGravity(this.searchGrenadesInPlayer(), true);
@@ -112,8 +115,8 @@ class Engine {
     let light = mapaCanvas.scenes.Laboratory.ligths;
     console.log(light);
     light.forEach((lightPPRL) => {
-      context.globalCompositeOperation = "screen";
-      lightPPRL.draw(context, -this.canvasPosition);
+      context.globalCompositeOperation = "hard-light";
+      lightPPRL.draw(context, this.canvasPosition.y);
     });
     // for (const element in light) {
     //   element.draw(context);
