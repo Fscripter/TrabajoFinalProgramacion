@@ -2,66 +2,42 @@ class Enemy extends Character {
   constructor(position, id, padreArr) {
     super(
       position,
-      { w: 50, h: 100 },
+      { w: 50, h: 50 },
       "./Sprites/Player/Derecha.png",
       100,
       {
-        states: ["Estatico", "Caminar", "Saltar", "Caer"],
-        animations: [
-          {
-            id: "Estatico",
+        states: ["Default", "Caminar", "Saltar", "Caer"],
+        tileWidth: 32,
+        animations: {
+          Default: {
             transitionTime: 100,
-            animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Enemys/Antioquia/Estatico/Derecha.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Enemys/Fantasma/Fantasma.png"),
+              l: new ImagenDerogada("./Sprites/Enemys/Candileja/Candileja.png"),
             },
           },
-          {
-            id: "Caminar",
+          Caminar: {
             transitionTime: 200,
-            animaciones: {
-              derecha: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
-              ],
-              izquierda: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
-              ],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+              l: new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
             },
           },
-          {
-            id: "Saltar",
+          Saltar: {
             transitionTime: 1000,
-            animaciones: {
-              derecha: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
-              ],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+              l: new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
             },
           },
-          {
-            id: "Caer",
+          Caer: {
             transitionTime: 0,
-            animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
+              l: new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
             },
           },
-        ],
+        },
       },
       new ImagenDerogada("./Sprites/Enemys/Antioquia/Face.png"),
       {
@@ -103,7 +79,7 @@ class Enemy extends Character {
       if (vel > 0) {
         this.orientation = "R";
       }
-      this.animation.changeOrientation(this.orientation);
+      this.Animator.changeOrientation(this.orientation);
     }
   }
   draw(context) {
@@ -114,18 +90,18 @@ class Enemy extends Character {
   changeState() {
     //Each one, defines own rules for animations
     if (this.stateData.jumping == false && !this.physicsData.isGround) {
-      this.animation.changeState("Caer");
+      this.Animator.changeState("Caer");
       return;
     }
     if (this.stateData.jumping == true && !this.physicsData.isGround) {
-      this.animation.changeState("Saltar");
+      this.Animator.changeState("Saltar");
       return;
     }
     if (this.physicsData.isGround && this.stateData.moving) {
-      this.animation.changeState("Caminar");
+      this.Animator.changeState("Caminar");
       return;
     }
-    this.animation.changeState("Estatico");
+    this.Animator.changeState("Default");
   }
   AI(player, bulletsArray) {
     let distanceX = Math.abs(this.positionWorld.x - player.positionWorld.x);
@@ -136,10 +112,10 @@ class Enemy extends Character {
     if (isRight && distanceX < 400) {
       this.shoot();
       this.orientation = "R";
-      this.animation.changeOrientation("R");
+      this.Animator.changeOrientation("R");
     }
     if (!isRight && distanceX < 400) {
-      this.animation.changeOrientation("L");
+      this.Animator.changeOrientation("L");
       this.orientation = "L";
       this.shoot();
     }

@@ -31,11 +31,14 @@ class Escena {
     }
   }
   createEnemy(letter, position) {
+    let positionWorld = position;
+    positionWorld.x *= 50;
+    positionWorld.y *= 50;
     if (letter == "0") {
-      let positionWorld = position;
-      positionWorld.x *= 50;
-      positionWorld.y *= 50;
-      this.enemys.push(new Enemy(positionWorld, 2));
+      // this.enemys.push(new Enemy(positionWorld, 2));
+    }
+    if (letter == "1") {
+      this.enemys.push(new Ghost(positionWorld, 2));
     }
   }
   createBox(letter, position) {

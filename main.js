@@ -36,7 +36,7 @@ function gameLoop(mapaCanvas, GameEngine) {
       GameEngine.render(mapaCanvas.context);
 
       Marin.draw(mapaCanvas.context);
-      Sky.draw(mapaCanvas.context);
+      // Sky.draw(mapaCanvas.context);
       fps++;
       //Cola enemigos
       // ColaHUDCanvas.actualizarPosicion(mapaCanvas.canvasPosition);
@@ -47,6 +47,8 @@ function gameLoop(mapaCanvas, GameEngine) {
         -mapaCanvas.canvasPosition.x + 900,
         mapaCanvas.canvasPosition.y + 800
       );
+
+      // GameEngine.rayTracing(mapaCanvas.context, mapaCanvas);
     }
   };
   requestAnimationFrame(performAnimation);

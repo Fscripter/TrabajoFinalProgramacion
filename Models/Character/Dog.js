@@ -6,17 +6,19 @@ class Dog extends Character {
       "./Sprites/Dog/Derecha/DogRight.png",
       0,
       {
-        states: ["Estatico", "Caminar", "Saltar", "Caer", "Curar"],
-        animations: [
-          {
-            id: "Estatico",
+        states: ["Default", "Caminar", "Saltar", "Caer", "Curar"],
+        tileWidth: 32,
+        animations: {
+          Default: {
             transitionTime: 100,
             loop: false,
-            animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Dog/Derecha/DogRight.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Dog/Izquierda/DogLeft.png")],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Dog/Derecha/DogRight.png"),
+              l: new ImagenDerogada("./Sprites/Dog/Izquierda/DogLeft.png"),
             },
           },
+        },
+        bulk: [
           {
             id: "Caminar",
             transitionTime: 200,
@@ -127,27 +129,27 @@ class Dog extends Character {
   changeState() {
     //Each one, defines own rules for animations
     if (this.stateData.jumping == false && !this.physicsData.isGround) {
-      this.animation.changeState("Caer");
+      this.Animator.changeState("Caer");
       return;
     }
     if (this.stateData.jumping == true && !this.physicsData.isGround) {
-      this.animation.changeState("Saltar");
+      this.Animator.changeState("Saltar");
       return;
     }
     if (this.stateData.Healing == true) {
-      this.animation.changeState("Curar");
+      this.Animator.changeState("Curar");
       return;
     }
     if (this.physicsData.isGround && this.stateData.moving) {
-      this.animation.changeState("Caminar");
+      this.Animator.changeState("Caminar");
       return;
     }
     if (this.physicsData.isGround && this.stateData.duck) {
-      this.animation.changeState("Estatico");
+      this.Animator.changeState("Estatico");
       return;
     }
 
-    this.animation.changeState("Estatico");
+    this.Animator.changeState("Estatico");
   }
   move(vel) {
     if (this.canIMove.l || this.canIMove.r) {
@@ -156,7 +158,7 @@ class Dog extends Character {
       if (vel > 0) {
         this.orientation = "R";
       }
-      this.animation.changeOrientation(this.orientation);
+      this.Animator.changeOrientation(this.orientation);
     }
   }
   getDown() {

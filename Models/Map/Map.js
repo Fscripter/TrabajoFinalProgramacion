@@ -23,6 +23,8 @@ class Mapa {
       Graveyard: null,
     };
     this.totalMap = [];
+    this.context.globalCompositeOperation = "xor";
+    console.log(this.context.globalCompositeOperation);
   }
   finalizarCarga(name) {
     this.status[name] = true;
@@ -156,6 +158,19 @@ class Mapa {
 
   draw() {
     this.getSizeMap();
+    let layout = new ImagenDerogada("./MapData/Background.png");
+    let layoutB = new ImagenDerogada("./MapData/Background - copia.png");
+    //This is not ray tracing, sorry xd
+    this.context.globalCompositeOperation = "multiply";
+    this.context.drawImage(
+      layoutB,
+      -this.canvasPosition.x + 200,
+      -this.realCanvasPosition.y,
+      1000,
+      600
+    );
+    this.context.drawImage(layout, -this.canvasPosition.x, -this.realCanvasPosition.y, 500, 200);
+    this.context.globalCompositeOperation = "source-over";
 
     this.scenes.Laboratory.draw(this.context, this.canvasPosition);
     this.scenes.Forest.draw(this.context, this.canvasPosition);

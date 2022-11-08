@@ -2,82 +2,54 @@ class Player extends Character {
   constructor(position) {
     super(
       position,
-      { w: 50, h: 100 },
+      { w: 50, h: 50 },
       "./Sprites/Player/Derecha.png",
       200,
       {
-        states: ["Estatico", "Caminar", "Saltar", "Caer", "Agachar"],
-        animations: [
-          {
-            id: "Estatico",
-            transitionTime: 100,
-            loop: false,
-            animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Derecha.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Izquierda.png")],
-            },
-          },
-          {
-            id: "Caminar",
+        states: ["Default", "Caminar", "Saltar", "Caer", "Agachar"],
+        tileWidth: 32,
+        animations: {
+          Default: {
             transitionTime: 200,
             loop: true,
-            animaciones: {
-              derecha: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Derecha/Pose6.png"),
-              ],
-              izquierda: [
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose1.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose2.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose3.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose4.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose5.png"),
-                new ImagenDerogada("./Sprites/Player/Caminar/Izquierda/Pose6.png"),
-              ],
+            spriteSheet: {
+              l: new ImagenDerogada("./Sprites/Enemys/Pirata/Estatico/Pirata-Idle-L.png"),
+              r: new ImagenDerogada("./Sprites/Enemys/Pirata/Estatico/Pirata-Idle.png"),
             },
           },
-          {
-            id: "Saltar",
+          Caminar: {
+            transitionTime: 200,
+            loop: true,
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Enemys/Pirata/Caminar/Pirata-Moving.png"),
+              l: new ImagenDerogada("./Sprites/Enemys/Pirata/Caminar/Pirata-Moving-L.png"),
+            },
+          },
+          Saltar: {
             transitionTime: 0,
             loop: false,
-            animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png")],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png"),
+              l: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png"),
             },
           },
-          {
-            id: "Caer",
+          Caer: {
             transitionTime: 0,
             loop: false,
-            animaciones: {
-              derecha: [new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png")],
-              izquierda: [new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png")],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
+              l: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
             },
           },
-          {
-            id: "Agachar",
+          Agachar: {
             transitionTime: 30,
             loop: false,
-            animaciones: {
-              derecha: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso4.png"),
-              ],
-              izquierda: [
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso1.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso2.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso3.png"),
-                new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso4.png"),
-              ],
+            spriteSheet: {
+              r: new ImagenDerogada("./Sprites/Player/Agachar/Derecha/Paso1.png"),
+              l: new ImagenDerogada("./Sprites/Player/Agachar/Izquierda/Paso1.png"),
             },
           },
-        ],
+        },
       },
       new ImagenDerogada("./Sprites/Player/Face.png"),
       {
@@ -154,7 +126,7 @@ class Player extends Character {
       if (vel > 0) {
         this.orientation = "R";
       }
-      this.animation.changeOrientation(this.orientation);
+      this.Animator.changeOrientation(this.orientation);
       mapaMovement.mapaCanvas.canvasPosition.x -= vel;
     }
   }
@@ -164,6 +136,18 @@ class Player extends Character {
   draw(context) {
     this.changeState();
     super.draw(context);
+    // if (!this.alive) {
+    //   return;
+    // }
+    // if (!this.active) {
+    //   return;
+    // }
+    // this.imagen = this.Animator.drawAnimation();
+    // context.drawImage(this.imagen, this.positionWorld.x, this.positionWorld.y);
+    this.drawBullets(context);
+    if (this.dev) {
+      this.collider.draw(context);
+    }
     this.HUD.draw(context, {
       x: this.positionWorld.x - 250,
       y: this.positionWorld.y - 270,
@@ -176,22 +160,23 @@ class Player extends Character {
   changeState() {
     //Each one, defines own rules for animations
     if (this.stateData.jumping == false && !this.physicsData.isGround) {
-      this.animation.changeState("Caer");
+      this.Animator.changeState("Caer");
       return;
     }
     if (this.stateData.jumping == true && !this.physicsData.isGround) {
-      this.animation.changeState("Saltar");
+      this.Animator.changeState("Saltar");
       return;
     }
     if (this.physicsData.isGround && this.stateData.moving) {
-      this.animation.changeState("Caminar");
+      this.Animator.changeState("Caminar");
       return;
     }
     if (this.physicsData.isGround && this.stateData.duck) {
-      this.animation.changeState("Agachar");
+      this.Animator.changeState("Agachar");
       return;
     }
-    this.animation.changeState("Estatico");
+    this.Animator.changeState("Default");
+    return;
   }
   shoot() {
     this.updateAmmo();
