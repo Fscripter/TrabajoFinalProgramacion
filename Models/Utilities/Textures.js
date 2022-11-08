@@ -20,10 +20,13 @@ class Textures {
     this.Map = Map;
     this.name = name;
     this.textures = textures;
-    this.newTextures = {};
+    this.newTextures = [];
     //Load terrain
     for (const textureObj in textures) {
-      this.newTextures[textureObj] = this.loadItem(this.textures[textureObj], textureObj);
+      this.newTextures[textureObj] = this.loadItem(
+        this.textures[textureObj],
+        textureObj
+      );
     }
 
     return this.newTextures;
@@ -33,6 +36,7 @@ class Textures {
     for (const element in terrain) {
       let img = new loadImg(terrain[element], this.checkLoad.bind(this));
       imagesPreview[element] = img;
+      console.log(img);
       this.queue.push(img);
     }
     return imagesPreview;
