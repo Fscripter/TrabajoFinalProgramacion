@@ -22,10 +22,13 @@ function gameLoop(mapaCanvas, GameEngine) {
     lastFrame = fps;
     fps = 0;
   }, 1000);
+  var suma = 0;
+  var n = 0;
   //Main Loop
   const performAnimation = () => {
     request = requestAnimationFrame(performAnimation);
     if (GameEngine.state != "Stop") {
+      let item = window.performance.now();
       tecladoRuntime.realizarAccion();
       GameEngine.getCanvasPosition(mapaCanvas.canvasPosition);
       //animate something
@@ -47,8 +50,16 @@ function gameLoop(mapaCanvas, GameEngine) {
         -mapaCanvas.canvasPosition.x + 900,
         mapaCanvas.canvasPosition.y + 800
       );
+      let itemEnd = window.performance.now();
+      if (n < 2000) {
+        n++;
+        suma += itemEnd - item;
+      }
+      if (n == 2000) {
+        console.log(suma / n);
+      }
 
-      // GameEngine.rayTracing(mapaCanvas.context, mapaCanvas);
+      GameEngine.rayTracing(mapaCanvas.context, mapaCanvas);
     }
   };
   requestAnimationFrame(performAnimation);
