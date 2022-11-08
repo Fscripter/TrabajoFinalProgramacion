@@ -97,33 +97,27 @@ class Engine {
     let layout = new ImagenDerogada("./MapData/Background.png");
     let layoutB = new ImagenDerogada("./MapData/Background - copia.png");
     //This is not ray tracing, sorry xd
-    this.time++;
-    if (this.time < 20) {
-      layoutB.style.transform = "rotate(45deg)";
-      context.globalCompositeOperation = "multiply";
-      context.drawImage(
-        layoutB,
-        -mapaCanvas.canvasPosition.x + 200,
-        -mapaCanvas.realCanvasPosition.y,
-        1000,
-        600
-      );
-    }
-    if (this.time > 20) {
-      context.globalCompositeOperation = "multiply";
-      context.drawImage(
-        layoutB,
-        -mapaCanvas.canvasPosition.x + 200,
-        -mapaCanvas.realCanvasPosition.y,
-        1000,
-        600
-      );
-    }
-    if (this.time > 50) {
-      this.time = 0;
-    }
-    for (const Ligth in this.lightInGame) {
-    }
+    // this.time++;
+    // if (this.time < 20) {
+    layoutB.style.transform = "rotate(45deg)";
+    context.globalCompositeOperation = "multiply";
+    context.drawImage(
+      layout,
+      -mapaCanvas.canvasPosition.x,
+      -mapaCanvas.realCanvasPosition.y,
+      1000,
+      600
+    );
+    //PPRL cada luz de cada escena
+    let light = mapaCanvas.scenes.Laboratory.ligths;
+    console.log(light);
+    light.forEach((lightPPRL) => {
+      context.globalCompositeOperation = "screen";
+      lightPPRL.draw(context, -this.canvasPosition);
+    });
+    // for (const element in light) {
+    //   element.draw(context);
+    // }
   }
   addLight(Ligth) {}
 }

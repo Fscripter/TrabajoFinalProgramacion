@@ -8,6 +8,7 @@ class Escena {
     this.boxes = [];
     this.enemys = [];
     this.Decorations = [];
+    this.ligths = [];
     this.createObjects();
   }
   createDecorations(letter, position) {
@@ -54,6 +55,9 @@ class Escena {
               this.configs[letter].size,
               this.textures.Objects[letter].src
             )
+          );
+          this.ligths.push(
+            new GameObject(positionWorld, this.configs[letter].size, "./MapData/MipMapTnT.png")
           );
           break;
         case "H":
