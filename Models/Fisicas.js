@@ -54,7 +54,12 @@ class Physic {
       xb: Math.floor((element.positionWorld.x + element.size.w) / 50),
     };
     let isFloor = false;
-    if (this.map[positionArr.y] === undefined) {
+
+    if (this.map[positionArr.y] == undefined) {
+      return;
+    }
+
+    if (this.map[positionArr.y] == undefined) {
       if (deleted) {
         element.delete();
         return;

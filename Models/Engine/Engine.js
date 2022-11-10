@@ -110,7 +110,7 @@ class Engine {
     );
     //PPRL cada luz de cada escena
     let light = mapaCanvas.scenes.Laboratory.ligths;
-    console.log(light);
+    // console.log(light);
     light.forEach((lightPPRL) => {
       context.globalCompositeOperation = "hard-light";
       lightPPRL.draw(context, this.canvasPosition.y);
