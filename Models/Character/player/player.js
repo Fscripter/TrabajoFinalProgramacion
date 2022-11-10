@@ -26,19 +26,19 @@ class Player extends Character {
             },
           },
           Saltar: {
-            transitionTime: 0,
+            transitionTime: 200,
             loop: false,
             spriteSheet: {
-              r: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose1.png"),
-              l: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose1.png"),
+              r: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet.png"),
+              l: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet-l.png"),
             },
           },
           Caer: {
-            transitionTime: 0,
+            transitionTime: 200,
             loop: false,
             spriteSheet: {
-              r: new ImagenDerogada("./Sprites/Player/Salto/Derecha/Pose6.png"),
-              l: new ImagenDerogada("./Sprites/Player/Salto/Izquierda/Pose6.png"),
+              r: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet.png"),
+              l: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet-l.png"),
             },
           },
           Agachar: {

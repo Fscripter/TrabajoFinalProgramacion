@@ -11,7 +11,7 @@ class Character extends GameObject {
     positionAmmoDelta = {
       normal: {
         x: 0,
-        y: 35,
+        y: 15,
       },
       down: {
         x: 0,

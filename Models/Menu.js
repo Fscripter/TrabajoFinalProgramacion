@@ -16,6 +16,7 @@ class MenuJuego {
     this.cargando = document.getElementById("Cargando");
     this.pausaMenu = document.getElementById("Pausa");
     this.juego = document.getElementById("Juego");
+    this.narrativa = document.getElementById("Narrativa");
     this.mapa = mapa;
     this.engine = engine;
     this.gameLoop = gameLoop;
@@ -43,6 +44,20 @@ class MenuJuego {
     this.initialMenu.style.display = "none";
     this.cargando.style.display = "none";
     this.gameLoop(this.mapa, this.engine);
+  }
+  pausaNarrativa() {
+    this.pausaMenu.style.display = "none";
+    this.initialMenu.style.display = "none";
+    this.cargando.style.display = "none";
+    this.juego.style.display = "none";
+    document.getElementById("reanudar").addEventListener("click", () => {
+      console.log(this.gameLoop);
+      this.pausaMenu.style.display = "none";
+      this.juego.style.display = "flex";
+      this.initialMenu.style.display = "none";
+      this.cargando.style.display = "none";
+      this.engine.changeState();
+    });
   }
   pausa() {
     this.pausaMenu.style.display = "flex";

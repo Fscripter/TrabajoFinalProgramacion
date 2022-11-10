@@ -22,21 +22,21 @@ class AnimatorEngine {
     this.animations.Default.spriteSheet.l.onload = () => {
       this.animations.Default.spriteSheet.r.onload = () => {
         let maxFrame = this.animations.Default.spriteSheet.r.naturalWidth / this.tileWidth;
+        console.log(maxFrame);
         this.setMaxFrame(Math.floor(maxFrame));
       };
       this.changeState("Default");
-      this.orientation = "R";
+      // this.orientation = "R";
       this.size = size;
     };
+    this.canvas.width = this.tileWidth;
   }
   changeOrientation(newOrientation) {
     if (this.orientation == newOrientation) {
-      console.log("La misma");
       return;
     }
     if (newOrientation != this.orientation) {
       this.orientation = newOrientation;
-      console.log("Orientacion cambiada");
     }
   }
   setMaxFrame(maxFrame) {
@@ -86,7 +86,7 @@ class AnimatorEngine {
   clearCanvas() {
     this.canvas.width = this.canvas.width;
   }
-  drawAnimation() {
+  drawAnimation(ops = { h: 32, s: { w: 50, h: 50 } }) {
     this.increaseTimer();
     this.clearCanvas();
     if (this.orientation == null) {
@@ -94,14 +94,14 @@ class AnimatorEngine {
     }
     this.context.drawImage(
       this.currentAnimation.spriteSheet[this.orientation.toLowerCase()],
-      32 * this.actualFrame,
+      this.tileWidth * this.actualFrame,
       0,
-      32,
-      32,
+      this.tileWidth,
+      ops.h,
       0,
       0,
-      50,
-      50
+      ops.s.w,
+      ops.s.h
     );
     return this.canvas;
   }

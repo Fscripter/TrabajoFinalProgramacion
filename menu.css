@@ -88,3 +88,40 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+#Narrativa {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+}
+#Narrativa .title {
+  background-color: red;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#Narrativa .content {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+#Narrativa .content .img {
+  width: 50%;
+  height: 100%;
+}
+#Narrativa .content .history {
+  width: 50%;
+  height: 100%;
+}
+#Narrativa #Next {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

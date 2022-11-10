@@ -20,7 +20,7 @@ class Engine {
   }
   changeState() {
     this.state = this.state == "Running" ? "Stop" : "Running";
-    console.log("Estado cambiado", this.state);
+    // console.log("Estado cambiado", this.state);
     if (this.state == "Stop") {
       this.menu.pausa();
     }
@@ -109,12 +109,11 @@ class Engine {
       600
     );
     //PPRL cada luz de cada escena
-    let light = mapaCanvas.scenes.Laboratory.ligths;
-    console.log(light);
-    light.forEach((lightPPRL) => {
-      context.globalCompositeOperation = "screen";
-      lightPPRL.draw(context, -this.canvasPosition);
-    });
+    // let light = mapaCanvas.scenes.Laboratory.ligths;
+    // light.forEach((lightPPRL) => {
+    //   context.globalCompositeOperation = "screen";
+    //   lightPPRL.draw(context, -this.canvasPosition);
+    // });
     // for (const element in light) {
     //   element.draw(context);
     // }

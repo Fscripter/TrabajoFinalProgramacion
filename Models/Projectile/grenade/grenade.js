@@ -1,12 +1,12 @@
 class Grenade extends Projectile {
   constructor(position, orientation) {
     super(position, orientation, {
-      w: 20,
+      w: 50,
       h: 20,
     });
     this.velocidad = {
-      x: 8,
-      y: -10,
+      x: 4,
+      y: -8,
     };
     if (this.orientation != "R") {
       this.velocidad.x *= -1;
@@ -55,7 +55,7 @@ class Grenade extends Projectile {
   }
   mover() {
     this.positionWorld.x += this.velocidad.x;
-    this.reducirFuerza();
+    // this.reducirFuerza();
   }
   draw(context) {
     super.draw(context);
