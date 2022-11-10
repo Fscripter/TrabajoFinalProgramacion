@@ -34,6 +34,7 @@ class Escena {
   createEnemy(letter, position) {
     let positionWorld = position;
     positionWorld.x *= 50;
+    positionWorld.x += this.xPosicion * 50;
     positionWorld.y *= 50;
     if (letter == "0") {
       this.enemys.push(new Footlight(positionWorld, 2));
@@ -50,11 +51,7 @@ class Escena {
       switch (letter) {
         case "T":
           this.boxes.push(
-            new TNT(
-              positionWorld,
-              this.configs[letter].size,
-              this.textures.Objects[letter].src
-            )
+            new TNT(positionWorld, this.configs[letter].size, this.textures.Objects[letter].src)
           );
           this.ligths.push(
             new GameObject(
@@ -160,18 +157,10 @@ class Escena {
           break;
         case "B":
           this.boxes.push(
-            new boxAmmo(
-              positionWorld,
-              this.configs[letter].size,
-              this.textures.Objects[letter].src
-            )
+            new boxAmmo(positionWorld, this.configs[letter].size, this.textures.Objects[letter].src)
           );
           this.ligths.push(
-            new GameObject(
-              positionWorld,
-              this.configs[letter].size,
-              "./MapData/MipMapTnT.png"
-            )
+            new GameObject(positionWorld, this.configs[letter].size, "./MapData/MipMapTnT.png")
           );
           break;
         default:

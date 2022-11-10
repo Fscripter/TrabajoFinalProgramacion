@@ -38,7 +38,7 @@ class Collision {
   }
   draw(context) {
     this.getPosition();
-    context.strokeStyle = "#00FF00";
-    context.strokeRect(this.measure.x, this.measure.y, this.measure.w, this.measure.h);
+    // context.strokeStyle = "#00FF00";
+    // context.strokeRect(this.measure.x, this.measure.y, this.measure.w, this.measure.h);
   }
 }
