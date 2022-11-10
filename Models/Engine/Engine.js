@@ -109,11 +109,12 @@ class Engine {
       600
     );
     //PPRL cada luz de cada escena
-    // let light = mapaCanvas.scenes.Laboratory.ligths;
-    // light.forEach((lightPPRL) => {
-    //   context.globalCompositeOperation = "screen";
-    //   lightPPRL.draw(context, -this.canvasPosition);
-    // });
+    let light = mapaCanvas.scenes.Laboratory.ligths;
+    console.log(light);
+    light.forEach((lightPPRL) => {
+      context.globalCompositeOperation = "hard-light";
+      lightPPRL.draw(context, this.canvasPosition.y);
+    });
     // for (const element in light) {
     //   element.draw(context);
     // }

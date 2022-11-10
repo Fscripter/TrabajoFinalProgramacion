@@ -14,7 +14,7 @@
     [""],
     [""],
     [""],
-    ["   R      CCC"],
+    ["   R     ACCC"],
     ["LCCCR  LCCCCCCCCCR   LCCCCCCCCCR  LCCCCCCCCCR  LCCCCCCCCCR"],
     ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"],
     ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"],
@@ -22,13 +22,13 @@
   ],
   "texturas": {
     "terreno": {
-      "D": "./Sprites/Terrain/Antioquia/Piso/Subsuelo.png",
-      "C": "./Sprites/Terrain/Antioquia/Piso/Normal.png",
-      "L": "./Sprites/Terrain/Antioquia/Piso/ExtremoIzquierdo.png",
-      "R": "./Sprites/Terrain/Antioquia/Piso/ExtremoDerecho.png"
+      "D": "./Sprites/Terrain/Forest/R.png",
+      "C": "./Sprites/Terrain/Forest/C.png",
+      "L": "./Sprites/Terrain/Forest/L.png",
+      "R": "./Sprites/Terrain/Forest/R.png"
     },
-    "arbol": {
-      "A": "./Sprites/Terrain/Antioquia/Objetos/ArbolA.png",
+    "Objects": {
+      "A": "./Sprites/Terrain/Forest/X.png",
       "B": "./Sprites/Terrain/Antioquia/Objetos/ArbolB.png",
       "C": "./Sprites/Terrain/Antioquia/Objetos/ArbolC.png",
       "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
@@ -41,3 +41,4 @@
     "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
   }
 }
+
