@@ -50,14 +50,6 @@ function gameLoop(mapaCanvas, GameEngine) {
         -mapaCanvas.canvasPosition.x + 900,
         mapaCanvas.canvasPosition.y + 800
       );
-      let itemEnd = window.performance.now();
-      if (n < 2000) {
-        n++;
-        suma += itemEnd - item;
-      }
-      if (n == 2000) {
-        console.log(suma / n);
-      }
 
       GameEngine.rayTracing(mapaCanvas.context, mapaCanvas);
     }

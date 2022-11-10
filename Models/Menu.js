@@ -27,7 +27,6 @@ class MenuJuego {
     this.playButtton = document.getElementById("Play");
     this.playButtton.addEventListener("click", () => {
       this.playGame();
-      console.log("Clicked");
     });
   }
   playGame() {
@@ -52,7 +51,6 @@ class MenuJuego {
     this.cargando.style.display = "none";
     this.juego.style.display = "none";
     document.getElementById("reanudar").addEventListener("click", () => {
-      console.log(this.gameLoop);
       this.pausaMenu.style.display = "none";
       this.juego.style.display = "flex";
       this.initialMenu.style.display = "none";
@@ -66,7 +64,6 @@ class MenuJuego {
     this.cargando.style.display = "none";
     this.juego.style.display = "none";
     document.getElementById("reanudar").addEventListener("click", () => {
-      console.log(this.gameLoop);
       this.pausaMenu.style.display = "none";
       this.juego.style.display = "flex";
       this.initialMenu.style.display = "none";

@@ -24,7 +24,6 @@ class Mapa {
     };
     this.totalMap = [];
     this.context.globalCompositeOperation = "xor";
-    console.log(this.context.globalCompositeOperation);
   }
   finalizarCarga(name) {
     this.status[name] = true;
@@ -58,20 +57,13 @@ class Mapa {
         });
 
         // this.cargarTexuras();
-        let ambientSound = new Audio(mapData.sound.ambiente);
         let texturasGenerator = new Textures();
 
         let texturas = texturasGenerator.load(mapData.texturas, this, name);
 
         let xPosition = this.getSizeMap();
         this.addArrToTotal(this.verifyArr(mapArray));
-        this.scenes[name] = new Escena(
-          xPosition,
-          texturas,
-          mapArray,
-          ambientSound,
-          mapData.configsObjects
-        );
+        this.scenes[name] = new Escena(xPosition, texturas, mapArray, mapData.configsObjects);
         console.log(`Scene ${name} added ✔`);
         this.engine.addBox(this.scenes[name].boxes);
         this.engine.addEnemy(this.scenes[name].enemys);

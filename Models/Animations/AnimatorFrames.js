@@ -22,7 +22,6 @@ class AnimatorEngine {
     this.animations.Default.spriteSheet.l.onload = () => {
       this.animations.Default.spriteSheet.r.onload = () => {
         let maxFrame = this.animations.Default.spriteSheet.r.naturalWidth / this.tileWidth;
-        console.log(maxFrame);
         this.setMaxFrame(Math.floor(maxFrame));
       };
       this.changeState("Default");

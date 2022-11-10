@@ -3,7 +3,6 @@ class Escena {
     this.textures = textures;
     this.xPosicion = xPosicion;
     this.mapArr = mapArr;
-    this.sound = sound;
     this.configs = configs;
     this.boxes = [];
     this.enemys = [];

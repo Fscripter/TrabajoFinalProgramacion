@@ -43,9 +43,6 @@
       "Layout": "./MapData/Laboratory/Layout/Layout.jpg"
     }
   },
-  "sound": {
-    "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
-  },
   "configsObjects": {
     "T": {
       "size": {

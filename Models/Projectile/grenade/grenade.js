@@ -37,7 +37,6 @@ class Grenade extends Projectile {
   }
   blow(Player, enemysArray) {
     this.speed = 0;
-    console.log(enemysArray);
     enemysArray = enemysArray.concat(Player);
     let enemysAffected = 0;
     enemysArray.forEach((enemy) => {
