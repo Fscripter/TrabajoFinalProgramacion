@@ -7,18 +7,17 @@
     [""],
     [""],
     [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    ["LCCCCCCCCCCCCCCCCCCCR"],
-    ["LCCCCCCCCCCCCCCCCCCCR"],
-    ["LCCCCCCCCCCCCCCCCCCCR"],
-    ["LCCCCCCCCCCCCCCCCCCCR"]
+    ["                                                                               LCCR   "],
+    ["                                                                             LCCCCR   "],
+    ["                                                                             LCCCCR   "],
+    ["                                                                             LCCCCR   "],
+    ["                   0T H G S F                              0               LCCCCCCR  "],
+    [" TA 0 1   0     LCCCCCCCCCCCCR                      LCCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ    "],
+    ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
+    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "]
   ],
   "texturas": {
     "terreno": {
@@ -26,12 +25,21 @@
       "C": "./Sprites/Terrain/Graveyard/Center.png",
       "L": "./Sprites/Terrain/Graveyard/Left.png",
       "R": "./Sprites/Terrain/Graveyard/Right.png",
-      "A": "./Sprites/Terrain/Graveyard/Tree.png",
-      "B": "./Sprites/Terrain/Graveyard/DeadBush.png"
+      "X": "./Sprites/Terrain/Graveyard/Sub.png",
+      "Z": "./Sprites/Terrain/Graveyard/Sub.png",
+      "M": "./MapData/Laboratory/Terrain/M.png",
+      "N": "./MapData/Laboratory/Terrain/N.png"
     },
-    "arbol": {
-      "C": "./Sprites/Terrain/Antioquia/Objetos/ArbolC.png",
-      "D": "./Sprites/Terrain/Antioquia/Objetos/ArbolD.png"
+    "Objects": {
+      "T": "./MapData/Laboratory/Objects/Box/TNT/TNT.png",
+      "H": "./MapData/Laboratory/Objects/Box/Heal/Heal.png",
+      "G": "./Sprites/Objects/Caja/BoxGrenade/Grenade.png",
+      "B": "./Sprites/Objects/Caja/BoxRifle/Rifle.png",
+      "S": "./MapData/Laboratory/Objects/Box/Laser/Laser.png",
+      "F": "./MapData/Laboratory/Objects/Box/Flamethrower/Flamethrower.png"
+    },
+    "Decorations": {
+      "A": "./MapData/Laboratory/Objects/Decorations/First.png"
     },
     "scene": {
       "Layout": "./MapData/Graveyard/Layout/Layout.jpg"
@@ -39,5 +47,43 @@
   },
   "sound": {
     "ambiente": "./Sprites/Terrain/Antioquia/Music/soundtrackAntioquia.mp3"
+  },
+  "configsObjects": {
+    "T": {
+      "size": {
+        "w": 30,
+        "h": 60
+      }
+    },
+    "H": {
+      "size": {
+        "w": 20,
+        "h": 50
+      }
+    },
+    "G": {
+      "size": {
+        "w": 30,
+        "h": 30
+      }
+    },
+    "F": {
+      "size": {
+        "w": 30,
+        "h": 30
+      }
+    },
+    "S": {
+      "size": {
+        "w": 45,
+        "h": 30
+      }
+    },
+    "A": {
+      "size": {
+        "w": 45,
+        "h": 30
+      }
+    }
   }
 }
