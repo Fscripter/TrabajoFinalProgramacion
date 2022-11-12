@@ -7,15 +7,15 @@
     [""],
     [""],
     [""],
-    ["                                                                               LCCR   "],
-    ["                                                                             LCCCCR   "],
-    ["                    T1H G S F                              0         0     LCCCCCCR  "],
-    [" TA       1     LCCCCCCCCCCCCR                      LCCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ    "],
-    ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "]
+    [" "],
+    ["                          0    1                               "],
+    ["                      CCCCCCCCCCC                              "],
+    ["                    0       1                                  "],
+    ["    T    0 1     CCCCCCCCCCCCCCCCCCCCCC      0    0    0  1    "],
+    ["CCCCCCCCCCCCCCCC DDDDDDDDDDDDDDDDDDDDDD  CCCCCCCCCCCCCCCCCCCC  "],
+    ["DDDDDDDDDDDDDDDD DDDDDDDDDDDDDDDDDDDDDD  DDDDDDDDDDDDDDDDDDDD  "],
+    ["DDDDDDDDDDDDDDDD DDDDDDDDDDDDDDDDDDDDDD  DDDDDDDDDDDDDDDDDDDD  "],
+    ["DDDDDDDDDDDDDDDD DDDDDDDDDDDDDDDDDDDDDD  DDDDDDDDDDDDDDDDDDDD  "]
   ],
   "texturas": {
     "terreno": {
