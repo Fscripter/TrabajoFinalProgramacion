@@ -115,9 +115,6 @@ class Engine {
       context.globalCompositeOperation = "hard-light";
       lightPPRL.draw(context, this.canvasPosition.y);
     });
-    // for (const element in light) {
-    //   element.draw(context);
-    // }
   }
   addLight(Ligth) {}
 }

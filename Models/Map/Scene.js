@@ -1,5 +1,5 @@
 class Escena {
-  constructor(xPosicion, textures, mapArr, sound, configs = {}) {
+  constructor(xPosicion, textures, mapArr, configs = {}) {
     this.textures = textures;
     this.xPosicion = xPosicion;
     this.mapArr = mapArr;
@@ -13,8 +13,8 @@ class Escena {
   createDecorations(letter, position) {
     if (letter in this.configs) {
       let positionWorld = position;
-      // positionWorld.x *= 50;
-      // positionWorld.y *= 50;
+      positionWorld.x *= 50;
+      positionWorld.y *= 50;
       switch (letter) {
         case "A":
           this.Decorations.push(

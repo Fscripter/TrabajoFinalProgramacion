@@ -27,7 +27,7 @@ class Player extends Character {
           },
           Saltar: {
             transitionTime: 200,
-            loop: false,
+            loop: true,
             spriteSheet: {
               r: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet.png"),
               l: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet-l.png"),
@@ -35,7 +35,7 @@ class Player extends Character {
           },
           Caer: {
             transitionTime: 200,
-            loop: false,
+            loop: true,
             spriteSheet: {
               r: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet.png"),
               l: new ImagenDerogada("./Sprites/Enemys/Pirata/Salto/PirataSalto-sheet-l.png"),
