@@ -10,15 +10,15 @@
     [""],
     [""],
     [""],
-    [""],
-    [""],
-    [""],
-    [""],
-    ["   R     ACCC"],
-    ["LCCCR  LCCCCCCCCCR   LCCCCCCCCCR  LCCCCCCCCCR  LCCCCCCCCCR"],
-    ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"],
-    ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"],
-    ["DDDDR  DDDDDDDDDDD   DDDDDDDDDDD  DDDDDDDDDDD  DDDDDDDDDDD"]
+    ["                                  0                "],
+    [" 0  0                       CCCCCCCCCC             "],
+    ["CCCCCC               CCCC    DDDDDDDD     1  0  1 0 0"],
+    ["DDDDDD   1 1 CCCCCC           DDDDDD      CCCCCCCCCCC"],
+    ["CCCCCCCCCCCCCDDDDDD            DDDD                  "],
+    ["DDDDDDDDDDDDDDDDDDD    CC                            "],
+    ["DDDDDDDDDDDDDDDDDDD        1    1                  "],
+    ["DDDDDDDDDDDDDDDDDDD      CCCCCCCCCCCCCCC  CCCCCCCCC"],
+    ["DDDDDDDDDDDDDDDDDDD      DDDDDDDDDDDDDDD  DDDDDDDDD"]
   ],
   "texturas": {
     "terreno": {

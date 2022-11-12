@@ -7,17 +7,17 @@
     [""],
     [""],
     [""],
-    ["                                                                               LCCR   "],
-    ["                                                                             LCCCCR   "],
-    ["                                                                             LCCCCR   "],
-    ["                                                                             LCCCCR   "],
-    ["                   0T H G S F                              0   01 100      LCCCCCCR  "],
-    [" TA 0 1   0     LCCCCCCCCCCCCR                      LCCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ    "],
-    ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ           A       LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "],
-    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ   "]
+    ["                                                                                     "],
+    ["                                                                                     "],
+    ["                                                                                     "],
+    ["                                                                                     "],
+    ["                   1T H G S F                              0       1   0 1 LCCCCCCR  "],
+    [" TA 1 0   0     LCCCCCCCCCCCCR                    0 LCCCCCCCCCCCCCCCCCCCCCCXDDDDDDZ  "],
+    ["LCCCCCCCCCR   LCCDDDDDDDDDDDDZ      0    A  0    LCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ  "],
+    ["XDDDDDDDDDZ   XDDDDDDDDDDDDDDZ    LCCCCCCCCCCCCCCXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ  "],
+    ["XDDDDDDDDDZMMMXDDDDDDDDDDDDDDZMMMMXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ  "],
+    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ  "],
+    ["XDDDDDDDDDZNNNXDDDDDDDDDDDDDDZNNNNXDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDZ  "]
   ],
   "texturas": {
     "terreno": {
